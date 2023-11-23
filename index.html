@@ -7,23 +7,24 @@
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="search-container">
-        <form action="/search" method="get">
-            <input type="text" placeholder="Søg..." name="search">
-            <button type="submit">🔍</button>
-        </form>
-    </div>
+    <header class="top-header">
+        <nav class="top-nav">
+            <ul>
+                <li><a href="#">Forside</a></li>
+                <li><a href="#">Købeguide - Bådudstyr</a></li>
+                <li><a href="#">Gode Links</a></li>
+                <li><a href="#">Handelsbetingelser</a></li>
+                <li><a href="#">Profil / Kontakt</a></li>
+            </ul>
+        </nav>
+        <div class="search-container">
+            <form action="/search" method="get" class="search-form">
+                <input type="text" placeholder="Søg..." name="search" class="search-input">
+                <button type="submit" class="search-button">🔍</button>
+            </form>
+        </div>
+    </header>
 
-    <nav class="top-nav">
-        <ul>
-            <li><a href="#">Forside</a></li>
-            <li><a href="#">Købeguide - Bådudstyr</a></li>
-            <li><a href="#">Gode Links</a></li>
-            <li><a href="#">Handelsbetingelser</a></li>
-            <li><a href="#">Profil / Kontakt</a></li>
-        </ul>
-    </nav>
-</aside>
 
 <div class="container">
     <aside class="sidebar" id="left-sidebar">
@@ -64,19 +65,40 @@
     </aside>
     
     <main class="main-content">
-        <!-- Main content goes here -->
-        <h1>Lynettens baadservice</h1>
-        <!-- Product grid or other content -->
+        <header class="main-header">
+            <h1>Lynettens Bådservice</h1>
+            <p class="sub-header">Mest bådudstyr for pengene</p>
+        </header>
         <div class="product-grid">
-            <!-- Individual product items -->
+            <!-- Add your product grid items here -->
         </div>
     </main>
     
     <aside class="sidebar" id="right-sidebar">
-        <!-- Right sidebar content -->
         <h2>Nyheder & Opdateringer</h2>
         <!-- News items or widgets -->
+    
+        <!-- Åbningstider Section -->
+        <section class="opening-hours">
+            <h3>Åbningstider</h3>
+            <ul>
+                <li>Man-fre: 10:00 - 17:00</li>
+                <li>Lørdage: 10:00 - 15:00</li>
+                <li>Søndage: Lukket</li>
+            </ul>
+        </section>
+    
+        <!-- Adresse Section -->
+        <section class="address">
+            <h3>Information</h3>
+            <p>Refshalevej 200</p>
+            <p>1432 København K</p>
+            <p>Tlf. 32 57 61 06</p>
+            <p>lynettens@baadservice.dk</p>
+        </section>
     </aside>
+
+    
 </div>
 </body>
 </html>
