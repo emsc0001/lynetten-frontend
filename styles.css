@@ -18,11 +18,11 @@ body {
 
 /* Header styles */
 .top-header {
-    background-color: #ffa500; /* Example color */
+    background-color: #ffa500; /* Orange background color */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 0;
+    padding: 10px 20px; /* Increase padding for better spacing */
 }
 
 .top-nav ul {
@@ -34,19 +34,21 @@ body {
 }
 
 .top-nav li {
-    padding: 5px 0;
+    padding: 0;
 }
 
 .top-nav a {
     text-decoration: none;
-    color: white;
+    color: #fff;
     font-weight: bold;
     font-size: 14px;
+    transition: color 0.3s ease; /* Smooth color transition on hover */
 }
 
 .top-nav a:hover {
-    color: #ffd700;
+    color: #ffd700; /* Gold color on hover for navbar links */
 }
+
 
 
 /* Main content styles */
@@ -184,4 +186,44 @@ body {
 
 
 
+/* Set a gradient background for the entire body */
+body {
+    background: linear-gradient(to bottom, #0055ff, #0077ff); /* Blue gradient background */
+    background-image: url('your-image-file.jpg'); /* Background image as discussed earlier */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #333; /* Text color */
+    font-family: 'Arial', sans-serif;
+}
+
+/* Add a subtle box shadow to the header for depth */
+.main-header {
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background color */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Subtle box shadow */
+    transition: box-shadow 0.3s ease; /* Add a smooth transition to the box shadow */
+}
+
+/* Add a hover effect to the header */
+.main-header:hover {
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3); /* Slightly larger box shadow on hover */
+}
+
+/* Add a background color and box shadow to the sidebar for depth */
+.sidebar {
+    background-color: rgba(240, 240, 240, 0.9); /* Semi-transparent light gray background color */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1); /* Subtle box shadow on the right side */
+}
+
+/* Add a background color and box shadow to the main content for depth */
+.main-content {
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background color */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
+}
 
