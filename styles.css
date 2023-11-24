@@ -18,11 +18,11 @@ body {
 
 /* Header styles */
 .top-header {
-    background-color: #ffa500; /* Orange background color */
+    background-color: #ffa500;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px; /* Increase padding for better spacing */
+    padding: 10px 20px;
 }
 
 .top-nav ul {
@@ -42,11 +42,11 @@ body {
     color: #fff;
     font-weight: bold;
     font-size: 14px;
-    transition: color 0.3s ease; /* Smooth color transition on hover */
+    transition: color 0.3s ease; 
 }
 
 .top-nav a:hover {
-    color: #ffd700; /* Gold color on hover for navbar links */
+    color: #ffd700; 
 }
 
 
@@ -56,23 +56,23 @@ body {
     padding: 20px;
     flex: 2;
     background-color: #fff;
-    text-align: center; /* Center-align content */
+    text-align: center; 
 }
 
 /* Header styles */
 .main-header {
-    margin-bottom: 20px; /* Add spacing below the header */
+    margin-bottom: 20px; 
 }
 
 .main-header h1 {
-    font-size: 35px; /* Adjust the font size as needed */
-    margin: 0; /* Remove default margin */
+    font-size: 35px;
+    margin: 0; 
 }
 
 .sub-header {
-    font-size: 19px; /* Adjust the font size as needed */
-    color: #777; /* Subdued color for sub-header */
-    margin: 0; /* Remove default margin */
+    font-size: 19px;
+    color: #777; 
+    margin: 0; 
 }
 
 /* Search bar styles */
@@ -188,22 +188,22 @@ body {
 
 /* Set a gradient background for the entire body */
 body {
-    background: linear-gradient(to bottom, #0055ff, #0077ff); /* Blue gradient background */
-    background-image: url('your-image-file.jpg'); /* Background image as discussed earlier */
+    background: linear-gradient(to bottom, #0055ff, #0077ff); 
+    background-image: url('your-image-file.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    color: #333; /* Text color */
+    color: #333;
     font-family: 'Arial', sans-serif;
 }
 
 /* Add a subtle box shadow to the header for depth */
 .main-header {
-    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background color */
+    background-color: rgba(255, 255, 255, 0.9); 
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Subtle box shadow */
-    transition: box-shadow 0.3s ease; /* Add a smooth transition to the box shadow */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); 
+    transition: box-shadow 0.3s ease; 
 }
 
 /* Add a hover effect to the header */
@@ -224,6 +224,33 @@ body {
     background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background color */
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar {
+    background-color: #f0f8ff; /* Light blue background */
+}
+
+.category-list li a:hover {
+    background-color: #e6f2ff; /* Very light blue on hover */
+}
+.main-header, .sidebar, .main-content {
+    box-shadow: 0px 2px 5px rgba(0, 77, 153, 0.2); /* Blue-tinted shadow */
+}
+
+.search-button {
+    background-color: #0055cc; /* Darker blue */
+}
+
+.search-button:hover {
+    background-color: #003399; /* Even darker blue on hover */
+}
+
+.top-header {
+    background-color: #0077cc; /* New blue color */
+}
+
+.top-nav a:hover {
+    color: #0099ff; /* Lighter blue on hover */
 }
 
