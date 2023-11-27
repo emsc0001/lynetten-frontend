@@ -25,55 +25,17 @@ body {
     padding: 10px 20px;
 }
 
-.top-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    gap: 20px;
-}
-
-.top-nav li {
-    padding: 0;
-}
-
-.top-nav a {
-    text-decoration: none;
-    color: #fff;
-    font-weight: bold;
-    font-size: 14px;
-    transition: color 0.3s ease; 
-}
-
-.top-nav a:hover {
-    color: #ffd700; 
-}
 
 
 
-/* Main content styles */
-.main-content {
-    padding: 20px;
-    flex: 2;
-    background-color: #fff;
-    text-align: center; 
-}
+
 
 /* Header styles */
 .main-header {
     margin-bottom: 20px; 
+    margin-top: 0;
 }
 
-.main-header h1 {
-    font-size: 35px;
-    margin: 0; 
-}
-
-.sub-header {
-    font-size: 19px;
-    color: #777; 
-    margin: 0; 
-}
 
 /* Search bar styles */
 .search-container {
@@ -124,84 +86,20 @@ body {
     background-color: #fff;
 }
 
-/* Category list styles */
-.category-list {
-    list-style: none;
-    padding: 0;
-}
-
-.category-list li a {
-    text-decoration: none;
-    color: #333;
-    display: block;
-    padding: 10px;
-    border-bottom: 1px solid #dddddd;
-}
-
-.category-list li a:hover {
-    background-color: #f9f9f9;
-}
-
-/* Product grid styles */
-.product-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-/* Responsive styles */
-@media (max-width: 768px) {
-    .top-nav ul {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .search-container {
-        justify-content: center;
-    }
-    
-    .sidebar {
-        width: 25%;
-    }
-
-    .main-content {
-        width: 75%;
-    }
-}
-
-@media (max-width: 480px) {
-    .top-nav ul {
-        gap: 10px;
-    }
-    
-    .search-input {
-        width: 100%;
-    }
-    
-    .sidebar, .main-content {
-        width: 100%;
-        padding: 10px;
-    }
-}
 
 
 
-/* Set a gradient background for the entire body */
-body {
-    background: linear-gradient(to bottom, #0055ff, #0077ff); 
-    background-image: url('your-image-file.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    color: #333;
-    font-family: 'Arial', sans-serif;
-}
+
+
+
+
 
 /* Add a subtle box shadow to the header for depth */
 .main-header {
-    background-color: rgba(255, 255, 255, 0.9); 
-    padding: 20px;
-    border-radius: 10px;
+    background-color: #ff8c00; 
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); 
     transition: box-shadow 0.3s ease; 
 }
@@ -211,21 +109,7 @@ body {
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3); /* Slightly larger box shadow on hover */
 }
 
-/* Add a background color and box shadow to the sidebar for depth */
-.sidebar {
-    background-color: rgba(240, 240, 240, 0.9); /* Semi-transparent light gray background color */
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1); /* Subtle box shadow on the right side */
-}
 
-/* Add a background color and box shadow to the main content for depth */
-.main-content {
-    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background color */
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-}
 
 .sidebar {
     background-color: #f0f8ff; /* Light blue background */
@@ -238,108 +122,7 @@ body {
     box-shadow: 0px 2px 5px rgba(0, 77, 153, 0.2); /* Blue-tinted shadow */
 }
 
-.search-button {
-    background-color: #0055cc; /* Darker blue */
-}
 
-.search-button:hover {
-    background-color: #003399; /* Even darker blue on hover */
-}
-
-.top-header {
-    background-color: #0077cc; /* New blue color */
-}
-
-.top-nav a:hover {
-    color: #0099ff; /* Lighter blue on hover */
-}
-
-
-
-body, html {
-  margin: 0;
-  padding: 0;
-  font-family: 'Arial', sans-serif;
-  background-color: #f4f4f4;
-}
-
-.header {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  padding: 10px 20px;
-}
-
-.navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.logo-container img {
-  height: 50px; /* Adjust as needed */
-}
-
-.nav-menu a, .nav-icons a {
-  text-decoration: none;
-  color: #333;
-  margin-left: 20px;
-  font-weight: bold;
-}
-
-.nav-menu a:hover, .nav-icons a:hover {
-  color: #0056b3; /* Adjust hover color as needed */
-}
-
-.content-header {
-  text-align: center;
-  padding: 20px;
-}
-
-.content-header h1 {
-  font-size: 24px;
-  color: #333;
-}
-
-.content-header p {
-  font-size: 16px;
-  color: #666;
-}
-
-.content-body {
-  padding: 20px;
-  text-align: center;
-}
-
-/* Responsive Navbar */
-@media (max-width: 768px) {
-  .nav-menu, .nav-icons {
-      display: none; /* Hide navigation links on smaller screens */
-  }
-
-  .content-header h1, .content-header p {
-      font-size: 18px;
-  }
-}
-
-/* Additional styles for search bar, account, and cart icons could include background-images or icons */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Arial', sans-serif;
-  background-color: #f4f4f4;
-}
-
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #fff;
-  padding: 10px 20px;
-}
 
 .logo-container img {
   height: 50px; /* Adjust as needed */
@@ -429,9 +212,7 @@ body, html {
   align-items: center;
 }
 
-.logo-container img {
-  height: 50px; /* Adjust as needed */
-}
+
 
 
 /* Reset and base styles */
@@ -450,48 +231,6 @@ body, html {
   padding: 0 20px; /* Adjust padding as needed */
 }
 
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 0; /* Adjust padding to align items */
-}
-
-/* Logo and navigation links */
-.logo-container img {
-  height: 50px; /* Keep your logo size */
-}
-
-.nav-menu a {
-  text-decoration: none;
-  color: #333;
-  margin: 0 20px; /* Space out the navigation links */
-  font-weight: bold;
-}
-
-.nav-menu a:hover {
-  color: #0056b3; /* Subtle hover effect */
-}
-
-/* Main content area */
-.main-content {
-  background-color: #ffffff;
-  text-align: left; /* Align text to the left for standard reading */
-  padding: 20px;
-  margin: 20px 0; /* Add margin around the content for space */
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Soft shadow for depth */
-}
-
-/* Sidebar styles */
-.sidebar {
-  background-color: #f8f8f8; /* Match the header background */
-  padding: 20px;
-  margin: 20px 0; /* Space between header/footer and sidebar */
-}
-
-.sidebar h2 {
-  margin-bottom: 10px; /* Space below sidebar headings */
-}
 
 .sidebar ul {
   list-style-type: none; /* No bullets for a clean look */
@@ -505,64 +244,7 @@ body, html {
   display: block; /* Full-width clickable area */
 }
 
-.sidebar ul li a:hover {
-  background-color: #e6e6e6; /* Light hover background */
-}
 
-/* Right sidebar adjustments */
-.right-sidebar {
-  text-align: left; /* Align the text to the left */
-  padding: 20px; /* Matching padding with the left sidebar */
-}
-
-/* Footer styles if needed */
-footer {
-  background-color: #333;
-  color: white;
-  text-align: center;
-  padding: 10px 0;
-}
-
-/* Responsive design adjustments */
-@media (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-  }
-
-  .nav-menu a {
-    padding: 10px 0; /* More vertical padding on mobile */
-  }
-
-  .sidebar, .right-sidebar, .main-content {
-    margin: 10px 0; /* Less margin on smaller screens */
-  }
-}
-/* Global Styles */
-body, html {
-  margin: 0;
-  padding: 0;
-  font-family: 'Arial', sans-serif;
-  background-color: #f4f4f4; /* Light grey background */
-}
-
-/* Header */
-.header {
-  background-color: #0056b3; /* Blue color for header */
-  color: #fff; /* White text color */
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  padding: 10px 20px;
-}
-
-/* Navbar Styles */
-.navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.logo-container img {
-  height: 50px; /* Adjust as needed */
-}
 
 /* Navbar Menu */
 .nav-menu a, .nav-icons a {
@@ -576,34 +258,9 @@ body, html {
   color: #ff8c00; /* Orange color for hover state */
 }
 
-/* Content Header */
-.content-header {
-  text-align: center;
-  padding: 20px;
-}
 
-.content-header h1 {
-  font-size: 24px;
-  color: #333;
-}
 
-.content-header p {
-  font-size: 16px;
-  color: #666;
-}
 
-/* Main Content Body */
-.content-body {
-  padding: 20px;
-  text-align: center;
-}
-
-/* Sidebar Styles */
-.sidebar {
-  background-color: #e6f2ff; /* Very light blue background */
-  padding: 20px;
-  flex: 1;
-}
 
 /* Category List Styles */
 .category-list li a {
@@ -629,10 +286,7 @@ body, html {
   }
 }
 
-/* Right Sidebar Text Alignment */
-.right-sidebar-content {
-  text-align: left; /* Align text to the left for a cleaner look */
-}
+
 
 /* ... existing styles ... */
 
@@ -670,55 +324,6 @@ body, html {
   display: flex; /* Use flexbox to layout dropdown items */
 }
 
-/* ... existing responsive styles ... */
-/* ... existing styles ... */
-
-/* Mega Menu Styles */
-.dropdown-content.mega-menu {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-  padding: 20px;
-  width: 100%; /* Set to 100% of the navbar width */
-  left: 0;
-}
-
-.mega-menu-row {
-  display: flex;
-  justify-content: space-between;
-}
-
-.mega-menu-column {
-  display: flex;
-  flex-direction: column;
-  margin-right: 40px; /* Adjust as necessary for spacing */
-}
-
-.mega-menu-column h3 {
-  font-size: 16px;
-  margin-bottom: 10px;
-  font-weight: bold;
-  color: #333;
-}
-
-.mega-menu-column a {
-  padding: 5px 0;
-  color: #666;
-  text-decoration: none;
-  font-size: 14px;
-  line-height: 1.5;
-}
-
-.mega-menu-column a:hover {
-  color: #000;
-}
-
-.dropdown:hover .dropdown-content.mega-menu {
-  display: block;
-}
-
-/* ... existing responsive styles ... */
 
 
 
@@ -737,7 +342,7 @@ body, html {
   /* Definerer et grid layout med to kolonner og en gap mellem elementerne */
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: 20px;
+  grid-gap: 10px;
 }
 
 .product-item {
