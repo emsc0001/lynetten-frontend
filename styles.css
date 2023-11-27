@@ -634,4 +634,159 @@ body, html {
   text-align: left; /* Align text to the left for a cleaner look */
 }
 
-/* Additional styles for responsiveness and other elements can be added as needed */
+/* ... existing styles ... */
+
+/* Dropdown Menu Styles */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  cursor: pointer;
+  user-select: none; /* Prevent text selection */
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  left: 0; /* Align to the left of the dropdown button */
+  right: 0; /* Align to the right of the dropdown button */
+  flex-wrap: wrap; /* Wrap items to the next line if needed */
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: inline; /* Display links inline for a horizontal layout */
+  white-space: nowrap; /* Prevent text wrapping */
+}
+
+.dropdown:hover .dropdown-content {
+  display: flex; /* Use flexbox to layout dropdown items */
+}
+
+/* ... existing responsive styles ... */
+/* ... existing styles ... */
+
+/* Mega Menu Styles */
+.dropdown-content.mega-menu {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+  padding: 20px;
+  width: 100%; /* Set to 100% of the navbar width */
+  left: 0;
+}
+
+.mega-menu-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.mega-menu-column {
+  display: flex;
+  flex-direction: column;
+  margin-right: 40px; /* Adjust as necessary for spacing */
+}
+
+.mega-menu-column h3 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #333;
+}
+
+.mega-menu-column a {
+  padding: 5px 0;
+  color: #666;
+  text-decoration: none;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.mega-menu-column a:hover {
+  color: #000;
+}
+
+.dropdown:hover .dropdown-content.mega-menu {
+  display: block;
+}
+
+/* ... existing responsive styles ... */
+
+
+
+
+
+
+
+.main-content {
+  /* Sørger for at indholdet centreres og har plads rundt om sig */
+  max-width: 1500px;
+  margin: auto;
+  padding: 20px;
+}
+
+.product-grid {
+  /* Definerer et grid layout med to kolonner og en gap mellem elementerne */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+}
+
+.product-item {
+  /* Højden kan justeres efter behov */
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.product-item h2 {
+  /* Gør teksten mere læsbar over billedet */
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  font-size: 1.5rem;
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+}
+
+
+
+.news-updates {
+  font-family: 'Arial', sans-serif; /* Example font */
+  margin-left: 20px; /* Adjust as necessary for alignment */
+  margin-right: 20px;
+}
+
+.news-updates h2 {
+  font-size: 1.5em; /* Larger font size for headings */
+  margin-bottom: 10px; /* Space below heading */
+}
+
+.news-updates p, .news-updates ol {
+  font-size: 1em; /* Standard font size for body text */
+  line-height: 1.6; /* Adjust line spacing */
+  text-align: left; /* Align text to the left */
+  margin-bottom: 10px; /* Space below paragraphs and lists */
+}
+
+.news-updates ol {
+  padding-left: 20px; /* Indentation for list items */
+}
+
+.news-updates li {
+  margin-bottom: 5px; /* Space between list items */
+}
