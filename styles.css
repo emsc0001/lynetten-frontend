@@ -232,7 +232,7 @@ html {
 .nav-menu a,
 .nav-icons a {
   text-decoration: none;
-  color: #fff; /* White text color */
+  color: rgb(0, 0, 0); /* White text color */
   margin-left: 20px;
   font-weight: bold;
 }

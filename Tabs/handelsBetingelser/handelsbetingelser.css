@@ -232,7 +232,7 @@ html {
 .nav-menu a,
 .nav-icons a {
   text-decoration: none;
-  color: #fff; /* White text color */
+  color: rgb(0, 0, 0); /* White text color */
   margin-left: 20px;
   font-weight: bold;
 }
@@ -426,3 +426,11 @@ html {
 }
 
 /* Tilføj mere styling efter behov */
+
+footer {
+  background-color: #f0f8ff; /* Light blue background */
+  color: rgb(0, 0, 0);
+  text-align: center;
+  padding: 1rem 0;
+  font-weight: bold;
+}
