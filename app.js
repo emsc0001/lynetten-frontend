@@ -1,6 +1,11 @@
-"use strict"
+"use strict";
 
+window.addEventListener("load", baddService);
 
+function baddService() {
+  console.log("baddService loaded!");
+  toggleSearchBar();
+}
 
 document.addEventListener("click", function (e) {
   if (e.target.classList.contains("dropbtn")) {
@@ -16,15 +21,10 @@ document.addEventListener("click", function (e) {
   }
 });
 
+// Function to toggle the search bar visibility
 function toggleSearchBar() {
   const searchBar = document.querySelector(".search-bar");
   searchBar.style.display = searchBar.style.display === "block" ? "none" : "block";
-}
-
-function search() {
-  // Implement your search logic here
-  const searchInput = document.getElementById("searchInput").value;
-  alert(`Search query: ${searchInput}`);
 }
 
 document.addEventListener("DOMContentLoaded", function () {
