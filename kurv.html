@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Indkøbskurv</title>
+    <link rel="stylesheet" href="/Tabs/kurv/kurv.css" />
+  </head>
+  <body>
+    <div class="cart-container">
+      <h1>Indkøbskurv</h1>
+      <div class="cart">
+        <div class="cart-item">
+          <img src="product1.jpg" alt="Product 1" />
+          <div class="item-details">
+            <h2>Produkt 1</h2>
+            <p>Pris: $20.00</p>
+            <div class="quantity">
+              <label for="quantity">Antal:</label>
+              <input type="number" id="quantity" name="quantity" min="1" value="2" />
+            </div>
+          </div>
+          <div class="item-actions">
+            <button class="remove-button">Fjern</button>
+          </div>
+        </div>
+        <!-- Add more cart items as needed -->
+      </div>
+      <div class="cart-summary">
+        <p>Total: $40.00</p>
+        <button class="checkout-button">Gå til betaling</button>
+      </div>
+    </div>
+    <footer>
+      <p>&copy; 2023 by AEM</p>
+    </footer>
+  </body>
+</html>
