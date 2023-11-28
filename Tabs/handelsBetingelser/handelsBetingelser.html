@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Marine ProShop Inspired Layout</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="/Tabs/handelsBetingelser/handelsbetingelser.css" />
   </head>
   <body>
     <div class="navbar">
@@ -18,15 +18,15 @@
       <div class="nav-menu">
         <div class="nav-menu">
           <div class="nav-item" data-tab="forside">
-            <a href="index.html" class="nav-link">Forside</a>
+            <span class="nav-link" data-target="Tabs/forside/index.html">Forside</span>
             <div class="underline"></div>
           </div>
           <div class="nav-item" data-tab="kobeguide">
-            <a href="kobeguide/index.html" class="nav-link">Købeguide - Bådudstyr</a>
+            <span class="nav-link" data-target="kobeguide/index.html">Købeguide - Bådudstyr</span>
             <div class="underline"></div>
           </div>
           <div class="nav-item" data-tab="handelsBetingelser">
-            <a href="Tabs/handelsBetingelser/handelsBetingelser.html" class="nav-link">Handelsbetingelser</a>
+            <span class="nav-link" data-target="Tabs/handelsBetingelser/handelsBetingelser.html">Handelsbetingelser</span>
             <div class="underline"></div>
           </div>
         </div>
@@ -119,37 +119,32 @@
 
       <main class="main-content">
         <header class="main-header">
-          <h1>Populære Kategorier</h1>
+          <h1>Handelsbetingelser</h1>
         </header>
-        <div class="product-grid">
-          <div class="product-item" style="background-image: url('https://i.ibb.co/2v8DRZh/Sk-rmbillede-2023-11-28-kl-15-32-36.png')">
-            <h2>BÅDVARME</h2>
-          </div>
-          <div class="product-item" style="background-image: url('https://i.ibb.co/Tw5yskW/Sk-rmbillede-2023-11-28-kl-15-32-00.png')">
-            <h2>RESTLAGER</h2>
-          </div>
-          <div class="product-item" style="background-image: url('https://i.ibb.co/rkh9JWj/Sk-rmbillede-2023-11-28-kl-15-31-03.png')">
-            <h2>FORTØJNING OG ANKRING</h2>
-          </div>
-          <div class="product-item" style="background-image: url('https://i.ibb.co/cgwLpjb/lKV5kcC.png')">
-            <h2>ELEKTRONIK OMBORD</h2>
-          </div>
-          <div class="product-item" style="background-image: url('https://i.ibb.co/y8brnRf/Sk-rmbillede-2023-11-28-kl-15-28-45.png')">
-            <h2>SEJLERTØJ</h2>
-          </div>
-          <div class="product-item" style="background-image: url('https://i.ibb.co/Wv8TCrM/Sk-rmbillede-2023-11-28-kl-15-22-51.png')">
-            <h2>SIKKERHEDSUDSTYR</h2>
-          </div>
-          <div class="product-item" style="background-image: url('https://i.ibb.co/RB973dZ/Sk-rmbillede-2023-11-28-kl-15-27-31.png')">
-            <h2>GUMMIBÅDE OG VANDSPORT</h2>
-          </div>
-          <div class="product-item" style="background-image: url('https://i.ibb.co/5B0j02D/Sk-rmbillede-2023-11-28-kl-15-26-29.png')">
-            <h2>MALING OG KLARGØRING</h2>
-          </div>
-        </div>
-        <div class="product-grid">
-          <!-- Add your product grid items here -->
-        </div>
+
+        <section class="handelsbetingelser-content">
+          <h2>Betingelser for handel på baadservice.dk</h2>
+          <h3>Sådan handler du på baadservice.dk</h3>
+
+          <ol>
+            <li>Find de ønskede produkter i webshoppen og klik på "Læg i kurv".</li>
+            <li>Når du er klar til at afgive bestilling, skal du klikke i boksen "Vis kurv" øverst i venstre side.</li>
+            <li>Du kan se indholdet i din indkøbskurv, og du har mulighed for at ændre antallet af produkter samt slette produkter.</li>
+            <li>Klik "Til kassen".</li>
+            <li>Indtast dine kundeoplysninger og accepter handelsbetingelserne.</li>
+            <li>
+              Hvis du ønsker levering til en anden adresse end betalingsadressen, skal du markere ”Tilføj en ny Leveringsadresse” og indtaste
+              leveringsadressen.
+            </li>
+            <li>Klik ”Næste” og du vil se evt. fragtomkostninger.</li>
+            <li>Klik "Næste".</li>
+            <li>
+              I betalingsvinduet skal du vælge betalingsform og udføre betaling. Hvis din betaling bliver godkendt, fremkommer din kvitteringsside
+              ligesom du modtager en bekræftelse pr. e-mail.
+            </li>
+            <li>Du har mulighed for at afbryde eller ændre i din bestilling indtil du trykker "Udfør betaling".</li>
+          </ol>
+        </section>
       </main>
 
       <aside class="sidebar" id="right-sidebar">
@@ -193,10 +188,7 @@
           </ol>
         </section>
       </aside>
-      <script src="app.js" type="module"></script>
+      <script src="/app.js" type="module"></script>
     </div>
   </body>
-  <footer>
-    <p>&copy; 2023 by AEM</p>
-  </footer>
 </html>
