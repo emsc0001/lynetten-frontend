@@ -76,8 +76,15 @@
       </div>
 
       <div class="nav-icons">
-        <span class="nav-icon">🔍</span>
-        <!-- Replace with search icon -->
+        <!-- Add this within your existing HTML structure -->
+        <div class="search-container">
+          <span class="nav-icon search-icon" onclick="toggleSearchBar()">🔍</span>
+          <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search..." />
+            <button onclick="search()">Search</button>
+          </div>
+        </div>
+
         <span class="nav-icon">👤</span>
         <!-- Replace with account icon -->
         <div class="nav-item" data-tab="kurv">
