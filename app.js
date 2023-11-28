@@ -4,7 +4,6 @@ window.addEventListener("load", baddService);
 
 function baddService() {
   console.log("baddService loaded!");
-  toggleSearchBar();
 }
 
 document.addEventListener("click", function (e) {
