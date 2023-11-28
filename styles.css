@@ -1,128 +1,159 @@
-/* Reset some default styles for body and html */
-body, html {
-    margin: 0;
-    padding: 0;
+/* Reset nogle standardstilarter for body og html */
+body,
+html {
+  margin: 0;
+  padding: 0;
 }
 
-/* Global styles */
+/* Global stilarter */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f4f4;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f4f4;
 }
 
 .container {
-    max-width: 1200px;
-    margin: auto;
-    display: flex;
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
 }
 
-/* Header styles */
-.top-header {
-    background-color: #ffa500;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
+/* Header og Navigation */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  padding: 10px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.logo-container img {
+  height: 50px;
+}
 
+.header-text {
+  display: flex;
+  flex-direction: column;
+  margin-left: 15px;
+}
 
+.header-text h1 {
+  font-size: 1.5em;
+  color: #333;
+  margin: 0;
+}
 
+.header-text p {
+  font-size: 1em;
+  color: #666;
+  margin: 0;
+}
 
+/* Navigation Menu */
+.nav-menu {
+  display: flex;
+}
 
-/* Header styles */
+.nav-item {
+  position: relative;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+.nav-item.active .underline,
+.nav-item:hover .underline {
+  width: 100%;
+  height: 3px;
+  background-color: #ff8c00;
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+}
+
+.nav-link,
+.nav-icon {
+  display: inline-block;
+  padding: 5px 10px;
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+}
+
+.nav-icons {
+  display: flex;
+}
+
+.nav-icon {
+  margin: 0 15px;
+  font-size: 20px;
+}
+
+/* Header Shadow and Hover Effect */
 .main-header {
-    margin-bottom: 20px; 
-    margin-top: 0;
+  background-color: #ff8c00;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease;
 }
 
-
-/* Search bar styles */
-.search-container {
-    display: flex;
+.main-header:hover {
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
 }
 
-.search-input {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px 0 0 4px;
-    font-size: 16px;
-    width: 250px;
-}
-
-.search-button {
-    padding: 8px 12px;
-    background-color: #e68a00;
-    border: 1px solid #ccc;
-    border-left: none;
-    border-radius: 0 4px 4px 0;
-    cursor: pointer;
-}
-
-.search-button:hover {
-    background-color: #cc7a00;
-}
-
-/* Sidebar styles */
+/* Sidebar */
 .sidebar {
-    background-color: #fff;
-    padding: 20px;
-    flex: 1;
-    border: 2px solid #dddddd;
+  background-color: #f0f8ff;
+  padding: 20px;
+  flex: 1;
+  border: 2px solid #dddddd;
 }
 
 #left-sidebar {
-    border-right: none;
+  border-right: none;
 }
 
 #right-sidebar {
-    border-left: none;
+  border-left: none;
 }
 
-/* Main content styles */
+/* Main Content */
 .main-content {
-    padding: 20px;
-    flex: 2;
-    background-color: #fff;
+  padding: 20px;
+  flex: 2;
+  background-color: #fff;
 }
 
-
-
-
-
-
-
-
+/* ... Existing styles ... */
 
 /* Add a subtle box shadow to the header for depth */
 .main-header {
-    background-color: #ff8c00; 
-    padding: 10px;
-    text-align: center;
-    border-radius: 5px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); 
-    transition: box-shadow 0.3s ease; 
+  background-color: #ff8c00;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease;
 }
 
 /* Add a hover effect to the header */
 .main-header:hover {
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3); /* Slightly larger box shadow on hover */
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3); /* Slightly larger box shadow on hover */
 }
 
-
-
 .sidebar {
-    background-color: #f0f8ff; /* Light blue background */
+  background-color: #f0f8ff; /* Light blue background */
 }
 
 .category-list li a:hover {
-    background-color: #e6f2ff; /* Very light blue on hover */
+  background-color: #e6f2ff; /* Very light blue on hover */
 }
-.main-header, .sidebar, .main-content {
-    box-shadow: 0px 2px 5px rgba(0, 77, 153, 0.2); /* Blue-tinted shadow */
+.main-header,
+.sidebar,
+.main-content {
+  box-shadow: 0px 2px 5px rgba(0, 77, 153, 0.2); /* Blue-tinted shadow */
 }
-
-
 
 .logo-container img {
   height: 50px; /* Adjust as needed */
@@ -148,7 +179,8 @@ body {
   left: 0;
 }
 
-.nav-link, .nav-icon {
+.nav-link,
+.nav-icon {
   display: inline-block;
   padding: 5px 10px;
   text-decoration: none;
@@ -175,7 +207,8 @@ body {
   margin-right: 10px; /* Gives some space between the logo and the text */
 }
 
-.header-text h1, .header-text p {
+.header-text h1,
+.header-text p {
   margin: 0;
   padding-left: 10px; /* Adds some space between the logo and the text */
 }
@@ -190,11 +223,11 @@ body {
   color: #666; /* Or any color you wish */
 }
 
-
-body, html {
+body,
+html {
   margin: 0;
   padding: 0;
-  font-family: 'Arial', sans-serif;
+  font-family: "Arial", sans-serif;
   background-color: #f4f4f4;
 }
 
@@ -204,7 +237,7 @@ body, html {
   align-items: center;
   background-color: #fff;
   padding: 10px 20px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .logo-container {
@@ -212,14 +245,12 @@ body, html {
   align-items: center;
 }
 
-
-
-
 /* Reset and base styles */
-body, html {
+body,
+html {
   margin: 0;
   padding: 0;
-  font-family: 'Arial', sans-serif;
+  font-family: "Arial", sans-serif;
   background-color: #f4f4f4;
   line-height: 1.6;
 }
@@ -227,10 +258,9 @@ body, html {
 /* Header and Navigation */
 .header {
   background-color: #f8f8f8; /* Lighter background for header */
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 0 20px; /* Adjust padding as needed */
 }
-
 
 .sidebar ul {
   list-style-type: none; /* No bullets for a clean look */
@@ -244,23 +274,19 @@ body, html {
   display: block; /* Full-width clickable area */
 }
 
-
-
 /* Navbar Menu */
-.nav-menu a, .nav-icons a {
+.nav-menu a,
+.nav-icons a {
   text-decoration: none;
   color: #fff; /* White text color */
   margin-left: 20px;
   font-weight: bold;
 }
 
-.nav-menu a:hover, .nav-icons a:hover {
+.nav-menu a:hover,
+.nav-icons a:hover {
   color: #ff8c00; /* Orange color for hover state */
 }
-
-
-
-
 
 /* Category List Styles */
 .category-list li a {
@@ -277,16 +303,16 @@ body, html {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .nav-menu, .nav-icons {
+  .nav-menu,
+  .nav-icons {
     display: none; /* Hide navigation links on smaller screens */
   }
 
-  .content-header h1, .content-header p {
+  .content-header h1,
+  .content-header p {
     font-size: 18px;
   }
 }
-
-
 
 /* ... existing styles ... */
 
@@ -305,7 +331,7 @@ body, html {
   display: none;
   position: absolute;
   background-color: #f9f9f9;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
   left: 0; /* Align to the left of the dropdown button */
   right: 0; /* Align to the right of the dropdown button */
@@ -323,13 +349,6 @@ body, html {
 .dropdown:hover .dropdown-content {
   display: flex; /* Use flexbox to layout dropdown items */
 }
-
-
-
-
-
-
-
 
 .main-content {
   /* Sørger for at indholdet centreres og har plads rundt om sig */
@@ -359,7 +378,7 @@ body, html {
 .product-item h2 {
   /* Gør teksten mere læsbar over billedet */
   color: white;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   font-size: 1.5rem;
   text-align: center;
   width: 100%;
@@ -368,10 +387,8 @@ body, html {
   left: 0;
 }
 
-
-
 .news-updates {
-  font-family: 'Arial', sans-serif; /* Example font */
+  font-family: "Arial", sans-serif; /* Example font */
   margin-left: 20px; /* Adjust as necessary for alignment */
   margin-right: 20px;
 }
@@ -381,7 +398,8 @@ body, html {
   margin-bottom: 10px; /* Space below heading */
 }
 
-.news-updates p, .news-updates ol {
+.news-updates p,
+.news-updates ol {
   font-size: 1em; /* Standard font size for body text */
   line-height: 1.6; /* Adjust line spacing */
   text-align: left; /* Align text to the left */
