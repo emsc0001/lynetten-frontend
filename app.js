@@ -8,10 +8,10 @@ function baddService() {
 
 document.addEventListener("click", function (e) {
   if (e.target.classList.contains("dropbtn")) {
-    var dropdown = e.target.nextElementSibling;
+    let dropdown = e.target.nextElementSibling;
     dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
   } else {
-    var openDropdowns = document.querySelectorAll(".dropdown-content");
+    let openDropdowns = document.querySelectorAll(".dropdown-content");
     openDropdowns.forEach(function (dropdown) {
       if (dropdown.style.display === "block") {
         dropdown.style.display = "none";
@@ -20,10 +20,14 @@ document.addEventListener("click", function (e) {
   }
 });
 
-// Function to toggle the search bar visibility
+// Place this script after your HTML or at the end of the body
 function toggleSearchBar() {
   const searchBar = document.querySelector(".search-bar");
-  searchBar.style.display = searchBar.style.display === "block" ? "none" : "block";
+  searchBar.style.display = searchBar.style.display === "none" ? "block" : "none";
+}
+
+function search() {
+  // Implement search functionality here
 }
 
 document.addEventListener("DOMContentLoaded", function () {

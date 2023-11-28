@@ -277,31 +277,40 @@ html {
 }
 
 .dropbtn {
+  background-color: #fff;
+  color: #333;
+  padding: 12px 16px;
+  font-size: 16px;
+  border: none;
   cursor: pointer;
-  user-select: none; /* Prevent text selection */
 }
 
 .dropdown-content {
-  display: none;
+  display: none; /* Hide the dropdown menu */
   position: absolute;
-  background-color: #f9f9f9;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 77, 153, 0.2); /* Blue shadow */
   z-index: 1;
-  left: 0; /* Align to the left of the dropdown button */
-  right: 0; /* Align to the right of the dropdown button */
-  flex-wrap: wrap; /* Wrap items to the next line if needed */
 }
 
 .dropdown-content a {
-  color: black;
+  color: #333;
   padding: 12px 16px;
   text-decoration: none;
-  display: inline; /* Display links inline for a horizontal layout */
-  white-space: nowrap; /* Prevent text wrapping */
+  display: block;
+  white-space: nowrap;
+  transition: background-color 0.3s; /* Add a smooth transition effect */
+}
+
+.dropdown-content a:hover {
+  background-color: #f2f2f2; /* Change background color on hover */
 }
 
 .dropdown:hover .dropdown-content {
-  display: flex; /* Use flexbox to layout dropdown items */
+  display: flex;
+  flex-direction: column; /* Display items in a column */
+  gap: 2px; /* Add some space between items */
 }
 
 .main-content {
@@ -487,6 +496,113 @@ html {
 
 .guide-link:hover {
   color: #007bff;
+}
+
+.search-container {
+  position: relative;
+  display: flex;
+  align-items: center; /* Center the icon vertically */
+}
+
+.search-icon {
+  cursor: pointer;
+  margin-right: 8px; /* Add some space between the icon and the input */
+}
+
+.search-bar {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  width: 200px; /* Adjust the width as needed */
+  z-index: 1; /* Ensure the search bar is above other elements */
+}
+
+/* Style the search input */
+#searchInput {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Style the search button (if needed) */
+#searchButton {
+  margin-top: 8px;
+  padding: 8px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.search-bar input {
+  width: 200px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.search-bar button {
+  padding: 8px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.search-bar button:hover {
+  background-color: #0056b3;
+}
+
+#cartItem {
+  position: relative;
+}
+
+.cart-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  min-width: 200px; /* Adjust the width as needed */
+  z-index: 1;
+}
+
+#cartItem:hover .cart-content {
+  display: block;
+}
+
+.cart-item {
+  font-size: 14px; /* Adjust the font size as needed */
+}
+
+.go-to-basket-button {
+  display: block;
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: #f0f8ff; /* Light blue background */
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  font-size: 14px;
+}
+
+.go-to-basket-button:hover {
+  background-color: #f0f8ff; /* Light blue background */
 }
 
 /* Tilføj mere styling efter behov */
