@@ -6,6 +6,21 @@ function baddService() {
   console.log("baddService loaded!");
 }
 
+// Add this to your existing JavaScript file or create a new one
+document.addEventListener("DOMContentLoaded", function () {
+  const discountToggle = document.getElementById("discountToggle");
+  const discountContent = document.getElementById("discountContent");
+
+  discountToggle.addEventListener("click", function () {
+    discountContent.style.display = discountContent.style.display === "block" ? "none" : "block";
+  });
+});
+
+function applyDiscount() {
+  // Add your logic to apply the discount here
+  // You can access the discount code using document.getElementById("discountCode").value
+}
+
 document.addEventListener("click", function (e) {
   if (e.target.classList.contains("dropbtn")) {
     let dropdown = e.target.nextElementSibling;
