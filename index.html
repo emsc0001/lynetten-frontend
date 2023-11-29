@@ -1,43 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Marine ProShop Inspired Layout</title>
-        <link rel="stylesheet" href="styles.css">
-    </head>
-    <body>
-        
-        
-        
-        <div class="navbar">
-            <div class="logo-container">
-                <img src="billeder/logo.jpg" alt="Logo" height="50">
-                <div class="header-text">
-                    <h1>Lynettens Bådudstyr</h1>
-                    <p>mest bådudstyr for pengene</p>
-                </div>
-            </div>
-            <div class="nav-menu">
-                <div class="nav-item active"><a href="forside.html" class="nav-link">Forside</a><div class="underline"></div></div>
-                <div class="nav-item"><a href="købeguide/kobeguide.html" class="nav-link">Købeguide - Bådudstyr</a><div class="underline"></div></div>
-                <div class="nav-item"><a href="handelsbetingelser/handelsbetingelser.html" class="nav-link">Handelsbetingelser</a><div class="underline"></div></div>
-                <!-- ... other nav items ... -->
-            </div>
-            
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Marine ProShop Inspired Layout</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="logo-container">
+        <img src="https://i.ibb.co/r2bH4d1/Sk-rmbillede-2023-11-28-kl-15-35-30.png" alt="Logo" height="50" />
+        <div class="header-text">
+          <h1>Lynettens Bådudstyr</h1>
+          <p>Mest bådudstyr for pengene</p>
+        </div>
+      </div>
+      <div class="nav-menu">
+        <div class="nav-menu">
+          <div class="nav-item" data-tab="forside">
+            <span class="nav-link"
+              ><a href="index.html"><strong>Forside</strong></a></span
+            >
+            <div class="underline"></div>
+          </div>
+          <div class="nav-item" data-tab="kobeguide">
+            <span class="nav-link"
+              ><a href="koebeguide.html"><strong>Købeguide - Bådudstyr</strong></a></span
+            >
+            <div class="underline"></div>
+          </div>
+          <div class="nav-item" data-tab="handelsBetingelser">
+            <span class="nav-link"
+              ><a href="handelsBetingelser.html"><strong>Handelsbetingelser</strong></a></span
+            >
+            <div class="underline"></div>
+          </div>
+        </div>
 
-<div class="nav-icons">
-    <span class="nav-icon">🔍</span>
-    <span class="nav-icon">👤</span>
-    <span class="nav-icon">🛒</span>
-</div>
-</div>
-
-<div class="container">
-    <aside class="sidebar" id="left-sidebar">
-        <!-- Sidebar content goes here -->
-        <h2>Produkt Kategorier</h2>
-        <ul class="category-list">
+        <div class="nav-item dropdown">
+          <span class="nav-link dropbtn">Produkter</span>
+          <div class="dropdown-content mega-menu" id="dropdownContent">
             <li class="nav-item"><a href="#">BÅD SERVICE OPGAVER</a></li>
             <li class="nav-item"><a href="#">BÅDVARME</a></li>
             <li class="nav-item"><a href="#">DÆKKET</a></li>
@@ -161,39 +163,37 @@
           <h1>Populære Kategorier</h1>
         </header>
         <div class="product-grid">
-            <div class="product-item" onclick="openCategory('Category1')" style="background-image:url('billeder/543abf38-0fe5-4ab6-9a8c-9e97950a5da3.webp');">
-                <h2>BÅDVARME</h2>
-            </div>
-            <div class="product-item" style="background-image:url('billeder/f419cd98-df4a-4f28-911a-74897f57ab1a.webp');">
-                <h2>RESTLAGER</h2>
-            </div>
-            <div class="product-item" style="background-image:url('billeder/ab81d6f0-4041-4b51-a938-cea4cafd2846.webp');">
-                <h2>FORTØJNING OG ANKRING</h2>
-            </div>
-            <div class="product-item" style="background-image:url('billeder/2ff3d146-9eee-462a-8aa4-fb4fbd209d6e.webp');">
-                <h2>ELEKTRONIK OMBORD</h2>
-            </div>
-            <div class="product-item" style="background-image:url('billeder/b2bd5983-815d-4f6e-9f04-6d255ecbcdac.webp');">
-                <h2>SEJLERTØJ</h2>
-            </div>
-            <div class="product-item" style="background-image:url('billeder/6ecec7fe-f566-4054-ba32-3c72a28a64d1.webp');">
-                <h2>SIKKERHEDSUDSTYR</h2>
-            </div>
-            <div class="product-item" style="background-image:url('billeder/ca7a1b39-90e6-4331-9d6e-acd4e4d9aad9.webp');">
-                <h2>GUMMIBÅDE OG VANDSPORT</h2>
-            </div>
-            <div class="product-item" style="background-image:url('billeder/452aae24-f81c-4b6c-b2ec-0d9269210cd0.webp');">
-                <h2>MALING OG KLARGØRING</h2>
-            </div>
+          <div class="product-item" style="background-image: url('https://i.ibb.co/2v8DRZh/Sk-rmbillede-2023-11-28-kl-15-32-36.png')">
+            <h2>BÅDVARME</h2>
+          </div>
+          <div class="product-item" style="background-image: url('https://i.ibb.co/Tw5yskW/Sk-rmbillede-2023-11-28-kl-15-32-00.png')">
+            <h2>RESTLAGER</h2>
+          </div>
+          <div class="product-item" style="background-image: url('https://i.ibb.co/rkh9JWj/Sk-rmbillede-2023-11-28-kl-15-31-03.png')">
+            <h2>FORTØJNING OG ANKRING</h2>
+          </div>
+          <div class="product-item" style="background-image: url('https://i.ibb.co/cgwLpjb/lKV5kcC.png')">
+            <h2>ELEKTRONIK OMBORD</h2>
+          </div>
+          <div class="product-item" style="background-image: url('https://i.ibb.co/y8brnRf/Sk-rmbillede-2023-11-28-kl-15-28-45.png')">
+            <h2>SEJLERTØJ</h2>
+          </div>
+          <div class="product-item" style="background-image: url('https://i.ibb.co/Wv8TCrM/Sk-rmbillede-2023-11-28-kl-15-22-51.png')">
+            <h2>SIKKERHEDSUDSTYR</h2>
+          </div>
+          <div class="product-item" style="background-image: url('https://i.ibb.co/RB973dZ/Sk-rmbillede-2023-11-28-kl-15-27-31.png')">
+            <h2>GUMMIBÅDE OG VANDSPORT</h2>
+          </div>
+          <div class="product-item" style="background-image: url('https://i.ibb.co/5B0j02D/Sk-rmbillede-2023-11-28-kl-15-26-29.png')">
+            <h2>MALING OG KLARGØRING</h2>
+          </div>
         </div>
         <div class="product-grid">
-            
+          <!-- Add your product grid items here -->
         </div>
-    </main>
+      </main>
 
-    
-    
-    <aside class="sidebar" id="right-sidebar">
+      <aside class="sidebar" id="right-sidebar">
         <h2>Nyheder & Opdateringer</h2>
         <!-- News items or widgets -->
 
@@ -217,9 +217,8 @@
         </section>
 
         <div class="content-body">
-            <div class="image-container">
-              <img src="" alt="Online Catalog">
-            </div>
+          <div class="image-container">
+            <img src="" alt="Online Catalog" />
           </div>
         </div>
         <section class="news-updates">
