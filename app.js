@@ -11,3 +11,19 @@ document.addEventListener('click', function(e) {
         });
     }
 });
+
+
+function openCategory(categoryId) {
+    // Hide all category content
+    var contents = document.getElementsByClassName('category-content');
+    for (var i = 0; i < contents.length; i++) {
+      contents[i].style.display = 'none';
+    }
+  
+    // Show the specific category content
+    var selectedContent = document.getElementById(categoryId);
+    if (selectedContent) {
+      selectedContent.style.display = 'block';
+    }
+  }
+  
