@@ -58,23 +58,53 @@ body {
   background-color: #cc7a00;
 }
 
-/* Sidebar styles */
+/* SIDEBAR___________________________________________________________ */
+
+
 .sidebar {
-  background-color: #fff;
+  background-color: #f7f7f7;
   padding: 20px;
-  flex: 1;
-  border: 2px solid #dddddd;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+  text-align: center; /* Center-align content within the sidebar */
 }
 
-#left-sidebar {
-  border-right: none;
+.sidebar-content {
+  text-align: left; /* Reset text alignment for the content */
+  font-size: 16px;
+  line-height: 1.5;
 }
 
-#right-sidebar {
-  border-left: none;
+.sidebar h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #333;
 }
 
-/* Main content styles */
+.sidebar h3 {
+  font-size: 20px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.sidebar-intro {
+  font-weight: bold;
+}
+
+.sidebar-outro {
+  font-style: italic;
+}
+
+.sidebar-divider {
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 15px 0;
+}
+
+/* _______________________Main content styles_______________________________ */
 .main-content {
   padding: 20px;
   flex: 2;
@@ -268,40 +298,50 @@ html {
   }
 }
 
-/* ... existing styles ... */
 
 /* Dropdown Menu Styles */
 
-
+/* Hide the dropdown menu by default */
 .dropdown-content {
-  display: none; /* Hide the dropdown menu */
+  display: none;
   position: absolute;
   background-color: #fff;
-  width: auto; /* Auto width based on content */
-  max-height: 600px; /* Maximum height */
-  overflow-y: auto; /* Scrollable if content exceeds max height */
-  box-shadow: 0px 8px 16px 0px rgba(0, 77, 153, 0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.1); /* Subtle shadow */
   z-index: 1;
+  width: 220px; /* Fixed width */
+  max-height: 400px; /* Maximum height */
+  overflow-y: auto; /* Scrollable if content exceeds max height */
+  padding: 5px 0; /* Vertical padding for the entire dropdown */
+  border-radius: 4px; /* Rounded corners */
 }
 
+/* Style the individual links within the dropdown */
 .dropdown-content a {
   color: #333;
-  padding: 8px 16px; /* Compact padding */
+  padding: 8px 12px; /* Reduced and uniform padding */
   text-decoration: none;
   display: block;
-  white-space: nowrap;
   transition: background-color 0.3s;
+  font-size: 14px; /* Smaller font size */
 }
 
+/* Change background color on hover */
 .dropdown-content a:hover {
-  background-color: #f2f2f2;
+  background-color: #f2f2f2; /* Light grey background on hover */
 }
 
+/* Display the dropdown when hovering over the parent element */
 .dropdown:hover .dropdown-content {
   display: block;
-  flex-direction: column;
-  gap: 2px;
 }
+
+
+
+
+
+
+
+
 
 .main-content {
   /* Sørger for at indholdet centreres og har plads rundt om sig */
@@ -488,23 +528,37 @@ footer {
 
 .footer {
   background-color: #333;
-  
+  color: #fff;
   padding: 20px;
   display: flex;
   justify-content: space-between;
 }
+
 .footer section {
   margin-right: 20px;
+  flex: 1;
 }
 
+.footer h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.footer p {
+  margin: 5px 0;
+}
 
 .footer ul {
   list-style: none;
   padding: 0;
 }
+
 .footer li {
   padding: 5px 0;
 }
+
+
+
 
 
 
