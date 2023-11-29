@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Indkøbskurv</title>
+    <link rel="stylesheet" href="/Tabs/kurv/kurv.css" />
+  </head>
+  <body>
+    <div class="cart-container">
+      <h1>Indkøbskurv 🛒</h1>
+      <div class="cart">
+        <div class="breadcrumb">Du er her: <a href="index.html">Forside</a> &gt; Kurv</div>
+
+        <div class="cart-item">
+          <img
+            src="https://www.baadservice.dk/components/com_redshop/assets/images/product/thumb/3a67533e6cb6672e592ce88dfc04f7e1_w250_h250.jpg"
+            alt="Product 1"
+          />
+          <div class="item-details">
+            <h2>Produkt Number: PA-15.0900</h2>
+            <h3>Plastimo Kapsejladsbøje 188 x 26 cm</h3>
+
+            <p>Pris: 2149.00kr</p>
+            <div class="quantity">
+              <label for="quantity">Antal:</label>
+              <input type="number" id="quantity" name="quantity" min="1" value="2" />
+            </div>
+          </div>
+          <div class="item-actions">
+            <button class="remove-button">Fjern</button>
+          </div>
+        </div>
+        <!-- Add more cart items as needed -->
+
+        <!-- Discount code input field -->
+        <!-- Add this to your existing HTML file -->
+        <div class="discount-dropdown">
+          <span id="discountToggle" class="discount-toggle">Rabatkode</span>
+          <div class="discount-content" id="discountContent">
+            <label for="discountCode">Indtast rabatkode:</label>
+            <input type="text" id="discountCode" name="discountCode" />
+            <button class="apply-discount-button" onclick="applyDiscount()">Anvend rabat</button>
+          </div>
+        </div>
+      </div>
+      <div class="cart-summary">
+        <p>Total: 4298kr</p>
+        <button class="checkout-button">Gå til betaling</button>
+      </div>
+      <script src="app.js"></script>
+    </div>
+    <footer>
+      <p>&copy; 2023 by AEM</p>
+    </footer>
+  </body>
+</html>
