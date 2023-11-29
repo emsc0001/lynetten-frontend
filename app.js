@@ -58,3 +58,17 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+
+
+let currentIndex = 0;
+
+function nextSlide() {
+  const slides = document.querySelectorAll('.slide');
+  currentIndex = (currentIndex + 1) % slides.length;
+  const newTransform = `translateX(-${currentIndex * 100}%)`;
+  document.querySelector('.slides').style.transform = newTransform;
+}
+
+// Change slides every 3 seconds
+setInterval(nextSlide, 3000);
