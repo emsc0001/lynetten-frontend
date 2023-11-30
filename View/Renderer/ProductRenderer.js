@@ -6,15 +6,13 @@ export default class ProductRenderer extends ItemRenderer {
     const product = this.item;
     const html = /*html*/ `
         <article class="product">
-            <div class="product-item" >
+            <div class="product-item">
                 <img src="${product.imageURLs}" alt="${product.productName}">
                 <h2>${product.productName}</h2>
                 <h4>${product.productNumber}</h4>
-                <h3>${product.listPrice}</h3>
-            </div>
+                <h3>${product.listPrice}kr</h3>
                 <button class="button" data-id="${product.productId}">Add to Cart</button>
             </div>
-        </div>
         </article>
         `;
     return html;

@@ -1,6 +1,6 @@
 "use strict";
 import { endpoint, getAllProducts, getSomeProducts } from "./Controller/products-rest.js";
-import { getAllCategories } from "./Controller/category-rest.js";
+import { getAllCategories, getSomeCategories } from "./Controller/category-rest.js";
 
 import ProductRenderer from "./View/Renderer/ProductRenderer.js";
 import CategoryRenderer from "./View/Renderer/CategoryRenderer.js";
@@ -31,7 +31,7 @@ function initializeViews() {
   productsLists = new Paginater(products, "#products-container", ProductRenderer, 10);
   productsLists.render();
 
-  categoriesLists = new ListRenderer(categories, "#categories-container", CategoryRenderer);
+  categoriesLists = new Paginater(categories, "#categories-container", CategoryRenderer, 5);
   categoriesLists.render();
 }
 

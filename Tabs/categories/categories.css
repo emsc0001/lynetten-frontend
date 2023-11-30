@@ -323,14 +323,14 @@ html {
   padding: 20px;
 }
 
-.product-grid {
+.category-grid {
   /* Definerer et grid layout med to kolonner og en gap mellem elementerne */
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 10px;
 }
 
-.product-item {
+.category-item {
   /* Højden kan justeres efter behov */
   height: 300px;
   display: flex;
@@ -341,7 +341,7 @@ html {
   position: relative;
 }
 
-.product-item h2 {
+.category-item h2 {
   /* Gør teksten mere læsbar over billedet */
   color: white;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -351,12 +351,6 @@ html {
   position: absolute;
   bottom: 20px;
   left: 0;
-}
-.product-item img {
-  /* Gør billedet mere læsbart over billedet */
-  filter: brightness(50%);
-  height: auto;
-  width: 30%;
 }
 
 .news-updates {
