@@ -1,7 +1,9 @@
 "use strict";
 import { endpoint, getAllProducts, getSomeProducts } from "./Controller/products-rest.js";
 
-
+import Paginater from "./View/Renderer/Paginater.js";
+import ListRenderer from "./View/Renderer/ListRenderer.js";
+ 
 endpoint;
 
 let products = [];
