@@ -1,13 +1,31 @@
 "use strict";
+import { endpoint, getAllProducts, getSomeProducts } from "./Controller/products-rest.js";
 
-window.addEventListener("load", baddService);
 
-function baddService() {
+endpoint;
+
+let products = [];
+
+let productsLists = null;
+
+window.addEventListener("load", baddServiceApp);
+
+async function baddServiceApp() {
   console.log("baddService loaded!");
+  products = await getAllProducts();
+
+  console.log("number of products: " + products.length);
+
+  initializeViews();
 }
 
 
 
+function initializeViews() {
+  productsLists = new Paginater(products, "products-container", 10);
+  artistsLists.render();
+
+}
 
 
 
