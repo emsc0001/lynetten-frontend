@@ -1,6 +1,7 @@
 "use strict";
 import { endpoint, getAllProducts, getSomeProducts } from "./Controller/products-rest.js";
 
+import ProductRenderer from "./View/Renderer/ProductRenderer.js";
 import Paginater from "./View/Renderer/Paginater.js";
 import ListRenderer from "./View/Renderer/ListRenderer.js";
  
@@ -24,7 +25,7 @@ async function baddServiceApp() {
 
 
 function initializeViews() {
-  productsLists = new Paginater(products, "products-container", 10);
+  productsLists = new Paginater(products, "products-container", ProductRenderer, 10);
   artistsLists.render();
 
 }
