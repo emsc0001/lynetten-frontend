@@ -8,8 +8,8 @@ export default class Product {
         this.offerPrice = obj.offerPrice;
         this.stockQuantity = obj.stockQuantity;
         this.description = obj.description;
-        this.category = obj.category;
-        this.color = obj.color;
+        this.categories = obj.categories;
+        this.colors = obj.color;
         Object.defineProperty(this, "productId", { writable: false });
     }
 }

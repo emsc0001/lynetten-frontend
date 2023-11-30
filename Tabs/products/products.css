@@ -352,6 +352,13 @@ html {
   bottom: 20px;
   left: 0;
 }
+.product-item img {
+  /* Gør billedet mere læsbart over billedet */
+  filter: brightness(50%);
+  height: auto;
+  width: 30%;
+
+}
 
 .news-updates {
   font-family: "Arial", sans-serif; /* Example font */

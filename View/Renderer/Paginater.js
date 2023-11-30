@@ -1,6 +1,5 @@
 import ListRenderer from "./ListRenderer.js";
 import { getSomeProducts } from "../../Controller/products-rest.js";
-import ListRenderer from "./ListRenderer.js";
 
 export default class Paginater extends ListRenderer {
     constructor(route, containerparent, itemRenderer, itemsPrPage) {

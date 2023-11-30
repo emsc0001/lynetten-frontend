@@ -1,4 +1,4 @@
-import Product from "./Model/Product.js";
+import Product from "../Model/Product.js";
 
 const endpoint = "http://localhost:4444";
 
@@ -16,7 +16,7 @@ async function getAllProducts() {
     return allProducts;
 }
 
-async function getSomeProducts() {
+async function getSomeProducts(limit, offset) {
     const response = await fetch(`${endpoint}/products?pageNum=${offset}&pageSize=${limit}`);
     const originalJson = await response.json();
 
@@ -31,4 +31,4 @@ async function refetchAllProducts() {
     lastFetch = Date.now();
 }
 
-export {getAllProducts, getSomeProducts}
+export {getAllProducts, getSomeProducts, endpoint}

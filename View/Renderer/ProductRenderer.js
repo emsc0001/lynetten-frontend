@@ -1,7 +1,7 @@
 import ItemRenderer from "./ItemRenderer.js";
 import * as controller from "../../main.js";
 
-export default class ProductRenderer extends itemRenderer {
+export default class ProductRenderer extends ItemRenderer {
   render() {
     const product = this.item;
     const html = /*html*/ `
