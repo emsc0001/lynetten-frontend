@@ -1,51 +1,38 @@
 "use strict";
 import { endpoint, getAllProducts, getSomeProducts } from "./Controller/products-rest.js";
+import { getAllCategories } from "./Controller/category-rest.js";
 
 import ProductRenderer from "./View/Renderer/ProductRenderer.js";
 import Paginater from "./View/Renderer/Paginater.js";
 import ListRenderer from "./View/Renderer/ListRenderer.js";
- 
+
 endpoint;
 
 let products = [];
+let categories = [];
 
 let productsLists = null;
+let categoriesLists = null;
 
 window.addEventListener("load", baddServiceApp);
 
 async function baddServiceApp() {
   console.log("baddService loaded!");
   products = await getAllProducts();
+  categories = await getAllCategories();
 
   console.log("number of products: " + products.length);
 
   initializeViews();
 }
 
-
-
 function initializeViews() {
   productsLists = new Paginater(products, "#products-container", ProductRenderer, 10);
   productsLists.render();
 
+  categoriesLists = new ListRenderer(categories, "#categories-container", CategoryRenderer);
+  categoriesLists.render();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // // Add this to your existing JavaScript file or create a new one
 // document.addEventListener("DOMContentLoaded", function () {
