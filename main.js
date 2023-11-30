@@ -6,6 +6,26 @@ function baddService() {
   console.log("baddService loaded!");
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Add this to your existing JavaScript file or create a new one
 document.addEventListener("DOMContentLoaded", function () {
   const discountToggle = document.getElementById("discountToggle");
