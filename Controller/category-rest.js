@@ -12,7 +12,7 @@ async function getAllCategories() {
   if (timeSinceLastFetch > 10_000) {
     await refetchAllCategories();
   }
-  return allCategories;
+    return allCategories
 }
 
 async function getSomeCategories(limit, offset) {
