@@ -3,6 +3,7 @@ import { endpoint, getAllProducts, getSomeProducts } from "./Controller/products
 import { getAllCategories } from "./Controller/category-rest.js";
 
 import ProductRenderer from "./View/Renderer/ProductRenderer.js";
+import CategoryRenderer from "./View/Renderer/CategoryRenderer.js";
 import Paginater from "./View/Renderer/Paginater.js";
 import ListRenderer from "./View/Renderer/ListRenderer.js";
 
