@@ -4,7 +4,7 @@ export default class Product {
         this.productNumber = obj.productNumber;
         this.productName = obj.productName;
         this.imageURLs = obj.imageURLs;
-        this.price = obj.price;
+        this.listPrice = obj.listPrice;
         this.offerPrice = obj.offerPrice;
         this.stockQuantity = obj.stockQuantity;
         this.description = obj.description;
