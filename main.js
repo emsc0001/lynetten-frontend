@@ -22,7 +22,7 @@ async function baddServiceApp() {
   categories = await getAllCategories();
 
   console.log("number of products: " + products.length);
-
+  console.log("number of categories: " + categories.length);
   initializeViews();
 }
 
