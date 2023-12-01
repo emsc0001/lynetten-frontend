@@ -19,7 +19,7 @@ export default class ListRenderer {
     this.sort(sortBy, this.sortDir);
   }
 
-  clear() {
+    clear() {
     this.container.innerHTML = "";
   }
 
