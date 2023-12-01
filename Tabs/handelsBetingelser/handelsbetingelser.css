@@ -270,47 +270,50 @@ html {
 
 /* ... existing styles ... */
 
-/* Dropdown Menu Styles */
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropbtn {
-  background-color: #fff;
-  color: #333;
-  padding: 12px 16px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-}
-
+/* Hide the dropdown menu by default */
 .dropdown-content {
-  display: none; /* Hide the dropdown menu */
+  display: none;
   position: absolute;
   background-color: #fff;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 77, 153, 0.2); /* Blue shadow */
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.1); /* Subtle shadow */
   z-index: 1;
+  width: auto; /* Adjusted to auto for flexible width */
+  /* Removed max-height for auto-adjustment */
+  padding: 5px 0; /* Vertical padding for the entire dropdown */
+  border-radius: 4px; /* Rounded corners */
+  white-space: nowrap; /* Ensure the text does not wrap */
 }
 
 .dropdown-content a {
   color: #333;
-  padding: 12px 16px;
+  padding: 8px 12px; /* Reduced and uniform padding */
   text-decoration: none;
   display: block;
-  white-space: nowrap;
-  transition: background-color 0.3s; /* Add a smooth transition effect */
+  transition: background-color 0.3s;
+  font-size: 14px; /* Smaller font size */
+  font-weight: normal; /* Ensures text is not bold */
 }
 
+/* Style the individual links within the dropdown */
+.dropdown-content a {
+  color: #333;
+  padding: 8px 12px; /* Reduced and uniform padding */
+  text-decoration: none;
+  display: block;
+  transition: background-color 0.3s;
+  font-size: 14px; /* Smaller font size */
+}
+
+/* Change background color on hover */
 .dropdown-content a:hover {
-  background-color: #f2f2f2; /* Change background color on hover */
+  background-color: #f2f2f2; /* Light grey background on hover */
 }
 
+/* Display the dropdown when hovering over the parent element */
 .dropdown:hover .dropdown-content {
-  display: flex;
-  flex-direction: column; /* Display items in a column */
-  gap: 2px; /* Add some space between items */
+  display: block;
+  column-count: 3; /* Adjust the number of columns as needed */
+  column-gap: 15px; /* Space between columns */
 }
 
 .main-content {
