@@ -1,4 +1,4 @@
-import ItemRenderer from "./ItemRenderer.js";
+import ItemRenderer from "./Itemrenderer.js";
 import * as controller from "../../main.js";
 
 export default class CategorySidebarRenderer extends ItemRenderer {
@@ -9,11 +9,11 @@ export default class CategorySidebarRenderer extends ItemRenderer {
                 `;
         return html;
     }
-    
+
     postRender(element) {
         // element.querySelector(".nav-item").addEventListener("click", (event) => {
         //     event.preventDefault();
         //     controller.getProductsByCategory(this.item.categoryId);
         // });
     }
-    }
+}

@@ -1,10 +1,10 @@
-import ItemRenderer from "./ItemRenderer.js";
+import ItemRenderer from "./Itemrenderer.js";
 import * as controller from "../../main.js";
 
 export default class ProductRenderer extends ItemRenderer {
-  render() {
-    const product = this.item;
-    const html = /*html*/ `
+    render() {
+        const product = this.item;
+        const html = /*html*/ `
         <article class="product">
             <div class="product-item">
                 <img src="${product.imageURLs}" alt="${product.productName}">
@@ -15,13 +15,13 @@ export default class ProductRenderer extends ItemRenderer {
             </div>
         </article>
         `;
-    return html;
-  }
+        return html;
+    }
 
-  postRender(element) {
-    element.querySelector(".button").addEventListener("click", (event) => {
-      event.preventDefault();
-      controller.addToCart(this.item);
-    });
-  }
+    postRender(element) {
+        element.querySelector(".button").addEventListener("click", (event) => {
+            event.preventDefault();
+            controller.addToCart(this.item);
+        });
+    }
 }
