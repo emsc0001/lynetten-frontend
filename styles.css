@@ -308,11 +308,21 @@ html {
   background-color: #fff;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.1); /* Subtle shadow */
   z-index: 1;
-  width: 220px; /* Fixed width */
-  max-height: 400px; /* Maximum height */
-  overflow-y: auto; /* Scrollable if content exceeds max height */
+  width: auto; /* Adjusted to auto for flexible width */
+  /* Removed max-height for auto-adjustment */
   padding: 5px 0; /* Vertical padding for the entire dropdown */
   border-radius: 4px; /* Rounded corners */
+  white-space: nowrap; /* Ensure the text does not wrap */
+}
+
+.dropdown-content a {
+  color: #333;
+  padding: 8px 12px; /* Reduced and uniform padding */
+  text-decoration: none;
+  display: block;
+  transition: background-color 0.3s;
+  font-size: 14px; /* Smaller font size */
+  font-weight: normal; /* Ensures text is not bold */
 }
 
 /* Style the individual links within the dropdown */
@@ -333,6 +343,8 @@ html {
 /* Display the dropdown when hovering over the parent element */
 .dropdown:hover .dropdown-content {
   display: block;
+  column-count: 3; /* Adjust the number of columns as needed */
+  column-gap: 15px; /* Space between columns */
 }
 
 
