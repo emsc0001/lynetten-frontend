@@ -68,11 +68,11 @@ body {
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   margin: 20px;
-  text-align: center; /* Center-align content within the sidebar */
+  text-align: center;
 }
 
 .sidebar-content {
-  text-align: left; /* Reset text alignment for the content */
+  text-align: left;
   font-size: 16px;
   line-height: 1.5;
 }
@@ -82,6 +82,7 @@ body {
   margin-bottom: 10px;
   color: #333;
 }
+
 
 .sidebar h3 {
   font-size: 20px;
@@ -615,3 +616,6 @@ footer {
   padding: 10px; /* Adjust as necessary */
   background-color: rgba(255, 255, 255, 0.7); /* Optional for better text visibility */
 }
+
+
+

@@ -116,22 +116,7 @@
       </div>
     </div>
 
-    <div class="slider">
-      <div class="slides">
-        <!-- Each "slide" is a div containing an image and a caption -->
-        <div class="slide">
-          <img src="" alt="toiletter">
-          <p class="caption">Spar 250kr</p>
-        </div>
-        <div class="slide">
-          <img src="" alt="SEJLERTØJ">
-          <p class="caption">Spar op til 300kr</p>
-        </div>
-        <!-- Add more slides as needed -->
-      </div>
-    </div>
-    
-
+   
     
 
     <main class="main-content">
@@ -230,12 +215,17 @@
      
     
     <footer class="footer">
+      
       <section class="footer-info">
+        
+        
           <h3>Kontakt Information</h3>
           <p>Refshalevej 200, 1432 København K</p>
           <p>Tlf. 32 57 61 06</p>
           <p>lynettens@baadservice.dk</p>
-          
+          <div class="map-container">
+            <div id="interactive-map" style="height: 250px;"></div> <!-- Adjust height as needed -->
+          </div>
       </section>
   
       <section class="opening-hours">
@@ -248,7 +238,9 @@
           <p>&copy; 2023 by AEM</p>
       </section>
   </footer>
-  
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
       <script src="app.js"></script>
   </body>
 </html>
