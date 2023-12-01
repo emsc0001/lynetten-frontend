@@ -531,8 +531,6 @@ footer {
 }
 
 
-
-
 .footer {
   background-color: #333;
   color: #fff;
@@ -565,6 +563,29 @@ footer {
 }
 
 
+.social-media a {
+  display: inline-block;
+  margin-right: 10px;
+  color: #fff; /* Change as needed */
+  font-size: 24px; /* Adjust icon size as needed */
+}
+
+.social-media a:hover {
+  color: #ddd; /* Slightly lighter color on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .footer {
+      flex-direction: column;
+      text-align: center;
+  }
+
+  .social-media {
+      order: 3; /* Make sure social media links are at the bottom on mobile */
+      margin-top: 20px; /* Add some space above the social media links */
+  }
+}
 
 
 
@@ -619,3 +640,63 @@ footer {
 
 
 
+
+
+.popup {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #f1f1f1;
+  border: 2px solid #0077b6;
+  border-bottom-left-radius: 50px 20px;
+  border-top-left-radius: 50px 20px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(175, 102, 102, 0.2);
+  width: 150px;
+  display: none;
+  z-index: 100;
+}
+
+
+#newsletter-form {
+  display: flex;
+  flex-direction: column;
+}
+
+#newsletter-form label,
+#newsletter-form input,
+#newsletter-form button {
+  margin-bottom: 10px;
+}
+
+.popup.show {
+  display: block;
+}
+
+.close-button {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  border: none;
+  background-color: transparent;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Optional: Style on hover */
+.close-button:hover {
+  color: red;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Styles for subscription message */
+#subscription-message {
+  text-align: center;
+  color: green;
+  font-size: 18px;
+  margin-top: 20px;
+}
