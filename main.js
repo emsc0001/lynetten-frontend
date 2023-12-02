@@ -6,7 +6,6 @@ import ProductRenderer from "./View/Renderer/ProductRenderer.js";
 import CategoryRenderer from "./View/Renderer/CategoryRenderer.js";
 import Paginater from "./View/Renderer/Paginater.js";
 import ListRenderer from "./View/Renderer/ListRenderer.js";
-import CategorySidebarRenderer from "./View/Renderer/CategorySidebarRenderer.js";
 
 endpoint;
 
@@ -15,7 +14,8 @@ let categories = [];
 
 let productsLists = null;
 let categoriesLists = null;
-let categoriesSidebarLists = null;
+
+const htmlSide = window.location.pathname;
 
 window.addEventListener("load", baddServiceApp);
 
@@ -26,18 +26,26 @@ async function baddServiceApp() {
 
   console.log("number of products: " + products.length);
   console.log("number of categories: " + categories.length);
-  initializeViews();
+
+  if (htmlSide === '/products.html') {
+   initializeProductViews() 
+  } else {
+    initializeViews();
+  }
+
 }
 
 function initializeViews() {
-  productsLists = new Paginater(products, "#products-container", ProductRenderer, 10);
-  productsLists.render();
+    categoriesLists = new ListRenderer(categories, ".category-list", CategoryRenderer);
+    categoriesLists.render();
+}
 
-  // categoriesLists = new Paginater(categories, "#categories-container", CategoryRenderer, 5);
-  // categoriesLists.render();
+function initializeProductViews() {
+    productsLists = new Paginater(products, "#products-container", ProductRenderer, 10);
+    productsLists.render();
 
-  categoriesSidebarLists = new ListRenderer(categories, ".category-list", CategorySidebarRenderer);
-  categoriesSidebarLists.render();
+    categoriesLists = new ListRenderer(categories, ".category-list", CategoryRenderer);
+    categoriesLists.render();
 }
 
 // // Add this to your existing JavaScript file or create a new one

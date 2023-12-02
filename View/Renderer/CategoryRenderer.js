@@ -5,19 +5,15 @@ export default class CategoryRenderer extends ItemRenderer {
     render() {
         const category = this.item;
         const html = /*html*/ `
-            <article class="category">
-                <div class="category-item" >
-                    <h2>${category.categoryName}</h2>
-                </div>
-            </article>
-            `;
+            <li class="nav-item"><a href="#">${category.categoryName}</a></li>
+                `;
         return html;
     }
 
     postRender(element) {
-        element.querySelector(".button").addEventListener("click", (event) => {
-            event.preventDefault();
-            controller.addToCart(this.item);
-        });
+        // element.querySelector(".nav-item").addEventListener("click", (event) => {
+        //     event.preventDefault();
+        //     controller.getProductsByCategory(this.item.categoryId);
+        // });
     }
 }
