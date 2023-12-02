@@ -30,12 +30,12 @@ async function baddServiceApp() {
   if (htmlSide === '/products.html') {
    initializeProductViews() 
   } else {
-    initializeViews();
+    initializeOtherHtmlViews();
   }
 
 }
 
-function initializeViews() {
+function initializeOtherHtmlViews() {
     categoriesLists = new ListRenderer(categories, ".category-list", CategoryRenderer);
     categoriesLists.render();
 }
