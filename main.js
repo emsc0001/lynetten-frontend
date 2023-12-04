@@ -79,16 +79,23 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-async function updatedList(items, containerSelector, renderer) {
-  const container = document.querySelector(containerSelector);
+function updateProductList(searchResults) {
+  // Get the container for products
+  const productsContainer = document.querySelector("#products-container");
 
-  if (!items || items.length === 0) {
-    container.innerHTML = "No results found.";
-    return;
+  // Clear the existing content
+  productsContainer.innerHTML = "";
+
+  // Check if there are search results
+  if (searchResults && searchResults.length > 0) {
+    // Render the updated list of products
+    productsLists = new ListRenderer(searchResults, "#products-container", ProductRenderer);
+    productsLists.render();
+  } else {
+    // If there are no search results, render all products
+    productsLists = new Paginater(products, "#products-container", ProductRenderer, 10);
+    productsLists.render();
   }
-
-  const listRenderer = new ListRenderer(items, containerSelector, renderer);
-  listRenderer.render();
 }
 
 // // Add this to your existing JavaScript file or create a new one
@@ -176,4 +183,4 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-export { updatedList };
+export { updateProductList };

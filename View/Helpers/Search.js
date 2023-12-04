@@ -1,5 +1,5 @@
 // import { updatedListArtist } from "../../frontend.js";
-import { updatedList } from "../../main.js";
+import { updateProductList } from "../../main.js";
 import { endpoint } from "../../Controller/products-rest.js";
 
 import ProductRenderer from "../Renderer/ProductRenderer.js";
@@ -17,24 +17,28 @@ async function handleSearch(event) {
   // Get the search query from the input field
   const searchInput = event.target;
   const searchQuery = searchInput.value;
-  console.log(searchQuery);
 
   // Get the search type from the data attribute
   const searchType = searchInput.getAttribute("data-search-type");
 
   // Send a request to the backend if the query is not empty
   if (searchQuery) {
-    const response = await fetch(`${endpoint}/search?q=${searchQuery}`);
+    const response = await fetch(`${endpoint}/search/${searchQuery}`);
 
     if (response.ok) {
       const data = await response.json();
-      if (searchType === "products") {
-        updatedList(data.products, "#products-container", ProductRenderer);
+
+      // Check if the search type is 'products'
+      if (searchType === "Products") {
+        // Update the products list with the search results
+        updateProductList(data.products);
       }
     } else {
       console.error("Search request failed");
     }
+  } else {
+    // If the search query is empty, reset the product list to show all products
+    updateProductList(event);
   }
 }
-
 export { handleSearch };
