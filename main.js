@@ -1,5 +1,5 @@
 "use strict";
-import { endpoint, getAllProducts, getSomeProducts } from "./Controller/products-rest.js";
+import { endpoint, getAllProducts } from "./Controller/products-rest.js";
 import { getAllCategories, getCategoryWithProducts } from "./Controller/category-rest.js";
 
 import ProductRenderer from "./View/Renderer/ProductRenderer.js";
@@ -45,10 +45,12 @@ function initializeProductViews() {
   productsLists = new Paginater(products, "#products-container", ProductRenderer, 10);
   productsLists.render();
 
+  // initialize Category Views //
   categoriesLists = new ListRenderer(categories, ".category-list", CategoryRenderer);
   categoriesLists.render();
 
-  // Tilføj en click-event listener til kategorier for at hente produkter baseret på kategori
+  // initialize Products views based on Categories  //
+
   const categoryLinks = document.querySelectorAll(".category-list a");
   categoryLinks.forEach((categoryLink) => {
     categoryLink.addEventListener("click", async (event) => {
@@ -62,7 +64,6 @@ function initializeProductViews() {
       console.log("Category:", category);
       console.log("Products for category ID", categoryId, products);
 
-      // Opdater produktgridden med de nye produkter
       productsLists = new ListRenderer(products, "#products-container", ProductRenderer);
       productsLists.render();
     });

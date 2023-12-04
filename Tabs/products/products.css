@@ -319,11 +319,6 @@ html {
   column-gap: 15px; /* Space between columns */
 }
 
-
-
-
-
-
 .main-content {
   /* Sørger for at indholdet centreres og har plads rundt om sig */
   max-width: 1500px;
@@ -403,6 +398,16 @@ html {
 
 .product-item button:hover {
   background-color: #2980b9;
+}
+
+/* Tilføj dette til din eksisterende CSS-fil */
+.products-container {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.products-container.fade-out {
+  opacity: 0;
 }
 
 .news-updates {
