@@ -1,4 +1,5 @@
 import Category from "../Model/Category.js";
+import Product from "../Model/Product.js";
 
 const endpoint = "http://localhost:4444";
 
@@ -12,7 +13,7 @@ async function getAllCategories() {
   if (timeSinceLastFetch > 10_000) {
     await refetchAllCategories();
   }
-    return allCategories
+  return allCategories;
 }
 
 async function getSomeCategories(limit, offset) {
@@ -30,4 +31,14 @@ async function refetchAllCategories() {
   lastFetch = Date.now();
 }
 
-export { getAllCategories, getSomeCategories, endpoint };
+// New function to get products based on the selected category ID
+async function getCategoryWithProducts(categoryId) {
+  const response = await fetch(`${endpoint}/categories/${categoryId}`);
+  const data = await response.json();
+
+  const category = new Category(data.category);
+  const products = data.products.map((jsonObj) => new Product(jsonObj));
+
+  return { category, products };
+}
+export { getAllCategories, getSomeCategories, getCategoryWithProducts, endpoint };

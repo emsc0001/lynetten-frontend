@@ -1,11 +1,12 @@
 "use strict";
 import { endpoint, getAllProducts, getSomeProducts } from "./Controller/products-rest.js";
-import { getAllCategories, getSomeCategories } from "./Controller/category-rest.js";
+import { getAllCategories, getCategoryWithProducts } from "./Controller/category-rest.js";
 
 import ProductRenderer from "./View/Renderer/ProductRenderer.js";
 import CategoryRenderer from "./View/Renderer/CategoryRenderer.js";
 import Paginater from "./View/Renderer/Paginater.js";
 import ListRenderer from "./View/Renderer/ListRenderer.js";
+import toggleSearchBar from "./View/Renderer/search.js";
 
 endpoint;
 
@@ -27,25 +28,45 @@ async function baddServiceApp() {
   console.log("number of products: " + products.length);
   console.log("number of categories: " + categories.length);
 
-  if (htmlSide === '/products.html') {
-   initializeProductViews() 
+  if (htmlSide === "/products.html") {
+    initializeProductViews();
   } else {
     initializeOtherHtmlViews();
   }
-
+  toggleSearchBar();
 }
 
 function initializeOtherHtmlViews() {
-    categoriesLists = new ListRenderer(categories, ".category-list", CategoryRenderer);
-    categoriesLists.render();
+  categoriesLists = new ListRenderer(categories, ".category-list", CategoryRenderer);
+  categoriesLists.render();
 }
 
 function initializeProductViews() {
-    productsLists = new Paginater(products, "#products-container", ProductRenderer, 10);
-    productsLists.render();
+  productsLists = new Paginater(products, "#products-container", ProductRenderer, 10);
+  productsLists.render();
 
-    categoriesLists = new ListRenderer(categories, ".category-list", CategoryRenderer);
-    categoriesLists.render();
+  categoriesLists = new ListRenderer(categories, ".category-list", CategoryRenderer);
+  categoriesLists.render();
+
+  // Tilføj en click-event listener til kategorier for at hente produkter baseret på kategori
+  const categoryLinks = document.querySelectorAll(".category-list a");
+  categoryLinks.forEach((categoryLink) => {
+    categoryLink.addEventListener("click", async (event) => {
+      event.preventDefault();
+      const categoryId = categoryLink.dataset.categoryId;
+
+      // Brug den nye funktion til at hente kategori og produkter
+      const { category, products } = await getCategoryWithProducts(categoryId);
+
+      // Gør noget med kategori og produkter, f.eks. vis dem i konsollen
+      console.log("Category:", category);
+      console.log("Products for category ID", categoryId, products);
+
+      // Opdater produktgridden med de nye produkter
+      productsLists = new ListRenderer(products, "#products-container", ProductRenderer);
+      productsLists.render();
+    });
+  });
 }
 
 // // Add this to your existing JavaScript file or create a new one
@@ -77,15 +98,7 @@ function initializeProductViews() {
 //   }
 // });
 
-// // Place this script after your HTML or at the end of the body
-// function toggleSearchBar() {
-//   const searchBar = document.querySelector(".search-bar");
-//   searchBar.style.display = searchBar.style.display === "none" ? "block" : "none";
-// }
-
-// function search() {
-//   // Implement search functionality here
-// }
+// Place this script after your HTML or at the end of the body
 
 // document.addEventListener("DOMContentLoaded", function () {
 //   let navItems = document.querySelectorAll(".nav-item");
@@ -101,49 +114,42 @@ function initializeProductViews() {
 //   });
 // });
 
-
-
 // MAP _____________________________
 
-var myMap = L.map('interactive-map').setView([55.691046, 12.599752], 13); // Replace with your coordinates
+var myMap = L.map("interactive-map").setView([55.691046, 12.599752], 13); // Replace with your coordinates
 
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
   maxZoom: 19,
-  attribution: '© OpenStreetMap contributors'
+  attribution: "© OpenStreetMap contributors",
 }).addTo(myMap);
-
-
-
-
 
 // NEWSLETTER ______________________
 
-document.addEventListener("DOMContentLoaded", function() {
-    // Check if the user has already subscribed in this session
-    if (!sessionStorage.getItem('subscribed')) {
-        setTimeout(function() {
-            document.getElementById("newsletter-popup").classList.add("show");
-        }, 2000);
-    }
+document.addEventListener("DOMContentLoaded", function () {
+  // Check if the user has already subscribed in this session
+  if (!sessionStorage.getItem("subscribed")) {
+    setTimeout(function () {
+      document.getElementById("newsletter-popup").classList.add("show");
+    }, 2000);
+  }
 
-    // Handle form submission
-    document.getElementById("newsletter-form").addEventListener("submit", function(event) {
-        event.preventDefault();
-        document.getElementById("newsletter-form").classList.add("hidden");
-        document.getElementById("subscription-message").classList.remove("hidden");
-        
-        // Set a flag in session storage
-        sessionStorage.setItem('subscribed', 'true');
+  // Handle form submission
+  document.getElementById("newsletter-form").addEventListener("submit", function (event) {
+    event.preventDefault();
+    document.getElementById("newsletter-form").classList.add("hidden");
+    document.getElementById("subscription-message").classList.remove("hidden");
 
-        // Close the popup automatically after a delay
-        setTimeout(function() {
-            document.getElementById("newsletter-popup").classList.remove("show");
-        }, 3000); // Adjust time as needed
-    });
+    // Set a flag in session storage
+    sessionStorage.setItem("subscribed", "true");
 
-    // Close button functionality
-    document.getElementById("close-popup").addEventListener("click", function() {
-        document.getElementById("newsletter-popup").classList.remove("show");
-    });
+    // Close the popup automatically after a delay
+    setTimeout(function () {
+      document.getElementById("newsletter-popup").classList.remove("show");
+    }, 3000); // Adjust time as needed
+  });
+
+  // Close button functionality
+  document.getElementById("close-popup").addEventListener("click", function () {
+    document.getElementById("newsletter-popup").classList.remove("show");
+  });
 });
-
