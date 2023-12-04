@@ -550,6 +550,11 @@ html {
   background-color: #f0f8ff; /* Light blue background */
 }
 
+#pagination {
+  min-height: 50px; /* Just an example height; adjust as needed */
+  overflow: hidden;
+}
+
 footer {
   background-color: #f0f8ff; /* Light blue background */
   color: rgb(0, 0, 0);
