@@ -26,11 +26,7 @@ body {
   padding: 10px 20px;
 }
 
-/* Header styles */
-.main-header {
-  margin-bottom: 20px;
-  margin-top: 0;
-}
+
 
 /* Search bar styles */
 .search-container {
@@ -84,7 +80,7 @@ body {
 /* Add a subtle box shadow to the header for depth */
 .main-header {
   background-color: #ff8c00;
-  padding: 10px;
+  padding: 20px;
   text-align: center;
   border-radius: 5px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
@@ -209,12 +205,7 @@ html {
   line-height: 1.6;
 }
 
-/* Header and Navigation */
-.header {
-  background-color: #f8f8f8; /* Lighter background for header */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 0 20px; /* Adjust padding as needed */
-}
+
 
 .sidebar ul {
   list-style-type: none; /* No bullets for a clean look */
@@ -255,18 +246,6 @@ html {
   background-color: #f9f9f9;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .nav-menu,
-  .nav-icons {
-    display: none; /* Hide navigation links on smaller screens */
-  }
-
-  .content-header h1,
-  .content-header p {
-    font-size: 18px;
-  }
-}
 
 /* ... existing styles ... */
 
