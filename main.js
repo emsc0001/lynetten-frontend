@@ -2,11 +2,12 @@
 import { endpoint, getAllProducts } from "./Controller/products-rest.js";
 import { getAllCategories, getCategoryWithProducts } from "./Controller/category-rest.js";
 
+import { handleSearch } from "./View/Helpers/Search.js";
+
 import ProductRenderer from "./View/Renderer/ProductRenderer.js";
 import CategoryRenderer from "./View/Renderer/CategoryRenderer.js";
 import Paginater from "./View/Renderer/Paginater.js";
 import ListRenderer from "./View/Renderer/ListRenderer.js";
-import toggleSearchBar from "./View/Renderer/search.js";
 
 endpoint;
 
@@ -33,7 +34,6 @@ async function baddServiceApp() {
   } else {
     initializeOtherHtmlViews();
   }
-  toggleSearchBar();
 }
 
 function initializeOtherHtmlViews() {
@@ -68,6 +68,27 @@ function initializeProductViews() {
       productsLists.render();
     });
   });
+}
+
+// -----Search EventListener------//
+
+document.addEventListener("DOMContentLoaded", () => {
+  const searchInputs = document.querySelectorAll("[data-search-type]");
+  searchInputs.forEach((input) => {
+    input.addEventListener("input", handleSearch);
+  });
+});
+
+async function updatedList(items, containerSelector, renderer) {
+  const container = document.querySelector(containerSelector);
+
+  if (!items || items.length === 0) {
+    container.innerHTML = "No results found.";
+    return;
+  }
+
+  const listRenderer = new ListRenderer(items, containerSelector, renderer);
+  listRenderer.render();
 }
 
 // // Add this to your existing JavaScript file or create a new one
@@ -154,3 +175,5 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("newsletter-popup").classList.remove("show");
   });
 });
+
+export { updatedList };

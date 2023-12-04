@@ -34,28 +34,65 @@ body {
 
 /* Search bar styles */
 .search-container {
+  position: relative;
   display: flex;
+  align-items: center;
 }
 
-.search-input {
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px 0 0 4px;
-  font-size: 16px;
-  width: 250px;
-}
-
-.search-button {
-  padding: 8px 12px;
-  background-color: #e68a00;
-  border: 1px solid #ccc;
-  border-left: none;
-  border-radius: 0 4px 4px 0;
+/* Style for the search icon */
+.search-icon {
   cursor: pointer;
+  margin-right: 8px;
+  font-size: 24px;
+  color: #555;
 }
 
-.search-button:hover {
-  background-color: #cc7a00;
+/* Style for the search bar */
+.search-bar {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  width: 220px;
+  border-radius: 5px;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+/* Style for the search input */
+#input-search-products {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+}
+
+/* Style for the search button */
+#searchButton {
+  margin-top: 8px;
+  padding: 8px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover effect for the search button */
+#searchButton:hover {
+  background-color: #0056b3;
+}
+
+.search-bar.active {
+  display: block; /* Vis søgefeltet, når det har klassen 'active' */
 }
 
 /* Sidebar styles */

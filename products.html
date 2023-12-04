@@ -6,49 +6,51 @@
     <title>Marine ProShop Inspired Layout</title>
     <link rel="stylesheet" href="./Tabs/products/products.css" />
   </head>
-<body>
+  <body>
     <div class="navbar">
       <div class="logo-container">
         <!-- Wrap both logo and text in an anchor tag -->
-        <a href="index.html" style="display: inline-flex; align-items: center; text-decoration: none; color: black;">
+        <a href="index.html" style="display: inline-flex; align-items: center; text-decoration: none; color: black">
           <img src="https://i.ibb.co/r2bH4d1/Sk-rmbillede-2023-11-28-kl-15-35-30.png" alt="Logo" height="50" />
           <div class="header-text">
-            <h1 style="margin: 0; padding: 0;">Lynettens Bådudstyr</h1>
-            <p style="margin: 0; padding: 0;">Mest bådudstyr for pengene</p>
+            <h1 style="margin: 0; padding: 0">Lynettens Bådudstyr</h1>
+            <p style="margin: 0; padding: 0">Mest bådudstyr for pengene</p>
           </div>
         </a>
       </div>
       <div class="nav-menu">
         <div class="nav-menu">
-          <div class="nav-item" data-tab="forside">
-          </div>
+          <div class="nav-item" data-tab="forside"></div>
           <div class="nav-item" data-tab="kobeguide">
             <span class="nav-link"
-              ><a href="index.html"><strong>Forside</strong></a></span>
+              ><a href="index.html"><strong>Forside</strong></a></span
+            >
             <div class="underline"></div>
           </div>
           <div class="nav-item" data-tab="kobeguide">
             <span class="nav-link"
-              ><a href="koebeguide.html"><strong>Købeguide - Bådudstyr</strong></a></span>
+              ><a href="koebeguide.html"><strong>Købeguide - Bådudstyr</strong></a></span
+            >
             <div class="underline"></div>
           </div>
           <div class="nav-item" data-tab="handelsBetingelser">
             <span class="nav-link"
-              ><a href="handelsBetingelser.html"><strong>Handelsbetingelser</strong></a></span>
+              ><a href="handelsBetingelser.html"><strong>Handelsbetingelser</strong></a></span
+            >
             <div class="underline"></div>
           </div>
         </div>
-
-   
       </div>
 
       <div class="nav-icons">
         <!-- Search container with icon and bar -->
         <div class="search-container">
-          <span class="nav-icon search-icon" onclick="toggleSearchBar()">🔍</span>
+          <span class="nav-icon search-icon">🔍</span>
           <div class="search-bar" id="searchBar">
-            <input type="text" id="searchInput" placeholder="Search..." />
-            <button type="submit" class="search-button">Search</button>
+            <form id="search-form-product">
+              <input type="text" id="input-search-products" placeholder="Search After Products" data-search-type="Products" />
+              <button type="" id="searchButton">Search</button>
+            </form>
           </div>
         </div>
 
@@ -92,22 +94,20 @@
         <!-- Sidebar content goes here -->
         <h2>Produkt Kategorier</h2>
         <ul class="category-list">
-        <!-- Add your categories here -->
+          <!-- Add your categories here -->
         </ul>
       </aside>
 
       <main class="main-content">
-
         <div id="products-container">
           <!-- Add your product grid items here -->
+        </div>
+        <div id="pagination"></div>
       </main>
-
-
     </div>
     <footer>
       <p>&copy; 2023 by AEM</p>
     </footer>
     <script src="main.js" type="module"></script>
-
-</body>
+  </body>
 </html>
