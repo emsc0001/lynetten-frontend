@@ -26,33 +26,12 @@ body {
   padding: 10px 20px;
 }
 
-
-
-/* Search bar styles */
-.search-container {
-  display: flex;
+/* Header styles */
+.main-header {
+  margin-bottom: 20px;
+  margin-top: 0;
 }
 
-.search-input {
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px 0 0 4px;
-  font-size: 16px;
-  width: 250px;
-}
-
-.search-button {
-  padding: 8px 12px;
-  background-color: #e68a00;
-  border: 1px solid #ccc;
-  border-left: none;
-  border-radius: 0 4px 4px 0;
-  cursor: pointer;
-}
-
-.search-button:hover {
-  background-color: #cc7a00;
-}
 
 /* SIDEBAR___________________________________________________________ */
 
