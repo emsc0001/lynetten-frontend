@@ -96,7 +96,7 @@ body {
 
 /* Add a subtle box shadow to the header for depth */
 .main-header {
-  background-color: #0080ff;
+  background-color: #ff8c00;
   padding: 10px;
   text-align: center;
   border-radius: 5px;
@@ -693,7 +693,7 @@ body {
   background-color: #f4f4f4; /* Background color */
 }
 
-h1, h2, h3 {
+h2, h3 {
   color: #ff8c00; /* Headings color to match the top bar */
   margin-top: 0.5em;
   margin-bottom: 0.5em;
@@ -731,25 +731,3 @@ h1, h2, h3 {
   margin: 20px auto; /* Increased top and bottom margin */
 }
 
-/* Footer */
-.footer {
-  background-color: #333;
-  color: #fff;
-  padding: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center; /* Align footer content vertically */
-}
-
-.footer h3 {
-  margin-bottom: 0.5em;
-}
-
-.footer a {
-  color: #fff;
-  text-decoration: none;
-}
-
-.footer a:hover {
-  text-decoration: underline;
-}
