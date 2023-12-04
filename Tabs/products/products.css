@@ -319,11 +319,6 @@ html {
   column-gap: 15px; /* Space between columns */
 }
 
-
-
-
-
-
 .main-content {
   /* Sørger for at indholdet centreres og har plads rundt om sig */
   max-width: 1500px;
@@ -538,6 +533,20 @@ html {
 
 .go-to-basket-button:hover {
   background-color: #f0f8ff; /* Light blue background */
+}
+
+.breadcrumb {
+  font-size: 14px;
+  color: #666;
+}
+
+.breadcrumb-link {
+  color: #ffe100;
+  text-decoration: none;
+}
+
+.breadcrumb-link:hover {
+  text-decoration: underline;
 }
 
 footer {
