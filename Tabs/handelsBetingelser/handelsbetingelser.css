@@ -72,9 +72,16 @@ body {
 
 /* Main content styles */
 .main-content {
-  padding: 20px;
-  flex: 2;
-  background-color: #fff;
+  padding: 40px; /* Increased padding */
+  background-color: #ffffff; /* Light background color */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  border-radius: 8px; /* Rounded corners */
+  font-size: 16px; /* Comfortable reading size */
+  line-height: 1.6; /* Optimal line height for readability */
+  color: #333333; /* Dark enough for good contrast */
+  transition: all 0.3s ease-in-out; /* Smooth transition for hover effects */
+  max-width: 1200px; /* Maximum width for content area */
+  margin: auto; /* Center the content */
 }
 
 /* Add a subtle box shadow to the header for depth */
