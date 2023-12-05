@@ -9,7 +9,8 @@ import CategoryRenderer from "./View/Renderer/CategoryRenderer.js";
 import Paginater from "./View/Renderer/Paginater.js";
 import ListRenderer from "./View/Renderer/ListRenderer.js";
 
-import { newsletter, myMap } from "./View/nyhedsbrev.js";
+import { newsletter } from "./View/nyhedsbrev.js";
+import { myMap } from "./View/map.js";
 
 endpoint;
 
@@ -43,7 +44,7 @@ async function baddServiceApp() {
 function initializeOtherHtmlViews() {
   categoriesLists = new ListRenderer(categories, ".category-list", CategoryRenderer);
   categoriesLists.render();
-
+  newsletter()
 
 }
 

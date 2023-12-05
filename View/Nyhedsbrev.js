@@ -1,20 +1,8 @@
-// MAP _____________________________
-
-let myMap = L.map('interactive-map').setView([55.691046, 12.599752], 13); // Replace with your coordinates
-
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  maxZoom: 19,
-  attribution: '© OpenStreetMap contributors'
-}).addTo(myMap);
-
-
-
 
 
 // NEWSLETTER ______________________
 
 function newsletter() {
-    document.addEventListener("DOMContentLoaded", function() {
         // Check if the user has already subscribed in this session
         if (!sessionStorage.getItem('subscribed')) {
             setTimeout(function() {
@@ -41,8 +29,8 @@ function newsletter() {
         document.getElementById("close-popup").addEventListener("click", function() {
             document.getElementById("newsletter-popup").classList.remove("show");
         });
-    });
+    };
     
-}
 
-export { newsletter, myMap };
+
+export { newsletter};
