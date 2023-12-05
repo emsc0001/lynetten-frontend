@@ -41,4 +41,5 @@ async function handleSearch(event) {
     updateProductList(event);
   }
 }
+
 export { handleSearch };

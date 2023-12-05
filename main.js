@@ -19,8 +19,6 @@ endpoint;
 let products = [];
 let categories = [];
 
-let productsPaginator = null;
-
 let productsLists = null;
 let categoriesLists = null;
 
