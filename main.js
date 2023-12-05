@@ -44,8 +44,7 @@ async function baddServiceApp() {
 function initializeOtherHtmlViews() {
   categoriesLists = new ListRenderer(categories, ".category-list", CategoryRenderer);
   categoriesLists.render();
-  newsletter()
-
+  newsletter();
 }
 
 function initializeProductViews() {
@@ -110,7 +109,6 @@ function updateProductList(searchResults) {
     productsLists.render();
   }
 }
-
 
 // // Add this to your existing JavaScript file or create a new one
 // document.addEventListener("DOMContentLoaded", function () {
