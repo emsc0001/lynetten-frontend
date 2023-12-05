@@ -15,9 +15,16 @@ let categories = [];
 let productsLists = null;
 let categoriesLists = null;
 
+//Order variables
+let cart = [];
+let guestOrderCreated = { value: false };
+
 const htmlSide = window.location.pathname;
 
-window.addEventListener("load", baddServiceApp);
+window.addEventListener("load", () => {
+    loadCartFromLocalStorage();
+    baddServiceApp();
+});
 
 async function baddServiceApp() {
   console.log("baddService loaded!");
@@ -47,6 +54,42 @@ function initializeProductViews() {
     categoriesLists = new ListRenderer(categories, ".category-list", CategoryRenderer);
     categoriesLists.render();
 }
+
+
+// Load cart from localStorage
+function loadCartFromLocalStorage() {
+    const storedCart = localStorage.getItem('cart');
+    if (storedCart) {
+        cart = JSON.parse(storedCart);
+    }
+}
+
+// Save cart to localStorage
+function saveCartToLocalStorage() {
+    localStorage.setItem('cart', JSON.stringify(cart));
+}
+
+function addToCart(productId, listPrice) {
+    // Check if the product already exists in the cart
+    const existingProduct = cart.find((item) => item.productId === productId);
+
+    if (existingProduct) {
+        // If the product exists, increase its quantity
+        existingProduct.quantity++;
+    } else {
+        // If the product doesn't exist, add it to the cart with a quantity of 1
+        cart.push({ productId, listPrice , quantity: 1 });
+    }
+
+  console.log("Item added to cart:", cart); // Logging for demonstration
+  
+   saveCartToLocalStorage(); // Save cart to localStorage
+}
+
+
+export { addToCart, products, categories, guestOrderCreated };
+
+export default {guestOrderCreated} // Export default so it can get modified in other files
 
 // // Add this to your existing JavaScript file or create a new one
 // document.addEventListener("DOMContentLoaded", function () {
