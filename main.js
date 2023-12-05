@@ -85,6 +85,12 @@ function updateProductList(searchResults) {
   // Get the container for products
   const productsContainer = document.querySelector("#products-container");
 
+  // Remove existing pagination
+  const existingPagination = document.querySelector("#paginator");
+  if (existingPagination) {
+    existingPagination.remove();
+  }
+
   // Clear the existing content
   productsContainer.innerHTML = "";
 
@@ -185,4 +191,4 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-export { updateProductList };
+export { updateProductList, products };
