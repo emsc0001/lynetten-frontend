@@ -7,8 +7,12 @@ function openUserModal() {
   userModalShow.style.display = "block"; // Show the modal
 }
 // Close the User login modal
-document.getElementById("closeUser").addEventListener("click", function () {
-  document.getElementById("userModal").style.display = "none";
+// Vent, indtil DOM'en er fuldt indlæst
+document.addEventListener("DOMContentLoaded", function () {
+  // Tilknyt hændelseslytteren efter DOM-indlæsning
+  document.getElementById("closeUser").addEventListener("click", function closeUser() {
+    document.getElementById("userModal").style.display = "none";
+  });
 });
 
 // Open the Create User Login modal
@@ -74,4 +78,4 @@ forgotPasswordLink.addEventListener("click", function (event) {
   openForgotPasswordModal(); // Open the forgotPasswordModal
 });
 
-export { openUserModal, openCreateUserModal };
+export { openUserModal, openCreateUserModal, openForgotPasswordModal };

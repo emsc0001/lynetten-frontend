@@ -10,9 +10,9 @@ import Paginater from "./View/Renderer/Paginater.js";
 import ListRenderer from "./View/Renderer/ListRenderer.js";
 
 import { newsletter } from "./View/nyhedsbrev.js";
-import { myMap } from "./View/map.js";
+// import { myMap } from "./View/map.js";
 
-import { openUserModal, openCreateUserModal } from "./View/Renderer/User.js";
+import { openUserModal, openCreateUserModal, openForgotPasswordModal } from "./View/Renderer/User.js";
 
 endpoint;
 
