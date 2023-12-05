@@ -72,9 +72,38 @@
             <button onclick="login()">Login</button>
 
             <div class="additional-options">
-              <p><a href="#" onclick="forgotPassword()">Forgot Password?</a></p>
-              <p><a href="#" onclick="createAccount()">Create New Account</a></p>
+              <p><a id="forgotUserLink" href="#">Forgot Password?</a></p>
+              <p><a id="createUserLink" href="#">Create New Account</a></p>
             </div>
+          </div>
+        </div>
+
+        <!-- Create user modal -->
+        <div id="createUserModal" class="modal">
+          <div class="modal-content">
+            <span id="closeCreateUser" class="close">×</span>
+            <h2>Create New Account</h2>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required />
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required />
+
+            <label for="password">Confirm Password:</label>
+            <input type="password" id="password" name="password" required />
+
+            <button onclick="createAccount()">Create Account</button>
+          </div>
+        </div>
+
+        <div id="forgotPasswordModal" class="modal">
+          <div class="modal-content">
+            <span id="closeForgotPassword" class="close">×</span>
+            <h2>Forgot Password</h2>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required />
+
+            <button onclick="sendPasswordReset()">Send Password Reset</button>
           </div>
         </div>
 

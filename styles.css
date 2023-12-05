@@ -280,9 +280,10 @@ html {
   margin-right: 8px; /* Add some space between the icon and the input */
 }
 
-/* Style for the modal */
+/* Style for User modal */
 #userModal {
-  display: none;
+  opacity: 0;
+  visibility: hidden;
   position: fixed;
   z-index: 1;
   left: 0;
@@ -291,7 +292,16 @@ html {
   height: 100%;
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.6);
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
+
+#userModal.show {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Other styles remain unchanged */
 
 /* Style for the modal content */
 .modal-content {
@@ -378,6 +388,210 @@ button:hover {
 }
 
 .additional-options a:hover {
+  text-decoration: underline;
+  color: #2980b9;
+}
+
+/* Style for the create user modal */
+#createUserModal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* Style for the create user modal content */
+#createUserModal .modal-content {
+  background-color: #fefefe;
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  width: 30%;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+}
+
+/* Style for the close button in the create user modal */
+#createUserModal .close {
+  color: #aaa;
+  float: right;
+  font-size: 24px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+#createUserModal .close:hover,
+#createUserModal .close:focus {
+  color: #333;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Style for the login form inside the create user modal */
+#createUserModal form {
+  padding: 0 16px;
+}
+
+#createUserModal label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+#createUserModal input {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+#createUserModal input:focus {
+  border-color: #333;
+  outline: none;
+}
+
+#createUserModal button {
+  background-color: #3498db;
+  color: #fff;
+  padding: 12px 0;
+  border: none;
+  width: 100%;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+#createUserModal button:hover {
+  background-color: #2980b9;
+}
+
+/* Style for the additional options in the create user modal */
+#createUserModal .additional-options {
+  margin-top: 20px;
+  text-align: center;
+}
+
+#createUserModal .additional-options p {
+  margin-bottom: 8px;
+  color: #666;
+}
+
+#createUserModal .additional-options a {
+  color: #3498db;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+#createUserModal .additional-options a:hover {
+  text-decoration: underline;
+  color: #2980b9;
+}
+
+/* Style for the forgot password modal */
+#forgotPasswordModal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* Style for the forgot password modal content */
+#forgotPasswordModal .modal-content {
+  background-color: #fefefe;
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  width: 30%;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+}
+
+/* Style for the close button in the forgot password modal */
+#forgotPasswordModal .close {
+  color: #aaa;
+  float: right;
+  font-size: 24px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+#forgotPasswordModal .close:hover,
+#forgotPasswordModal .close:focus {
+  color: #333;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Style for the login form inside the forgot password modal */
+#forgotPasswordModal form {
+  padding: 0 16px;
+}
+
+#forgotPasswordModal label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+#forgotPasswordModal input {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+#forgotPasswordModal input:focus {
+  border-color: #333;
+  outline: none;
+}
+
+#forgotPasswordModal button {
+  background-color: #3498db;
+  color: #fff;
+  padding: 12px 0;
+  border: none;
+  width: 100%;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+#forgotPasswordModal button:hover {
+  background-color: #2980b9;
+}
+
+/* Style for the additional options in the forgot password modal */
+#forgotPasswordModal .additional-options {
+  margin-top: 20px;
+  text-align: center;
+}
+
+#forgotPasswordModal .additional-options p {
+  margin-bottom: 8px;
+  color: #666;
+}
+
+#forgotPasswordModal .additional-options a {
+  color: #3498db;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+#forgotPasswordModal .additional-options a:hover {
   text-decoration: underline;
   color: #2980b9;
 }
