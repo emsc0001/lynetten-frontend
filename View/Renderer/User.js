@@ -1,34 +1,29 @@
 // Open the User Login modal
-
 function openUserModal() {
   console.log("Opened User Login");
   const userModalShow = document.getElementById("userModal");
   userModalShow.classList.add("show"); // Add the 'show' class
   userModalShow.style.display = "block"; // Show the modal
-}
-// Close the User login modal
-// Vent, indtil DOM'en er fuldt indlæst
-document.addEventListener("DOMContentLoaded", function () {
-  // Tilknyt hændelseslytteren efter DOM-indlæsning
+
+  // Close the User login modal
   document.getElementById("closeUser").addEventListener("click", function closeUser() {
     document.getElementById("userModal").style.display = "none";
   });
-});
+}
 
 // Open the Create User Login modal
-
 function openCreateUserModal() {
   console.log("Opened Create User Login");
 
   const createUserModalShow = document.getElementById("createUserModal");
   createUserModalShow.classList.add("show");
   createUserModalShow.style.display = "block";
-}
 
-// Close the create user modal
-document.getElementById("closeCreateUser").addEventListener("click", function () {
-  document.getElementById("createUserModal").style.display = "none";
-});
+  // Close the create user modal
+  document.getElementById("closeCreateUser").addEventListener("click", function () {
+    document.getElementById("createUserModal").style.display = "none";
+  });
+}
 
 // Open the Forgot Password modal
 function openForgotPasswordModal() {
@@ -37,12 +32,12 @@ function openForgotPasswordModal() {
   const forgotPasswordModalShow = document.getElementById("forgotPasswordModal");
   forgotPasswordModalShow.classList.add("show");
   forgotPasswordModalShow.style.display = "block";
-}
 
-// Close the forgot password modal
-document.getElementById("closeForgotPassword").addEventListener("click", function () {
-  document.getElementById("forgotPasswordModal").style.display = "none";
-});
+  // Close the forgot password modal
+  document.getElementById("closeForgotPassword").addEventListener("click", function () {
+    document.getElementById("forgotPasswordModal").style.display = "none";
+  });
+}
 
 // Handle login logic
 // function login() {

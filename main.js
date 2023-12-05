@@ -2,6 +2,8 @@
 import { endpoint, getAllProducts } from "./Controller/products-rest.js";
 import { getAllCategories, getCategoryWithProducts } from "./Controller/category-rest.js";
 
+import { openUserModal, openCreateUserModal, openForgotPasswordModal } from "./View/Renderer/User.js";
+
 import { handleSearch } from "./View/Helpers/Search.js";
 
 import ProductRenderer from "./View/Renderer/ProductRenderer.js";
@@ -11,8 +13,6 @@ import ListRenderer from "./View/Renderer/ListRenderer.js";
 
 import { newsletter } from "./View/nyhedsbrev.js";
 // import { myMap } from "./View/map.js";
-
-import { openUserModal, openCreateUserModal, openForgotPasswordModal } from "./View/Renderer/User.js";
 
 endpoint;
 

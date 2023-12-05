@@ -315,6 +315,13 @@ html {
   transition: 0.3s;
 }
 
+.header-container {
+}
+
+h2 {
+  margin-right: 10px;
+}
+
 /* Style for the close button */
 .close {
   color: #aaa;
