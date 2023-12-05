@@ -555,6 +555,20 @@ html {
   overflow: hidden;
 }
 
+.breadcrumb {
+  font-size: 14px;
+  color: #666;
+}
+
+.breadcrumb-link {
+  color: #ffe100;
+  text-decoration: none;
+}
+
+.breadcrumb-link:hover {
+  text-decoration: underline;
+}
+
 footer {
   background-color: #f0f8ff; /* Light blue background */
   color: rgb(0, 0, 0);

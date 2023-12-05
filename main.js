@@ -28,8 +28,8 @@ async function baddServiceApp() {
   products = await getAllProducts();
   categories = await getAllCategories();
 
-  console.log("number of products: " + products.length);
-  console.log("number of categories: " + categories.length);
+  console.log("Number Of Products: " + products.length);
+  console.log("Number Of Categories: " + categories.length);
 
   if (htmlSide === "/products.html") {
     initializeProductViews();
