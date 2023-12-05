@@ -31,7 +31,6 @@ async function refetchAllCategories() {
   lastFetch = Date.now();
 }
 
-// New function to get products based on the selected category ID
 async function getCategoryWithProducts(categoryId) {
   const response = await fetch(`${endpoint}/categories/${categoryId}`);
   const data = await response.json();
