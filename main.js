@@ -12,6 +12,8 @@ import ListRenderer from "./View/Renderer/ListRenderer.js";
 import { newsletter } from "./View/nyhedsbrev.js";
 import { myMap } from "./View/map.js";
 
+import { openAccountModal, login } from "./View/Renderer/User.js";
+
 endpoint;
 
 let products = [];

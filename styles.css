@@ -17,16 +17,13 @@ body {
   display: flex;
 }
 
-
 /* Header styles */
 .main-header {
   margin-bottom: 20px;
   margin-top: 0;
 }
 
-
 /* SIDEBAR___________________________________________________________ */
-
 
 .sidebar {
   background-color: #f7f7f7;
@@ -49,7 +46,6 @@ body {
   margin-bottom: 10px;
   color: #333;
 }
-
 
 .sidebar h3 {
   font-size: 20px;
@@ -93,7 +89,6 @@ body {
   }
 }
 
-
 /* Add a subtle box shadow to the header for depth */
 .main-header {
   background-color: #ff8c00;
@@ -116,7 +111,6 @@ body {
 .category-list li a:hover {
   background-color: #e6f2ff; /* Very light blue on hover */
 }
-
 
 .logo-container img {
   height: 50px; /* Adjust as needed */
@@ -277,6 +271,116 @@ html {
   }
 }
 
+/* _______________________Modal content styles_______________________________ */
+
+/* Add this to your existing CSS file or create a new one */
+
+.nav-icon {
+  cursor: pointer;
+  margin-right: 8px; /* Add some space between the icon and the input */
+}
+
+/* Style for the modal */
+#userModal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* Style for the modal content */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  width: 30%;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+}
+
+/* Style for the close button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 24px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #333;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Style for the login form inside the modal */
+form {
+  padding: 0 16px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+input {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input:focus {
+  border-color: #333;
+  outline: none;
+}
+
+button {
+  background-color: #3498db;
+  color: #fff;
+  padding: 12px 0;
+  border: none;
+  width: 100%;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+/* Style for the additional options (forgot password and create account) */
+.additional-options {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.additional-options p {
+  margin-bottom: 8px;
+  color: #666;
+}
+
+.additional-options a {
+  color: #3498db;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.additional-options a:hover {
+  text-decoration: underline;
+  color: #2980b9;
+}
 
 /* Dropdown Menu Styles */
 
@@ -325,8 +429,6 @@ html {
   column-count: 3; /* Adjust the number of columns as needed */
   column-gap: 15px; /* Space between columns */
 }
-
-
 
 .main-content {
   /* Sørger for at indholdet centreres og har plads rundt om sig */
@@ -501,13 +603,11 @@ html {
 }
 
 footer {
-
   color: rgb(0, 0, 0);
   text-align: center;
   padding: 1rem 0;
   font-weight: bold;
 }
-
 
 .footer {
   background-color: #333;
@@ -540,7 +640,6 @@ footer {
   padding: 5px 0;
 }
 
-
 .social-media a {
   display: inline-block;
   margin-right: 10px;
@@ -555,20 +654,15 @@ footer {
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .footer {
-      flex-direction: column;
-      text-align: center;
+    flex-direction: column;
+    text-align: center;
   }
 
   .social-media {
-      order: 3; /* Make sure social media links are at the bottom on mobile */
-      margin-top: 20px; /* Add some space above the social media links */
+    order: 3; /* Make sure social media links are at the bottom on mobile */
+    margin-top: 20px; /* Add some space above the social media links */
   }
 }
-
-
-
-
-
 
 .slider {
   width: 100%;
@@ -596,9 +690,6 @@ footer {
   padding: 8px;
 }
 
-
-
-
 .product-item-link {
   display: block;
   height: 100%;
@@ -616,10 +707,6 @@ footer {
   background-color: rgba(255, 255, 255, 0.7); /* Optional for better text visibility */
 }
 
-
-
-
-
 .popup {
   position: fixed;
   right: 0;
@@ -635,7 +722,6 @@ footer {
   display: none;
   z-index: 100;
 }
-
 
 #newsletter-form {
   display: flex;
@@ -679,11 +765,6 @@ footer {
   margin-top: 20px;
 }
 
-
-
-
-
-
 /* Typography */
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -693,7 +774,8 @@ body {
   background-color: #f4f4f4; /* Background color */
 }
 
-h2, h3 {
+h2,
+h3 {
   color: #ff8c00; /* Headings color to match the top bar */
   margin-top: 0.5em;
   margin-bottom: 0.5em;
@@ -718,7 +800,8 @@ h2, h3 {
   font-weight: bold;
 }
 
-.nav-item a:hover, .nav-item a:focus {
+.nav-item a:hover,
+.nav-item a:focus {
   color: #ff8c00; /* Hover and focus state color */
 }
 
@@ -730,4 +813,3 @@ h2, h3 {
   border-radius: 8px;
   margin: 20px auto; /* Increased top and bottom margin */
 }
-
