@@ -80,6 +80,7 @@ function initializeOtherHtmlViews() {
 
   CreateUserDialog = new userCreateDialog("user-create-dialog");
   CreateUserDialog.render();
+  CreateUserDialog.show();
 
   // newsletter();
 }

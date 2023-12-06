@@ -2,10 +2,11 @@ import Dialog from "./Dialog.js";
 import User from "../../Model/User.js";
 import * as Controller from "../../Controller/user-rest.js";
 
-export default class UserCreateDialog extends Dialog {
+export default class userCreateDialog extends Dialog {
   renderHTML() {
     const html = /*html*/ `
       <form>
+      <button type="button" data-action="close">X</button>
         <label for="email">Email</label>
         <input type="email" name="email" id="createUserEmail" required>
         <label for="password">Adgangskode</label>
@@ -32,6 +33,6 @@ export default class UserCreateDialog extends Dialog {
     form.reset();
 
     // Call the controller method to create the user
-    Controller.createUser(newUser);
+    Controller.createUserForm(newUser);
   }
 }

@@ -106,7 +106,7 @@ async function createUser(user) {
   return response.ok;
 }
 
-async function createUserFrom(user) {
+async function createUserForm(user) {
   const creationSuccessful = await createUser(user);
 
   if (creationSuccessful) {
@@ -118,4 +118,4 @@ async function createUserFrom(user) {
   return creationSuccessful;
 }
 
-export { getAllUsers, getUserById, createUser, createUserFrom, endpoint };
+export { getAllUsers, getUserById, createUser, createUserForm, endpoint };
