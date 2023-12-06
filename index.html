@@ -94,6 +94,14 @@
             <label for="password">Confirm Password:</label>
             <input type="password" id="createConfirmPassword" name="password" required />
 
+            <!-- Subscribe to Newsletter -->
+            <div class="subscribe-newsletter">
+              <label for="subscribeCheckbox">
+                <input type="checkbox" id="subscribeCheckbox" />
+                Subscribe to Newsletter
+              </label>
+            </div>
+
             <button onclick="createAccount()">Create Account</button>
           </div>
         </div>
@@ -114,12 +122,10 @@
           <a href="kurv.html" class="nav-link">🛒</a>
           <div class="underline"></div>
           <div class="cart-content">
-            <div class="cart-items">
-
-            </div>
+            <div class="cart-items"></div>
             <div class="cart-total-container">
-          <!-- Total price section will be appended here -->
-           </div>
+              <!-- Total price section will be appended here -->
+            </div>
           </div>
         </div>
 
@@ -329,6 +335,6 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 
-     <script type="module" src="main.js"></script>
+    <script type="module" src="main.js"></script>
   </body>
 </html>

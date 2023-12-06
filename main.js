@@ -183,11 +183,20 @@ function addToCart(productId, listPrice, productName, imageURLs, guestOrderId) {
   }
 }
 
+export {
+  addToCart,
+  products,
+  categories,
+  guestOrderCreated,
+  cart,
+  saveCartToLocalStorage,
+  initializeCartView,
+  htmlSide,
+  initializeCartHtmlView,
+  updateProductList,
+};
 
-
-export { addToCart, products, categories, guestOrderCreated, cart, saveCartToLocalStorage, initializeCartView, htmlSide, initializeCartHtmlView, updateProductList };
-
-export default {guestOrderCreated} // Export default so it can get modified in other files
+export default { guestOrderCreated }; // Export default so it can get modified in other files
 
 // // Add this to your existing JavaScript file or create a new one
 // document.addEventListener("DOMContentLoaded", function () {

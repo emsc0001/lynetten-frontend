@@ -93,7 +93,15 @@
             <label for="password">Confirm Password:</label>
             <input type="password" id="createConfirmPassword" name="password" required />
 
-            <button id="modalButton" onclick="createAccount()">Create Account</button>
+            <!-- Subscribe to Newsletter -->
+            <div class="subscribe-newsletter">
+              <label for="subscribeCheckbox">
+                <input type="checkbox" id="subscribeCheckbox" />
+                Subscribe to Newsletter
+              </label>
+            </div>
+
+            <button onclick="createAccount()">Create Account</button>
           </div>
         </div>
 
@@ -113,12 +121,10 @@
           <a href="kurv.html" class="nav-link">🛒</a>
           <div class="underline"></div>
           <div class="cart-content">
-            <div class="cart-items">
-
-            </div>
+            <div class="cart-items"></div>
             <div class="cart-total-container">
-          <!-- Total price section will be appended here -->
-           </div>
+              <!-- Total price section will be appended here -->
+            </div>
           </div>
         </div>
 
