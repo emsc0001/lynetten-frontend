@@ -55,25 +55,28 @@
         </div>
 
         <!-- Other icons go here -->
-        <span class="nav-icon">👤</span>
 
-        <!-- Add this inside your body tag, preferably at the end -->
-        <div id="userModal" class="modal">
-          <div class="modal-content">
-            <span id="closeUser" class="close">×</span>
-            <img src="https://i.ibb.co/r2bH4d1/Sk-rmbillede-2023-11-28-kl-15-35-30.png" alt="Logo" height="50" />
-            <h2>Bruger Login</h2>
-            <label for="email">Email:</label>
-            <input type="email" id="emailUser" name="email" required />
+        <div class="user-container">
+          <span class="nav-icon">👤</span>
 
-            <label for="password">Password:</label>
-            <input type="password" id="passwordUser" name="password" required />
+          <!-- Add this inside your body tag, preferably at the end -->
+          <div id="userModal" class="modal">
+            <div class="modal-content">
+              <span id="closeUser" class="close">×</span>
+              <img src="https://i.ibb.co/r2bH4d1/Sk-rmbillede-2023-11-28-kl-15-35-30.png" alt="Logo" height="50" />
+              <h2>Bruger Login</h2>
+              <label for="email">Email:</label>
+              <input type="email" id="emailUser" name="email" required />
 
-            <button id="modalButton" onclick="login()">Login</button>
+              <label for="password">Password:</label>
+              <input type="password" id="passwordUser" name="password" required />
 
-            <div class="additional-options">
-              <p><a id="forgotUserLink" href="#">Forgot Password?</a></p>
-              <p><a id="createUserLink" href="#">Create New Account</a></p>
+              <button id="modalButton" onclick="login()">Login</button>
+
+              <div class="additional-options">
+                <p><a id="forgotUserLink" href="#">Forgot Password?</a></p>
+                <p><a id="createUserLink" href="#">Create New Account</a></p>
+              </div>
             </div>
           </div>
         </div>

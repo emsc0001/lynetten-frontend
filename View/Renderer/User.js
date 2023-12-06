@@ -6,9 +6,9 @@ function openUserModal() {
   userModalShow.style.display = "block"; // Show the modal
 
   // Close the User login modal
-  document.getElementById("closeUser").addEventListener("click", function closeUser() {
-    document.getElementById("userModal").style.display = "none";
-  });
+  const closeUserButton = document.getElementById("closeUser");
+  closeUserButton.removeEventListener("click", closeUser); // Remove existing event listener
+  closeUserButton.addEventListener("click", closeUser);
 }
 
 // Open the Create User Login modal
@@ -20,9 +20,9 @@ function openCreateUserModal() {
   createUserModalShow.style.display = "block";
 
   // Close the create user modal
-  document.getElementById("closeCreateUser").addEventListener("click", function () {
-    document.getElementById("createUserModal").style.display = "none";
-  });
+  const closeCreateUserButton = document.getElementById("closeCreateUser");
+  closeCreateUserButton.removeEventListener("click", closeCreateUser); // Remove existing event listener
+  closeCreateUserButton.addEventListener("click", closeCreateUser);
 }
 
 // Open the Forgot Password modal
@@ -34,9 +34,22 @@ function openForgotPasswordModal() {
   forgotPasswordModalShow.style.display = "block";
 
   // Close the forgot password modal
-  document.getElementById("closeForgotPassword").addEventListener("click", function () {
-    document.getElementById("forgotPasswordModal").style.display = "none";
-  });
+  const closeForgotPasswordButton = document.getElementById("closeForgotPassword");
+  closeForgotPasswordButton.removeEventListener("click", closeForgotPassword); // Remove existing event listener
+  closeForgotPasswordButton.addEventListener("click", closeForgotPassword);
+}
+
+function closeUser(event) {
+  event.stopPropagation(); // Stop the event from propagating to the user icon
+  document.getElementById("userModal").style.display = "none";
+}
+
+function closeCreateUser() {
+  document.getElementById("createUserModal").style.display = "none";
+}
+
+function closeForgotPassword() {
+  document.getElementById("forgotPasswordModal").style.display = "none";
 }
 
 // Handle login logic
@@ -54,7 +67,7 @@ function openForgotPasswordModal() {
 // }
 
 // Listen for clicks on the account icon
-const userIcon = document.querySelector(".nav-icon");
+const userIcon = document.querySelector(".user-container");
 if (userIcon) {
   userIcon.addEventListener("click", openUserModal);
 } else {
