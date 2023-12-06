@@ -13,6 +13,7 @@ export default class ProductRenderer extends ItemRenderer {
           <h4>${product.productNumber}</h4>
           <h3>${product.listPrice}kr</h3>
           <button class="button" data-id="${product.productId}">Add to Cart</button>
+          <button class="delete-button" data-product-id="${product.productId}">Delete</button>
         </div>
       </article>
     `;
