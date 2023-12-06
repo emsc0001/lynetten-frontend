@@ -45,7 +45,7 @@
       <div class="nav-icons">
         <!-- Search container with icon and bar -->
         <div class="search-container">
-          <span class="nav-icon search-icon">🔍</span>
+          <span class="nav-icon search-icon" id="searchIcon">🔍</span>
           <div class="search-bar" id="searchBar">
             <form id="search-form-product">
               <input type="text" id="input-search-products" placeholder="Search After Products" data-search-type="Products" />
@@ -55,9 +55,59 @@
         </div>
 
         <!-- Other icons go here -->
-
         <span class="nav-icon">👤</span>
-        <!-- Replace with account icon -->
+
+        <!-- Add this inside your body tag, preferably at the end -->
+        <div id="userModal" class="modal">
+          <div class="modal-content">
+            <span id="closeUser" class="close">×</span>
+            <img src="https://i.ibb.co/r2bH4d1/Sk-rmbillede-2023-11-28-kl-15-35-30.png" alt="Logo" height="50" />
+            <h2>Bruger Login</h2>
+            <label for="email">Email:</label>
+            <input type="email" id="emailUser" name="email" required />
+
+            <label for="password">Password:</label>
+            <input type="password" id="passwordUser" name="password" required />
+
+            <button id="modalButton" onclick="login()">Login</button>
+
+            <div class="additional-options">
+              <p><a id="forgotUserLink" href="#">Forgot Password?</a></p>
+              <p><a id="createUserLink" href="#">Create New Account</a></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Create user modal -->
+        <div id="createUserModal" class="modal">
+          <div class="modal-content">
+            <span id="closeCreateUser" class="close">×</span>
+            <img src="https://i.ibb.co/r2bH4d1/Sk-rmbillede-2023-11-28-kl-15-35-30.png" alt="Logo" height="50" />
+            <h2>Create New Account</h2>
+            <label for="email">Email:</label>
+            <input type="email" id="createEmail" name="email" required />
+
+            <label for="password">Password:</label>
+            <input type="password" id="createPassword" name="password" required />
+
+            <label for="password">Confirm Password:</label>
+            <input type="password" id="createConfirmPassword" name="password" required />
+
+            <button id="modalButton" onclick="createAccount()">Create Account</button>
+          </div>
+        </div>
+
+        <div id="forgotPasswordModal" class="modal">
+          <div class="modal-content">
+            <span id="closeForgotPassword" class="close">×</span>
+            <img src="https://i.ibb.co/r2bH4d1/Sk-rmbillede-2023-11-28-kl-15-35-30.png" alt="Logo" height="50" />
+            <h2>Forgot Password</h2>
+            <label for="email">Email:</label>
+            <input type="email" id="forgotEmail" name="email" required />
+
+            <button id="modalButton" onclick="sendPasswordReset()">Send Password Reset</button>
+          </div>
+        </div>
 
         <div class="nav-item" data-tab="kurv" id="cart">
           <a href="kurv.html" class="nav-link">🛒</a>
