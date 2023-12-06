@@ -61,7 +61,7 @@ function initializeOtherHtmlViews() {
   categoriesLists = new ListRenderer(categories, ".category-list", CategoryRenderer);
   categoriesLists.render();
   
-  newsletter();
+  // newsletter();
 }
 
 //Initiliaze views for products.html
@@ -127,10 +127,7 @@ function updateProductList(searchResults) {
     productsLists.render();
   }
 }
-    categoriesLists = new ListRenderer(categories, ".category-list", CategoryRenderer);
-  categoriesLists.render();
 
-}
 
 //Initiliaze views the cart for products.html, koebeguide.html, handelsBetingelser and index.html
 function initializeCartView(){
@@ -188,7 +185,7 @@ function addToCart(productId, listPrice, productName, imageURLs, guestOrderId) {
 }
 
 
-export { addToCart, products, categories, guestOrderCreated, cart, saveCartToLocalStorage, initializeCartView, htmlSide, initializeCartHtmlView };
+export { addToCart, products, categories, guestOrderCreated, cart, saveCartToLocalStorage, initializeCartView, htmlSide, initializeCartHtmlView, updateProductList };
 
 export default {guestOrderCreated} // Export default so it can get modified in other files
 
@@ -277,4 +274,3 @@ export default {guestOrderCreated} // Export default so it can get modified in o
 //   });
 // });
 
-export { updateProductList, products };
