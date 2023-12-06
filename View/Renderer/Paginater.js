@@ -1,5 +1,6 @@
 import ListRenderer from "./ListRenderer.js";
 import { getSomeProducts } from "../../Controller/products-rest.js";
+import { products } from "../../main.js";
 
 export default class Paginater extends ListRenderer {
   constructor(route, containerparent, itemRenderer, itemsPrPage) {
@@ -44,7 +45,7 @@ export default class Paginater extends ListRenderer {
   }
 
   renderPageButtons() {
-    const totalNumberOfItems = 145; // TODO: Find from backend
+    const totalNumberOfItems = products.length; // TODO: Find from backend
     // create a list of buttons - add them below the parent
     let html = '<div id="paginator">';
     for (let p = 0; p < totalNumberOfItems / this.itemsPrPage; p++) {

@@ -34,28 +34,62 @@ body {
 
 /* Search bar styles */
 .search-container {
+  position: relative;
   display: flex;
+  align-items: center;
 }
 
-.search-input {
+/* Style for the search icon */
+.search-icon {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Style for the search bar */
+.search-bar {
+  display: none; /* Skjul søgefeltet som standard */
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  z-index: 1; /* Sørg for at søgefeltet vises over alt andet indhold */
+  transition: all 0.3s ease;
+}
+
+/* Style for the search input */
+#input-search-products {
+  width: 100%;
   padding: 8px;
   border: 1px solid #ccc;
-  border-radius: 4px 0 0 4px;
-  font-size: 16px;
-  width: 250px;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
 
-.search-button {
-  padding: 8px 12px;
-  background-color: #e68a00;
-  border: 1px solid #ccc;
-  border-left: none;
-  border-radius: 0 4px 4px 0;
+/* Style for the search button */
+#searchButton {
+  background-color: #ff8c00;
+  color: #fff;
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.search-button:hover {
-  background-color: #cc7a00;
+/* Hover effect for the search button */
+#searchButton:hover {
+  background-color: #f6f7f7;
+}
+
+.search-bar.active {
+  display: block; /* Vis søgefeltet, når det har klassen 'active' */
 }
 
 /* Sidebar styles */
@@ -319,11 +353,6 @@ html {
   column-gap: 15px; /* Space between columns */
 }
 
-
-
-
-
-
 .main-content {
   /* Sørger for at indholdet centreres og har plads rundt om sig */
   max-width: 1500px;
@@ -405,6 +434,16 @@ html {
   background-color: #2980b9;
 }
 
+/* Tilføj dette til din eksisterende CSS-fil */
+.products-container {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.products-container.fade-out {
+  opacity: 0;
+}
+
 .news-updates {
   font-family: "Arial", sans-serif; /* Example font */
   margin-left: 20px; /* Adjust as necessary for alignment */
@@ -467,35 +506,6 @@ html {
 }
 
 /* Style the search button (if needed) */
-#searchButton {
-  margin-top: 8px;
-  padding: 8px;
-  background-color: #4caf50;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.search-bar input {
-  width: 200px;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.search-bar button {
-  padding: 8px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.search-bar button:hover {
-  background-color: #0056b3;
-}
 
 
 /* ---------Cart--------- */
@@ -639,6 +649,25 @@ div.cart-total a.go-to-cart-link:hover {
 }
 
 
+
+#pagination {
+  min-height: 50px; /* Just an example height; adjust as needed */
+  overflow: hidden;
+}
+
+.breadcrumb {
+  font-size: 14px;
+  color: #666;
+}
+
+.breadcrumb-link {
+  color: #ffe100;
+  text-decoration: none;
+}
+
+.breadcrumb-link:hover {
+  text-decoration: underline;
+}
 
 footer {
   background-color: #f0f8ff; /* Light blue background */

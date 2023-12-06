@@ -1,12 +1,19 @@
 "use strict";
 import { endpoint, getAllProducts } from "./Controller/products-rest.js";
-import { getAllCategories } from "./Controller/category-rest.js";
+import { getAllCategories, getCategoryWithProducts } from "./Controller/category-rest.js";
+
+import { openUserModal, openCreateUserModal, openForgotPasswordModal } from "./View/Renderer/User.js";
+
+import { handleSearch } from "./View/Helpers/Search.js";
 
 import ProductRenderer from "./View/Renderer/ProductRenderer.js";
 import CategoryRenderer from "./View/Renderer/CategoryRenderer.js";
 import Paginater from "./View/Renderer/Paginater.js";
 import ListRenderer from "./View/Renderer/ListRenderer.js";
 import ProductCartRenderer from "./View/Renderer/ProductCartRenderer.js";
+
+import { newsletter } from "./View/nyhedsbrev.js";
+// import { myMap } from "./View/map.js";
 
 endpoint;
 
@@ -34,8 +41,8 @@ async function baddServiceApp() {
   products = await getAllProducts();
   categories = await getAllCategories();
 
-  console.log("number of products: " + products.length);
-  console.log("number of categories: " + categories.length);
+  console.log("Number Of Products: " + products.length);
+  console.log("Number Of Categories: " + categories.length);
 
   // Initialize the views based on html page
   if (htmlSide === '/products.html') {
@@ -51,16 +58,75 @@ async function baddServiceApp() {
 
 //Initiliaze views for koebeguide.html, handelsBetingelser and index.html
 function initializeOtherHtmlViews() {
-    categoriesLists = new ListRenderer(categories, ".category-list", CategoryRenderer);
-    categoriesLists.render();
+  categoriesLists = new ListRenderer(categories, ".category-list", CategoryRenderer);
+  categoriesLists.render();
   
+  newsletter();
 }
 
 //Initiliaze views for products.html
 function initializeProductViews() {
+  productsLists = new Paginater(products, "#products-container", ProductRenderer, 10);
+  productsLists.render();
+
+  // initialize Category Views //
+  categoriesLists = new ListRenderer(categories, ".category-list", CategoryRenderer);
+  categoriesLists.render();
+
+  // initialize Products views based on Categories  //
+
+  const categoryLinks = document.querySelectorAll(".category-list a");
+  categoryLinks.forEach((categoryLink) => {
+    categoryLink.addEventListener("click", async (event) => {
+      event.preventDefault();
+      const categoryId = categoryLink.dataset.categoryId;
+
+      // Brug den nye funktion til at hente kategori og produkter
+      const { category, products } = await getCategoryWithProducts(categoryId);
+
+      // Gør noget med kategori og produkter, f.eks. vis dem i konsollen
+      console.log("Category:", category);
+      console.log("Products for category ID", categoryId, products);
+
+      productsLists = new ListRenderer(products, "#products-container", ProductRenderer);
+      productsLists.render();
+    });
+  });
+}
+
+// -----Search EventListener------//
+
+document.addEventListener("DOMContentLoaded", () => {
+  const searchInputs = document.querySelectorAll("[data-search-type]");
+  searchInputs.forEach((input) => {
+    input.addEventListener("input", handleSearch);
+  });
+});
+
+function updateProductList(searchResults) {
+  // Get the container for products
+  const productsContainer = document.querySelector("#products-container");
+
+  // Remove existing pagination
+  const existingPagination = document.querySelector("#paginator");
+  if (existingPagination) {
+    existingPagination.remove();
+  }
+
+  // Clear the existing content
+  productsContainer.innerHTML = "";
+
+  // Check if there are search results
+  if (searchResults && searchResults.length > 0) {
+    // Render the updated list of products
+    productsLists = new ListRenderer(searchResults, "#products-container", ProductRenderer);
+    productsLists.render();
+  } else {
+    // If there are no search results, render all products
     productsLists = new Paginater(products, "#products-container", ProductRenderer, 10);
     productsLists.render();
-
+  }
+}
     categoriesLists = new ListRenderer(categories, ".category-list", CategoryRenderer);
   categoriesLists.render();
 
@@ -155,15 +221,7 @@ export default {guestOrderCreated} // Export default so it can get modified in o
 //   }
 // });
 
-// // Place this script after your HTML or at the end of the body
-// function toggleSearchBar() {
-//   const searchBar = document.querySelector(".search-bar");
-//   searchBar.style.display = searchBar.style.display === "none" ? "block" : "none";
-// }
-
-// function search() {
-//   // Implement search functionality here
-// }
+// Place this script after your HTML or at the end of the body
 
 // document.addEventListener("DOMContentLoaded", function () {
 //   let navItems = document.querySelectorAll(".nav-item");
@@ -179,9 +237,44 @@ export default {guestOrderCreated} // Export default so it can get modified in o
 //   });
 // });
 
+// MAP _____________________________
 
+// var myMap = L.map("interactive-map").setView([55.691046, 12.599752], 13); // Replace with your coordinates
 
+// L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+//   maxZoom: 19,
+//   attribution: "© OpenStreetMap contributors",
+// }).addTo(myMap);
 
+// // NEWSLETTER ______________________
 
+// document.addEventListener("DOMContentLoaded", function () {
+//   // Check if the user has already subscribed in this session
+//   if (!sessionStorage.getItem("subscribed")) {
+//     setTimeout(function () {
+//       document.getElementById("newsletter-popup").classList.add("show");
+//     }, 2000);
+//   }
 
+//   // Handle form submission
+//   document.getElementById("newsletter-form").addEventListener("submit", function (event) {
+//     event.preventDefault();
+//     document.getElementById("newsletter-form").classList.add("hidden");
+//     document.getElementById("subscription-message").classList.remove("hidden");
 
+//     // Set a flag in session storage
+//     sessionStorage.setItem("subscribed", "true");
+
+//     // Close the popup automatically after a delay
+//     setTimeout(function () {
+//       document.getElementById("newsletter-popup").classList.remove("show");
+//     }, 3000); // Adjust time as needed
+//   });
+
+//   // Close button functionality
+//   document.getElementById("close-popup").addEventListener("click", function () {
+//     document.getElementById("newsletter-popup").classList.remove("show");
+//   });
+// });
+
+export { updateProductList, products };
