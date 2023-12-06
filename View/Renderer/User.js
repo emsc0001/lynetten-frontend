@@ -55,22 +55,29 @@ function openForgotPasswordModal() {
 
 // Listen for clicks on the account icon
 const userIcon = document.querySelector(".nav-icon");
-userIcon.addEventListener("click", openUserModal);
+if (userIcon) {
+  userIcon.addEventListener("click", openUserModal);
+} else {
+  console.error(".nav-icon not found");
+}
 
 const createUserLink = document.getElementById("createUserLink");
-
-createUserLink.addEventListener("click", function (event) {
-  event.preventDefault();
-  openUserModal(); // Close the userModal
-  openCreateUserModal(); // Open the createUserModal
-});
+if (createUserLink) {
+  createUserLink.addEventListener("click", function (event) {
+    event.preventDefault();
+    openUserModal(); // Close the userModal
+    openCreateUserModal(); // Open the createUserModal
+  });
+}
 
 // Listen for clicks on the forgot password link
 const forgotPasswordLink = document.getElementById("forgotUserLink");
-forgotPasswordLink.addEventListener("click", function (event) {
-  event.preventDefault();
-  openUserModal(); // Close the userModal
-  openForgotPasswordModal(); // Open the forgotPasswordModal
-});
+if (forgotPasswordLink) {
+  forgotPasswordLink.addEventListener("click", function (event) {
+    event.preventDefault();
+    openUserModal(); // Close the userModal
+    openForgotPasswordModal(); // Open the forgotPasswordModal
+  });
+}
 
 export { openUserModal, openCreateUserModal, openForgotPasswordModal };
