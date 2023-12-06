@@ -7,9 +7,9 @@ export default class UserLoginDialog extends Dialog {
     const html = /*html*/ `
 <div class="login-form-container">
     <form>
+        <button type="button" data-action="close">X</button>
         <h1>Login</h1>
         <img src="https://i.ibb.co/r2bH4d1/Sk-rmbillede-2023-11-28-kl-15-35-30.png" alt="Logo" height="50" />
-        <button type="button" data-action="close">X</button>
         <label for="email">Email</label>
         <input type="email" name="email" id="loginUserEmail" required>
         <label for="password">Adgangskode</label>
@@ -22,6 +22,7 @@ export default class UserLoginDialog extends Dialog {
         </div>
     </form>
 </div>
+
 
         `;
     return html;
