@@ -185,6 +185,25 @@ function addToCart(productId, listPrice, productName, imageURLs, guestOrderId) {
 }
 
 
+// Guide beskrivelser
+
+document.addEventListener("DOMContentLoaded", function() {
+  var collapsibles = document.getElementsByClassName("collapsible");
+  for (var i = 0; i < collapsibles.length; i++) {
+      collapsibles[i].addEventListener("click", function() {
+          this.classList.toggle("active");
+          var content = this.nextElementSibling;
+          if (content.style.display === "block") {
+              content.style.display = "none";
+          } else {
+              content.style.display = "block";
+          }
+      });
+  }
+});
+
+
+
 export { addToCart, products, categories, guestOrderCreated, cart, saveCartToLocalStorage, initializeCartView, htmlSide, initializeCartHtmlView, updateProductList };
 
 export default {guestOrderCreated} // Export default so it can get modified in other files
