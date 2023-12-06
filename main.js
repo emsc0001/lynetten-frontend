@@ -7,8 +7,6 @@ import UserCreateDialog from "./View/Dialogs/CreateUserDialog.js";
 import UserLoginDialog from "./View/Dialogs/UserLoginDialog.js";
 import ForgotPasswordDialog from "./View/Dialogs/ForgotPasswordDialog.js";
 
-import { openForgotPasswordModal } from "./View/User.js";
-
 import { handleSearch } from "./View/Helpers/Search.js";
 
 // import { createUser } from "./Controller/user-rest.js";
@@ -30,12 +28,13 @@ endpoint;
 
 let products = [];
 let categories = [];
-let users = [];
 
 let productsLists = null;
 let categoriesLists = null;
-let usersLists = null;
 
+//User variables
+let users = [];
+let usersLists = null;
 let UsersLoginDialog = null;
 let CreateUserDialog = null;
 let PasswordForgotDialog = null;
@@ -74,7 +73,7 @@ async function baddServiceApp() {
   }
 }
 
-//Initiliaze views for koebeguide.html, handelsBetingelser and index.html
+//Initiliaze views for koebeguide.html, handelsBetingelser, bruger.html and index.html
 function initializeOtherHtmlViews() {
   // initialize Category Views //
   categoriesLists = new ListRenderer(categories, ".category-list", CategoryRenderer);
@@ -85,10 +84,8 @@ function initializeOtherHtmlViews() {
   usersLists.render();
 
   // LOGIN USER DIALOG //
-
   UsersLoginDialog = new UserLoginDialog("user-login-dialog");
   UsersLoginDialog.render();
-  // UsersLoginDialog.show();
 
   const userLogin = document.querySelector(".userLogin-container");
 
@@ -100,29 +97,29 @@ function initializeOtherHtmlViews() {
   // CREATE USER DIALOG //
   CreateUserDialog = new UserCreateDialog("user-create-dialog");
   CreateUserDialog.render();
-  // CreateUserDialog.show();
 
   const createUserLink = document.getElementById("createUserLogin");
 
   // Event listener to show the dialog when the link is clicked
-  createUserLink.addEventListener("click", (event) => {
-    event.preventDefault(); // Prevent the default link behavior (e.g., navigating to a new page)
+  createUserLink.addEventListener("click", async (event) => {
+    event.preventDefault();
+
+    // Close the UserLoginDialog before showing the CreateUserDialog
+    await UsersLoginDialog.hide();
     CreateUserDialog.show();
   });
 
   // FORGOT PASSWORD DIALOG //
   PasswordForgotDialog = new ForgotPasswordDialog("forgot-password-dialog");
   PasswordForgotDialog.render();
-  // PasswordForgotDialog.show();
 
   const forgotPasswordLink = document.getElementById("forgotUserLogin");
 
   // Event listener to show the dialog when the link is clicked
   forgotPasswordLink.addEventListener("click", (event) => {
-    event.preventDefault(); // Prevent the default link behavior (e.g., navigating to a new page)
+    event.preventDefault();
     PasswordForgotDialog.show();
   });
-  // newsletter();
 }
 
 //Initiliaze views for products.html

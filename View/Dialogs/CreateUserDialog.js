@@ -15,17 +15,17 @@ export default class UserCreateDialog extends Dialog {
         <input type="password" name="password" id="createUserpassword" required>
         <label for="newsletterSubscription">Newsletter Abonnement</label>
         <input type="checkbox" name="newsletterSubscription" id="createUsernewsletterSubscription">
-        <button type="submit" data-action="create">Opret</button>
-        <button type="button" data-action="cancel">Fortryd</button>
+        <button  data-action="create">Opret</button>
+        <button data-action="cancel">Fortryd</button>
       </form>
     `;
     return html;
   }
 
-  create() {
+  async create() {
     // Build user object from form
     const form = this.dialog.querySelector("form");
-    const newUser = new User({
+    this.user = new User({
       email: form.email.value,
       password: form.password.value,
       newsletterSubscription: form.newsletterSubscription.checked,
@@ -35,6 +35,11 @@ export default class UserCreateDialog extends Dialog {
     form.reset();
 
     // Call the controller method to create the user
-    Controller.createUserForm(newUser);
+    const creationSuccessful = await Controller.createUser(this.user);
+
+    if (creationSuccessful) {
+      // Close the dialog if the user creation is successful
+      this.close();
+    }
   }
 }
