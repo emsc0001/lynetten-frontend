@@ -75,7 +75,7 @@ function initializeOtherHtmlViews() {
   categoriesLists = new ListRenderer(categories, ".category-list", CategoryRenderer);
   categoriesLists.render();
 
-  usersLists = new ListRenderer(users, ".user-list", UserRenderer);
+  usersLists = new ListRenderer(users, "#user-container", UserRenderer);
   usersLists.render();
 
   CreateUserDialog = new userCreateDialog("user-create-dialog");
