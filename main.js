@@ -84,6 +84,7 @@ function initializeOtherHtmlViews() {
   usersLists.render();
 
   // LOGIN USER DIALOG //
+
   UsersLoginDialog = new UserLoginDialog("user-login-dialog");
   UsersLoginDialog.render();
 
@@ -101,11 +102,8 @@ function initializeOtherHtmlViews() {
   const createUserLink = document.getElementById("createUserLogin");
 
   // Event listener to show the dialog when the link is clicked
-  createUserLink.addEventListener("click", async (event) => {
-    event.preventDefault();
-
-    // Close the UserLoginDialog before showing the CreateUserDialog
-    await UsersLoginDialog.hide();
+  createUserLink.addEventListener("click", (event) => {
+    event.preventDefault(); // Prevent the default link behavior (e.g., navigating to a new page)
     CreateUserDialog.show();
   });
 
@@ -117,9 +115,10 @@ function initializeOtherHtmlViews() {
 
   // Event listener to show the dialog when the link is clicked
   forgotPasswordLink.addEventListener("click", (event) => {
-    event.preventDefault();
+    event.preventDefault(); // Prevent the default link behavior (e.g., navigating to a new page)
     PasswordForgotDialog.show();
   });
+  // newsletter();
 }
 
 //Initiliaze views for products.html
