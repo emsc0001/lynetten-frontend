@@ -865,6 +865,66 @@ tbody tr:hover {
   color: #ff8c00; /* Hover and focus state color */
 }
 
+/* STYLING AF LOGIN USER */
+
+.login-form-container {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.login-form-container form {
+  margin-top: 20px;
+}
+
+.login-form-container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.login-form-container label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.login-form-container input {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.login-form-container button {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 0;
+  background-color: #ff8c00;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.login-form-container button[data-action="cancel"] {
+  background-color: #ccc;
+  color: #333;
+}
+
+.additional-options {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.additional-options p {
+  margin-bottom: 10px;
+}
+
 /* STYLING AF CREATE USER BUTTON */
 form {
   position: relative;
@@ -881,6 +941,7 @@ button[data-action="close"] {
   top: 0.5px;
   right: 0px;
   background: transparent;
+  border: 0;
   font-size: 20px;
   line-height: 10px;
   cursor: pointer;

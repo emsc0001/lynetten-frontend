@@ -2,10 +2,12 @@ import Dialog from "./Dialog.js";
 import User from "../../Model/User.js";
 import * as Controller from "../../Controller/user-rest.js";
 
-export default class userCreateDialog extends Dialog {
+export default class UserCreateDialog extends Dialog {
   renderHTML() {
     const html = /*html*/ `
       <form>
+      <h1> Opret Bruger </h1>
+    <img src="https://i.ibb.co/r2bH4d1/Sk-rmbillede-2023-11-28-kl-15-35-30.png" alt="Logo" height="50" />
       <button type="button" data-action="close">X</button>
         <label for="email">Email</label>
         <input type="email" name="email" id="createUserEmail" required>

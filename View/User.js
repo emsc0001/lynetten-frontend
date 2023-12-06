@@ -1,29 +1,29 @@
 // Open the User Login modal
-function openUserModal() {
-  console.log("Opened User Login");
-  const userModalShow = document.getElementById("userModal");
-  userModalShow.classList.add("show"); // Add the 'show' class
-  userModalShow.style.display = "block"; // Show the modal
+// function openUserModal() {
+//   console.log("Opened User Login");
+//   const userModalShow = document.getElementById("userModal");
+//   userModalShow.classList.add("show"); // Add the 'show' class
+//   userModalShow.style.display = "block"; // Show the modal
 
-  // Close the User login modal
-  const closeUserButton = document.getElementById("closeUser");
-  closeUserButton.removeEventListener("click", closeUser); // Remove existing event listener
-  closeUserButton.addEventListener("click", closeUser);
-}
+//   // Close the User login modal
+//   const closeUserButton = document.getElementById("closeUser");
+//   closeUserButton.removeEventListener("click", closeUser); // Remove existing event listener
+//   closeUserButton.addEventListener("click", closeUser);
+// }
 
 // Open the Create User Login modal
-function openCreateUserModal() {
-  console.log("Opened Create User Login");
+// function openCreateUserModal() {
+//   console.log("Opened Create User Login");
 
-  const createUserModalShow = document.getElementById("createUserModal");
-  createUserModalShow.classList.add("show");
-  createUserModalShow.style.display = "block";
+//   const createUserModalShow = document.getElementById("createUserModal");
+//   createUserModalShow.classList.add("show");
+//   createUserModalShow.style.display = "block";
 
-  // Close the create user modal
-  const closeCreateUserButton = document.getElementById("closeCreateUser");
-  closeCreateUserButton.removeEventListener("click", closeCreateUser); // Remove existing event listener
-  closeCreateUserButton.addEventListener("click", closeCreateUser);
-}
+//   // Close the create user modal
+//   const closeCreateUserButton = document.getElementById("closeCreateUser");
+//   closeCreateUserButton.removeEventListener("click", closeCreateUser); // Remove existing event listener
+//   closeCreateUserButton.addEventListener("click", closeCreateUser);
+// }
 
 // Open the Forgot Password modal
 function openForgotPasswordModal() {
@@ -39,14 +39,14 @@ function openForgotPasswordModal() {
   closeForgotPasswordButton.addEventListener("click", closeForgotPassword);
 }
 
-function closeUser(event) {
-  event.stopPropagation(); // Stop the event from propagating to the user icon
-  document.getElementById("userModal").style.display = "none";
-}
+// function closeUser(event) {
+//   event.stopPropagation(); // Stop the event from propagating to the user icon
+//   document.getElementById("userModal").style.display = "none";
+// }
 
-function closeCreateUser() {
-  document.getElementById("createUserModal").style.display = "none";
-}
+// function closeCreateUser() {
+//   document.getElementById("createUserModal").style.display = "none";
+// }
 
 function closeForgotPassword() {
   document.getElementById("forgotPasswordModal").style.display = "none";
@@ -67,19 +67,18 @@ function closeForgotPassword() {
 // }
 
 // Listen for clicks on the account icon
-const userIcon = document.querySelector(".user-container");
-if (userIcon) {
-  userIcon.addEventListener("click", openUserModal);
-} else {
-  console.error(".nav-icon not found");
-}
+// const userIcon = document.querySelector(".user-container");
+// if (userIcon) {
+//   userIcon.addEventListener("click", openUserModal);
+// } else {
+//   console.error(".nav-icon not found");
+// }
 
 const createUserLink = document.getElementById("createUserLink");
 if (createUserLink) {
   createUserLink.addEventListener("click", function (event) {
     event.preventDefault();
     openUserModal(); // Close the userModal
-    openCreateUserModal(); // Open the createUserModal
   });
 }
 
@@ -93,4 +92,4 @@ if (forgotPasswordLink) {
   });
 }
 
-export { openUserModal, openCreateUserModal, openForgotPasswordModal };
+export { openForgotPasswordModal };
