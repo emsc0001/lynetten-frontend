@@ -1,17 +1,26 @@
 "use strict";
 import { endpoint, getAllProducts } from "./Controller/products-rest.js";
 import { getAllCategories, getCategoryWithProducts } from "./Controller/category-rest.js";
+import { getAllUsers } from "./Controller/user-rest.js";
+
+import userCreateDialog from "./View/Dialogs/CreateUserDialog.js";
 
 import { openUserModal, openCreateUserModal, openForgotPasswordModal } from "./View/User.js";
 
 import { handleSearch } from "./View/Helpers/Search.js";
 
+// import { createUser } from "./Controller/user-rest.js";
+// import UserRenderer from "./View/Renderer/UserRenderer.js";
+
 import ProductRenderer from "./View/Renderer/ProductRenderer.js";
 import CategoryRenderer from "./View/Renderer/CategoryRenderer.js";
+import UserRenderer from "./View/Renderer/UserRenderer.js";
 import Paginater from "./View/Renderer/Paginater.js";
 import ListRenderer from "./View/Renderer/ListRenderer.js";
 import ProductCartRenderer from "./View/Renderer/ProductCartRenderer.js";
 
+// import { newsletter } from "View/Nyhedsbrev.js";
+// import { myMap } from "./View/map.js";
 import { newsletter } from "./View/Nyhedsbrev.js";
 // import { myMap } from "./View/map.js";
 
@@ -19,9 +28,13 @@ endpoint;
 
 let products = [];
 let categories = [];
+let users = [];
 
 let productsLists = null;
 let categoriesLists = null;
+let usersLists = null;
+
+let CreateUserDialog = null;
 
 //Order variables
 let cart = [];
@@ -39,9 +52,11 @@ async function baddServiceApp() {
   console.log("baddService loaded!");
   products = await getAllProducts();
   categories = await getAllCategories();
+  users = await getAllUsers();
 
   console.log("Number Of Products: " + products.length);
   console.log("Number Of Categories: " + categories.length);
+  console.log("Number Of Users: " + users.length);
 
   // Initialize the views based on html page
   if (htmlSide === "/products.html") {
@@ -59,6 +74,12 @@ async function baddServiceApp() {
 function initializeOtherHtmlViews() {
   categoriesLists = new ListRenderer(categories, ".category-list", CategoryRenderer);
   categoriesLists.render();
+
+  usersLists = new ListRenderer(users, ".user-list", UserRenderer);
+  usersLists.render();
+
+  CreateUserDialog = new userCreateDialog("user-create-dialog");
+  CreateUserDialog.render();
 
   // newsletter();
 }
@@ -185,6 +206,8 @@ export {
   addToCart,
   products,
   categories,
+  users,
+  usersLists,
   guestOrderCreated,
   cart,
   saveCartToLocalStorage,
@@ -192,6 +215,7 @@ export {
   htmlSide,
   initializeCartHtmlView,
   updateProductList,
+  initializeOtherHtmlViews,
 };
 
 export default { guestOrderCreated }; // Export default so it can get modified in other files
