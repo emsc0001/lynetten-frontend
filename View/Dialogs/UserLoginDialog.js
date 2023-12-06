@@ -17,7 +17,7 @@ export default class UserLoginDialog extends Dialog {
         <button type="submit" data-action="login">Login</button>
         <button type="button" data-action="cancel">Fortryd</button>
         <div class="additional-options">
-            <p><a id="forgotUserLink" href="#">Forgot Password?</a></p>
+            <p><a id="forgotUserLogin" href="#">Forgot Password?</a></p>
             <p><a id="createUserLogin" href="#">Create New Account</a></p>
         </div>
     </form>

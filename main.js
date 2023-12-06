@@ -5,6 +5,7 @@ import { getAllUsers } from "./Controller/user-rest.js";
 
 import UserCreateDialog from "./View/Dialogs/CreateUserDialog.js";
 import UserLoginDialog from "./View/Dialogs/UserLoginDialog.js";
+import ForgotPasswordDialog from "./View/Dialogs/ForgotPasswordDialog.js";
 
 import { openForgotPasswordModal } from "./View/User.js";
 
@@ -37,6 +38,7 @@ let usersLists = null;
 
 let UsersLoginDialog = null;
 let CreateUserDialog = null;
+let PasswordForgotDialog = null;
 
 //Order variables
 let cart = [];
@@ -108,6 +110,18 @@ function initializeOtherHtmlViews() {
     CreateUserDialog.show();
   });
 
+  // FORGOT PASSWORD DIALOG //
+  PasswordForgotDialog = new ForgotPasswordDialog("forgot-password-dialog");
+  PasswordForgotDialog.render();
+  PasswordForgotDialog.show();
+
+  const forgotPasswordLink = document.getElementById("forgotUserLogin");
+
+  // Event listener to show the dialog when the link is clicked
+  forgotPasswordLink.addEventListener("click", (event) => {
+    event.preventDefault(); // Prevent the default link behavior (e.g., navigating to a new page)
+    PasswordForgotDialog.show();
+  });
   // newsletter();
 }
 
