@@ -31,4 +31,26 @@ async function refetchAllUsers() {
   lastFetch = Date.now();
 }
 
-export { getAllUsers, getUserById, endpoint };
+async function createUser(newUser) {
+  try {
+    const response = await fetch(`${endpoint}/users`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newUser),
+    });
+
+    if (response.ok) {
+      return true;
+    } else {
+      const errorData = await response.json();
+      throw new Error(errorData.message);
+    }
+  } catch (error) {
+    console.error("Error creating user:", error);
+    throw new Error("An error occurred. Please try again later.");
+  }
+}
+
+export { getAllUsers, getUserById, createUser, endpoint };

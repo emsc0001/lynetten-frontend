@@ -2,7 +2,7 @@
 import { endpoint, getAllProducts } from "./Controller/products-rest.js";
 import { getAllCategories, getCategoryWithProducts } from "./Controller/category-rest.js";
 
-import { openUserModal, openCreateUserModal, openForgotPasswordModal } from "./View/Renderer/User.js";
+import { openUserModal, openCreateUserModal, openForgotPasswordModal } from "./View/User.js";
 
 import { handleSearch } from "./View/Helpers/Search.js";
 
@@ -12,8 +12,6 @@ import Paginater from "./View/Renderer/Paginater.js";
 import ListRenderer from "./View/Renderer/ListRenderer.js";
 import ProductCartRenderer from "./View/Renderer/ProductCartRenderer.js";
 
-// import { newsletter } from "View/Nyhedsbrev.js";
-// import { myMap } from "./View/map.js";
 import { newsletter } from "./View/Nyhedsbrev.js";
 // import { myMap } from "./View/map.js";
 
