@@ -183,18 +183,6 @@ function addToCart(productId, listPrice, productName, imageURLs, guestOrderId) {
   }
 }
 
-export {
-  addToCart,
-  products,
-  categories,
-  guestOrderCreated,
-  cart,
-  saveCartToLocalStorage,
-  initializeCartView,
-  htmlSide,
-  initializeCartHtmlView,
-  updateProductList,
-};
 
 
 export { addToCart, products, categories, guestOrderCreated, cart, saveCartToLocalStorage, initializeCartView, htmlSide, initializeCartHtmlView, updateProductList };
