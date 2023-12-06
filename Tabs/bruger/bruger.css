@@ -483,37 +483,6 @@ button:hover {
   color: #2980b9;
 }
 
-.subscribe-newsletter {
-  margin-top: 20px;
-  text-align: center;
-}
-
-.subscribe-newsletter label {
-  display: block;
-  margin-bottom: 8px;
-}
-
-.subscribe-newsletter input {
-  width: 100%;
-  margin-bottom: 20px;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-.subscribe-newsletter input:focus-visible {
-  outline: 2px solid #2980b9;
-}
-
-.subscribe-newsletter input:checked + span {
-  color: #2980b9;
-}
-
-.subscribe-newsletter span {
-  color: #555;
-}
-
 /* Style for the forgot password modal */
 #forgotPasswordModal {
   display: none;
@@ -694,235 +663,6 @@ button:hover {
   left: 0;
 }
 
-.news-updates {
-  font-family: "Arial", sans-serif; /* Example font */
-  margin-left: 20px; /* Adjust as necessary for alignment */
-  margin-right: 20px;
-}
-
-.news-updates h2 {
-  font-size: 1.5em; /* Larger font size for headings */
-  margin-bottom: 10px; /* Space below heading */
-}
-
-.news-updates p,
-.news-updates ol {
-  font-size: 1em; /* Standard font size for body text */
-  line-height: 1.6; /* Adjust line spacing */
-  text-align: left; /* Align text to the left */
-  margin-bottom: 10px; /* Space below paragraphs and lists */
-}
-
-.news-updates ol {
-  padding-left: 20px; /* Indentation for list items */
-}
-
-.news-updates li {
-  margin-bottom: 5px; /* Space between list items */
-}
-
-/* Add this in your existing CSS file */
-.search-container {
-  position: relative;
-  display: flex;
-  align-items: center; /* Center the icon vertically */
-}
-
-.search-icon {
-  cursor: pointer;
-  margin-right: 8px; /* Add some space between the icon and the input */
-}
-
-.search-bar {
-  display: none;
-  position: absolute;
-  top: 100%;
-  right: 0;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  padding: 10px;
-  width: 200px; /* Adjust the width as needed */
-  z-index: 1; /* Ensure the search bar is above other elements */
-}
-
-/* Style the search input */
-#searchInput {
-  width: 100%;
-  padding: 8px;
-  box-sizing: border-box;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-/* Style the search button (if needed) */
-#searchButton {
-  margin-top: 8px;
-  padding: 8px;
-  background-color: #4caf50;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.search-bar input {
-  width: 200px;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.search-bar button {
-  padding: 8px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.search-bar button:hover {
-  background-color: #0056b3;
-}
-/* ---------Cart--------- */
-
-/* Style for the cart items */
-.cart-item {
-  display: flex;
-  align-items: center;
-  padding: 15px;
-  margin-right: 15px;
-  border-bottom: 1px solid #ccc;
-}
-
-.cart-item img {
-  width: 80px;
-  height: 80px;
-  margin-right: 20px;
-}
-
-.cart-item .item-details {
-  flex: 1;
-}
-
-.cart-item h2 {
-  font-size: 16px;
-  margin: 0;
-  margin-right: 10px;
-}
-
-.cart-item h3 {
-  font-size: 14px;
-  margin: 5px 0;
-  margin-right: 10px;
-  margin-left: 10px;
-}
-
-.cart-item p {
-  font-size: 12px;
-  margin: 0;
-  margin-right: 10px;
-  margin-left: 10px;
-}
-
-.cart-item .quantity {
-  display: flex;
-  align-items: center;
-  margin-top: 5px;
-}
-
-.cart-item .quantity label {
-  margin-right: 10px;
-}
-
-.cart-item .quantity input {
-  width: 40px;
-  padding: 5px;
-  border-radius: 3px;
-  border: 1px solid #ccc;
-}
-
-.cart-item .remove-button {
-  margin-left: auto;
-  background-color: #ff6347; /* Tomato red */
-  color: white;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 12px;
-}
-
-.cart-item .remove-button:hover {
-  background-color: #ff483e; /* Darker red on hover */
-}
-
-/* Styling for the "Go to Cart" link */
-.cart-total-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.cart-total {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
-
-.cart-total p {
-  margin: 0;
-}
-
-div.cart-total a.go-to-cart-link {
-  text-decoration: none;
-  padding: 10px 20px;
-  background-color: #ff6347; /* Tomato red */
-  border-radius: 5px;
-  color: white;
-  font-weight: bold;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-div.cart-total a.go-to-cart-link:hover {
-  background-color: #ff483e; /* Darker red on hover */
-  color: white;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-/* Styling for the total price section */
-.cart-total-container p {
-  margin: 0;
-  font-size: 16px;
-  font-weight: bold;
-}
-
-#cart {
-  position: relative;
-}
-
-.cart-content {
-  display: none;
-  position: absolute;
-  top: 100%;
-  right: 0;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  padding: 10px;
-  min-width: 200px;
-  max-height: 300px; /* Set a max height for scroll */
-  overflow-y: auto; /* Enable vertical scroll */
-  z-index: 1;
-}
-
-#cart:hover .cart-content {
-  display: block;
-}
-
 footer {
   color: rgb(0, 0, 0);
   text-align: center;
@@ -1028,64 +768,6 @@ footer {
   background-color: rgba(255, 255, 255, 0.7); /* Optional for better text visibility */
 }
 
-.popup {
-  position: fixed;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: #f1f1f1;
-  border: 2px solid #0077b6;
-  border-bottom-left-radius: 50px 20px;
-  border-top-left-radius: 50px 20px;
-  padding: 20px;
-  box-shadow: 0 0 10px rgba(175, 102, 102, 0.2);
-  width: 150px;
-  display: none;
-  z-index: 100;
-}
-
-#newsletter-form {
-  display: flex;
-  flex-direction: column;
-}
-
-#newsletter-form label,
-#newsletter-form input,
-#newsletter-form button {
-  margin-bottom: 10px;
-}
-
-.popup.show {
-  display: block;
-}
-
-.close-button {
-  position: absolute;
-  top: 5px;
-  right: 10px;
-  border: none;
-  background-color: transparent;
-  font-size: 20px;
-  cursor: pointer;
-}
-
-/* Optional: Style on hover */
-.close-button:hover {
-  color: red;
-}
-
-.hidden {
-  display: none;
-}
-
-/* Styles for subscription message */
-#subscription-message {
-  text-align: center;
-  color: green;
-  font-size: 18px;
-  margin-top: 20px;
-}
-
 /* Typography */
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -1105,46 +787,58 @@ h3 {
 /* MAIN CONTENT STYLE */
 
 /* Updated styles for main content */
+/* Grid layout for main content */
 .main-content {
   display: grid;
-  grid-template-columns: 1fr 4fr; /* Adjusted column ratio, now 1:4 */
-  grid-gap: 20px; /* Gap between columns */
-  margin-top: 20px;
+  grid-template-columns: 1fr 3fr;
+  grid-gap: 20px;
 }
 
-h1 {
-  text-align: center;
-  color: #ff8c00;
-  margin-top: 0.5em;
-  margin-bottom: 20em;
+/* Styling for user info container */
+.user-info {
+  background-color: #3498db;
+  color: #fff;
+  padding: 20px;
 }
 
-/* Responsive styles */
+/* Styling for heading */
+h1.headerBruger {
+  margin-top: 1, 5em;
+  margin-bottom: 1, 5em;
+}
+
+/* Responsive styles for small screens */
 @media only screen and (max-width: 600px) {
   .main-content {
-    grid-template-columns: 1fr; /* Display one column on small screens */
+    grid-template-columns: 1fr;
   }
 }
 
-/* Style for the table within main-content */
+/* Styling for the table within main-content */
 table {
   width: 100%;
   border-collapse: collapse;
+  border: 1px solid #ddd;
+  margin-top: 20px;
 }
 
+/* Styling for table header */
 thead {
   background-color: #3498db;
   color: #fff;
 }
 
+/* Styling for table cells */
 th,
 td {
-  padding: 10px;
+  padding: 15px;
   text-align: left;
 }
 
+/* Hover effect for table rows */
 tbody tr:hover {
   background-color: #f5f5f5;
+  transition: background-color 0.3s ease;
 }
 
 /* Navigation */
