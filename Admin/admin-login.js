@@ -6,9 +6,9 @@ document.getElementById("adminLoginForm").addEventListener("submit", function(ev
 
     // Admin credentials (for testing only)
     const admins = [
-        { username: 'Emil', password: 'lynetten' },
-        { username: 'Abdi', password: 'lynetten' },
-        { username: 'Mads', password: 'lynetten' }
+        { username: 'emil', password: 'lynetten' },
+        { username: 'abdi', password: 'lynetten' },
+        { username: 'mads', password: 'lynetten' }
     ];
 
     const isAdmin = admins.some(admin => admin.username === username && admin.password === password);
