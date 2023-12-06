@@ -14,7 +14,7 @@ import ProductCartRenderer from "./View/Renderer/ProductCartRenderer.js";
 
 // import { newsletter } from "View/Nyhedsbrev.js";
 // import { myMap } from "./View/map.js";
-import { newsletter } from ".View/Nyhedsbrev.js";
+import { newsletter } from "./View/Nyhedsbrev.js";
 // import { myMap } from "./View/map.js";
 
 endpoint;
@@ -62,7 +62,7 @@ function initializeOtherHtmlViews() {
   categoriesLists = new ListRenderer(categories, ".category-list", CategoryRenderer);
   categoriesLists.render();
 
-  // newsletter();
+  newsletter();
 }
 
 //Initiliaze views for products.html
