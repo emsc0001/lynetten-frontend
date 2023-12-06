@@ -1,7 +1,3 @@
-
-
-// NEWSLETTER ______________________
-
 function newsletter() {
         // Check if the user has already subscribed in this session
         if (!sessionStorage.getItem('subscribed')) {

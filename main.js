@@ -12,8 +12,8 @@ import Paginater from "./View/Renderer/Paginater.js";
 import ListRenderer from "./View/Renderer/ListRenderer.js";
 import ProductCartRenderer from "./View/Renderer/ProductCartRenderer.js";
 
-import { newsletter } from "./View/nyhedsbrev.js";
-// import { myMap } from "./View/map.js";
+import { newsletter } from "View/Nyhedsbrev.js";
+import { myMap } from "./View/map.js";
 
 endpoint;
 
