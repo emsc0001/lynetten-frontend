@@ -14,6 +14,8 @@ import ProductCartRenderer from "./View/Renderer/ProductCartRenderer.js";
 
 // import { newsletter } from "View/Nyhedsbrev.js";
 // import { myMap } from "./View/map.js";
+import { newsletter } from ".View/Nyhedsbrev.js";
+// import { myMap } from "./View/map.js";
 
 endpoint;
 
@@ -25,15 +27,14 @@ let categoriesLists = null;
 
 //Order variables
 let cart = [];
-let cartList = null
+let cartList = null;
 let guestOrderCreated = { value: false };
-
 
 const htmlSide = window.location.pathname;
 
 window.addEventListener("load", () => {
-    loadCartFromLocalStorage();
-    baddServiceApp();
+  loadCartFromLocalStorage();
+  baddServiceApp();
 });
 
 async function baddServiceApp() {
@@ -45,11 +46,11 @@ async function baddServiceApp() {
   console.log("Number Of Categories: " + categories.length);
 
   // Initialize the views based on html page
-  if (htmlSide === '/products.html') {
-    initializeProductViews() 
+  if (htmlSide === "/products.html") {
+    initializeProductViews();
     initializeCartView();
-  } else if (htmlSide === '/kurv.html') {
-    initializeCartHtmlView()
+  } else if (htmlSide === "/kurv.html") {
+    initializeCartHtmlView();
   } else {
     initializeOtherHtmlViews();
     initializeCartView();
@@ -60,7 +61,7 @@ async function baddServiceApp() {
 function initializeOtherHtmlViews() {
   categoriesLists = new ListRenderer(categories, ".category-list", CategoryRenderer);
   categoriesLists.render();
-  
+
   // newsletter();
 }
 
@@ -128,62 +129,72 @@ function updateProductList(searchResults) {
   }
 }
 
-
 //Initiliaze views the cart for products.html, koebeguide.html, handelsBetingelser and index.html
-function initializeCartView(){
-    cartList = new ListRenderer(cart, ".cart-items", ProductCartRenderer);
-    cartList.render();
-  
-    const totalPriceSection = new ProductCartRenderer().renderTotalPriceCart();
-    document.querySelector(".cart-total-container").innerHTML = totalPriceSection;
+function initializeCartView() {
+  cartList = new ListRenderer(cart, ".cart-items", ProductCartRenderer);
+  cartList.render();
+
+  const totalPriceSection = new ProductCartRenderer().renderTotalPriceCart();
+  document.querySelector(".cart-total-container").innerHTML = totalPriceSection;
 }
 
 //Initiliaze views the cart for kurv.html
 function initializeCartHtmlView() {
-    cartList = new ListRenderer(cart, ".cart-items", ProductCartRenderer);
-    cartList.render();
-  
-    const totalPriceSection = new ProductCartRenderer().renderTotalPriceCartHtml();
-    document.querySelector(".cart-summary").innerHTML = totalPriceSection;
-}
+  cartList = new ListRenderer(cart, ".cart-items", ProductCartRenderer);
+  cartList.render();
 
+  const totalPriceSection = new ProductCartRenderer().renderTotalPriceCartHtml();
+  document.querySelector(".cart-summary").innerHTML = totalPriceSection;
+}
 
 // Load cart from localStorage
 function loadCartFromLocalStorage() {
-    const storedCart = localStorage.getItem('cart');
-    if (storedCart) {
-        cart = JSON.parse(storedCart);
-    }
+  const storedCart = localStorage.getItem("cart");
+  if (storedCart) {
+    cart = JSON.parse(storedCart);
+  }
 }
 
 // Save cart to localStorage
 function saveCartToLocalStorage() {
-    localStorage.setItem('cart', JSON.stringify(cart));
+  localStorage.setItem("cart", JSON.stringify(cart));
 }
 
 function addToCart(productId, listPrice, productName, imageURLs, guestOrderId) {
-    // Check if the product already exists in the cart
-    const existingProduct = cart.find((item) => item.productId === productId);
+  // Check if the product already exists in the cart
+  const existingProduct = cart.find((item) => item.productId === productId);
 
-    if (existingProduct) {
-        // If the product exists, increase its quantity
-        existingProduct.quantity++;
-    } else {
-        // If the product doesn't exist, add it to the cart with a quantity of 1
-        cart.push({ productId, listPrice, productName, imageURLs, guestOrderId, quantity: 1 });
-    }
+  if (existingProduct) {
+    // If the product exists, increase its quantity
+    existingProduct.quantity++;
+  } else {
+    // If the product doesn't exist, add it to the cart with a quantity of 1
+    cart.push({ productId, listPrice, productName, imageURLs, guestOrderId, quantity: 1 });
+  }
 
   console.log("Item added to cart:", cart); // Logging for demonstration
-  
+
   saveCartToLocalStorage(); // Save cart to localStorage
-    console.log(htmlSide);
-  if (htmlSide === '/kurv.html') {
+  console.log(htmlSide);
+  if (htmlSide === "/kurv.html") {
     initializeCartHtmlView(); // Render the cart
   } else {
     initializeCartView(); // Render the cart
   }
 }
 
+export {
+  addToCart,
+  products,
+  categories,
+  guestOrderCreated,
+  cart,
+  saveCartToLocalStorage,
+  initializeCartView,
+  htmlSide,
+  initializeCartHtmlView,
+  updateProductList,
+};
 
 // Guide beskrivelser
 
@@ -292,4 +303,3 @@ export default {guestOrderCreated} // Export default so it can get modified in o
 //     document.getElementById("newsletter-popup").classList.remove("show");
 //   });
 // });
-
