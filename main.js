@@ -62,7 +62,7 @@ function initializeOtherHtmlViews() {
   categoriesLists = new ListRenderer(categories, ".category-list", CategoryRenderer);
   categoriesLists.render();
 
-  newsletter();
+  // newsletter();
 }
 
 //Initiliaze views for products.html
