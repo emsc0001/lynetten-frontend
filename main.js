@@ -88,7 +88,7 @@ function initializeOtherHtmlViews() {
 
   UsersLoginDialog = new UserLoginDialog("user-login-dialog");
   UsersLoginDialog.render();
-  UsersLoginDialog.show();
+  // UsersLoginDialog.show();
 
   const userLogin = document.querySelector(".userLogin-container");
 
@@ -100,7 +100,7 @@ function initializeOtherHtmlViews() {
   // CREATE USER DIALOG //
   CreateUserDialog = new UserCreateDialog("user-create-dialog");
   CreateUserDialog.render();
-  CreateUserDialog.show();
+  // CreateUserDialog.show();
 
   const createUserLink = document.getElementById("createUserLogin");
 
@@ -113,7 +113,7 @@ function initializeOtherHtmlViews() {
   // FORGOT PASSWORD DIALOG //
   PasswordForgotDialog = new ForgotPasswordDialog("forgot-password-dialog");
   PasswordForgotDialog.render();
-  PasswordForgotDialog.show();
+  // PasswordForgotDialog.show();
 
   const forgotPasswordLink = document.getElementById("forgotUserLogin");
 
