@@ -160,8 +160,12 @@ function initializeCartView() {
 
 //Initiliaze views the cart for kurv.html
 function initializeCartHtmlView() {
-  cartList = new ListRenderer(cart, ".cart-items", ProductCartRenderer);
-  cartList.render();
+  if (cart.length > 0) {
+    cartList = new ListRenderer(cart, ".cart-items", ProductCartRenderer);
+    cartList.render();    
+  } else {
+    document.querySelector(".cart-items").innerHTML = "<p>Der er ingen varer i din kurv</p>";
+  }
 
   const totalPriceSection = new ProductCartRenderer().renderTotalPriceCartHtml();
   document.querySelector(".cart-summary").innerHTML = totalPriceSection;
