@@ -35,9 +35,9 @@ export default class UserCreateDialog extends Dialog {
     form.reset();
 
     // Call the controller method to create the user
-    const creationSuccessful = await Controller.createUser(this.user);
+    const creationSuccessfull = await Controller.createUser(this.user);
 
-    if (creationSuccessful) {
+    if (creationSuccessfull) {
       // Close the dialog if the user creation is successful
       this.close();
     }
