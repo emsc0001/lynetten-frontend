@@ -8,59 +8,59 @@
 </head>
 <body>
 
-     <form>
+     <form id="shipping-details-form">
     <h2>Payment and Shipping Details</h2>
 <div class="form-group">
       <label for="name">Full Name</label>
-      <input type="text" id="name" name="name" required>
+      <input type="text" id="name" name="name" placeholder="Enter your name" required>
     </div>
 
     <!-- Email -->
     <div class="form-group">
       <label for="email">Email Address</label>
-      <input type="email" id="email" name="email" required>
+      <input type="email" id="email" name="email" placeholder="Enter your Email" required>
     </div>
 
     <!-- Phone number -->
     <div class="form-group">
       <label for="phone">Phone Number</label>
-      <input type="tel" id="phone" name="phone" required>
+      <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
     </div>
 
-    
+    <!-- Address -->
   <div class="form-group">
     <label for="address">Address</label>
     <input type="text" id="address" name="address" placeholder="Enter your address" required>
   </div>
-
-  <div class="form-group">
-    <label for="city">City</label>
-    <input type="text" id="city" name="city" placeholder="Enter your city" required>
-  </div>
-  <div class="form-group">
-    <label for="postcode">Postcode</label>
-    <input type="text" id="postcode" name="postcode" placeholder="Enter your postcode" required>
-  </div>
+  
+  <!-- Country -->
   <div class="form-group">
     <label for="country">Country</label>
     <input type="text" id="country" name="country" placeholder="Enter your country" required>
   </div>
 
+  <!-- Postcode + City -->
+<div class="form-group">
+  <label for="postcode">Postcode</label>
+  <input type="text" id="postcode" name="postcode" placeholder="Enter your postcode" required>
+  <label for="city">City</label>
+  <input type="text" id="city" name="city" placeholder="Enter your city" required>
+</div>
     <!-- Submit Button -->
-    <button type="submit">Proceed to Payment</button>
+    <button type="submit" id="shipping-details-form-button" disabled>Proceed to Payment</button>
   </form>
 
      <form id="payment-form">
     <h2>Payment Details</h2>
     
     <div class="form-group">
+      <label for="cardholder-name">Cardholder Name</label>
+      <input type="text" id="cardholder-name" name="cardholder-name" placeholder="Helle Madsen" required>
+    </div>
+
+    <div class="form-group">
       <label for="card-number">Card Number</label>
       <input type="text" id="card-number" name="card-number" placeholder="1234 5678 9012 3456" required>
-    </div>
-    
-    <div class="form-group">
-      <label for="cardholder-name">Cardholder Name</label>
-      <input type="text" id="cardholder-name" name="cardholder-name" placeholder="John Doe" required>
     </div>
     
     <div class="form-group">
@@ -73,7 +73,7 @@
       <input type="text" id="cvv" name="cvv" placeholder="123" required>
     </div>
     
-    <button type="submit">Pay Now</button>
+  <button type="submit" id="pay-now-button" >Pay Now</button>
   </form>
 
     <footer>

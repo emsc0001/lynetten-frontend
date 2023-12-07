@@ -12,8 +12,9 @@ import Paginater from "./View/Renderer/Paginater.js";
 import ListRenderer from "./View/Renderer/ListRenderer.js";
 import ProductCartRenderer from "./View/Renderer/ProductCartRenderer.js";
 
-// import { newsletter } from "View/Nyhedsbrev.js";
-// import { myMap } from "./View/map.js";
+import payNowClicked from "./Controller/payment.js";
+import enablePayNowButton  from "./View/validateCheckout.js";
+
 import { newsletter } from "./View/Nyhedsbrev.js";
 // import { myMap } from "./View/map.js";
 
@@ -51,13 +52,19 @@ async function baddServiceApp() {
     initializeCartView();
   } else if (htmlSide === "/kurv.html") {
     initializeCartHtmlView();
+  } else if (htmlSide === "/payment.html") {
+    // document.addEventListener("DOMContentLoaded", () => {
+    //     enablePayNowButton();
+    // });
+    document.querySelector("#pay-now-button").addEventListener("click", payNowClicked);
   } else {
     initializeOtherHtmlViews();
     initializeCartView();
   }
+
 }
 
-//Initiliaze views for koebeguide.html, handelsBetingelser and index.html
+//--------Initiliaze views for koebeguide.html, handelsBetingelser and index.html-----//
 function initializeOtherHtmlViews() {
   categoriesLists = new ListRenderer(categories, ".category-list", CategoryRenderer);
   categoriesLists.render();
@@ -65,7 +72,7 @@ function initializeOtherHtmlViews() {
   // newsletter();
 }
 
-//Initiliaze views for products.html
+//-----Initiliaze views for products.html-----//
 function initializeProductViews() {
   productsLists = new Paginater(products, "#products-container", ProductRenderer, 10);
   productsLists.render();
@@ -129,6 +136,15 @@ function updateProductList(searchResults) {
   }
 }
 
+// -------every function cart related-------//
+
+// Load cart from localStorage
+function loadCartFromLocalStorage() {
+  const storedCart = localStorage.getItem("cart");
+  if (storedCart) {
+    cart = JSON.parse(storedCart);
+  }
+}
 //Initiliaze views the cart for products.html, koebeguide.html, handelsBetingelser and index.html
 function initializeCartView() {
   cartList = new ListRenderer(cart, ".cart-items", ProductCartRenderer);
@@ -147,23 +163,10 @@ function initializeCartHtmlView() {
   document.querySelector(".cart-summary").innerHTML = totalPriceSection;
 }
 
-// Load cart from localStorage
-function loadCartFromLocalStorage() {
-  const storedCart = localStorage.getItem("cart");
-  if (storedCart) {
-    cart = JSON.parse(storedCart);
-  }
-}
-
-// Save cart to localStorage
-function saveCartToLocalStorage() {
-  localStorage.setItem("cart", JSON.stringify(cart));
-}
-
 function addToCart(productId, listPrice, productName, imageURLs, guestOrderId) {
   // Check if the product already exists in the cart
   const existingProduct = cart.find((item) => item.productId === productId);
-
+  
   if (existingProduct) {
     // If the product exists, increase its quantity
     existingProduct.quantity++;
@@ -171,9 +174,9 @@ function addToCart(productId, listPrice, productName, imageURLs, guestOrderId) {
     // If the product doesn't exist, add it to the cart with a quantity of 1
     cart.push({ productId, listPrice, productName, imageURLs, guestOrderId, quantity: 1 });
   }
-
+  
   console.log("Item added to cart:", cart); // Logging for demonstration
-
+  
   saveCartToLocalStorage(); // Save cart to localStorage
   console.log(htmlSide);
   if (htmlSide === "/kurv.html") {
@@ -183,6 +186,10 @@ function addToCart(productId, listPrice, productName, imageURLs, guestOrderId) {
   }
 }
 
+// Save cart to localStorage
+function saveCartToLocalStorage() {
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
 
 
 export { addToCart, products, categories, guestOrderCreated, cart, saveCartToLocalStorage, initializeCartView, htmlSide, initializeCartHtmlView, updateProductList };
