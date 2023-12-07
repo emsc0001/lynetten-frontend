@@ -138,3 +138,95 @@ function deleteProduct(productId) {
 
 
 
+// CATEGORY
+
+// Function to fetch and display categories
+function fetchCategories() {
+    console.log("Fetching categories...");
+    fetch('http://localhost:4444/categories')
+        .then(response => {
+            console.log("Response received");
+            return response.json();
+        })
+        .then(categories => {
+            console.log("Categories:", categories);
+            // existing code...
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+
+function fetchCategories() {
+    fetch('http://localhost:4444/categories')
+        .then(response => response.json())
+        .then(categories => {
+            const categoriesContainer = document.getElementById('category-list');
+            categoriesContainer.innerHTML = categories.map(category =>
+                `<div class="category-item">
+                    <h3>${category.categoryName}</h3>
+                    <button class="edit-category" data-category-id="${category.categoryId}">Edit</button>
+                    <button class="delete-category" data-category-id="${category.categoryId}">Delete</button>
+                </div>`
+            ).join('');
+
+            attachCategoryEventListeners();
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+// Function to attach event listeners to category edit and delete buttons
+function attachCategoryEventListeners() {
+    document.querySelectorAll('.edit-category').forEach(button => {
+        button.addEventListener('click', function() {
+            editCategory(this.getAttribute('data-category-id'));
+        });
+    });
+
+    document.querySelectorAll('.delete-category').forEach(button => {
+        button.addEventListener('click', function() {
+            deleteCategory(this.getAttribute('data-category-id'));
+        });
+    });
+}
+
+// Function to handle category creation
+document.getElementById('newCategoryForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    const categoryName = document.getElementById('categoryName').value;
+    
+    fetch('http://localhost:4444/categories', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ categoryName })
+    })
+    .then(response => response.json())
+    .then(() => {
+        alert('Category created successfully');
+        fetchCategories();
+    })
+    .catch(error => console.error('Error:', error));
+});
+
+// Function to handle category deletion
+function deleteCategory(categoryId) {
+    fetch(`http://localhost:4444/categories/${categoryId}`, {
+        method: 'DELETE'
+    })
+    .then(response => response.json())
+    .then(() => {
+        alert('Category deleted successfully');
+        fetchCategories();
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+
+showCategoriesBtn.addEventListener('click', () => {
+    document.getElementById('productsSection').style.display = 'none';
+    document.getElementById('categoriesSection').style.display = 'block';
+    fetchCategories();
+});
+
