@@ -286,16 +286,18 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 export {
-    addToCart,
-    products,
-    categories,
-    guestOrderCreated,
-    cart,
-    saveCartToLocalStorage,
-    initializeCartView,
-    htmlSide,
-    initializeCartHtmlView,
-    updateProductList,
+  addToCart,
+  products,
+  categories,
+  guestOrderCreated,
+  cart,
+  saveCartToLocalStorage,
+  initializeCartView,
+  htmlSide,
+  initializeCartHtmlView,
+  updateProductList,
+  usersLists,
+  users,
 };
 
 export default { guestOrderCreated }; // Export default so it can get modified in other files
