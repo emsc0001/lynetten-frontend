@@ -73,6 +73,8 @@ async function baddServiceApp() {
       enablePayNowButton();
     });
     document.querySelector("#pay-now-button").addEventListener("click", payNowClicked);
+  } else if (htmlSide === "/index.html" || htmlSide === "./bruger.html") {
+    initializeOtherHtmlViews();
   } else {
     initializeOtherHtmlViews();
     initializeCartView();
@@ -85,7 +87,6 @@ function initializeOtherHtmlViews() {
   categoriesLists = new ListRenderer(categories, ".category-list", CategoryRenderer);
   categoriesLists.render();
 
-  // initialize User Views //
   usersLists = new ListRenderer(users, "#user-container", UserRenderer);
   usersLists.render();
 
@@ -94,7 +95,7 @@ function initializeOtherHtmlViews() {
   UsersLoginDialog = new UserLoginDialog("user-login-dialog");
   UsersLoginDialog.render();
 
-  const userLogin = document.querySelector(".userLogin-container");
+  const userLogin = document.querySelector(".nav-icon");
 
   userLogin.addEventListener("click", (event) => {
     event.preventDefault();
@@ -124,7 +125,8 @@ function initializeOtherHtmlViews() {
     event.preventDefault(); // Prevent the default link behavior (e.g., navigating to a new page)
     PasswordForgotDialog.show();
   });
-  // newsletter();
+
+  // initialize User Views //
 }
 
 //-----Initiliaze views for products.html-----//

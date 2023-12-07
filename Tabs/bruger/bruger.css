@@ -113,11 +113,13 @@ body {
 
 .nav-icons {
   display: flex;
+  align-items: center;
 }
 
 .nav-icon {
-  margin: 0 15px;
-  font-size: 20px; /* Adjust as needed */
+  margin-left: 20px;
+  cursor: pointer;
+  right: 5em;
 }
 
 /* Use media queries for responsiveness as needed */
@@ -241,14 +243,7 @@ html {
 
 /* Add this to your existing CSS file or create a new one */
 
-.nav-icon {
-  cursor: pointer;
-  margin-right: 8px; /* Add some space between the icon and the input */
-}
-
-/* Dropdown Menu Styles */
-
-/* Hide the dropdown menu by default */
+/* The Modal (background) */
 .dropdown-content {
   display: none;
   position: absolute;
