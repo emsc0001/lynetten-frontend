@@ -12,7 +12,7 @@ import Paginater from "./View/Renderer/Paginater.js";
 import ListRenderer from "./View/Renderer/ListRenderer.js";
 import ProductCartRenderer from "./View/Renderer/ProductCartRenderer.js";
 
-import payNowClicked from "./Controller/payment.js";
+import {payNowClicked} from "./Controller/payment.js";
 import enablePayNowButton  from "./View/validateCheckout.js";
 
 import { newsletter } from "./View/Nyhedsbrev.js";
@@ -53,9 +53,9 @@ async function baddServiceApp() {
   } else if (htmlSide === "/kurv.html") {
     initializeCartHtmlView();
   } else if (htmlSide === "/payment.html") {
-    // document.addEventListener("DOMContentLoaded", () => {
-    //     enablePayNowButton();
-    // });
+    document.addEventListener("DOMContentLoaded", () => {
+        enablePayNowButton();
+    });
     document.querySelector("#pay-now-button").addEventListener("click", payNowClicked);
   } else {
     initializeOtherHtmlViews();
@@ -147,9 +147,13 @@ function loadCartFromLocalStorage() {
 }
 //Initiliaze views the cart for products.html, koebeguide.html, handelsBetingelser and index.html
 function initializeCartView() {
-  cartList = new ListRenderer(cart, ".cart-items", ProductCartRenderer);
-  cartList.render();
-
+  if (cart.length > 0) {
+    cartList = new ListRenderer(cart, ".cart-items", ProductCartRenderer);
+    cartList.render();
+    
+  } else {
+    document.querySelector(".cart-items").innerHTML = "<p>Der er ingen varer i din kurv</p>";
+  }
   const totalPriceSection = new ProductCartRenderer().renderTotalPriceCart();
   document.querySelector(".cart-total-container").innerHTML = totalPriceSection;
 }
