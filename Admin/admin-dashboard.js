@@ -233,3 +233,5 @@ function showCategoriesTab() {
     // Fetch and display categories (if needed)
     fetchCategories();
 }
+
+
