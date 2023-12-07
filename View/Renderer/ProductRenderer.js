@@ -1,12 +1,12 @@
 
 import ItemRenderer from "./Itemrenderer.js";
 import * as controller from "../../main.js";
-import * as guestOrderController from "../../Controller/guestOrder-rest.js";
+import * as guestOrderController from "../../Model/Rest-services/guestOrder-rest.js";
 
 export default class ProductRenderer extends ItemRenderer {
-  render() {
-    const product = this.item;
-    const html = /*html*/ `
+    render() {
+        const product = this.item;
+        const html = /*html*/ `
       <article class="product">
         <div class="product-item">
           <img src="${product.imageURLs}" alt="${product.productName}">
@@ -17,8 +17,8 @@ export default class ProductRenderer extends ItemRenderer {
         </div>
       </article>
     `;
-    return html;
-  }
+        return html;
+    }
 
 
   postRender(element) {
@@ -49,4 +49,3 @@ element.querySelector(".button").addEventListener("click", async (event) => {
 });
 }
 }
-

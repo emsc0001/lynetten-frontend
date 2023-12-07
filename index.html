@@ -45,81 +45,31 @@
       </div>
 
       <div class="nav-icons">
-        <!-- Search container with icon and bar -->
-        <!-- <div class="search-container">
-          <span class="nav-icon search-icon" onclick="toggleSearchBar()">🔍</span>
-          <div class="search-bar" id="searchBar">
-            <input type="text" id="searchInput" placeholder="Search..." />
-            <button type="submit" class="search-button">Search</button>
-          </div>
-        </div> -->
+        <div class="nav-icons">
+          <!-- Other icons go here -->
 
-        <!-- Other icons go here -->
-
-        <span class="nav-icon">👤</span>
-
-        <!-- Add this inside your body tag, preferably at the end -->
-        <div id="userModal" class="modal">
-          <div class="modal-content">
-            <span id="closeUser" class="close">×</span>
-            <img src="https://i.ibb.co/r2bH4d1/Sk-rmbillede-2023-11-28-kl-15-35-30.png" alt="Logo" height="50" />
-            <h2>Bruger Login</h2>
-            <label for="email">Email:</label>
-            <input type="email" id="emailUser" name="email" required />
-
-            <label for="password">Password:</label>
-            <input type="password" id="passwordUser" name="password" required />
-
-            <button onclick="login()">Login</button>
-
-            <div class="additional-options">
-              <p><a id="forgotUserLink" href="#">Forgot Password?</a></p>
-              <p><a id="createUserLink" href="#">Create New Account</a></p>
+          <!-- Inside your existing HTML structure -->
+          <div class="userLogin-container">
+            <div class="dropdown">
+              <span class="nav-icon">👤</span>
+              <div class="dropdown-content">
+                <a href="bruger.html">👤Medlemmer</a>
+                <!-- Add more links as needed -->
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- Create user modal -->
-        <div id="createUserModal" class="modal">
-          <div class="modal-content">
-            <span id="closeCreateUser" class="close">×</span>
-            <img src="https://i.ibb.co/r2bH4d1/Sk-rmbillede-2023-11-28-kl-15-35-30.png" alt="Logo" height="50" />
-            <h2>Create New Account</h2>
-            <label for="email">Email:</label>
-            <input type="email" id="createEmail" name="email" required />
-
-            <label for="password">Password:</label>
-            <input type="password" id="createPassword" name="password" required />
-
-            <label for="password">Confirm Password:</label>
-            <input type="password" id="createConfirmPassword" name="password" required />
-
-            <button onclick="createAccount()">Create Account</button>
-          </div>
-        </div>
-
-        <div id="forgotPasswordModal" class="modal">
-          <div class="modal-content">
-            <span id="closeForgotPassword" class="close">×</span>
-            <img src="https://i.ibb.co/r2bH4d1/Sk-rmbillede-2023-11-28-kl-15-35-30.png" alt="Logo" height="50" />
-            <h2>Forgot Password</h2>
-            <label for="email">Email:</label>
-            <input type="email" id="forgotEmail" name="email" required />
-
-            <button onclick="sendPasswordReset()">Send Password Reset</button>
-          </div>
+          <!-- Replace with cart icon -->
         </div>
 
         <div class="nav-item" data-tab="kurv" id="cart">
           <a href="kurv.html" class="nav-link">🛒</a>
           <div class="underline"></div>
           <div class="cart-content">
-            <div class="cart-items">
-
-            </div>
+            <div class="cart-items"></div>
             <div class="cart-total-container">
-          <!-- Total price section will be appended here -->
-           </div>
+              <!-- Total price section will be appended here -->
+            </div>
           </div>
         </div>
 
@@ -329,6 +279,6 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 
-     <script type="module" src="main.js"></script>
+    <script type="module" src="main.js"></script>
   </body>
 </html>

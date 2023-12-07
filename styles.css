@@ -313,6 +313,16 @@ html {
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: 0.3s;
+  animation: fadeIn 0.3s ease-in-out; /* Add the animation property */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .header {
@@ -505,6 +515,37 @@ button:hover {
 #createUserModal .additional-options a:hover {
   text-decoration: underline;
   color: #2980b9;
+}
+
+.subscribe-newsletter {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.subscribe-newsletter label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.subscribe-newsletter input {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.subscribe-newsletter input:focus-visible {
+  outline: 2px solid #2980b9;
+}
+
+.subscribe-newsletter input:checked + span {
+  color: #2980b9;
+}
+
+.subscribe-newsletter span {
+  color: #555;
 }
 
 /* Style for the forgot password modal */
@@ -809,13 +850,13 @@ button:hover {
 .cart-item h2 {
   font-size: 16px;
   margin: 0;
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
 .cart-item h3 {
   font-size: 14px;
   margin: 5px 0;
-    margin-right: 10px;
+  margin-right: 10px;
   margin-left: 10px;
 }
 
@@ -880,14 +921,12 @@ button:hover {
 div.cart-total a.go-to-cart-link {
   text-decoration: none;
   padding: 10px 20px;
-  background-color:  #ff6347; /* Tomato red */
+  background-color: #ff6347; /* Tomato red */
   border-radius: 5px;
-  color: white; 
+  color: white;
   font-weight: bold;
   transition: background-color 0.3s, color 0.3s;
-
 }
-
 
 div.cart-total a.go-to-cart-link:hover {
   background-color: #ff483e; /* Darker red on hover */

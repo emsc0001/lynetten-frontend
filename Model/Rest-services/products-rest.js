@@ -1,10 +1,9 @@
-import Product from "../Model/Product.js";
+import Product from "../Product.js";
 
 const endpoint = "http://localhost:4444";
 
 let allProducts = [];
 let lastFetch = 0;
-
 
 async function getAllProducts() {
     const now = Date.now();
@@ -31,4 +30,4 @@ async function refetchAllProducts() {
     lastFetch = Date.now();
 }
 
-export {getAllProducts, getSomeProducts, endpoint}
+export { getAllProducts, getSomeProducts, endpoint };
