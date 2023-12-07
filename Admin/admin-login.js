@@ -14,9 +14,15 @@ document.getElementById("adminLoginForm").addEventListener("submit", function(ev
     const isAdmin = admins.some(admin => admin.username === username && admin.password === password);
 
     if (isAdmin) {
+        // Store the admin status in local storage
+        localStorage.setItem('isAdmin', 'true');
+
         // Redirect to index.html at the root
         window.location.href = '../../index.html'; // Go up two levels
     } else {
+        // Clear any existing admin status
+        localStorage.removeItem('isAdmin');
+
         alert('Login failed!');
     }
 });
