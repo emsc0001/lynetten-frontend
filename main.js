@@ -1,7 +1,7 @@
 "use strict";
-import { endpoint, getAllProducts } from "./Controller/products-rest.js";
-import { getAllCategories, getCategoryWithProducts } from "./Controller/category-rest.js";
-import { getAllUsers } from "./Controller/user-rest.js";
+import { endpoint, getAllProducts } from "./Model/Rest-services/products-rest.js";
+import { getAllCategories, getCategoryWithProducts } from "./Model/Rest-services/category-rest.js";
+import { getAllUsers } from "./Model/Rest-services/user-rest.js";
 
 import UserCreateDialog from "./View/Dialogs/CreateUserDialog.js";
 import UserLoginDialog from "./View/Dialogs/UserLoginDialog.js";
@@ -73,8 +73,6 @@ async function baddServiceApp() {
       enablePayNowButton();
     });
     document.querySelector("#pay-now-button").addEventListener("click", payNowClicked);
-  } else if (htmlSide === "/index.html" || htmlSide === "./bruger.html") {
-    initializeOtherHtmlViews();
   } else {
     initializeOtherHtmlViews();
     initializeCartView();
@@ -87,6 +85,7 @@ function initializeOtherHtmlViews() {
   categoriesLists = new ListRenderer(categories, ".category-list", CategoryRenderer);
   categoriesLists.render();
 
+  // initialize User Views //
   usersLists = new ListRenderer(users, "#user-container", UserRenderer);
   usersLists.render();
 
@@ -95,7 +94,7 @@ function initializeOtherHtmlViews() {
   UsersLoginDialog = new UserLoginDialog("user-login-dialog");
   UsersLoginDialog.render();
 
-  const userLogin = document.querySelector(".nav-icon");
+  const userLogin = document.querySelector(".userLogin-container");
 
   userLogin.addEventListener("click", (event) => {
     event.preventDefault();
@@ -125,8 +124,7 @@ function initializeOtherHtmlViews() {
     event.preventDefault(); // Prevent the default link behavior (e.g., navigating to a new page)
     PasswordForgotDialog.show();
   });
-
-  // initialize User Views //
+  // newsletter();
 }
 
 //-----Initiliaze views for products.html-----//

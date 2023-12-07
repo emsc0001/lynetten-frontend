@@ -1,11 +1,11 @@
 import ItemRenderer from "./Itemrenderer.js";
 import * as controller from "../../main.js";
-import * as guestOrderController from "../../Controller/guestOrder-rest.js";
+import * as guestOrderController from "../../Model/Rest-services/guestOrder-rest.js";
 
 export default class ProductRenderer extends ItemRenderer {
-  render() {
-    const product = this.item;
-    const html = /*html*/ `
+    render() {
+        const product = this.item;
+        const html = /*html*/ `
       <article class="product">
         <div class="product-item">
           <img src="${product.imageURLs}" alt="${product.productName}">
@@ -16,11 +16,11 @@ export default class ProductRenderer extends ItemRenderer {
         </div>
       </article>
     `;
-    return html;
-  }
+        return html;
+    }
 
     postRender(element) {
-            const product = this.item;
+        const product = this.item;
         element.querySelector(".button").addEventListener("click", async (event) => {
             event.preventDefault();
             try {
@@ -28,15 +28,14 @@ export default class ProductRenderer extends ItemRenderer {
                 const guestOrderId = await guestOrderController.createGuestOrder(orderDate);
                 // Checks if the guest order is already created
                 if (!controller.guestOrderCreated.value) {
-                        console.log(guestOrderId);
-                        if (guestOrderId) {
-                            // Marks the guest order as created and adds the item to the cart
-                            controller.guestOrderCreated.value = true;
-                            controller.addToCart(product.productId, product.listPrice, product.productName, product.imageURLs, guestOrderId);
-                        } else {
-                            console.error("Failed to create guest order");
-                        }
-
+                    console.log(guestOrderId);
+                    if (guestOrderId) {
+                        // Marks the guest order as created and adds the item to the cart
+                        controller.guestOrderCreated.value = true;
+                        controller.addToCart(product.productId, product.listPrice, product.productName, product.imageURLs, guestOrderId);
+                    } else {
+                        console.error("Failed to create guest order");
+                    }
                 } else {
                     // If the guest order is already created, adds the item to the cart directly
                     controller.addToCart(product.productId, product.listPrice, product.productName, product.imageURLs, guestOrderId);
@@ -47,4 +46,3 @@ export default class ProductRenderer extends ItemRenderer {
         });
     }
 }
-

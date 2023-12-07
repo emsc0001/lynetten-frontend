@@ -1,9 +1,9 @@
-import { createOrderItem } from "./orderItem-rest.js";
+import { createOrderItem } from "../Model/Rest-services/orderItem-rest.js";
 import { cart } from "../main.js";
-import { updateGuestOrder } from "./guestOrder-rest.js";
+import { updateGuestOrder } from "../Model/Rest-services/guestOrder-rest.js";
 
 let user = false;
- async function payNowClicked(event) {
+async function payNowClicked(event) {
     event.preventDefault();
     console.log("Pay now clicked");
     extractShipmentDetails();
@@ -11,7 +11,7 @@ let user = false;
 }
 
 // --extract items from cart and create orderItems--//
-async function extractItemsCart(){
+async function extractItemsCart() {
     let orderItems = [];
 
     if (!user) {
@@ -56,9 +56,7 @@ async function extractShipmentDetails() {
     } else {
         const orderId = cart[0].orderId;
         updateGuestOrder(orderId, fullName, email, address, phoneNumber, city, zipCode);
-
     }
-
 }
 
 export { payNowClicked };
