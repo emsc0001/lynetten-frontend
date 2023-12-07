@@ -36,6 +36,9 @@ export default class Dialog {
           case "delete":
             this.delete();
             break;
+          case "login":
+            this.login();
+            break;
           case "cancel":
           case "close":
             this.close();

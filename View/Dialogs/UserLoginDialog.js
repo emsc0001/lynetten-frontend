@@ -1,10 +1,11 @@
 import Dialog from "./Dialog.js";
 import User from "../../Model/User.js";
 import * as Controller from "../../Model/Rest-services/user-rest.js";
+import { users } from "../../main.js";
 
 export default class UserLoginDialog extends Dialog {
-    renderHTML() {
-        const html = /*html*/ `
+  renderHTML() {
+    const html = /*html*/ `
       <div class="login-form-container">
         <form id="loginForm">
           <button type="button" data-action="close">X</button>
@@ -23,29 +24,26 @@ export default class UserLoginDialog extends Dialog {
         </form>
       </div>
     `;
-        return html;
+    return html;
+  }
+
+  async login() {
+    // Build user credentials from form
+    const form = this.dialog.querySelector("form");
+    const email = form.email.value;
+    const password = form.password.value;
+
+    // Clear form
+    form.reset();
+
+    // Call the controller method to log in the user
+    const loggedInUser = await Controller.loginUserForm({ email, password });
+
+    if (loggedInUser) {
+      // Log information about the logged-in user
+
+      // Close the dialog if the user login is successful
+      this.close();
     }
-
-    async login() {
-        // Build user object from form
-        const form = this.dialog.querySelector("form");
-        const loginUser = new User({
-            email: form.email.value,
-            password: form.password.value,
-        });
-
-        // Clear form
-        form.reset();
-
-        // Log the userId and email before calling the controller method
-        console.log("Logging in with userId:", loginUser.userId, "and email:", loginUser.email);
-
-        // Call the controller method to log in the user
-        const loginSuccessFull = await Controller.loginUserForm(this.user);
-
-        if (loginSuccessFull) {
-            // Close the dialog if the user login is successful
-            this.close();
-        }
-    }
+  }
 }
