@@ -1,10 +1,10 @@
 import Dialog from "./Dialog.js";
 import User from "../../Model/User.js";
-import * as Controller from "../../Controller/user-rest.js";
+import * as Controller from "../../Model/Rest-services/user-rest.js";
 
 export default class ForgotPasswordDialog extends Dialog {
-  renderHTML() {
-    const html = /*html*/ `
+    renderHTML() {
+        const html = /*html*/ `
         <div class="Forgot-form-container">
             <form>
                 <button type="button" data-action="close">X</button>
@@ -17,6 +17,6 @@ export default class ForgotPasswordDialog extends Dialog {
             </form>
         </div>
         `;
-    return html;
-  }
+        return html;
+    }
 }
