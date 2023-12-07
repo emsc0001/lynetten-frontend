@@ -27,6 +27,28 @@ async function createGuestOrder(orderDate) {
             return null;
         }
 
-    }
+}
     
-    export {createGuestOrder};
+async function updateGuestOrder(orderId, fullName, email, address, phoneNumber, city, zipCode) {
+    try {
+        const response = await fetch(`${endpoint}/guestOrders/${orderId}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ fullName, email, address, phoneNumber, city, zipCode }),
+        });
+        
+        if (response.ok) {
+            const data = await response.json();
+            console.log(data);
+        } else {
+            console.log('Error updating guest order');
+        }
+    } catch (error) {
+            console.error(error);
+        }
+
+}
+    
+    export {createGuestOrder, updateGuestOrder};

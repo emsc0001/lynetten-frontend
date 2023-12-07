@@ -38,7 +38,7 @@ export default class ProductCartRenderer extends ItemRenderer {
         const cartTotal = ProductCartRenderer.calculateTotal(cart); // Calculate the total price for the cart
         const totalPriceHTML = `
         <p>Pris i alt: ${cartTotal}kr</p>
-        <button class="checkout-button">Gå til betaling</button>
+        <a href="payment.html"><button class="checkout-button">Gå til betaling</button></a>
         `;
         return totalPriceHTML;
     }

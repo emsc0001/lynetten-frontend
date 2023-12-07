@@ -19,8 +19,9 @@ import Paginater from "./View/Renderer/Paginater.js";
 import ListRenderer from "./View/Renderer/ListRenderer.js";
 import ProductCartRenderer from "./View/Renderer/ProductCartRenderer.js";
 
-// import { newsletter } from "View/Nyhedsbrev.js";
-// import { myMap } from "./View/map.js";
+import { payNowClicked } from "./Controller/payment.js";
+import enablePayNowButton from "./View/validateCheckout.js";
+
 import { newsletter } from "./View/Nyhedsbrev.js";
 // import { myMap } from "./View/map.js";
 
@@ -67,13 +68,18 @@ async function baddServiceApp() {
     initializeCartView();
   } else if (htmlSide === "/kurv.html") {
     initializeCartHtmlView();
+  } else if (htmlSide === "/payment.html") {
+    document.addEventListener("DOMContentLoaded", () => {
+      enablePayNowButton();
+    });
+    document.querySelector("#pay-now-button").addEventListener("click", payNowClicked);
   } else {
     initializeOtherHtmlViews();
     initializeCartView();
   }
 }
 
-//Initiliaze views for koebeguide.html, handelsBetingelser, bruger.html and index.html
+//Initiliaze views for koebeguide.html, handelsBetingelser and index.html
 function initializeOtherHtmlViews() {
   // initialize Category Views //
   categoriesLists = new ListRenderer(categories, ".category-list", CategoryRenderer);
@@ -121,7 +127,7 @@ function initializeOtherHtmlViews() {
   // newsletter();
 }
 
-//Initiliaze views for products.html
+//-----Initiliaze views for products.html-----//
 function initializeProductViews() {
   productsLists = new Paginater(products, "#products-container", ProductRenderer, 10);
   productsLists.render();
@@ -185,23 +191,7 @@ function updateProductList(searchResults) {
   }
 }
 
-//Initiliaze views the cart for products.html, koebeguide.html, handelsBetingelser and index.html
-function initializeCartView() {
-  cartList = new ListRenderer(cart, ".cart-items", ProductCartRenderer);
-  cartList.render();
-
-  const totalPriceSection = new ProductCartRenderer().renderTotalPriceCart();
-  document.querySelector(".cart-total-container").innerHTML = totalPriceSection;
-}
-
-//Initiliaze views the cart for kurv.html
-function initializeCartHtmlView() {
-  cartList = new ListRenderer(cart, ".cart-items", ProductCartRenderer);
-  cartList.render();
-
-  const totalPriceSection = new ProductCartRenderer().renderTotalPriceCartHtml();
-  document.querySelector(".cart-summary").innerHTML = totalPriceSection;
-}
+// -------every function cart related-------//
 
 // Load cart from localStorage
 function loadCartFromLocalStorage() {
@@ -210,10 +200,29 @@ function loadCartFromLocalStorage() {
     cart = JSON.parse(storedCart);
   }
 }
+//Initiliaze views the cart for products.html, koebeguide.html, handelsBetingelser and index.html
+function initializeCartView() {
+  if (cart.length > 0) {
+    cartList = new ListRenderer(cart, ".cart-items", ProductCartRenderer);
+    cartList.render();
+  } else {
+    document.querySelector(".cart-items").innerHTML = "<p>Der er ingen varer i din kurv</p>";
+  }
+  const totalPriceSection = new ProductCartRenderer().renderTotalPriceCart();
+  document.querySelector(".cart-total-container").innerHTML = totalPriceSection;
+}
 
-// Save cart to localStorage
-function saveCartToLocalStorage() {
-  localStorage.setItem("cart", JSON.stringify(cart));
+//Initiliaze views the cart for kurv.html
+function initializeCartHtmlView() {
+  if (cart.length > 0) {
+    cartList = new ListRenderer(cart, ".cart-items", ProductCartRenderer);
+    cartList.render();
+  } else {
+    document.querySelector(".cart-items").innerHTML = "<p>Der er ingen varer i din kurv</p>";
+  }
+
+  const totalPriceSection = new ProductCartRenderer().renderTotalPriceCartHtml();
+  document.querySelector(".cart-summary").innerHTML = totalPriceSection;
 }
 
 function addToCart(productId, listPrice, productName, imageURLs, guestOrderId) {
@@ -239,21 +248,42 @@ function addToCart(productId, listPrice, productName, imageURLs, guestOrderId) {
   }
 }
 
-export {
-  addToCart,
-  products,
-  categories,
-  users,
-  usersLists,
-  guestOrderCreated,
-  cart,
-  saveCartToLocalStorage,
-  initializeCartView,
-  htmlSide,
-  initializeCartHtmlView,
-  updateProductList,
-  initializeOtherHtmlViews,
-};
+// Købeguide Beskrivelser
+document.addEventListener("DOMContentLoaded", function () {
+  var collapsibles = document.getElementsByClassName("collapsible");
+  for (var i = 0; i < collapsibles.length; i++) {
+    collapsibles[i].addEventListener("click", function () {
+      this.classList.toggle("active");
+      var content = this.nextElementSibling;
+      if (content.style.display === "block") {
+        content.style.display = "none";
+      } else {
+        content.style.display = "block";
+      }
+    });
+  }
+});
+
+// Save cart to localStorage
+function saveCartToLocalStorage() {
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+// Købeguide Beskrivelser
+document.addEventListener("DOMContentLoaded", function () {
+  var collapsibles = document.getElementsByClassName("collapsible");
+  for (var i = 0; i < collapsibles.length; i++) {
+    collapsibles[i].addEventListener("click", function () {
+      this.classList.toggle("active");
+      var content = this.nextElementSibling;
+      if (content.style.display === "block") {
+        content.style.display = "none";
+      } else {
+        content.style.display = "block";
+      }
+    });
+  }
+});
 
 export default { guestOrderCreated }; // Export default so it can get modified in other files
 
