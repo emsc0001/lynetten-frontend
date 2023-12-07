@@ -181,3 +181,14 @@ function attachCategoryEventListeners() {
         });
     });
 }
+
+document.getElementById('backToProducts').addEventListener('click', function () {
+    // Hide the categories section
+    document.getElementById('categoriesSection').style.display = 'none';
+    
+    // Show the product section
+    document.getElementById('product-list').style.display = 'block';
+
+    // Fetch and display products (if needed)
+    fetchProducts();
+});
