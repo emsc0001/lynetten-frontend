@@ -139,3 +139,54 @@ function deleteProduct(productId) {
 
 
 
+document.addEventListener('DOMContentLoaded', () => {
+    setupTabListeners();
+    fetchProducts(); // Initial fetch for products
+});
+
+function setupTabListeners() {
+    const showProductsBtn = document.getElementById('showProducts');
+    const showCategoriesBtn = document.getElementById('showCategories');
+
+    showProductsBtn.addEventListener('click', () => toggleSection('products'));
+    showCategoriesBtn.addEventListener('click', () => toggleSection('categories'));
+}
+
+function toggleSection(section) {
+    const productsSection = document.getElementById('productsSection');
+    const categoriesSection = document.getElementById('categoriesSection');
+
+    if (section === 'products') {
+        productsSection.style.display = 'block';
+        categoriesSection.style.display = 'none';
+        fetchProducts();
+    } else if (section === 'categories') {
+        productsSection.style.display = 'none';
+        categoriesSection.style.display = 'block';
+        fetchCategories();
+    }
+}
+
+function fetchCategories() {
+    fetch('http://localhost:4444/categories')
+        .then(response => response.json())
+        .then(categories => {
+            const categoriesContainer = document.getElementById('category-list');
+            categoriesContainer.innerHTML = categories.map(category =>
+                `<div class="category-item">
+                    <h3>${category.categoryName}</h3>
+                    <button class="edit-category" data-category-id="${category.categoryId}">Edit</button>
+                    <button class="delete-category" data-category-id="${category.categoryId}">Delete</button>
+                </div>`
+            ).join('');
+
+            attachCategoryEventListeners();
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+// Function for attaching event listeners to category Edit/Delete buttons
+// ...
+
+// Rest of your existing code for category handling
+// ...
