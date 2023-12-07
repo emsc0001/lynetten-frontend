@@ -62,6 +62,23 @@ async function baddServiceApp() {
   console.log("Number Of Categories: " + categories.length);
   console.log("Number Of Users: " + users.length);
 
+  if (htmlSide === "/products.html") {
+    initializeProductViews();
+
+    // Event listener for at håndtere kategoriændringer
+    const urlParams = new URLSearchParams(window.location.search);
+    const categoryId = urlParams.get("categoryId");
+
+    if (categoryId) {
+      // Hvis categoryId findes i URL'en, opdater produkter baseret på kategori
+      await ProductRenderer.updateProductsByCategory(categoryId);
+    } else {
+      // Ellers, vis alle produkter
+      productsLists = new Paginater(products, "#products-container", ProductRenderer, 10);
+      productsLists.render();
+    }
+  }
+
   // Initialize the views based on html page
   if (htmlSide === "/products.html") {
     initializeProductViews();
@@ -85,12 +102,29 @@ function initializeOtherHtmlViews() {
   categoriesLists = new ListRenderer(categories, ".category-list", CategoryRenderer);
   categoriesLists.render();
 
+  const categoryLinks = document.querySelectorAll(".category-list a");
+  categoryLinks.forEach((categoryLink) => {
+    categoryLink.addEventListener("click", async (event) => {
+      event.preventDefault();
+      const categoryId = categoryLink.dataset.categoryId;
+
+      // Brug den nye funktion til at hente kategori og produkter
+      const { category, products } = await getCategoryWithProducts(categoryId);
+
+      // Gør noget med kategori og produkter, f.eks. vis dem i konsollen
+      console.log("Category:", category);
+      console.log("Products for category ID", categoryId, products);
+
+      // Redirect til products.html med det valgte categoryId som query parameter
+      window.location.href = `products.html?categoryId=${categoryId}`;
+    });
+  });
+
   // initialize User Views //
   usersLists = new ListRenderer(users, "#user-container", UserRenderer);
   usersLists.render();
 
   // LOGIN USER DIALOG //
-
   UsersLoginDialog = new UserLoginDialog("user-login-dialog");
   UsersLoginDialog.render();
 
@@ -124,13 +158,12 @@ function initializeOtherHtmlViews() {
     event.preventDefault(); // Prevent the default link behavior (e.g., navigating to a new page)
     PasswordForgotDialog.show();
   });
-  // newsletter();
 }
 
 //-----Initiliaze views for products.html-----//
 function initializeProductViews() {
-  productsLists = new Paginater(products, "#products-container", ProductRenderer, 10);
-  productsLists.render();
+  // productsLists = new Paginater(products, "#products-container", ProductRenderer, 10);
+  // productsLists.render();
 
   // initialize Category Views //
   categoriesLists = new ListRenderer(categories, ".category-list", CategoryRenderer);
