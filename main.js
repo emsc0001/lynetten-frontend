@@ -13,7 +13,8 @@ import ListRenderer from "./View/Renderer/ListRenderer.js";
 import ProductCartRenderer from "./View/Renderer/ProductCartRenderer.js";
 
 import {payNowClicked} from "./Controller/payment.js";
-import enablePayNowButton  from "./View/validateCheckout.js";
+import enablePayNowButton from "./View/validateCheckout.js";
+import clearCartAndDeleteUnpaidOrders from "./Controller/clearCartAndDeleteUnpaidOrders.js";
 
 import { newsletter } from "./View/Nyhedsbrev.js";
 // import { myMap } from "./View/map.js";

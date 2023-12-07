@@ -46,16 +46,17 @@ async function extractShipmentDetails() {
     const email = document.getElementById("email").value;
     const address = document.getElementById("address").value;
     const phoneNumber = document.getElementById("phoneNumber").value;
+    const country = document.getElementById("country").value;
     const city = document.getElementById("city").value;
     const zipCode = document.getElementById("zipCode").value;
     if (!user) {
         const orderId = cart[0].guestOrderId;
         console.log(orderId);
         console.log(fullName, email, address, phoneNumber, city, zipCode);
-        await updateGuestOrder(orderId, fullName, email, address, phoneNumber, city, zipCode);
+        await updateGuestOrder(orderId, fullName, email, address, phoneNumber, country, city, zipCode);
     } else {
         const orderId = cart[0].orderId;
-        updateGuestOrder(orderId, fullName, email, address, phoneNumber, city, zipCode);
+        updateGuestOrder(orderId, fullName, email, address, phoneNumber, country, city, zipCode);
 
     }
 
