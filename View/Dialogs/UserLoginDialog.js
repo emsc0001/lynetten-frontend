@@ -26,19 +26,7 @@ export default class UserLoginDialog extends Dialog {
     return html;
   }
 
-  // Override the method to add form submission handling
-  setupEventListeners() {
-    super.setupEventListeners();
-    const loginForm = this.dialog.querySelector("#loginForm");
-
-    // Handle form submission
-    loginForm.addEventListener("submit", (event) => {
-      event.preventDefault();
-      this.login();
-    });
-  }
-
-  login() {
+  async login() {
     // Build user object from form
     const form = this.dialog.querySelector("form");
     const loginUser = new User({
@@ -49,7 +37,15 @@ export default class UserLoginDialog extends Dialog {
     // Clear form
     form.reset();
 
+    // Log the userId and email before calling the controller method
+    console.log("Logging in with userId:", loginUser.userId, "and email:", loginUser.email);
+
     // Call the controller method to log in the user
-    Controller.loginUserForm(loginUser);
+    const loginSuccessFull = await Controller.loginUserForm(this.user);
+
+    if (loginSuccessFull) {
+      // Close the dialog if the user login is successful
+      this.close();
+    }
   }
 }

@@ -54,24 +54,35 @@ async function createUserForm(user) {
   usersLists.setLists(users);
   usersLists.render();
 }
-
 async function loginUserForm(userId) {
-  // Assuming your login endpoint is something like /users/login
-  const response = await fetch(`${endpoint}/users/${userId}/login`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    // You might need to provide any necessary login credentials here
-  });
+  try {
+    // Assuming your user endpoint is something like /users/:userId
+    const response = await fetch(`${endpoint}/users/${userId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        // You might need to provide any necessary authentication tokens here
+      },
+    });
 
-  if (response.ok) {
-    // If login is successful, you might want to perform additional actions
-    // For example, you can update the user interface, set authentication tokens, etc.
-    console.log("Login successful");
-  } else {
-    // If login fails, handle the error accordingly
-    console.error("Login failed");
+    if (response.ok) {
+      const userData = await response.json();
+
+      // Now `userData` contains information about the logged-in user
+      // You can update the user interface with this information
+
+      // For example, assuming you have an element with id "loggedInUserInfo"
+      const loggedInUserInfo = document.getElementById("loggedInUserInfo");
+      loggedInUserInfo.innerHTML = `Logged in as ${userData.username}`;
+
+      console.log("Login successful");
+    } else {
+      // If login fails, handle the error accordingly
+      console.error("Login failed");
+    }
+  } catch (error) {
+    // Handle any other errors that may occur during the fetch
+    console.error("An error occurred:", error);
   }
 }
 
