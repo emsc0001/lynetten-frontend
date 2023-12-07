@@ -206,6 +206,11 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 });
 
+// Save cart to localStorage
+function saveCartToLocalStorage() {
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
+
 // Købeguide Beskrivelser
 document.addEventListener("DOMContentLoaded", function() {
   var collapsibles = document.getElementsByClassName("collapsible");
@@ -215,17 +220,12 @@ document.addEventListener("DOMContentLoaded", function() {
           var content = this.nextElementSibling;
           if (content.style.display === "block") {
               content.style.display = "none";
-          } else {
+          } else {  
               content.style.display = "block";
-          }
-      });
-  }
-});
-
-// Save cart to localStorage
-function saveCartToLocalStorage() {
-  localStorage.setItem("cart", JSON.stringify(cart));
-}
+          }    
+      });    
+  }    
+});  
 
 
 export { addToCart, products, categories, guestOrderCreated, cart, saveCartToLocalStorage, initializeCartView, htmlSide, initializeCartHtmlView, updateProductList };
