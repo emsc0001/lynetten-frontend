@@ -137,3 +137,47 @@ function deleteProduct(productId) {
 }
 
 
+
+// CATEGORY
+document.getElementById('showCategories').addEventListener('click', function () {
+    // Hide the product section
+    document.getElementById('product-list').style.display = 'none';
+    
+    // Show the categories section
+    document.getElementById('categoriesSection').style.display = 'block';
+
+    // Fetch and display categories
+    fetchCategories();
+});
+
+function fetchCategories() {
+    fetch('http://localhost:4444/categories')
+        .then(response => response.json())
+        .then(categories => {
+            const categoriesContainer = document.getElementById('category-list');
+            categoriesContainer.innerHTML = categories.map(category =>
+                `<div class="category-item">
+                    <h3>${category.categoryName}</h3>
+                    <button class="edit-category-button" data-category-id="${category.categoryId}">Edit</button>
+                    <button class="delete-category-button" data-category-id="${category.categoryId}">Delete</button>
+                </div>`
+            ).join('');
+
+            attachCategoryEventListeners();
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+function attachCategoryEventListeners() {
+    document.querySelectorAll('.edit-category-button').forEach(button => {
+        button.addEventListener('click', function () {
+            editCategory(this.getAttribute('data-category-id'));
+        });
+    });
+
+    document.querySelectorAll('.delete-category-button').forEach(button => {
+        button.addEventListener('click', function () {
+            deleteCategory(this.getAttribute('data-category-id'));
+        });
+    });
+}
