@@ -192,3 +192,44 @@ document.getElementById('backToProducts').addEventListener('click', function () 
     // Fetch and display products (if needed)
     fetchProducts();
 });
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    setupTabs();
+});
+
+function setupTabs() {
+    document.getElementById('showProducts').addEventListener('click', function () {
+        showProductsTab();
+    });
+
+    document.getElementById('showCategories').addEventListener('click', function () {
+        showCategoriesTab();
+    });
+
+    document.getElementById('backToProducts').addEventListener('click', function () {
+        showProductsTab();
+    });
+}
+
+function showProductsTab() {
+    // Hide the categories section
+    document.getElementById('categoriesSection').style.display = 'none';
+
+    // Show the products section
+    document.getElementById('product-list').style.display = 'block';
+
+    // Fetch and display products (if needed)
+    fetchProducts();
+}
+
+function showCategoriesTab() {
+    // Hide the products section
+    document.getElementById('product-list').style.display = 'none';
+
+    // Show the categories section
+    document.getElementById('categoriesSection').style.display = 'block';
+
+    // Fetch and display categories (if needed)
+    fetchCategories();
+}
