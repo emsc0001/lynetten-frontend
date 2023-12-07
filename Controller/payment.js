@@ -1,6 +1,7 @@
 import { createOrderItem } from "./orderItem-rest.js";
 import { cart } from "../main.js";
 import { updateGuestOrder } from "./guestOrder-rest.js";
+import { updateOrder } from "./order-rest.js";
 
 let user = false;
  async function payNowClicked(event) {
@@ -27,7 +28,7 @@ async function extractItemsCart(){
         for (const item of cart.items) {
             orderItems.push({ productId: item.productId, quantity: item.quantity });
         }
-        const orderId = cart.orderId;
+        const orderId = cart[1].orderId;
         const userId = user.userId;
 
         await createOrderItem(orderId, orderItems, userId);
@@ -56,7 +57,7 @@ async function extractShipmentDetails() {
         await updateGuestOrder(orderId, fullName, email, address, phoneNumber, country, city, zipCode);
     } else {
         const orderId = cart[0].orderId;
-        updateGuestOrder(orderId, fullName, email, address, phoneNumber, country, city, zipCode);
+        updateGuestOrder(orderId, address, phoneNumber, country, city, zipCode);
 
     }
 

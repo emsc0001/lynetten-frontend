@@ -1,5 +1,5 @@
-import { deleteUnpaidGuestOrder } from "./guestOrder-rest";
-import { cart, saveCartToLocalStorage, initializeCartView } from "../main";
+import { deleteUnpaidGuestOrder } from "./guestOrder-rest.js";
+import { cart, saveCartToLocalStorage, initializeCartView } from "../main.js";
 
 export default async function clearCartAndDeleteUnpaidOrders() {
     try {
