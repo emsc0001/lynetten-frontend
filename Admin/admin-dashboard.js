@@ -140,21 +140,27 @@ function deleteProduct(productId) {
 
 // CATEGORY
 
-// Function to fetch and display categories
-function fetchCategories() {
-    console.log("Fetching categories...");
-    fetch('http://localhost:4444/categories')
-        .then(response => {
-            console.log("Response received");
-            return response.json();
-        })
-        .then(categories => {
-            console.log("Categories:", categories);
-            // existing code...
-        })
-        .catch(error => console.error('Error:', error));
-}
+document.addEventListener('DOMContentLoaded', () => {
+    setupTabListeners();
+    fetchProducts(); // Initial fetch for products
+});
 
+function setupTabListeners() {
+    const showProductsBtn = document.getElementById('showProducts');
+    const showCategoriesBtn = document.getElementById('showCategories');
+
+    showProductsBtn.addEventListener('click', () => {
+        document.getElementById('productsSection').style.display = 'block';
+        document.getElementById('categoriesSection').style.display = 'none';
+        fetchProducts();
+    });
+
+    showCategoriesBtn.addEventListener('click', () => {
+        document.getElementById('productsSection').style.display = 'none';
+        document.getElementById('categoriesSection').style.display = 'block';
+        fetchCategories();
+    });
+}
 
 function fetchCategories() {
     fetch('http://localhost:4444/categories')
@@ -174,20 +180,14 @@ function fetchCategories() {
         .catch(error => console.error('Error:', error));
 }
 
-// Function to attach event listeners to category edit and delete buttons
 function attachCategoryEventListeners() {
-    document.querySelectorAll('.edit-category').forEach(button => {
-        button.addEventListener('click', function() {
-            editCategory(this.getAttribute('data-category-id'));
-        });
-    });
-
-    document.querySelectorAll('.delete-category').forEach(button => {
-        button.addEventListener('click', function() {
-            deleteCategory(this.getAttribute('data-category-id'));
-        });
-    });
+    // Code for attaching event listeners to Edit/Delete buttons for categories
+    // ...
 }
+
+// Rest of your existing code for category handling (create, delete, etc.)
+// ...
+
 
 // Function to handle category creation
 document.getElementById('newCategoryForm').addEventListener('submit', function(event) {
