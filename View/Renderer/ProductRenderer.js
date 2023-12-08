@@ -1,3 +1,4 @@
+
 import ItemRenderer from "./Itemrenderer.js";
 import * as controller from "../../main.js";
 import * as guestOrderController from "../../Model/Rest-services/guestOrder-rest.js";
@@ -57,4 +58,4 @@ export default class ProductRenderer extends ItemRenderer {
             }
         });
     }
-}
+};
