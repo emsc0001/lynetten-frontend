@@ -79,6 +79,23 @@ async function baddServiceApp() {
       productsLists = new Paginater(products, "#products-container", ProductRenderer, 10);
       productsLists.render();
     }
+    if (products) {
+      dialogProduct = new ProductsDialog("product-dialog");
+      dialogProduct.render();
+    }
+    // Initialize Product Views
+    const productDialogLink = document.getElementById("products-container");
+
+    // Check if the element exists before adding an event listener
+    if (productDialogLink) {
+      productDialogLink.addEventListener("click", (event) => {
+        event.preventDefault();
+        console.log("clicked");
+        dialogProduct.show();
+      });
+    } else {
+      console.error("Element with id 'nav-icon' not found.");
+    }
   }
 
   // Initialize the views based on html page
@@ -127,8 +144,25 @@ function initializeOtherHtmlViews() {
     usersLists = new ListRenderer(users, "#user-container", UserRenderer);
     usersLists.render();
   }
-
   console.log(usersLists);
+
+  //   if (products) {
+  //     dialogProduct = new ProductsDialog("product-dialog");
+  //     dialogProduct.render();
+  //   }
+  //   // Initialize Product Views
+  //   const productDialogLink = document.getElementById("nav-icon");
+
+  //   // Check if the element exists before adding an event listener
+  //   if (productDialogLink) {
+  //     productDialogLink.addEventListener("click", (event) => {
+  //       event.preventDefault();
+  //       console.log("clicked");
+  //       dialogProduct.show();
+  //     });
+  //   } else {
+  //     console.error("Element with id 'nav-icon' not found.");
+  //   }
 
   // LOGIN USER DIALOG //
   UsersLoginDialog = new UserLoginDialog("user-login-dialog");
@@ -168,21 +202,33 @@ function initializeOtherHtmlViews() {
 
 //-----Initiliaze views for products.html-----//
 function initializeProductViews() {
-  // initialize Product Dialog Views //
-  const dialogProduct = new ProductsDialog(products, "#product-container", ProductRenderer);
-  dialogProduct.render();
+  // Initialize Product Dialog Views
 
-  const productDialogLink = document.getElementById("product-dialog");
+  //   const dialogProduct = new ProductsDialog(products, "#product", ProductRenderer);
 
-  // Check if the element exists before adding an event listener
-  if (productDialogLink) {
-    productDialogLink.addEventListener("click", (event) => {
-      event.preventDefault();
-      dialogProduct.show();
-    });
-  } else {
-    console.error("Element with id 'product-dialog' not found.");
-  }
+  //   // Find the last row inside the products-container and attach a click event
+  //   const lastRow = document.querySelector("product-form-container:last-child");
+
+  //   if (lastRow) {
+  //     lastRow.addEventListener("click", (event) => {
+  //       console.log("openen dialog");
+  //       event.stopPropagation();
+  //       dialogProduct.render();
+  //       dialogProduct.show();
+  //     });
+  //   }
+
+  //   const productDialogLink = document.getElementById("product-dialog");
+
+  //   // Check if the element exists before adding an event listener
+  //   if (productDialogLink) {
+  //     productDialogLink.addEventListener("click", (event) => {
+  //       event.preventDefault();
+  //       dialogProduct.show();
+  //     });
+  //   } else {
+  //     console.error("Element with id 'product-dialog' not found.");
+  //   }
 
   // initialize Category Views //
   categoriesLists = new ListRenderer(categories, ".category-list", CategoryRenderer);
