@@ -44,7 +44,6 @@ let PasswordForgotDialog = null;
 //Order variables
 let cart = [];
 let cartList = null;
-let guestOrderCreated = { value: false };
 const htmlSide = window.location.pathname;
 
 window.addEventListener("load", () => {
@@ -296,7 +295,6 @@ export {
     addToCart,
     products,
     categories,
-   
     cart,
     saveCartToLocalStorage,
     initializeCartView,
