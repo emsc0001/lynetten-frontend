@@ -44,6 +44,7 @@ export default class UserLoginDialog extends Dialog {
 
       // Close the dialog if the user login is successful
       this.close();
+      window.location.reload();
     }
   }
 }

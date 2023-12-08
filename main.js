@@ -123,8 +123,12 @@ function initializeOtherHtmlViews() {
   });
 
   // initialize User Views //
-  usersLists = new ListRenderer(users, "#user-container", UserRenderer);
-  usersLists.render();
+  if (users) {
+    usersLists = new ListRenderer(users, "#user-container", UserRenderer);
+    usersLists.render();
+  }
+
+  console.log(usersLists);
 
   // LOGIN USER DIALOG //
   UsersLoginDialog = new UserLoginDialog("user-login-dialog");
