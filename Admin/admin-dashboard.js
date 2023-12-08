@@ -1,10 +1,11 @@
-// admin-dashboard.js
+// Fetch and display products when the DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
     fetchProducts();
     setupModalClose();
+    setupTabs();
 });
 
-
+// Fetch products from the server and display them
 function fetchProducts() {
     fetch('http://localhost:4444/products')
         .then(response => response.json())
@@ -17,13 +18,36 @@ function fetchProducts() {
                     <button class="edit-button" data-product-id="${product.productId}">Edit</button>
                     <button class="delete-button" data-product-id="${product.productId}">Delete</button>
                 </div>`
-            ).join('');
+                ).join('');
+                
+                attachEventListeners();
+            })
+            .catch(error => console.error('Error:', error));
+        }
 
-            attachEventListeners();
-        })
-        .catch(error => console.error('Error:', error));
-}
 
+// Fetch and display categories
+function fetchCategories() {
+            fetch('http://localhost:4444/categories')
+                .then(response => response.json())
+                .then(categories => {
+                    const categoriesContainer = document.getElementById('category-list');
+                    categoriesContainer.innerHTML = categories.map(category =>
+                        `<div class="category-item">
+                            <h3>${category.categoryName}</h3>
+                            <button class="edit-category-button" data-category-id="${category.categoryId}">Edit</button>
+                            <button class="delete-category-button" data-category-id="${category.categoryId}">Delete</button>
+                        </div>`
+                    ).join('');
+        
+                    attachCategoryEventListeners();
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+
+
+// Attach event listeners to edit and delete buttons for products
 function attachEventListeners() {
     document.querySelectorAll('.edit-button').forEach(button => {
         button.addEventListener('click', function() {
@@ -38,22 +62,21 @@ function attachEventListeners() {
     });
 }
 
+
+// Edit a product
 function editProduct(productId) {
-    // Fetch the product details and populate the edit form
     fetch(`http://localhost:4444/products/${productId}`)
         .then(response => response.json())
         .then(product => {
-            // Assuming your product object has these properties
             document.getElementById('editProductId').value = product.productId;
             document.getElementById('editProductName').value = product.productName;
             document.getElementById('editProductPrice').value = product.listPrice;
-
-            // Display the edit modal
             document.getElementById('editProductModal').style.display = "block";
         })
         .catch(error => console.error('Error:', error));
 }
 
+// Set up event listeners for closing the modal
 function setupModalClose() {
     const closeModal = document.querySelector('.close');
     closeModal.addEventListener('click', function() {
@@ -66,9 +89,10 @@ function setupModalClose() {
     });
 }
 
+
+// Handle form submission for editing a product
 document.getElementById('editProductForm').addEventListener('submit', function(event) {
     event.preventDefault();
-
     const productId = document.getElementById('editProductId').value;
     const productName = document.getElementById('editProductName').value;
     const productPrice = document.getElementById('editProductPrice').value;
@@ -93,16 +117,12 @@ document.getElementById('editProductForm').addEventListener('submit', function(e
 });
 
 
-
-
-
+// Handle form submission for creating a new product
 document.getElementById('newProductForm').addEventListener('submit', function(event) {
     event.preventDefault();
-    
     const productName = document.getElementById('productName').value;
     const productPrice = document.getElementById('productPrice').value;
-    // Collect other field values as needed
-    
+
     fetch('http://localhost:4444/products', {
         method: 'POST',
         headers: {
@@ -111,7 +131,6 @@ document.getElementById('newProductForm').addEventListener('submit', function(ev
         body: JSON.stringify({
             productName,
             listPrice: productPrice,
-            // Include other fields
         })
     })
     .then(response => response.json())
@@ -123,7 +142,7 @@ document.getElementById('newProductForm').addEventListener('submit', function(ev
 });
 
 
-
+// Delete a product
 function deleteProduct(productId) {
     fetch(`http://localhost:4444/products/${productId}`, {
         method: 'DELETE'
@@ -136,38 +155,14 @@ function deleteProduct(productId) {
     .catch(error => console.error('Error:', error));
 }
 
-
-
-// CATEGORY
+// CATEGORY SECTION
 document.getElementById('showCategories').addEventListener('click', function () {
-    // Hide the product section
-    document.getElementById('product-list').style.display = 'none';
-    
-    // Show the categories section
-    document.getElementById('categoriesSection').style.display = 'block';
-
-    // Fetch and display categories
-    fetchCategories();
+    hideProductsSection();
+    showCategoriesSection();
 });
 
-function fetchCategories() {
-    fetch('http://localhost:4444/categories')
-        .then(response => response.json())
-        .then(categories => {
-            const categoriesContainer = document.getElementById('category-list');
-            categoriesContainer.innerHTML = categories.map(category =>
-                `<div class="category-item">
-                    <h3>${category.categoryName}</h3>
-                    <button class="edit-category-button" data-category-id="${category.categoryId}">Edit</button>
-                    <button class="delete-category-button" data-category-id="${category.categoryId}">Delete</button>
-                </div>`
-            ).join('');
 
-            attachCategoryEventListeners();
-        })
-        .catch(error => console.error('Error:', error));
-}
-
+// Attach event listeners to edit and delete buttons for categories
 function attachCategoryEventListeners() {
     document.querySelectorAll('.edit-category-button').forEach(button => {
         button.addEventListener('click', function () {
@@ -182,22 +177,15 @@ function attachCategoryEventListeners() {
     });
 }
 
+// Go back to the products section
 document.getElementById('backToProducts').addEventListener('click', function () {
-    // Hide the categories section
-    document.getElementById('categoriesSection').style.display = 'none';
-    
-    // Show the product section
-    document.getElementById('product-list').style.display = 'block';
-
-    // Fetch and display products (if needed)
+    hideCategoriesSection();
+    showProductsSection();
     fetchProducts();
 });
 
 
-document.addEventListener('DOMContentLoaded', () => {
-    setupTabs();
-});
-
+// Set up tab functionality
 function setupTabs() {
     document.getElementById('showProducts').addEventListener('click', function () {
         showProductsTab();
@@ -212,26 +200,37 @@ function setupTabs() {
     });
 }
 
+
+// Show the products section
 function showProductsTab() {
-    // Hide the categories section
-    document.getElementById('categoriesSection').style.display = 'none';
-
-    // Show the products section
-    document.getElementById('product-list').style.display = 'block';
-
-    // Fetch and display products (if needed)
+    hideCategoriesSection();
+    showProductsSection();
     fetchProducts();
 }
 
+
+// Show the categories section
 function showCategoriesTab() {
-    // Hide the products section
-    document.getElementById('product-list').style.display = 'none';
-
-    // Show the categories section
-    document.getElementById('categoriesSection').style.display = 'block';
-
-    // Fetch and display categories (if needed)
+    hideProductsSection();
+    showCategoriesSection();
     fetchCategories();
 }
 
 
+// Utility functions for showing/hiding sections
+function hideProductsSection() {
+    document.getElementById('product-list').style.display = 'none';
+}
+
+
+function showProductsSection() {
+    document.getElementById('product-list').style.display = 'block';
+}
+
+function hideCategoriesSection() {
+    document.getElementById('categoriesSection').style.display = 'none';
+}
+
+function showCategoriesSection() {
+    document.getElementById('categoriesSection').style.display = 'block';
+}
