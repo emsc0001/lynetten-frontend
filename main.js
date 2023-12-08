@@ -3,6 +3,7 @@ import { endpoint, getAllProducts } from "./Model/Rest-services/products-rest.js
 import { getAllCategories, getCategoryWithProducts } from "./Model/Rest-services/category-rest.js";
 import { getAllUsers } from "./Model/Rest-services/user-rest.js";
 
+import ProductsDialog from "./View/Dialogs/ProductsDialog.js";
 import UserCreateDialog from "./View/Dialogs/CreateUserDialog.js";
 import UserLoginDialog from "./View/Dialogs/UserLoginDialog.js";
 import ForgotPasswordDialog from "./View/Dialogs/ForgotPasswordDialog.js";
@@ -15,7 +16,6 @@ import { handleSearch } from "./View/Helpers/Search.js";
 import ProductRenderer from "./View/Renderer/ProductRenderer.js";
 import CategoryRenderer from "./View/Renderer/CategoryRenderer.js";
 import UserRenderer from "./View/Renderer/UserRenderer.js";
-import ProductDialogRenderer from "./View/Renderer/ProductDialogRenderer.js";
 import Paginater from "./View/Renderer/Paginater.js";
 import ListRenderer from "./View/Renderer/ListRenderer.js";
 import ProductCartRenderer from "./View/Renderer/ProductCartRenderer.js";
@@ -30,7 +30,7 @@ endpoint;
 
 let products = [];
 let productsLists = null;
-// let productDialog = null;
+let dialogProduct = null;
 
 let categories = [];
 let categoriesLists = null;
@@ -164,8 +164,21 @@ function initializeOtherHtmlViews() {
 
 //-----Initiliaze views for products.html-----//
 function initializeProductViews() {
-  // productsLists = new Paginater(products, "#products-container", ProductRenderer, 10);
-  // productsLists.render();
+  // initialize Product Dialog Views //
+  const dialogProduct = new ProductsDialog(products, "#product-container", ProductRenderer);
+  dialogProduct.render();
+
+  const productDialogLink = document.getElementById("product-dialog");
+
+  // Check if the element exists before adding an event listener
+  if (productDialogLink) {
+    productDialogLink.addEventListener("click", (event) => {
+      event.preventDefault();
+      dialogProduct.show();
+    });
+  } else {
+    console.error("Element with id 'product-dialog' not found.");
+  }
 
   // initialize Category Views //
   categoriesLists = new ListRenderer(categories, ".category-list", CategoryRenderer);

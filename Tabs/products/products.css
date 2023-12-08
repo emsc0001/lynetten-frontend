@@ -695,6 +695,23 @@ input:focus {
   background-color: #2980b9;
 }
 
+.info-icon-container {
+  position: absolute;
+  top: 25%;
+  right: 10%;
+  background-color: #3498db;
+  color: white;
+  border-radius: 50%;
+  padding: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+/* Optional: Add some hover effects */
+.info-icon-container:hover {
+  background-color: #2980b9;
+}
+
 /* Tilføj dette til din eksisterende CSS-fil */
 .products-container {
   opacity: 1;
