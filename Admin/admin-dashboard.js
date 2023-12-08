@@ -1,3 +1,5 @@
+
+
 // Fetch and display products when the DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
     setupProductForm();
