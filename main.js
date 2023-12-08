@@ -85,9 +85,11 @@ function initializeOtherHtmlViews() {
     categoriesLists = new ListRenderer(categories, ".category-list", CategoryRenderer);
     categoriesLists.render();
 
-    // initialize User Views //
+  // initialize User Views //
+  if (usersLists) {
     usersLists = new ListRenderer(users, "#user-container", UserRenderer);
     usersLists.render();
+  }
 
     // LOGIN USER DIALOG //
 
