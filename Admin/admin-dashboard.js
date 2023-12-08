@@ -120,13 +120,20 @@ function editProduct(productId) {
 
 // Set up event listeners for closing the modal
 function setupModalClose() {
-    const closeModal = document.querySelector('.close');
-    closeModal.addEventListener('click', function() {
-        document.getElementById('editProductModal').style.display = "none";
+    const closeButtons = document.querySelectorAll('.close');
+
+    closeButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            this.closest('.modal').style.display = "none";
+        });
     });
+
+    // Close the modal if clicked outside of it
     window.addEventListener('click', function(event) {
         if (event.target == document.getElementById('editProductModal')) {
             document.getElementById('editProductModal').style.display = "none";
+        } else if (event.target == document.getElementById('editCategoryModal')) {
+            document.getElementById('editCategoryModal').style.display = "none";
         }
     });
 }
@@ -165,19 +172,14 @@ document.getElementById('editProductForm').addEventListener('submit', function(e
 function setupProductForm() {
     document.getElementById('newProductForm').addEventListener('submit', function(event) {
         event.preventDefault();
-        
-        // Get the values from the form fields
         const productName = document.getElementById('productName').value;
         const productPrice = document.getElementById('productPrice').value;
-        
-        // Create a new product object
+
         const newProduct = {
             productName,
             listPrice: productPrice
-            // Add additional fields as necessary
         };
 
-        // Send a POST request to the server with the new product
         fetch('http://localhost:4444/products', {
             method: 'POST',
             headers: {
@@ -188,11 +190,12 @@ function setupProductForm() {
         .then(response => response.json())
         .then(() => {
             alert('Product created successfully');
-            fetchProducts(); // Refresh the product list
+            fetchProducts();
         })
         .catch(error => console.error('Error:', error));
     });
 }
+
 
 
 
@@ -246,11 +249,7 @@ function deleteCategory(categoryId) {
     .catch(error => console.error('Error:', error));
 }
 
-// CATEGORY SECTION
-document.getElementById('showCategories').addEventListener('click', function () {
-    hideProductsSection();
-    showCategoriesSection();
-});
+
 
 
 // Attach event listeners to edit and delete buttons for categories
