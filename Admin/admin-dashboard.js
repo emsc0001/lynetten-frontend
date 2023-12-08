@@ -3,81 +3,80 @@
 
 const endpoint = 'http://localhost:4444';
 
-function fetchData(url, options = {}) {
-  return fetch(endpoint + url, options)
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-      return response.json();
-    })
-    .catch(error => {
-      console.error('Fetching error:', error);
-    });
-}
+async function fetchData(url, options = {}) {
+    try {
+        const response = await fetch(endpoint + url, options);
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return await response.json();
+    } catch (error) {
+        console.error('Fetching error:', error);
+    }
+  }
 
-function fetchAndDisplayProducts() {
-  fetchData('/products')
-    .then(products => {
-      const productsContainer = document.getElementById('product-list');
-      productsContainer.innerHTML = products.map(product => `
-        <div class="product-item">
-          <h3>${product.productName}</h3>
-          <p>Price: ${product.listPrice}</p>
-          <button class="edit-button" data-product-id="${product.productId}">Edit</button>
-          <button class="delete-button" data-product-id="${product.productId}">Delete</button>
-        </div>`
-      ).join('');
-      attachEventListenersToProducts();
-    });
-}
+  function fetchAndDisplayProducts() {
+    fetchData('/products')
+      .then(products => {
+        const productsContainer = document.getElementById('product-list');
+        productsContainer.innerHTML = products.map(product => `
+          <div class="product-item">
+            <h3>${product.productName}</h3>
+            <p>Price: ${product.listPrice}</p>
+            <button class="edit-button" data-product-id="${product.productId}">Edit</button>
+            <button class="delete-button" data-product-id="${product.productId}">Delete</button>
+          </div>`
+        ).join('');
+        attachEventListenersToProducts();
+      });
+  }
 
-function fetchAndDisplayCategories() {
-  fetchData('/categories')
-    .then(categories => {
-      const categoriesContainer = document.getElementById('category-list');
-      categoriesContainer.innerHTML = categories.map(category => `
-        <div class="category-item">
-          <h3>${category.categoryName}</h3>
-          <button class="edit-category-button" data-category-id="${category.categoryId}">Edit</button>
-          <button class="delete-category-button" data-category-id="${category.categoryId}">Delete</button>
-        </div>`
-      ).join('');
-      attachEventListenersToCategories();
-    });
-}
+  function fetchAndDisplayCategories() {
+    fetchData('/categories')
+      .then(categories => {
+        const categoriesContainer = document.getElementById('category-list');
+        categoriesContainer.innerHTML = categories.map(category => `
+          <div class="category-item">
+            <h3>${category.categoryName}</h3>
+            <button class="edit-category-button" data-category-id="${category.categoryId}">Edit</button>
+            <button class="delete-category-button" data-category-id="${category.categoryId}">Delete</button>
+          </div>`
+        ).join('');
+        attachEventListenersToCategories();
+      });
+  }
 
-function attachEventListenersToProducts() {
-  document.querySelectorAll('.edit-button').forEach(button => {
-    button.addEventListener('click', event => {
-      const productId = event.target.dataset.productId;
-      showEditProductModal(productId);
+  function attachEventListenersToProducts() {
+    document.querySelectorAll('.edit-button').forEach(button => {
+      button.addEventListener('click', event => {
+        const productId = event.target.dataset.productId;
+        showEditProductModal(productId);
+      });
     });
-  });
+  
+    document.querySelectorAll('.delete-button').forEach(button => {
+      button.addEventListener('click', event => {
+        const productId = event.target.dataset.productId;
+        deleteProduct(productId);
+      });
+    });
+  }
 
-  document.querySelectorAll('.delete-button').forEach(button => {
-    button.addEventListener('click', event => {
-      const productId = event.target.dataset.productId;
-      deleteProduct(productId);
+  function attachEventListenersToCategories() {
+    document.querySelectorAll('.edit-category-button').forEach(button => {
+      button.addEventListener('click', event => {
+        const categoryId = event.target.dataset.categoryId;
+        showEditCategoryModal(categoryId);
+      });
     });
-  });
-}
-
-function attachEventListenersToCategories() {
-  document.querySelectorAll('.edit-category-button').forEach(button => {
-    button.addEventListener('click', event => {
-      const categoryId = event.target.dataset.categoryId;
-      showEditCategoryModal(categoryId);
+  
+    document.querySelectorAll('.delete-category-button').forEach(button => {
+      button.addEventListener('click', event => {
+        const categoryId = event.target.dataset.categoryId;
+        deleteCategory(categoryId);
+      });
     });
-  });
-
-  document.querySelectorAll('.delete-category-button').forEach(button => {
-    button.addEventListener('click', event => {
-      const categoryId = event.target.dataset.categoryId;
-      deleteCategory(categoryId);
-    });
-  });
-}
+  }
 
 function showEditProductModal(productId) {
   fetchData(`/products/${productId}`)
