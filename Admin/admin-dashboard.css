@@ -1,3 +1,11 @@
+h1 {
+    font-size: 2em; /* Adjust this value as needed */
+}
+
+h2 {
+    text-align: center;
+}
+
 /* admin-dashboard.css */
 body {
     font-family: 'Arial', sans-serif;
@@ -24,10 +32,6 @@ body {
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.item h3 {
-    margin-top: 0;
 }
 
 button {
@@ -82,11 +86,6 @@ form button[type="submit"]:hover {
     padding: 20px;
     text-align: center;
     margin-bottom: 30px;
-}
-
-.admin-header h1 {
-    margin: 0;
-    font-size: 2em;
 }
 
 .modal {

@@ -38,13 +38,17 @@ function fetchCategories() {
             categoriesContainer.innerHTML = categories.map(category =>
                 `<div class="category-item">
                     <h3>${category.categoryName}</h3>
-                    <button onclick="editCategory(${category.categoryId})">Edit</button>
-                    <button onclick="deleteCategory(${category.categoryId})">Delete</button>
+                    <button class="edit-category-button" data-category-id="${category.categoryId}">Edit</button>
+                    <button class="delete-category-button" data-category-id="${category.categoryId}">Delete</button>
                 </div>`
             ).join('');
+
+            attachCategoryEventListeners();
         })
         .catch(error => console.error('Error:', error));
 }
+
+
 
 
 
@@ -63,10 +67,41 @@ function attachEventListeners() {
     });
 }
 
+// Function to show the edit category modal
 function editCategory(categoryId) {
-    // Logic to edit a category
-    // Fetch category details, populate a form, and handle form submission
+    fetch(`http://localhost:4444/categories/${categoryId}`)
+        .then(response => response.json())
+        .then(category => {
+            document.getElementById('editCategoryId').value = category.categoryId;
+            document.getElementById('editCategoryName').value = category.categoryName;
+            document.getElementById('editCategoryModal').style.display = "block";
+        })
+        .catch(error => console.error('Error:', error));
 }
+
+// Handle form submission for editing a category
+document.getElementById('editCategoryForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const categoryId = document.getElementById('editCategoryId').value;
+    const categoryName = document.getElementById('editCategoryName').value;
+
+    fetch(`http://localhost:4444/categories/${categoryId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ categoryName })
+    })
+    .then(response => response.json())
+    .then(() => {
+        alert('Category updated successfully');
+        fetchCategories();
+        document.getElementById('editCategoryModal').style.display = "none";
+    })
+    .catch(error => console.error('Error:', error));
+});
+
+
 
 // Edit a product
 function editProduct(productId) {
@@ -80,6 +115,8 @@ function editProduct(productId) {
         })
         .catch(error => console.error('Error:', error));
 }
+
+
 
 // Set up event listeners for closing the modal
 function setupModalClose() {
@@ -196,6 +233,7 @@ function deleteProduct(productId) {
     .catch(error => console.error('Error:', error));
 }
 
+// Delete a category
 function deleteCategory(categoryId) {
     fetch(`http://localhost:4444/categories/${categoryId}`, {
         method: 'DELETE'
@@ -203,7 +241,7 @@ function deleteCategory(categoryId) {
     .then(response => response.json())
     .then(() => {
         alert('Category deleted successfully');
-        fetchCategories();
+        fetchCategories(); // Refresh the category list
     })
     .catch(error => console.error('Error:', error));
 }
@@ -231,21 +269,10 @@ function attachCategoryEventListeners() {
 }
 
 
-// Set up tab functionality
 function setupTabs() {
-    document.getElementById('showProducts').addEventListener('click', () => {
-        document.getElementById('categoriesSection').style.display = 'none';
-        document.getElementById('product-list').style.display = 'block';
-        fetchProducts();
-    });
-
-    document.getElementById('showCategories').addEventListener('click', () => {
-        document.getElementById('product-list').style.display = 'none';
-        document.getElementById('categoriesSection').style.display = 'block';
-        fetchCategories();
-    });
+    document.getElementById('showProducts').addEventListener('click', showProductsTab);
+    document.getElementById('showCategories').addEventListener('click', showCategoriesTab);
 }
-
 
 function setupForms() {
     setupProductForm();
@@ -257,34 +284,16 @@ function setupForms() {
 
 // Show the products section
 function showProductsTab() {
-    hideCategoriesSection();
-    showProductsSection();
+    document.getElementById('productSection').style.display = 'block'; // Show product section
+    document.getElementById('categoriesSection').style.display = 'none'; // Hide category section
     fetchProducts();
 }
 
 
 // Show the categories section
 function showCategoriesTab() {
-    hideProductsSection();
-    showCategoriesSection();
+    document.getElementById('productSection').style.display = 'none'; // Hide product section
+    document.getElementById('categoriesSection').style.display = 'block'; // Show category section
     fetchCategories();
 }
 
-
-// Utility functions for showing/hiding sections
-function hideProductsSection() {
-    document.getElementById('product-list').style.display = 'none';
-}
-
-
-function showProductsSection() {
-    document.getElementById('product-list').style.display = 'block';
-}
-
-function hideCategoriesSection() {
-    document.getElementById('categoriesSection').style.display = 'none';
-}
-
-function showCategoriesSection() {
-    document.getElementById('categoriesSection').style.display = 'block';
-}
