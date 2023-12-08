@@ -309,6 +309,12 @@ html {
 /* Add your existing CSS rules here */
 
 /* Style for the modal */
+
+.user-container {
+  display: flex;
+  cursor: pointer;
+}
+
 .modal {
   display: none;
   position: fixed;
@@ -319,6 +325,16 @@ html {
   height: 100%;
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.6);
+  animation: fadeIn 0.3s ease-in-out; /* Add the animation property */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 h2 {
@@ -395,6 +411,108 @@ input:focus {
   background-color: #ffb301;
 }
 
+/* Style for the create user modal */
+#createUserModal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* Style for the create user modal content */
+#createUserModal .modal-content {
+  background-color: #fefefe;
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  width: 30%;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+}
+
+/* Style for the close button in the create user modal */
+#createUserModal .close {
+  color: #aaa;
+  float: right;
+  font-size: 24px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+#createUserModal .close:hover,
+#createUserModal .close:focus {
+  color: #333;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Style for the login form inside the create user modal */
+#createUserModal form {
+  padding: 0 16px;
+}
+
+#createUserModal label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+#createUserModal input {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+#createUserModal input:focus {
+  border-color: #333;
+  outline: none;
+}
+
+#createUserModal button {
+  background-color: #3498db;
+  color: #fff;
+  padding: 12px 0;
+  border: none;
+  width: 100%;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+#createUserModal button:hover {
+  background-color: #2980b9;
+}
+
+/* Style for the additional options in the create user modal */
+#createUserModal .additional-options {
+  margin-top: 20px;
+  text-align: center;
+}
+
+#createUserModal .additional-options p {
+  margin-bottom: 8px;
+  color: #666;
+}
+
+#createUserModal .additional-options a {
+  color: #3498db;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+#createUserModal .additional-options a:hover {
+  text-decoration: underline;
+  color: #2980b9;
+}
+
 /* Style for the additional options (forgot password and create account) */
 .additional-options {
   margin-top: 20px;
@@ -415,6 +533,37 @@ input:focus {
 .additional-options a:hover {
   text-decoration: underline;
   color: #2980b9;
+}
+
+.subscribe-newsletter {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.subscribe-newsletter label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.subscribe-newsletter input {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.subscribe-newsletter input:focus-visible {
+  outline: 2px solid #2980b9;
+}
+
+.subscribe-newsletter input:checked + span {
+  color: #2980b9;
+}
+
+.subscribe-newsletter span {
+  color: #555;
 }
 
 /* Add more styles as needed */
@@ -618,7 +767,6 @@ input:focus {
 
 /* Style the search button (if needed) */
 
-
 /* ---------Cart--------- */
 
 /* Style for the cart items */
@@ -643,13 +791,13 @@ input:focus {
 .cart-item h2 {
   font-size: 16px;
   margin: 0;
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
 .cart-item h3 {
   font-size: 14px;
   margin: 5px 0;
-    margin-right: 10px;
+  margin-right: 10px;
   margin-left: 10px;
 }
 
@@ -714,14 +862,12 @@ input:focus {
 div.cart-total a.go-to-cart-link {
   text-decoration: none;
   padding: 10px 20px;
-  background-color:  #ff6347; /* Tomato red */
+  background-color: #ff6347; /* Tomato red */
   border-radius: 5px;
-  color: white; 
+  color: white;
   font-weight: bold;
   transition: background-color 0.3s, color 0.3s;
-
 }
-
 
 div.cart-total a.go-to-cart-link:hover {
   background-color: #ff483e; /* Darker red on hover */
@@ -758,8 +904,6 @@ div.cart-total a.go-to-cart-link:hover {
 #cart:hover .cart-content {
   display: block;
 }
-
-
 
 #pagination {
   min-height: 50px; /* Just an example height; adjust as needed */

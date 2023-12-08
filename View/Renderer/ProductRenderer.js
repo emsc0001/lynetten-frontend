@@ -1,7 +1,7 @@
 import ItemRenderer from "./Itemrenderer.js";
 import * as controller from "../../main.js";
-import * as guestOrderController from "../../Controller/guestOrder-rest.js";
-import { createOrder } from "../../Controller/order-rest.js";
+import * as guestOrderController from "../../Model/Rest-services/guestOrder-rest.js";
+import { createOrder } from "../../Model/Rest-services/order-rest.js";
 
 export default class ProductRenderer extends ItemRenderer {
     render() {
@@ -17,8 +17,8 @@ export default class ProductRenderer extends ItemRenderer {
         </div>
       </article>
     `;
-        return html;
-    }
+            return html;
+      }
 
     postRender(element) {
         const product = this.item;
@@ -58,4 +58,3 @@ export default class ProductRenderer extends ItemRenderer {
         });
     }
 }
-
