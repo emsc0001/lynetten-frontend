@@ -1,9 +1,10 @@
 // Fetch and display products when the DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
+    setupProductForm();
+    setupCategoryForm();
     fetchProducts();
     setupModalClose();
     setupTabs();
-    setupCategoryForm();
 });
 
 
@@ -94,6 +95,7 @@ function setupModalClose() {
 }
 
 
+
 // Handle form submission for editing a product
 document.getElementById('editProductForm').addEventListener('submit', function(event) {
     event.preventDefault();
@@ -122,28 +124,63 @@ document.getElementById('editProductForm').addEventListener('submit', function(e
 
 
 // Handle form submission for creating a new product
-document.getElementById('newProductForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    const productName = document.getElementById('productName').value;
-    const productPrice = document.getElementById('productPrice').value;
-
-    fetch('http://localhost:4444/products', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
+// Function to handle form submission for creating a new product
+function setupProductForm() {
+    document.getElementById('newProductForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        // Get the values from the form fields
+        const productName = document.getElementById('productName').value;
+        const productPrice = document.getElementById('productPrice').value;
+        
+        // Create a new product object
+        const newProduct = {
             productName,
-            listPrice: productPrice,
+            listPrice: productPrice
+            // Add additional fields as necessary
+        };
+
+        // Send a POST request to the server with the new product
+        fetch('http://localhost:4444/products', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newProduct)
         })
-    })
-    .then(response => response.json())
-    .then(data => {
-        alert('Product created successfully');
-        fetchProducts(); // Refresh the product list
-    })
-    .catch(error => console.error('Error:', error));
-});
+        .then(response => response.json())
+        .then(() => {
+            alert('Product created successfully');
+            fetchProducts(); // Refresh the product list
+        })
+        .catch(error => console.error('Error:', error));
+    });
+}
+
+
+
+
+function setupCategoryForm() {
+    document.getElementById('newCategoryForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const categoryName = document.getElementById('categoryName').value;
+
+        fetch('http://localhost:4444/categories', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ categoryName })
+        })
+        .then(response => response.json())
+        .then(() => {
+            alert('Category created successfully');
+            fetchCategories();
+        })
+        .catch(error => console.error('Error:', error));
+    });
+}
+
 
 
 // Delete a product
@@ -193,13 +230,6 @@ function attachCategoryEventListeners() {
     });
 }
 
-// Go back to the products section
-document.getElementById('backToProducts').addEventListener('click', function () {
-    hideCategoriesSection();
-    showProductsSection();
-    fetchProducts();
-});
-
 
 // Set up tab functionality
 function setupTabs() {
@@ -215,6 +245,14 @@ function setupTabs() {
         fetchCategories();
     });
 }
+
+
+function setupForms() {
+    setupProductForm();
+    setupCategoryForm();
+}
+
+
 
 
 // Show the products section
