@@ -60,9 +60,10 @@ async function createUserForm(user) {
 async function loginUserForm(users) {
   try {
     console.log(users);
-    // Use the getUserById function to fetch user data by userId
-    const user = await findUserByEmail(users.email);
+    // Use the findUserByEmailAndPassword function to fetch user data by email and password
+    const user = await findUserByEmailAndPassword(users.email, users.password);
     console.log(user);
+
     // Assuming you have an element with id "loggedInUserInfo"
     const loggedInUserInfo = document.getElementById("loggedInUserInfo");
 
@@ -79,9 +80,8 @@ async function loginUserForm(users) {
   }
 }
 
-function findUserByEmail(email) {
-
-  return allUsers.find((user) => user.email === email);
+function findUserByEmailAndPassword(email, password) {
+  return allUsers.find((user) => user.email === email && user.password === password);
 }
 
 export { getAllUsers, createUser, createUserForm, loginUserForm, allUsers, endpoint };
