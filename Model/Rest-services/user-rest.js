@@ -59,9 +59,10 @@ async function createUserForm(user) {
 
 async function loginUserForm(users) {
   try {
+    console.log(users);
     // Use the getUserById function to fetch user data by userId
-    const user = await getAllUsers(users);
-
+    const user = await findUserByEmail(users.email);
+    console.log(user);
     // Assuming you have an element with id "loggedInUserInfo"
     const loggedInUserInfo = document.getElementById("loggedInUserInfo");
 
@@ -76,6 +77,11 @@ async function loginUserForm(users) {
     console.error("Login failed:", error);
     // You might want to provide more specific error messages or log additional information for debugging
   }
+}
+
+function findUserByEmail(email) {
+
+  return allUsers.find((user) => user.email === email);
 }
 
 export { getAllUsers, createUser, createUserForm, loginUserForm, allUsers, endpoint };
