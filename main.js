@@ -31,11 +31,10 @@ let categoriesLists = null;
 let cart = [];
 let cartList = null;
 let guestOrderCreated = { value: false };
-
 const htmlSide = window.location.pathname;
 
 window.addEventListener("load", () => {
-  loadCartFromLocalStorage();
+  clearCartAndDeleteUnpaidOrders();
   baddServiceApp();
 });
 
@@ -146,6 +145,13 @@ function loadCartFromLocalStorage() {
     cart = JSON.parse(storedCart);
   }
 }
+
+// Save cart to localStorage
+function saveCartToLocalStorage() {
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+
 //Initiliaze views the cart for products.html, koebeguide.html, handelsBetingelser and index.html
 function initializeCartView() {
   if (cart.length > 0) {
@@ -212,10 +218,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 });
 
-// Save cart to localStorage
-function saveCartToLocalStorage() {
-  localStorage.setItem("cart", JSON.stringify(cart));
-}
+
 
 // Købeguide Beskrivelser
 document.addEventListener("DOMContentLoaded", function() {
@@ -234,9 +237,8 @@ document.addEventListener("DOMContentLoaded", function() {
 });  
 
 
-export { addToCart, products, categories, guestOrderCreated, cart, saveCartToLocalStorage, initializeCartView, htmlSide, initializeCartHtmlView, updateProductList };
+export { addToCart, products, categories, cart, saveCartToLocalStorage, initializeCartView, htmlSide, initializeCartHtmlView, updateProductList };
 
-export default {guestOrderCreated} // Export default so it can get modified in other files
 
 // // Add this to your existing JavaScript file or create a new one
 // document.addEventListener("DOMContentLoaded", function () {
