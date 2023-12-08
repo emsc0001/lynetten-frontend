@@ -17,12 +17,14 @@ async function getAllUsers() {
   return allUsers;
 }
 
-async function getUserById(userId) {
-  const response = await fetch(`${endpoint}/users/${userId}`);
-  const data = await response.json();
+// async function getUserById(User) {
+//   const response = await fetch(`${endpoint}/users/${User}`);
+//   const data = await response.json();
 
-  return new User(data);
-}
+//   console.log(data);
+
+//   return new User(data);
+// }
 
 async function refetchAllUsers() {
   const response = await fetch(`${endpoint}/users`);
@@ -55,10 +57,10 @@ async function createUserForm(user) {
   usersLists.render();
 }
 
-async function loginUserForm(userId) {
+async function loginUserForm(users) {
   try {
     // Use the getUserById function to fetch user data by userId
-    const user = await getUserById(userId);
+    const user = await getAllUsers(users);
 
     // Assuming you have an element with id "loggedInUserInfo"
     const loggedInUserInfo = document.getElementById("loggedInUserInfo");
@@ -76,4 +78,4 @@ async function loginUserForm(userId) {
   }
 }
 
-export { getAllUsers, getUserById, createUser, createUserForm, loginUserForm, allUsers, endpoint };
+export { getAllUsers, createUser, createUserForm, loginUserForm, allUsers, endpoint };
