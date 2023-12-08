@@ -303,6 +303,7 @@ function setupNewProductForm() {
     });
 }
 
+
 // Function to handle form submission for creating a new category
 function setupNewCategoryForm() {
     const newCategoryForm = document.getElementById('newCategoryForm');
