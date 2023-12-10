@@ -1,6 +1,7 @@
 import Dialog from "./Dialog.js";
 import Product from "../../Model/Product.js";
 import * as Controller from "../../Model/Rest-services/user-rest.js";
+import { findProductById } from "../../Model/Rest-services/products-rest.js";
 
 export default class ProductsDialog extends Dialog {
   renderHTML() {
@@ -8,7 +9,8 @@ export default class ProductsDialog extends Dialog {
         <div class="product-form-container">
           <form id="productForm">
             <button type="button" data-action="close">X</button>
-            <h1 class="productHeader">Produkt Information</h1>
+            <h1 class="productId">Produkt ID</h1>
+            <h2 class="productHeader">Produkt Information</h2>
             <label for="productNumber">Produktnummer</label>
             <input type="text" name="productNumber" id="productNumber" required>
             <label for="productName">Produktnavn</label>
@@ -23,10 +25,25 @@ export default class ProductsDialog extends Dialog {
             <input type="number" name="stockQuantity" id="stockQuantity" required>
             <label for="description">Beskrivelse</label>
             <textarea name="description" id="description" required></textarea>
-            <button type="button" data-action="cancel">Luk Produkt</button>
+            <button id="lukProdukt"  data-action="cancel">Luk Produkt</button>
           </form>
         </div>
         `;
     return html;
   }
+
+  // show(findProductById) {
+  //   // Opdater dialogens indhold baseret på det modtagne produktinformation
+  //   const productForm = document.getElementById("productForm");
+
+  //   if (findProductById) {
+  //     // Fyld inputfelterne med produktinformationen
+  //     productForm.querySelector("#productNumber").value = findProductById.productNumber;
+  //     productForm.querySelector("#productName").value = findProductById.productName;
+  //     // og så videre for de resterende inputfelter
+  //   }
+
+  //   // Vis dialogen
+  //   super.show();
+  // }
 }

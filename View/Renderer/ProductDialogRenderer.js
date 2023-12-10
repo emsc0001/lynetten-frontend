@@ -8,6 +8,7 @@ export default class ProductDialogRenderer extends ItemRenderer {
 <table class="product-info">
 <thead>
 <tr>
+<th> ${productDialog.productId} </th>
 <th>${productDialog.imageURLs}</th>
 <th>${productDialog.productNumber}</th>
 <th>${productDialog.productName}</th>

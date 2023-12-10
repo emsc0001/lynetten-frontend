@@ -1,5 +1,5 @@
 "use strict";
-import { endpoint, getAllProducts } from "./Model/Rest-services/products-rest.js";
+import { endpoint, getAllProducts, findProductById } from "./Model/Rest-services/products-rest.js";
 import { getAllCategories, getCategoryWithProducts } from "./Model/Rest-services/category-rest.js";
 import { getAllUsers } from "./Model/Rest-services/user-rest.js";
 
@@ -19,6 +19,7 @@ import UserRenderer from "./View/Renderer/UserRenderer.js";
 import Paginater from "./View/Renderer/Paginater.js";
 import ListRenderer from "./View/Renderer/ListRenderer.js";
 import ProductCartRenderer from "./View/Renderer/ProductCartRenderer.js";
+import Product from "./Model/Product.js";
 
 import { payNowClicked } from "./Controller/payment.js";
 import enablePayNowButton from "./View/validateCheckout.js";
@@ -56,6 +57,7 @@ window.addEventListener("load", () => {
 
 async function baddServiceApp() {
   console.log("baddService loaded!");
+
   products = await getAllProducts();
   categories = await getAllCategories();
   users = await getAllUsers();
@@ -67,38 +69,57 @@ async function baddServiceApp() {
   if (htmlSide === "/products.html") {
     initializeProductViews();
 
-    // Event listener for at håndtere kategoriændringer
+    // Event listener to handle category changes
     const urlParams = new URLSearchParams(window.location.search);
     const categoryId = urlParams.get("categoryId");
 
     if (categoryId) {
-      // Hvis categoryId findes i URL'en, opdater produkter baseret på kategori
+      // If categoryId exists in the URL, update products based on category
       await ProductRenderer.updateProductsByCategory(categoryId);
     } else {
-      // Ellers, vis alle produkter
+      // Otherwise, show all products
       productsLists = new Paginater(products, "#products-container", ProductRenderer, 10);
       productsLists.render();
     }
+
     if (products) {
       dialogProduct = new ProductsDialog("product-dialog");
       dialogProduct.render();
     }
+
     // Initialize Product Views
     const productDialogLink = document.getElementById("products-container");
 
-    // Check if the element exists before adding an event listener
     if (productDialogLink) {
-      productDialogLink.addEventListener("click", (event) => {
+      productDialogLink.addEventListener("click", async (event) => {
         event.preventDefault();
-        console.log("clicked");
-        dialogProduct.show();
+
+        // Find the product that was clicked (this may vary depending on your DOM structure)
+        const clickedProduct = event.target.closest(".product"); // Just an example, you may need to adjust this selector
+
+        if (clickedProduct) {
+          const productId = clickedProduct.dataset.productId;
+
+          // Call the findProductById function to get the product details
+          const productDetails = findProductById(productId);
+
+          // Check if product information is retrieved successfully
+          if (productDetails) {
+            // Show the product details in the dialog
+            dialogProduct.show(productDetails);
+          } else {
+            console.error("Product information not found.");
+          }
+        } else {
+          console.error("Element with id 'nav-icon' not found.");
+        }
       });
     } else {
-      console.error("Element with id 'nav-icon' not found.");
+      console.error("Element with id 'products-container' not found.");
     }
   }
 
-  // Initialize the views based on html page
+  // Initialize the views based on the HTML page
   if (htmlSide === "/products.html") {
     initializeProductViews();
     initializeCartView();
