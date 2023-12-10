@@ -1,7 +1,6 @@
 import Dialog from "./Dialog.js";
 import Product from "../../Model/Product.js";
 import * as Controller from "../../Model/Rest-services/user-rest.js";
-import { findProductById } from "../../Model/Rest-services/products-rest.js";
 
 export default class ProductsDialog extends Dialog {
   renderHTML() {

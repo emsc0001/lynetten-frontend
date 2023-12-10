@@ -1,4 +1,5 @@
 import Product from "../Product.js";
+// import Products from "../../main.js";
 
 const endpoint = "http://localhost:4444";
 
@@ -30,8 +31,18 @@ async function refetchAllProducts() {
   lastFetch = Date.now();
 }
 
-function findProductById(productId) {
-  return allProducts.find((product) => product.productId === productId);
+async function getSpecificProduct(productId) {
+  const response = await fetch(`${endpoint}/products/${productId}`);
+  const data = await response.json();
+
+  const product = new Product(data.product);
+  const products = data.products.map((jsonObj) => new Product(jsonObj));
+
+  return { product, products };
 }
 
-export { getAllProducts, findProductById, getSomeProducts, endpoint };
+// function findProductById(productId) {
+//   return allProducts.find((product) => product.productId === productId);
+// }
+
+export { getAllProducts, getSpecificProduct, getSomeProducts, endpoint };

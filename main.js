@@ -1,5 +1,5 @@
 "use strict";
-import { endpoint, getAllProducts, findProductById } from "./Model/Rest-services/products-rest.js";
+import { endpoint, getAllProducts, getSpecificProduct } from "./Model/Rest-services/products-rest.js";
 import { getAllCategories, getCategoryWithProducts } from "./Model/Rest-services/category-rest.js";
 import { getAllUsers } from "./Model/Rest-services/user-rest.js";
 
@@ -19,7 +19,7 @@ import UserRenderer from "./View/Renderer/UserRenderer.js";
 import Paginater from "./View/Renderer/Paginater.js";
 import ListRenderer from "./View/Renderer/ListRenderer.js";
 import ProductCartRenderer from "./View/Renderer/ProductCartRenderer.js";
-import Product from "./Model/Product.js";
+import ProductDialogRenderer from "./View/Renderer/ProductDialogRenderer.js";
 
 import { payNowClicked } from "./Controller/payment.js";
 import enablePayNowButton from "./View/validateCheckout.js";
@@ -81,58 +81,21 @@ async function baddServiceApp() {
       productsLists = new Paginater(products, "#products-container", ProductRenderer, 10);
       productsLists.render();
     }
-
-    if (products) {
-      dialogProduct = new ProductsDialog("product-dialog");
-      dialogProduct.render();
-    }
-
-    // Initialize Product Views
-    const productDialogLink = document.getElementById("products-container");
-
-    if (productDialogLink) {
-      productDialogLink.addEventListener("click", async (event) => {
-        event.preventDefault();
-
-        // Find the product that was clicked (this may vary depending on your DOM structure)
-        const clickedProduct = event.target.closest(".product"); // Just an example, you may need to adjust this selector
-
-        if (clickedProduct) {
-          const productId = clickedProduct.dataset.productId;
-
-          // Call the findProductById function to get the product details
-          const productDetails = findProductById(productId);
-
-          // Check if product information is retrieved successfully
-          if (productDetails) {
-            // Show the product details in the dialog
-            dialogProduct.show(productDetails);
-          } else {
-            console.error("Product information not found.");
-          }
-        } else {
-          console.error("Element with id 'nav-icon' not found.");
-        }
+    // Initialize the views based on the HTML page
+    if (htmlSide === "/products.html") {
+      initializeProductViews();
+      initializeCartView();
+    } else if (htmlSide === "/kurv.html") {
+      initializeCartHtmlView();
+    } else if (htmlSide === "/payment.html") {
+      document.addEventListener("DOMContentLoaded", () => {
+        enablePayNowButton();
       });
+      document.querySelector("#pay-now-button").addEventListener("click", payNowClicked);
     } else {
-      console.error("Element with id 'products-container' not found.");
+      initializeOtherHtmlViews();
+      initializeCartView();
     }
-  }
-
-  // Initialize the views based on the HTML page
-  if (htmlSide === "/products.html") {
-    initializeProductViews();
-    initializeCartView();
-  } else if (htmlSide === "/kurv.html") {
-    initializeCartHtmlView();
-  } else if (htmlSide === "/payment.html") {
-    document.addEventListener("DOMContentLoaded", () => {
-      enablePayNowButton();
-    });
-    document.querySelector("#pay-now-button").addEventListener("click", payNowClicked);
-  } else {
-    initializeOtherHtmlViews();
-    initializeCartView();
   }
 }
 
@@ -223,32 +186,41 @@ function initializeOtherHtmlViews() {
 
 //-----Initiliaze views for products.html-----//
 function initializeProductViews() {
-  // Initialize Product Dialog Views
-
-  //   const dialogProduct = new ProductsDialog(products, "#product", ProductRenderer);
-
-  //   // Find the last row inside the products-container and attach a click event
-  //   const lastRow = document.querySelector("product-form-container:last-child");
-
-  //   if (lastRow) {
-  //     lastRow.addEventListener("click", (event) => {
-  //       console.log("openen dialog");
-  //       event.stopPropagation();
+  //    if (products) {
+  //       dialogProduct = new ProductsDialog("product-dialog");
   //       dialogProduct.render();
-  //       dialogProduct.show();
-  //     });
-  //   }
+  //     }
 
-  //   const productDialogLink = document.getElementById("product-dialog");
+  //     // Initialize Product Views
+  //     const productDialogLink = document.getElementById("products-container");
 
-  //   // Check if the element exists before adding an event listener
-  //   if (productDialogLink) {
-  //     productDialogLink.addEventListener("click", (event) => {
-  //       event.preventDefault();
-  //       dialogProduct.show();
-  //     });
-  //   } else {
-  //     console.error("Element with id 'product-dialog' not found.");
+  //     if (productDialogLink) {
+  //       productDialogLink.addEventListener("click", async (event) => {
+  //         event.preventDefault();
+
+  //         // Find the product that was clicked (this may vary depending on your DOM structure)
+  //         const clickedProduct = event.target.closest(".product"); // Just an example, you may need to adjust this selector
+
+  //         if (clickedProduct) {
+  //           const productId = clickedProduct.dataset.productId;
+
+  //           // Call the findProductById function to get the product details
+  //           const productDetails = findProductById(productId);
+
+  //           // Check if product information is retrieved successfully
+  //           if (productDetails) {
+  //             // Show the product details in the dialog
+  //             dialogProduct.show(productDetails);
+  //           } else {
+  //             console.error("Product information not found.");
+  //           }
+  //         } else {
+  //           console.error("Element with id 'nav-icon' not found.");
+  //         }
+  //       });
+  //     } else {
+  //       console.error("Element with id 'products-container' not found.");
+  //     }
   //   }
 
   // initialize Category Views //
@@ -256,6 +228,27 @@ function initializeProductViews() {
   categoriesLists.render();
 
   // initialize Products views based on Categories  //
+
+  const productLinks = document.querySelectorAll("#products-container");
+  productLinks.forEach((productLink) => {
+    productLink.addEventListener("click", async (event) => {
+      event.preventDefault();
+
+      // Assuming dataset.productId is set on the button or another appropriate element
+      const productId = productLink.querySelector("button").dataset.id;
+
+      // Use the new function to fetch product information
+      const { product, products } = await getSpecificProduct(productId);
+
+      // Do something with the product, e.g., log it to the console
+      console.log("Product:", product);
+      console.log("Products for product ID", productId, products);
+
+      dialogProduct = new ProductsDialog("product-dialog", ProductDialogRenderer);
+      dialogProduct.render();
+      dialogProduct.show(product);
+    });
+  });
 
   const categoryLinks = document.querySelectorAll(".category-list a");
   categoryLinks.forEach((categoryLink) => {
