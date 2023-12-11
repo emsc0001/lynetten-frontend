@@ -4,12 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Login</title>
+    <link rel="stylesheet" href="admin-login.css" />
 </head>
 <body>
+    <div class="login-container">
+        <header>
+            <h1>Welcome to Admin Dashboard</h1>
+        </header>
     <form id="adminLoginForm">
         <input type="text" id="username" placeholder="Username">
         <input type="password" id="password" placeholder="Password">
-        <button type="submit">Login</button>
+        <button type="button" onclick="login()">Login</button>
     </form>
 
     <script src="admin-login.js"></script>

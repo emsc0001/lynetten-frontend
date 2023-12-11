@@ -1,6 +1,7 @@
 import { createOrderItem } from "../Model/Rest-services/orderItem-rest.js";
 import { cart } from "../main.js";
 import { updateGuestOrder } from "../Model/Rest-services/guestOrder-rest.js";
+import { updateOrder } from "../Model/Rest-services/order-rest.js";
 
 let user = false;
 async function payNowClicked(event) {
@@ -27,7 +28,7 @@ async function extractItemsCart() {
         for (const item of cart.items) {
             orderItems.push({ productId: item.productId, quantity: item.quantity });
         }
-        const orderId = cart.orderId;
+        const orderId = cart[1].orderId;
         const userId = user.userId;
 
         await createOrderItem(orderId, orderItems, userId);
@@ -46,16 +47,18 @@ async function extractShipmentDetails() {
     const email = document.getElementById("email").value;
     const address = document.getElementById("address").value;
     const phoneNumber = document.getElementById("phoneNumber").value;
+    const country = document.getElementById("country").value;
     const city = document.getElementById("city").value;
     const zipCode = document.getElementById("zipCode").value;
     if (!user) {
         const orderId = cart[0].guestOrderId;
         console.log(orderId);
         console.log(fullName, email, address, phoneNumber, city, zipCode);
-        await updateGuestOrder(orderId, fullName, email, address, phoneNumber, city, zipCode);
+        await updateGuestOrder(orderId, fullName, email, address, phoneNumber, country, city, zipCode);
     } else {
         const orderId = cart[0].orderId;
-        updateGuestOrder(orderId, fullName, email, address, phoneNumber, city, zipCode);
+        updateGuestOrder(orderId, address, phoneNumber, country, city, zipCode);
+
     }
 }
 

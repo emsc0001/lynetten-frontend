@@ -46,6 +46,7 @@ export default class ProductCartRenderer extends ItemRenderer {
 
     static calculateTotal(cart) {
         let total = 0;
+        console.log(cart);
         cart.forEach((item) => {
             total += item.listPrice * item.quantity;
         });

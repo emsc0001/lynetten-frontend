@@ -23,6 +23,7 @@ import ProductDialogRenderer from "./View/Renderer/ProductDialogRenderer.js";
 
 import { payNowClicked } from "./Controller/payment.js";
 import enablePayNowButton from "./View/validateCheckout.js";
+import clearCartAndDeleteUnpaidOrders from "./Controller/clearCartAndDeleteUnpaidOrders.js";
 
 import { newsletter } from "./View/Nyhedsbrev.js";
 // import { myMap } from "./View/map.js";
@@ -46,8 +47,6 @@ let PasswordForgotDialog = null;
 //Order variables
 let cart = [];
 let cartList = null;
-let guestOrderCreated = { value: false };
-
 const htmlSide = window.location.pathname;
 
 window.addEventListener("load", () => {
@@ -68,11 +67,9 @@ async function baddServiceApp() {
 
   if (htmlSide === "/products.html") {
     initializeProductViews();
-
-    // Event listener to handle category changes
+    // Event listener for at håndtere kategoriændringer
     const urlParams = new URLSearchParams(window.location.search);
     const categoryId = urlParams.get("categoryId");
-
     if (categoryId) {
       // If categoryId exists in the URL, update products based on category
       await ProductRenderer.updateProductsByCategory(categoryId);
@@ -123,30 +120,12 @@ function initializeOtherHtmlViews() {
     });
   });
 
-  // initialize User Views //
-  if (users) {
-    usersLists = new ListRenderer(users, "#user-container", UserRenderer);
-    usersLists.render();
-  }
-  console.log(usersLists);
-
-  //   if (products) {
-  //     dialogProduct = new ProductsDialog("product-dialog");
-  //     dialogProduct.render();
-  //   }
-  //   // Initialize Product Views
-  //   const productDialogLink = document.getElementById("nav-icon");
-
-  //   // Check if the element exists before adding an event listener
-  //   if (productDialogLink) {
-  //     productDialogLink.addEventListener("click", (event) => {
-  //       event.preventDefault();
-  //       console.log("clicked");
-  //       dialogProduct.show();
-  //     });
-  //   } else {
-  //     console.error("Element with id 'nav-icon' not found.");
-  //   }
+  console.log(users);
+  // -------------initialize User Views------------- //
+  // if (users) {
+  //   usersLists = new ListRenderer(users, "#user-container", UserRenderer);
+  //   usersLists.render();
+  // }
 
   // LOGIN USER DIALOG //
   UsersLoginDialog = new UserLoginDialog("user-login-dialog");
@@ -186,42 +165,8 @@ function initializeOtherHtmlViews() {
 
 //-----Initiliaze views for products.html-----//
 function initializeProductViews() {
-  //    if (products) {
-  //       dialogProduct = new ProductsDialog("product-dialog");
-  //       dialogProduct.render();
-  //     }
-
-  //     // Initialize Product Views
-  //     const productDialogLink = document.getElementById("products-container");
-
-  //     if (productDialogLink) {
-  //       productDialogLink.addEventListener("click", async (event) => {
-  //         event.preventDefault();
-
-  //         // Find the product that was clicked (this may vary depending on your DOM structure)
-  //         const clickedProduct = event.target.closest(".product"); // Just an example, you may need to adjust this selector
-
-  //         if (clickedProduct) {
-  //           const productId = clickedProduct.dataset.productId;
-
-  //           // Call the findProductById function to get the product details
-  //           const productDetails = findProductById(productId);
-
-  //           // Check if product information is retrieved successfully
-  //           if (productDetails) {
-  //             // Show the product details in the dialog
-  //             dialogProduct.show(productDetails);
-  //           } else {
-  //             console.error("Product information not found.");
-  //           }
-  //         } else {
-  //           console.error("Element with id 'nav-icon' not found.");
-  //         }
-  //       });
-  //     } else {
-  //       console.error("Element with id 'products-container' not found.");
-  //     }
-  //   }
+  productsLists = new Paginater(products, "#products-container", ProductRenderer, 10);
+  productsLists.render();
 
   // initialize Category Views //
   categoriesLists = new ListRenderer(categories, ".category-list", CategoryRenderer);
@@ -312,6 +257,12 @@ function loadCartFromLocalStorage() {
     cart = JSON.parse(storedCart);
   }
 }
+
+// Save cart to localStorage
+function saveCartToLocalStorage() {
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
+
 //Initiliaze views the cart for products.html, koebeguide.html, handelsBetingelser and index.html
 function initializeCartView() {
   if (cart.length > 0) {
@@ -337,15 +288,16 @@ function initializeCartHtmlView() {
   document.querySelector(".cart-summary").innerHTML = totalPriceSection;
 }
 
-function addToCart(productId, listPrice, productName, imageURLs, guestOrderId) {
+function addToCart(productId, listPrice, productName, imageURLs, orderId, guestOrderId) {
   // Check if the product already exists in the cart
   const existingProduct = cart.find((item) => item.productId === productId);
 
   if (existingProduct) {
     // If the product exists, increase its quantity
     existingProduct.quantity++;
+  } else if (orderId) {
+    cart.push({ productId, listPrice, productName, imageURLs, orderId, quantity: 1 });
   } else {
-    // If the product doesn't exist, add it to the cart with a quantity of 1
     cart.push({ productId, listPrice, productName, imageURLs, guestOrderId, quantity: 1 });
   }
 
@@ -376,11 +328,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-// Save cart to localStorage
-function saveCartToLocalStorage() {
-  localStorage.setItem("cart", JSON.stringify(cart));
-}
-
 // Købeguide Beskrivelser
 document.addEventListener("DOMContentLoaded", function () {
   var collapsibles = document.getElementsByClassName("collapsible");
@@ -401,7 +348,6 @@ export {
   addToCart,
   products,
   categories,
-  guestOrderCreated,
   cart,
   saveCartToLocalStorage,
   initializeCartView,
@@ -411,8 +357,6 @@ export {
   usersLists,
   users,
 };
-
-export default { guestOrderCreated }; // Export default so it can get modified in other files
 
 // // Add this to your existing JavaScript file or create a new one
 // document.addEventListener("DOMContentLoaded", function () {
