@@ -71,13 +71,14 @@ async function baddServiceApp() {
     const urlParams = new URLSearchParams(window.location.search);
     const categoryId = urlParams.get("categoryId");
     if (categoryId) {
-      // If categoryId exists in the URL, update products based on category
+      // Hvis categoryId findes i URL'en, opdater produkter baseret på kategori
       await ProductRenderer.updateProductsByCategory(categoryId);
     } else {
-      // Otherwise, show all products
+      // Ellers, vis alle produkter
       productsLists = new Paginater(products, "#products-container", ProductRenderer, 10);
       productsLists.render();
     }
+
     // Initialize the views based on the HTML page
     if (htmlSide === "/products.html") {
       initializeProductViews();
