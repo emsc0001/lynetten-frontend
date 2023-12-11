@@ -48,7 +48,6 @@ let cartList = null;
 const htmlSide = window.location.pathname;
 
 window.addEventListener("load", () => {
-  // localStorage.clear();
   baddServiceApp();
   checkLoginStatus();
   loadCartFromLocalStorage();
@@ -147,48 +146,59 @@ function initializeOtherHtmlViews() {
     event.preventDefault(); // Prevent the default link behavior (e.g., navigating to a new page)
     CreateUserDialog.show();
   });
-
-  // FORGOT PASSWORD DIALOG //
-  PasswordForgotDialog = new ForgotPasswordDialog("forgot-password-dialog");
-  PasswordForgotDialog.render();
-
-  const forgotPasswordLink = document.getElementById("forgotUserLogin");
-
-  // Event listener to show the dialog when the link is clicked
-  forgotPasswordLink.addEventListener("click", (event) => {
-    event.preventDefault(); // Prevent the default link behavior (e.g., navigating to a new page)
-    PasswordForgotDialog.show();
-  });
 }
 
 //-----Initiliaze views for products.html-----//
 function initializeProductViews() {
-  productsLists = new Paginater(products, "#products-container", ProductRenderer, 10);
-  productsLists.render();
+    productsLists = new Paginater(products, "#products-container", ProductRenderer, 10);
+    productsLists.render();
 
-  // initialize Category Views //
-  categoriesLists = new ListRenderer(categories, ".category-list", CategoryRenderer);
-  categoriesLists.render();
+    // initialize Category Views //
+    categoriesLists = new ListRenderer(categories, ".category-list", CategoryRenderer);
+    categoriesLists.render();
 
-  // initialize Products views based on Categories  //
+    // initialize Products views based on Categories  //
 
-  const categoryLinks = document.querySelectorAll(".category-list a");
-  categoryLinks.forEach((categoryLink) => {
-    categoryLink.addEventListener("click", async (event) => {
-      event.preventDefault();
-      const categoryId = categoryLink.dataset.categoryId;
+    const categoryLinks = document.querySelectorAll(".category-list a");
+    categoryLinks.forEach((categoryLink) => {
+        categoryLink.addEventListener("click", async (event) => {
+            event.preventDefault();
+            const categoryId = categoryLink.dataset.categoryId;
 
-      // Brug den nye funktion til at hente kategori og produkter
-      const { category, products } = await getCategoryWithProducts(categoryId);
+            // Brug den nye funktion til at hente kategori og produkter
+            const { category, products } = await getCategoryWithProducts(categoryId);
 
-      // Gør noget med kategori og produkter, f.eks. vis dem i konsollen
-      console.log("Category:", category);
-      console.log("Products for category ID", categoryId, products);
+            // Gør noget med kategori og produkter, f.eks. vis dem i konsollen
+            console.log("Category:", category);
+            console.log("Products for category ID", categoryId, products);
 
-      productsLists = new ListRenderer(products, "#products-container", ProductRenderer);
-      productsLists.render();
+            productsLists = new ListRenderer(products, "#products-container", ProductRenderer);
+            productsLists.render();
+        });
     });
-  });
+
+    // LOGIN USER DIALOG //
+    UsersLoginDialog = new UserLoginDialog("user-login-dialog");
+    UsersLoginDialog.render();
+
+    const userLogin = document.querySelector("#logIn");
+
+    userLogin.addEventListener("click", (event) => {
+        event.preventDefault();
+        UsersLoginDialog.show();
+    });
+
+    // CREATE USER DIALOG //
+    CreateUserDialog = new UserCreateDialog("user-create-dialog");
+    CreateUserDialog.render();
+
+    const createUserLink = document.getElementById("createUserLogin");
+
+    // Event listener to show the dialog when the link is clicked
+    createUserLink.addEventListener("click", (event) => {
+        event.preventDefault(); // Prevent the default link behavior (e.g., navigating to a new page)
+        CreateUserDialog.show();
+    });
 }
 
 function logout() {
@@ -370,6 +380,18 @@ export {
   loggedInUser
 };
 
+  //   // FORGOT PASSWORD DIALOG //
+  // PasswordForgotDialog = new ForgotPasswordDialog("forgot-password-dialog");
+  // PasswordForgotDialog.render();
+
+  // const forgotPasswordLink = document.getElementById("forgotUserLogin");
+
+  // // Event listener to show the dialog when the link is clicked
+  // forgotPasswordLink.addEventListener("click", (event) => {
+  //   event.preventDefault(); // Prevent the default link behavior (e.g., navigating to a new page)
+  //   PasswordForgotDialog.show();
+  // });
+  
 // // Add this to your existing JavaScript file or create a new one
 // document.addEventListener("DOMContentLoaded", function () {
 //   const discountToggle = document.getElementById("discountToggle");
