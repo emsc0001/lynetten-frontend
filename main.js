@@ -350,21 +350,17 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-// Købeguide Beskrivelser
-document.addEventListener("DOMContentLoaded", function () {
-  var collapsibles = document.getElementsByClassName("collapsible");
-  for (var i = 0; i < collapsibles.length; i++) {
-    collapsibles[i].addEventListener("click", function () {
-      this.classList.toggle("active");
-      var content = this.nextElementSibling;
-      if (content.style.display === "block") {
-        content.style.display = "none";
-      } else {
-        content.style.display = "block";
-      }
-    });
-  }
-});
+// MAP
+let myMap = L.map("interactive-map").setView([55.691046, 12.599752], 13); // Replace with your coordinates
+
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  maxZoom: 19,
+  attribution: "© OpenStreetMap contributors",
+}).addTo(myMap);
+
+
+
+
 
 export {
   addToCart,

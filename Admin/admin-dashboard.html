@@ -8,32 +8,39 @@
 <div>
 
     <header class="admin-header">
-        <h1>Lynettens Administration</h1>
+        <h1>Lynettens Administrations Side</h1>
         <nav>
-            <button id="showProducts">Products</button>
-            <button id="showCategories">Categories</button>
+            <button id="showProducts">Produkter</button>
+            <button id="showCategories">Kategorier</button>
+            <button id="showUsers">Brugere</button>
+            <button id="showOrders">Ordrer</button>
         </nav>
     </header>
     
     <main>
         <section id="productSection">
-            <h1>Product Management</h1>
+            <h1>Produkt Management</h1>
             <form id="newProductForm">
                 <input type="text" id="productName" placeholder="Product Name" required>
-                <input type="number" id="productPrice" placeholder="Price" required>
-                <button type="submit">Create Product</button>
+                <input type="text" id="productNumber" placeholder="Product Number" required>
+                <input type="number" id="productPrice" placeholder="List Price" required>
+                <input type="number" id="offerPrice" placeholder="Offer Price">
+                <input type="number" id="stockQuantity" placeholder="Stock Quantity" required>
+                <input type="text" id="imageURLs" placeholder="Image URLs" required>
+                <textarea id="description" placeholder="Description"></textarea>
+                <button type="submit">Opret Produkt</button>
             </form>
-            <h2> Products </h2>
+            <h2> Alle Produkter </h2>
             <div id="product-list"></div>
         </section>
 
         <div id="categoriesSection" style="display:none;">
-            <h1>Category Management</h1>
+            <h1>Kategori Management</h1>
             <form id="newCategoryForm">
                 <input type="text" id="categoryName" placeholder="Category Name" required>
-                <button type="submit">Create Category</button>
+                <button type="submit">Opret Kategori</button>
             </form>
-            <h2> Categories </h2>
+            <h2> Alle Kategorier </h2>
             <div id="category-list"></div>
         </div>
 
@@ -45,12 +52,16 @@
                 <h2>Edit Product</h2>
                 <form id="editProductForm">
                     <input type="hidden" id="editProductId">
-                    <input type="text" id="editProductName" name="productName" required>
-                    <input type="number" id="editProductPrice" name="productPrice" required>
+                    <input type="text" id="editProductName" name="productName" placeholder="Product Name" required>
+                    <input type="number" id="editProductPrice" name="productPrice" placeholder="List Price" required>
+                    <input type="text" id="editProductNumber" name="productNumber" placeholder="Product Number" required>
+                    <input type="number" id="editProductStock" name="stockQuantity" placeholder="Stock Quantity" required>
+                    <input type="number" id="editProductOfferPrice" name="offerPrice" placeholder="Offer Price">
                     <button type="submit">Save Changes</button>
                 </form>
             </div>
         </div>
+        
 
         <div id="editCategoryModal" class="modal">
             <div class="modal-content">
@@ -63,6 +74,22 @@
                 </form>
             </div>
         </div>
+
+        <!-- User Management Section -->
+<section id="userSection" style="display:none;">
+    <h1>Bruger Management</h1>
+    <h2>Registrerede Brugere</h2>
+    <div id="user-list"></div>
+</section>
+
+<!-- Order Management Section -->
+<section id="orderSection" style="display:none;">
+    <h1>Ordre Management</h1>
+    <h2>Ordrer</h2>
+    <div id="order-list"></div>
+</section>
+
+
 
 
 </main>
