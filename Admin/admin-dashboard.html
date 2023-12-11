@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="admin-dashboard.css">
+</head>
+<div>
+
+    <header class="admin-header">
+        <h1>Lynettens Administration</h1>
+        <nav>
+            <button id="showProducts">Products</button>
+            <button id="showCategories">Categories</button>
+        </nav>
+    </header>
+    
+    <main>
+        <section id="productSection">
+            <h1>Product Management</h1>
+            <form id="newProductForm">
+                <input type="text" id="productName" placeholder="Product Name" required>
+                <input type="number" id="productPrice" placeholder="Price" required>
+                <button type="submit">Create Product</button>
+            </form>
+            <h2> Products </h2>
+            <div id="product-list"></div>
+        </section>
+
+        <div id="categoriesSection" style="display:none;">
+            <h1>Category Management</h1>
+            <form id="newCategoryForm">
+                <input type="text" id="categoryName" placeholder="Category Name" required>
+                <button type="submit">Create Category</button>
+            </form>
+            <h2> Categories </h2>
+            <div id="category-list"></div>
+        </div>
+
+
+
+        <div id="editProductModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Edit Product</h2>
+                <form id="editProductForm">
+                    <input type="hidden" id="editProductId">
+                    <input type="text" id="editProductName" name="productName" required>
+                    <input type="number" id="editProductPrice" name="productPrice" required>
+                    <button type="submit">Save Changes</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="editCategoryModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Edit Category</h2>
+                <form id="editCategoryForm">
+                    <input type="hidden" id="editCategoryId">
+                    <input type="text" id="editCategoryName" name="categoryName" required>
+                    <button type="submit">Save Changes</button>
+                </form>
+            </div>
+        </div>
+
+
+</main>
+    <script type="module" src="admin-dashboard.js"></script>
+</body>
+</html>

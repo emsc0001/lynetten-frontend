@@ -29,26 +29,42 @@ async function createGuestOrder(orderDate) {
 
 }
     
-async function updateGuestOrder(orderId, fullName, email, address, phoneNumber, city, zipCode) {
+async function updateGuestOrder(orderId, fullName, email, address, phoneNumber, country, city, zipCode) {
     try {
         const response = await fetch(`${endpoint}/guestOrders/${orderId}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({ fullName, email, address, phoneNumber, city, zipCode }),
+            body: JSON.stringify({ fullName, email, address, phoneNumber, country, city, zipCode, paid: true }),
         });
-        
+
         if (response.ok) {
             const data = await response.json();
             console.log(data);
         } else {
-            console.log('Error updating guest order');
+            console.log("Error updating guest order");
         }
     } catch (error) {
-            console.error(error);
-        }
+        console.error(error);
+    }
+}
 
+async function deleteUnpaidGuestOrder() {
+    try {
+        const response = await fetch(`${endpoint}/guestOrders/unpaid`, {
+            method: "DELETE",
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            console.log(data);
+        } else {
+            console.log("Error deleting guest order");
+        }
+    } catch (error) {
+        console.error(error);
+    }
 }
     
-    export {createGuestOrder, updateGuestOrder};
+    export {createGuestOrder, updateGuestOrder, deleteUnpaidGuestOrder};

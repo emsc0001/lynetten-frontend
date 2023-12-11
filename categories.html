@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Marine ProShop Inspired Layout</title>
+    <link rel="stylesheet" href="./Tabs/categories/categories.css" />
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="logo-container">
+        <!-- Wrap both logo and text in an anchor tag -->
+        <a href="index.html" style="display: inline-flex; align-items: center; text-decoration: none; color: black">
+          <img src="https://i.ibb.co/r2bH4d1/Sk-rmbillede-2023-11-28-kl-15-35-30.png" alt="Logo" height="50" />
+          <div class="header-text">
+            <h1 style="margin: 0; padding: 0">Lynettens Bådudstyr</h1>
+            <p style="margin: 0; padding: 0">Mest bådudstyr for pengene</p>
+          </div>
+        </a>
+      </div>
+      <div class="nav-menu">
+        <div class="nav-menu">
+          <div class="nav-item" data-tab="forside">
+            <span class="nav-link"
+              ><a href="index.html"><strong>Forside</strong></a></span
+            >
+            <div class="underline"></div>
+          </div>
+          <div class="nav-item" data-tab="kobeguide">
+            <span class="nav-link"
+              ><a href="koebeguide.html"><strong>Købeguide - Bådudstyr</strong></a></span
+            >
+            <div class="underline"></div>
+          </div>
+          <div class="nav-item" data-tab="handelsBetingelser">
+            <span class="nav-link"
+              ><a href="handelsBetingelser.html"><strong>Handelsbetingelser</strong></a></span
+            >
+            <div class="underline"></div>
+          </div>
+        </div>
+
+        <div class="nav-item dropdown">
+          <span class="nav-link dropbtn">Produkter</span>
+          <div class="dropdown-content mega-menu" id="dropdownContent">
+            <li class="nav-item"><a href="#">BÅD SERVICE OPGAVER</a></li>
+            <li class="nav-item"><a href="#">BÅDVARME</a></li>
+            <li class="nav-item"><a href="#">DÆKKET</a></li>
+            <li class="nav-item"><a href="#">EL FORSYNING</a></li>
+            <li class="nav-item"><a href="#">ELEKTRONIK OMBORD</a></li>
+            <li class="nav-item"><a href="#">FISKEDUSTYR</a></li>
+            <li class="nav-item"><a href="#">FORTØJNING & ANKRING</a></li>
+            <li class="nav-item"><a href="#">GAVER & BØGER</a></li>
+            <li class="nav-item"><a href="#">GUMMIBÅDE & VANDSPORT</a></li>
+            <li class="nav-item"><a href="#">KOMFORT OMBORD</a></li>
+            <li class="nav-item"><a href="#">LYS & LANTERNER</a></li>
+            <li class="nav-item"><a href="#">MALING & KLARGØRING</a></li>
+            <li class="nav-item"><a href="#">MOTORDELE & TILBEHØR</a></li>
+            <li class="nav-item"><a href="#">NAVIGATIONSDUSTYR</a></li>
+            <li class="nav-item"><a href="#">PANTRY, KOMFUR & KØLESKAB</a></li>
+            <li class="nav-item"><a href="#">PUMPER, FITTINGS & SLANGER</a></li>
+            <li class="nav-item"><a href="#">PÅHÆNGSMOTORER</a></li>
+            <li class="nav-item"><a href="#">RESTLAGER</a></li>
+            <li class="nav-item"><a href="#">RIG & MAST</a></li>
+            <li class="nav-item"><a href="#">RODEKASSEN</a></li>
+            <li class="nav-item"><a href="#">SEJLETØJ</a></li>
+            <li class="nav-item"><a href="#">SIKKERHEDSDUSTYR</a></li>
+            <li class="nav-item"><a href="#">SKRUER, BOLTE & BESLAG</a></li>
+            <li class="nav-item"><a href="#">SOL- & VIND ENERGI</a></li>
+            <li class="nav-item"><a href="#">STYRING & TILBEHØR</a></li>
+            <li class="nav-item"><a href="#">TOILET</a></li>
+            <li class="nav-item"><a href="#">TOVVÆRK</a></li>
+            <li class="nav-item"><a href="#">TRAILER TILBEHØR</a></li>
+            <li class="nav-item"><a href="#">TVÆRSIKRING AF BÅDE</a></li>
+            <li class="nav-item"><a href="#">ZINKANODER</a></li>
+            <!-- ... other categories as needed ... -->
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-icons">
+        <!-- Search container with icon and bar -->
+        <div class="search-container">
+          <span class="nav-icon search-icon" onclick="toggleSearchBar()">🔍</span>
+          <div class="search-bar" id="searchBar">
+            <input type="text" id="searchInput" placeholder="Search..." />
+            <button type="submit" class="search-button">Search</button>
+          </div>
+        </div>
+
+        <!-- Other icons go here -->
+
+        <span class="nav-icon">👤</span>
+        <!-- Replace with account icon -->
+
+        <div class="nav-item" data-tab="kurv" id="cartItem">
+          <a href="kurv.html" class="nav-link">🛒</a>
+          <div class="underline"></div>
+          <div class="cart-content">
+            <div class="cart-item">
+              <img
+                src="https://www.baadservice.dk/components/com_redshop/assets/images/product/thumb/3a67533e6cb6672e592ce88dfc04f7e1_w250_h250.jpg"
+                alt="Plastimo Kapsejladsbøje 188 x 26 cm"
+                style="width: 100px; height: auto"
+              />
+              <div class="item-details">
+                <h2 style="font-size: 16px">Produkt Number: PA-15.0900</h2>
+                <h3 style="font-size: 18px">Plastimo Kapsejladsbøje 188 x 26 cm</h3>
+                <p style="font-size: 14px">Pris: 2149.00kr</p>
+                <div class="quantity">
+                  <label for="quantity" style="font-size: 14px">Antal:</label>
+                  <input type="number" id="quantity" name="quantity" min="1" value="2" />
+                </div>
+                <p style="font-size: 14px"><strong>Total pris: 4298.00kr</strong></p>
+                <a href="kurv.html" class="go-to-basket-button">Gå til kurven</a>
+              </div>
+            </div>
+            <!-- Add more items as needed -->
+          </div>
+        </div>
+
+        <!-- Replace with cart icon -->
+      </div>
+    </div>
+
+    <div class="container">
+      <aside class="sidebar" id="left-sidebar">
+        <!-- Sidebar content goes here -->
+        <h2>Produkt Kategorier</h2>
+        <ul class="category-list">
+          <li class="nav-item"><a href="#">BÅD SERVICE OPGAVER</a></li>
+          <li class="nav-item"><a href="#">BÅDVARME</a></li>
+          <li class="nav-item"><a href="#">DÆKKET</a></li>
+          <li class="nav-item"><a href="#">EL FORSYNING</a></li>
+          <li class="nav-item"><a href="#">ELEKTRONIK OMBORD</a></li>
+          <li class="nav-item"><a href="#">FISKEDUSTYR</a></li>
+          <li class="nav-item"><a href="#">FORTØJNING & ANKRING</a></li>
+          <li class="nav-item"><a href="#">GAVER & BØGER</a></li>
+          <li class="nav-item"><a href="#">GUMMIBÅDE & VANDSPORT</a></li>
+          <li class="nav-item"><a href="#">KOMFORT OMBORD</a></li>
+          <li class="nav-item"><a href="#">LYS & LANTERNER</a></li>
+          <li class="nav-item"><a href="#">MALING & KLARGØRING</a></li>
+          <li class="nav-item"><a href="#">MOTORDELE & TILBEHØR</a></li>
+          <li class="nav-item"><a href="#">NAVIGATIONSDUSTYR</a></li>
+          <li class="nav-item"><a href="#">PANTRY, KOMFUR & KØLESKAB</a></li>
+          <li class="nav-item"><a href="#">PUMPER, FITTINGS & SLANGER</a></li>
+          <li class="nav-item"><a href="#">PÅHÆNGSMOTORER</a></li>
+          <li class="nav-item"><a href="#">RESTLAGER</a></li>
+          <li class="nav-item"><a href="#">RIG & MAST</a></li>
+          <li class="nav-item"><a href="#">RODEKASSEN</a></li>
+          <li class="nav-item"><a href="#">SEJLETØJ</a></li>
+          <li class="nav-item"><a href="#">SIKKERHEDSDUSTYR</a></li>
+          <li class="nav-item"><a href="#">SKRUER, BOLTE & BESLAG</a></li>
+          <li class="nav-item"><a href="#">SOL- & VIND ENERGI</a></li>
+          <li class="nav-item"><a href="#">STYRING & TILBEHØR</a></li>
+          <li class="nav-item"><a href="#">TOILET</a></li>
+          <li class="nav-item"><a href="#">TOVVÆRK</a></li>
+          <li class="nav-item"><a href="#">TRAILER TILBEHØR</a></li>
+          <li class="nav-item"><a href="#">TVÆRSIKRING AF BÅDE</a></li>
+          <li class="nav-item"><a href="#">ZINKANODER</a></li>
+        </ul>
+      </aside>
+
+      <main class="main-content">
+        <div id="categories-container">
+          <!-- Add your product grid items here -->
+        </div>
+        <div id="pagination"></div>
+      </main>
+
+      <aside class="sidebar" id="right-sidebar">
+        <h2>Nyheder & Opdateringer</h2>
+        <!-- News items or widgets -->
+
+        <!-- Åbningstider Section -->
+        <section class="opening-hours">
+          <h3>Åbningstider</h3>
+          <ul>
+            <li>Man-fre: 10:00 - 17:00</li>
+            <li>Lørdage: 10:00 - 15:00</li>
+            <li>Søndage: Lukket</li>
+          </ul>
+        </section>
+
+        <!-- Adresse Section -->
+        <section class="address">
+          <h3>Information</h3>
+          <p>Refshalevej 200</p>
+          <p>1432 København K</p>
+          <p>Tlf. 32 57 61 06</p>
+          <p>lynettens@baadservice.dk</p>
+        </section>
+
+        <div class="content-body">
+          <div class="image-container">
+            <img src="" alt="Online Catalog" />
+          </div>
+        </div>
+        <section class="news-updates">
+          <h2>Se online katalog for endnu flere varer</h2>
+          <p>Alle varer der findes i kataloget kan søges og bestilles via vores hjemmeside.</p>
+          <p>Find vare nummer:</p>
+          <ol>
+            <li>Indtast vare nummer i søgefeltet øverst til højre.</li>
+            <li>Læg varen i kurven og gå til betaling.</li>
+            <li>Mange varer er allerede lagervarer.</li>
+            <li>Alle disse varer kan også sendes direkte fra Palby.</li>
+            <li>Leveringstid er typisk 2 dage.</li>
+          </ol>
+        </section>
+      </aside>
+    </div>
+    <footer>
+      <p>&copy; 2023 by AEM</p>
+    </footer>
+    <script src="main.js" type="module"></script>
+  </body>
+</html>

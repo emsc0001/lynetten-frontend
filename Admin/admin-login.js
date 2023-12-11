@@ -1,22 +1,14 @@
-document.getElementById("adminLoginForm").addEventListener("submit", function(event) {
-    event.preventDefault();
-
+function login() {
+    // Get the username and password from the form
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
 
-    // Admin credentials (for testing only)
-    const admins = [
-        { username: 'emil', password: 'lynetten' },
-        { username: 'abdi', password: 'lynetten' },
-        { username: 'mads', password: 'lynetten' }
-    ];
-
-    const isAdmin = admins.some(admin => admin.username === username && admin.password === password);
-
-    if (isAdmin) {
-        // Redirect to index.html at the root
-        window.location.href = '../../index.html'; // Go up two levels
+    // Check if the provided credentials are correct
+    if (username === "admin" && password === "adminpw") {
+        // Redirect to the admin dashboard
+        window.location.href = "admin-dashboard.html";
     } else {
-        alert('Login failed!');
+        // Display an error message (you can customize this part)
+        alert("Invalid username or password");
     }
-});
+}

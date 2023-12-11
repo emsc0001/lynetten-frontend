@@ -21,6 +21,7 @@ import ProductCartRenderer from "./View/Renderer/ProductCartRenderer.js";
 
 import { payNowClicked } from "./Controller/payment.js";
 import enablePayNowButton from "./View/validateCheckout.js";
+import clearCartAndDeleteUnpaidOrders from "./Controller/clearCartAndDeleteUnpaidOrders.js";
 
 import { newsletter } from "./View/Nyhedsbrev.js";
 // import { myMap } from "./View/map.js";
@@ -43,8 +44,6 @@ let PasswordForgotDialog = null;
 //Order variables
 let cart = [];
 let cartList = null;
-let guestOrderCreated = { value: false };
-
 const htmlSide = window.location.pathname;
 
 window.addEventListener("load", () => {
@@ -126,7 +125,6 @@ function initializeOtherHtmlViews() {
   //   usersLists = new ListRenderer(users, "#user-container", UserRenderer);
   //   usersLists.render();
   // }
-
 
   // LOGIN USER DIALOG //
   UsersLoginDialog = new UserLoginDialog("user-login-dialog");
@@ -237,6 +235,12 @@ function loadCartFromLocalStorage() {
     cart = JSON.parse(storedCart);
   }
 }
+
+// Save cart to localStorage
+function saveCartToLocalStorage() {
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
+
 //Initiliaze views the cart for products.html, koebeguide.html, handelsBetingelser and index.html
 function initializeCartView() {
   if (cart.length > 0) {
@@ -262,15 +266,16 @@ function initializeCartHtmlView() {
   document.querySelector(".cart-summary").innerHTML = totalPriceSection;
 }
 
-function addToCart(productId, listPrice, productName, imageURLs, guestOrderId) {
+function addToCart(productId, listPrice, productName, imageURLs, orderId, guestOrderId) {
   // Check if the product already exists in the cart
   const existingProduct = cart.find((item) => item.productId === productId);
 
   if (existingProduct) {
     // If the product exists, increase its quantity
     existingProduct.quantity++;
+  } else if (orderId) {
+    cart.push({ productId, listPrice, productName, imageURLs, orderId, quantity: 1 });
   } else {
-    // If the product doesn't exist, add it to the cart with a quantity of 1
     cart.push({ productId, listPrice, productName, imageURLs, guestOrderId, quantity: 1 });
   }
 
@@ -301,11 +306,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-// Save cart to localStorage
-function saveCartToLocalStorage() {
-  localStorage.setItem("cart", JSON.stringify(cart));
-}
-
 // Købeguide Beskrivelser
 document.addEventListener("DOMContentLoaded", function () {
   var collapsibles = document.getElementsByClassName("collapsible");
@@ -326,17 +326,15 @@ export {
   addToCart,
   products,
   categories,
-  guestOrderCreated,
   cart,
   saveCartToLocalStorage,
   initializeCartView,
   htmlSide,
   initializeCartHtmlView,
   updateProductList,
+  usersLists,
   users,
 };
-
-export default { guestOrderCreated }; // Export default so it can get modified in other files
 
 // // Add this to your existing JavaScript file or create a new one
 // document.addEventListener("DOMContentLoaded", function () {
