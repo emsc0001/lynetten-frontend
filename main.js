@@ -3,7 +3,6 @@ import { endpoint, getAllProducts } from "./Model/Rest-services/products-rest.js
 import { getAllCategories, getCategoryWithProducts } from "./Model/Rest-services/category-rest.js";
 import { getAllUsers } from "./Model/Rest-services/user-rest.js";
 
-import ProductsDialog from "./View/Dialogs/ProductsDialog.js";
 import UserCreateDialog from "./View/Dialogs/CreateUserDialog.js";
 import UserLoginDialog from "./View/Dialogs/UserLoginDialog.js";
 import ForgotPasswordDialog from "./View/Dialogs/ForgotPasswordDialog.js";
@@ -19,7 +18,6 @@ import UserRenderer from "./View/Renderer/UserRenderer.js";
 import Paginater from "./View/Renderer/Paginater.js";
 import ListRenderer from "./View/Renderer/ListRenderer.js";
 import ProductCartRenderer from "./View/Renderer/ProductCartRenderer.js";
-import ProductDialogRenderer from "./View/Renderer/ProductDialogRenderer.js";
 
 import { payNowClicked } from "./Controller/payment.js";
 import enablePayNowButton from "./View/validateCheckout.js";
@@ -31,10 +29,9 @@ import { newsletter } from "./View/Nyhedsbrev.js";
 endpoint;
 
 let products = [];
-let productsLists = null;
-let dialogProduct = null;
-
 let categories = [];
+
+let productsLists = null;
 let categoriesLists = null;
 
 //User variables
@@ -56,7 +53,6 @@ window.addEventListener("load", () => {
 
 async function baddServiceApp() {
   console.log("baddService loaded!");
-
   products = await getAllProducts();
   categories = await getAllCategories();
   users = await getAllUsers();
@@ -78,22 +74,22 @@ async function baddServiceApp() {
       productsLists = new Paginater(products, "#products-container", ProductRenderer, 10);
       productsLists.render();
     }
+  }
 
-    // Initialize the views based on the HTML page
-    if (htmlSide === "/products.html") {
-      initializeProductViews();
-      initializeCartView();
-    } else if (htmlSide === "/kurv.html") {
-      initializeCartHtmlView();
-    } else if (htmlSide === "/payment.html") {
-      document.addEventListener("DOMContentLoaded", () => {
-        enablePayNowButton();
-      });
-      document.querySelector("#pay-now-button").addEventListener("click", payNowClicked);
-    } else {
-      initializeOtherHtmlViews();
-      initializeCartView();
-    }
+  // Initialize the views based on html page
+  if (htmlSide === "/products.html") {
+    initializeProductViews();
+    initializeCartView();
+  } else if (htmlSide === "/kurv.html") {
+    initializeCartHtmlView();
+  } else if (htmlSide === "/payment.html") {
+    document.addEventListener("DOMContentLoaded", () => {
+      enablePayNowButton();
+    });
+    document.querySelector("#pay-now-button").addEventListener("click", payNowClicked);
+  } else {
+    initializeOtherHtmlViews();
+    initializeCartView();
   }
 }
 
@@ -174,27 +170,6 @@ function initializeProductViews() {
   categoriesLists.render();
 
   // initialize Products views based on Categories  //
-
-  //   const productLinks = document.querySelectorAll("#products-container");
-  //   productLinks.forEach((productLink) => {
-  //     productLink.addEventListener("click", async (event) => {
-  //       event.preventDefault();
-
-  //       // Assuming dataset.productId is set on the button or another appropriate element
-  //       const productId = productLink.querySelector("button").dataset.id;
-
-  //       // Use the new function to fetch product information
-  //       const { product, products } = await getSpecificProduct(productId);
-
-  //       // Do something with the product, e.g., log it to the console
-  //       console.log("Product:", product);
-  //       console.log("Products for product ID", productId, products);
-
-  //       dialogProduct = new ProductsDialog("product-dialog", ProductDialogRenderer);
-  //       dialogProduct.render();
-  //       dialogProduct.show(product);
-  //     });
-  //   });
 
   const categoryLinks = document.querySelectorAll(".category-list a");
   categoryLinks.forEach((categoryLink) => {
