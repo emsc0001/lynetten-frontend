@@ -340,3 +340,12 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchAndDisplayProducts();
     fetchAndDisplayCategories();
 });
+
+
+document.getElementById('showUsers').addEventListener('click', function() {
+  // Hide other sections and show the user section
+});
+
+document.getElementById('showOrders').addEventListener('click', function() {
+  // Hide other sections and show the order section
+});
