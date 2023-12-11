@@ -37,8 +37,7 @@ export default class ProductRenderer extends ItemRenderer {
     element.querySelector(".button").addEventListener("click", async (event) => {
       event.preventDefault();
       try {
-        const isLoggedin = false; //controller.isLoggedIn();
-        if (isLoggedin) {
+        if (controller.userId) {
           // Check if the cart exists and has at least one item
           const orderId = controller.cart[0]?.orderId;
           console.log("Order ID:", orderId);

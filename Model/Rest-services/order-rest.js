@@ -1,3 +1,4 @@
+
 const endpoint = "http://localhost:4444";
 
 async function createOrder(orderDate, userId) {
@@ -21,7 +22,9 @@ async function createOrder(orderDate, userId) {
 
         const data = await response.json();
         console.log(data);
-        return data.orderId;
+        const orderId = data.orderId;
+        console.log(`Order created with id ${orderId}`);
+        return orderId;
     } catch (error) {
         console.error(error);
         return null;

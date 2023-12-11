@@ -36,7 +36,6 @@ let categoriesLists = null;
 
 //User variables
 let users = [];
-let usersLists = null;
 let UsersLoginDialog = null;
 let CreateUserDialog = null;
 let PasswordForgotDialog = null;
@@ -351,8 +350,8 @@ export {
   htmlSide,
   initializeCartHtmlView,
   updateProductList,
-  usersLists,
   users,
+  userId
 };
 
 // // Add this to your existing JavaScript file or create a new one
