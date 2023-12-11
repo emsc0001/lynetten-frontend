@@ -117,12 +117,6 @@ function initializeOtherHtmlViews() {
     });
   });
 
-  console.log(users);
-  // -------------initialize User Views------------- //
-  // if (users) {
-  //   usersLists = new ListRenderer(users, "#user-container", UserRenderer);
-  //   usersLists.render();
-  // }
 
   // LOGIN USER DIALOG //
   UsersLoginDialog = new UserLoginDialog("user-login-dialog");
@@ -187,6 +181,14 @@ function initializeProductViews() {
       productsLists = new ListRenderer(products, "#products-container", ProductRenderer);
       productsLists.render();
     });
+  });
+
+  const productGrid = document.querySelector("#products-container");
+  productGrid.addEventListener("click", (event) => {
+    const productElement = event.target.closest(".product");
+      if (productElement) {
+          ProductRenderer.handleProductClick(productElement);
+      }
   });
 }
 
