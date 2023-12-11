@@ -392,34 +392,5 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-document.getElementById('showUsers').addEventListener('click', async () => {
-  const users = await getAllUsers();
-  renderUsersToDOM(users);
-});
-
-document.getElementById('showOrders').addEventListener('click', async () => {
-  const orders = await getAllOrders(); // You need to define this function
-  renderOrdersToDOM(orders); // You need to define this function
-});
-
-function renderUsersToDOM(users) {
-  const usersContainer = document.getElementById('usersContainer');
-  usersContainer.innerHTML = users.map(user => `
-      <div class="user-item">
-          ${user.name} - ${user.email}
-      </div>
-  `).join('');
-}
-
-function renderOrdersToDOM(orders) {
-  const ordersContainer = document.getElementById('ordersContainer');
-  // Assume each order has an id, date, and total
-  ordersContainer.innerHTML = orders.map(order => `
-      <div class="order-item">
-          Order #${order.id} - Date: ${order.date} - Total: ${order.total}
-      </div>
-  `).join('');
-}
-
 
 
