@@ -1,12 +1,11 @@
 "use strict";
-import { endpoint, getAllProducts, getSpecificproduct } from "./Model/Rest-services/products-rest.js";
+import { endpoint, getAllProducts } from "./Model/Rest-services/products-rest.js";
 import { getAllCategories, getCategoryWithProducts } from "./Model/Rest-services/category-rest.js";
 import { getAllUsers } from "./Model/Rest-services/user-rest.js";
 
 import UserCreateDialog from "./View/Dialogs/CreateUserDialog.js";
 import UserLoginDialog from "./View/Dialogs/UserLoginDialog.js";
 import ForgotPasswordDialog from "./View/Dialogs/ForgotPasswordDialog.js";
-import ProductsDialog from "./View/Dialogs/ProductsDialog.js";
 
 import { handleSearch } from "./View/Helpers/Search.js";
 
@@ -16,7 +15,6 @@ import { handleSearch } from "./View/Helpers/Search.js";
 import ProductRenderer from "./View/Renderer/ProductRenderer.js";
 import CategoryRenderer from "./View/Renderer/CategoryRenderer.js";
 import UserRenderer from "./View/Renderer/UserRenderer.js";
-import ProductDialogRenderer from "./View/Renderer/ProductDialogRenderer.js";
 import Paginater from "./View/Renderer/Paginater.js";
 import ListRenderer from "./View/Renderer/ListRenderer.js";
 import ProductCartRenderer from "./View/Renderer/ProductCartRenderer.js";
@@ -35,8 +33,6 @@ let categories = [];
 
 let productsLists = null;
 let categoriesLists = null;
-
-let dialogProduct = null;
 
 //User variables
 let users = [];
@@ -67,12 +63,9 @@ async function baddServiceApp() {
 
   if (htmlSide === "/products.html") {
     initializeProductViews();
-    initializeCartView();
-
     // Event listener for at håndtere kategoriændringer
     const urlParams = new URLSearchParams(window.location.search);
     const categoryId = urlParams.get("categoryId");
-
     if (categoryId) {
       // Hvis categoryId findes i URL'en, opdater produkter baseret på kategori
       await ProductRenderer.updateProductsByCategory(categoryId);
@@ -124,12 +117,6 @@ function initializeOtherHtmlViews() {
     });
   });
 
-  // -------------initialize User Views------------- //
-  // if (users) {
-  //   usersLists = new ListRenderer(users, "#user-container", UserRenderer);
-  //   usersLists.render();
-  // }
-
   // LOGIN USER DIALOG //
   UsersLoginDialog = new UserLoginDialog("user-login-dialog");
   UsersLoginDialog.render();
@@ -167,35 +154,13 @@ function initializeOtherHtmlViews() {
 }
 
 //-----Initiliaze views for products.html-----//
-function initializeProductViews(productId) {
+function initializeProductViews() {
   productsLists = new Paginater(products, "#products-container", ProductRenderer, 10);
   productsLists.render();
-
-  // initialize Product Dialog Views //
-  dialogProduct = new ProductsDialog("product-dialog");
-  dialogProduct.render();
-
-  // Event listener for opening the product dialog
-  const productsContainer = document.querySelector("#products-container");
-  productsContainer.addEventListener("click", async (event) => {
-    event.preventDefault();
-    const existingId = products.find((item) => item.productId === productId);
-
-    console.log("Product ID:", existingId);
-
-    // Brug den nye funktion til at hente produktet baseret på produkt-id
-    const product = await getSpecificproduct(productId);
-
-    // Render produktet i dialogen
-    dialogProduct.render(product);
-    dialogProduct.show();
-  });
 
   // initialize Category Views //
   categoriesLists = new ListRenderer(categories, ".category-list", CategoryRenderer);
   categoriesLists.render();
-
-  // initialize Products views based on Dialog  //
 
   // initialize Products views based on Categories  //
 
@@ -216,32 +181,16 @@ function initializeProductViews(productId) {
       productsLists.render();
     });
   });
+
+  // ------------ Click event for product dialog --------------//
+  const productGrid = document.querySelector("#products-container");
+  productGrid.addEventListener("click", (event) => {
+    const productElement = event.target.closest(".product");
+    if (productElement) {
+      ProductRenderer.handleProductClick(productElement);
+    }
+  });
 }
-
-// function openDialog(productId) {
-//   // Find produktet baseret på productId
-//   const product = products.find((item) => item.id === productId);
-
-//   // Check om produktet blev fundet
-//   if (!product) {
-//     console.error("Product not found for productId:", productId);
-//     return;
-//   }
-
-//   // Opret en ny instans af ProductsDialog med produktet
-//   const productDialog = new ProductsDialog("product-dialog", product);
-
-//   // Lyt efter klik på #products-container
-//   const productsContainer = document.querySelector("#products-container");
-//   productsContainer.addEventListener("click", (event) => {
-//     event.preventDefault();
-
-//     // Render produktet i dialogen
-//     productDialog.render();
-//     // Vis dialogen
-//     productDialog.show();
-//   });
-// }
 
 // -----Search EventListener------//
 
@@ -357,13 +306,13 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-// // MAP
-// let myMap = L.map("interactive-map").setView([55.691046, 12.599752], 13); // Replace with your coordinates
+// MAP
+let myMap = L.map("interactive-map").setView([55.691046, 12.599752], 13); // Replace with your coordinates
 
-// L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-//   maxZoom: 19,
-//   attribution: "© OpenStreetMap contributors",
-// }).addTo(myMap);
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  maxZoom: 19,
+  attribution: "© OpenStreetMap contributors",
+}).addTo(myMap);
 
 export {
   addToCart,
