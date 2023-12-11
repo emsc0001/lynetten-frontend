@@ -167,7 +167,7 @@ function initializeOtherHtmlViews() {
 }
 
 //-----Initiliaze views for products.html-----//
-function initializeProductViews() {
+function initializeProductViews(productId) {
   productsLists = new Paginater(products, "#products-container", ProductRenderer, 10);
   productsLists.render();
 
@@ -179,7 +179,9 @@ function initializeProductViews() {
   const productsContainer = document.querySelector("#products-container");
   productsContainer.addEventListener("click", async (event) => {
     event.preventDefault();
-    const productId = event.target.dataset.productId;
+    const existingId = products.find((item) => item.productId === productId);
+
+    console.log("Product ID:", existingId);
 
     // Brug den nye funktion til at hente produktet baseret på produkt-id
     const product = await getSpecificproduct(productId);
@@ -215,6 +217,31 @@ function initializeProductViews() {
     });
   });
 }
+
+// function openDialog(productId) {
+//   // Find produktet baseret på productId
+//   const product = products.find((item) => item.id === productId);
+
+//   // Check om produktet blev fundet
+//   if (!product) {
+//     console.error("Product not found for productId:", productId);
+//     return;
+//   }
+
+//   // Opret en ny instans af ProductsDialog med produktet
+//   const productDialog = new ProductsDialog("product-dialog", product);
+
+//   // Lyt efter klik på #products-container
+//   const productsContainer = document.querySelector("#products-container");
+//   productsContainer.addEventListener("click", (event) => {
+//     event.preventDefault();
+
+//     // Render produktet i dialogen
+//     productDialog.render();
+//     // Vis dialogen
+//     productDialog.show();
+//   });
+// }
 
 // -----Search EventListener------//
 
