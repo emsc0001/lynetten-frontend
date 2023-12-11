@@ -21,6 +21,17 @@ export default class ProductRenderer extends ItemRenderer {
     return html;
   }
 
+  static async updateProductsByCategory(categoryId) {
+    // Hent kategori og produkter baseret på categoryId
+    const { category, products } = await getCategoryWithProducts(categoryId);
+    // Logik for at opdatere produkterne baseret på kategori
+    console.log("Category:", category);
+    console.log("Products for category ID", categoryId, products);
+    // Opdater visningen med de nye produkter
+    const productsContainer = document.querySelector("#products-container");
+    productsContainer.innerHTML = ""; // Ryd indholdet
+  }
+
   postRender(element) {
     const product = this.item;
     element.querySelector(".button").addEventListener("click", async (event) => {
