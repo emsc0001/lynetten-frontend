@@ -27,12 +27,14 @@ function showSection(sectionId) {
     document.getElementById(sectionId).style.display = 'block';
 }
 
+// Event listeners to show different sections
 document.getElementById('showProducts').addEventListener('click', () => showSection('productSection'));
 document.getElementById('showCategories').addEventListener('click', () => showSection('categoriesSection'));
 document.getElementById('showUsers').addEventListener('click', () => showSection('userSection'));
 document.getElementById('showOrders').addEventListener('click', () => showSection('orderSection'));
 
 
+// Fetch and display products
 function fetchProducts() {
   fetchData('/products')
     .then(products => {
@@ -52,6 +54,7 @@ function fetchProducts() {
     });
 }
 
+// Fetch and display categories
 function fetchCategories() {
   fetchData('/categories')
     .then(categories => {
@@ -67,6 +70,9 @@ function fetchCategories() {
     });
 }
 
+
+
+// Fetch and display users
   async function fetchAndDisplayUsers() {
     const users = await fetchData('/users');
     const usersContainer = document.getElementById('user-list');
@@ -77,7 +83,7 @@ function fetchCategories() {
     ).join('');
 }
 
-
+// Fetch and display orders
 async function fetchAndDisplayOrders() {
   const orders = await fetchData('/GuestOrders');
   const ordersContainer = document.getElementById('order-list');
@@ -98,6 +104,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // Add other initializations here if needed
 });
 
+
+// Function to attach event listeners to product buttons
   function attachEventListenersToProducts() {
     document.querySelectorAll('.edit-button').forEach(button => {
       button.addEventListener('click', event => {
@@ -114,6 +122,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+
+  // Function to attach event listeners to category buttons
   function attachEventListenersToCategories() {
     document.querySelectorAll('.edit-category-button').forEach(button => {
       button.addEventListener('click', event => {
@@ -130,6 +140,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+
+  // Function to show modal for editing a product
   function showEditProductModal(productId) {
     fetchData(`/products/${productId}`)
       .then(product => {
@@ -143,6 +155,8 @@ document.addEventListener('DOMContentLoaded', () => {
       });
   }
 
+
+  // Function to show modal for editing a category
 function showEditCategoryModal(categoryId) {
   fetchData(`/categories/${categoryId}`)
     .then(category => {
@@ -152,6 +166,7 @@ function showEditCategoryModal(categoryId) {
     });
 }
 
+// Function to delete a product
 function deleteProduct(productId) {
   fetchData(`/products/${productId}`, { method: 'DELETE' })
     .then(() => {
@@ -160,6 +175,7 @@ function deleteProduct(productId) {
     });
 }
 
+// Function to delete a category
 function deleteCategory(categoryId) {
   fetchData(`/categories/${categoryId}`, { method: 'DELETE' })
     .then(() => {
@@ -168,6 +184,7 @@ function deleteCategory(categoryId) {
     });
 }
 
+// Function to set up modal close events
 function setupModalCloseEvents() {
   document.querySelectorAll('.close').forEach(button => {
     button.addEventListener('click', () => {
@@ -182,6 +199,8 @@ function setupModalCloseEvents() {
   });
 }
 
+
+// Function to set up tab toggle for Products and Categories
 function setupTabToggle() {
   document.getElementById('showProducts').addEventListener('click', () => {
     document.getElementById('productSection').style.display = 'block';
@@ -201,7 +220,7 @@ document.addEventListener('DOMContentLoaded', () => {
   fetchCategories();
 });
 
-// Event listeners for form submissions
+// Function to handle form submission for editing a product
 document.getElementById('editProductForm').addEventListener('submit', function (event) {
   event.preventDefault();
 
@@ -232,6 +251,7 @@ document.getElementById('editProductForm').addEventListener('submit', function (
 });
 
 
+// Function to handle form submission for editing a category
 document.getElementById('editCategoryForm').addEventListener('submit', event => {
   event.preventDefault();
   const categoryId = document.getElementById('editCategoryId').value;
