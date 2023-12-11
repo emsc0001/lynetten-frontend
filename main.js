@@ -3,7 +3,7 @@ import { endpoint, getAllProducts } from "./Model/Rest-services/products-rest.js
 import { getAllCategories, getCategoryWithProducts } from "./Model/Rest-services/category-rest.js";
 import { getAllUsers } from "./Model/Rest-services/user-rest.js";
 
-// import ProductsDialog from "./View/Dialogs/ProductsDialog.js";
+import ProductsDialog from "./View/Dialogs/ProductsDialog.js";
 import UserCreateDialog from "./View/Dialogs/CreateUserDialog.js";
 import UserLoginDialog from "./View/Dialogs/UserLoginDialog.js";
 import ForgotPasswordDialog from "./View/Dialogs/ForgotPasswordDialog.js";
