@@ -31,18 +31,5 @@ export default class ProductsDialog extends Dialog {
     return html;
   }
 
-  // show(findProductById) {
-  //   // Opdater dialogens indhold baseret på det modtagne produktinformation
-  //   const productForm = document.getElementById("productForm");
-
-  //   if (findProductById) {
-  //     // Fyld inputfelterne med produktinformationen
-  //     productForm.querySelector("#productNumber").value = findProductById.productNumber;
-  //     productForm.querySelector("#productName").value = findProductById.productName;
-  //     // og så videre for de resterende inputfelter
-  //   }
-
-  //   // Vis dialogen
-  //   super.show();
-  // }
+  postRender() {}
 }

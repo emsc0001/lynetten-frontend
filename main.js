@@ -1,11 +1,12 @@
 "use strict";
-import { endpoint, getAllProducts } from "./Model/Rest-services/products-rest.js";
+import { endpoint, getAllProducts, getProductById } from "./Model/Rest-services/products-rest.js";
 import { getAllCategories, getCategoryWithProducts } from "./Model/Rest-services/category-rest.js";
 import { getAllUsers } from "./Model/Rest-services/user-rest.js";
 
 import UserCreateDialog from "./View/Dialogs/CreateUserDialog.js";
 import UserLoginDialog from "./View/Dialogs/UserLoginDialog.js";
 import ForgotPasswordDialog from "./View/Dialogs/ForgotPasswordDialog.js";
+import ProductsDialog from "./View/Dialogs/ProductsDialog.js";
 
 import { handleSearch } from "./View/Helpers/Search.js";
 
@@ -15,6 +16,7 @@ import { handleSearch } from "./View/Helpers/Search.js";
 import ProductRenderer from "./View/Renderer/ProductRenderer.js";
 import CategoryRenderer from "./View/Renderer/CategoryRenderer.js";
 import UserRenderer from "./View/Renderer/UserRenderer.js";
+import ProductDialogRenderer from "./View/Renderer/ProductDialogRenderer.js";
 import Paginater from "./View/Renderer/Paginater.js";
 import ListRenderer from "./View/Renderer/ListRenderer.js";
 import ProductCartRenderer from "./View/Renderer/ProductCartRenderer.js";
@@ -33,6 +35,8 @@ let categories = [];
 
 let productsLists = null;
 let categoriesLists = null;
+
+let dialogProduct = null;
 
 //User variables
 let users = [];
@@ -109,7 +113,7 @@ function initializeOtherHtmlViews() {
       const categoryId = categoryLink.dataset.categoryId;
 
       // Brug den nye funktion til at hente kategori og produkter
-      const { category, products } = await getCategoryWithProducts(categoryId);
+      const { category, products } = await getProductById(categoryId);
 
       // Gør noget med kategori og produkter, f.eks. vis dem i konsollen
       console.log("Category:", category);
@@ -166,6 +170,24 @@ function initializeOtherHtmlViews() {
 function initializeProductViews() {
   productsLists = new Paginater(products, "#products-container", ProductRenderer, 10);
   productsLists.render();
+
+  // initialize Product Dialog Views //
+  dialogProduct = new ProductsDialog("product-dialog");
+  dialogProduct.render();
+
+  // Event listener for opening the product dialog
+  const productsContainer = document.querySelector("#products-container");
+  productsContainer.addEventListener("click", async (event) => {
+    event.preventDefault();
+    const productId = event.target.dataset.productId;
+
+    // Brug den nye funktion til at hente produktet baseret på produkt-id
+    const product = await getProductByproductId(productId);
+
+    // Render produktet i dialogen
+    dialogProduct.render(product);
+    dialogProduct.show();
+  });
 
   // initialize Category Views //
   categoriesLists = new ListRenderer(categories, ".category-list", CategoryRenderer);

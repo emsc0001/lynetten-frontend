@@ -9,7 +9,7 @@ export default class ProductDialogRenderer extends ItemRenderer {
 <thead>
 <tr>
 <th> ${productDialog.productId} </th>
-<th>${productDialog.imageURLs}</th>
+<th src="${productDialog.imageURLs}"</th> 
 <th>${productDialog.productNumber}</th>
 <th>${productDialog.productName}</th>
 <th>${productDialog.listPrice}</th>
