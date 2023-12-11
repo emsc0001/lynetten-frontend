@@ -120,13 +120,13 @@ function initializeOtherHtmlViews() {
     });
   });
 
-  // initialize User Views //
-  if (users) {
-    usersLists = new ListRenderer(users, "#user-container", UserRenderer);
-    usersLists.render();
-  }
+  console.log(users);
+  // -------------initialize User Views------------- //
+  // if (users) {
+  //   usersLists = new ListRenderer(users, "#user-container", UserRenderer);
+  //   usersLists.render();
+  // }
 
-  console.log(usersLists);
 
   // LOGIN USER DIALOG //
   UsersLoginDialog = new UserLoginDialog("user-login-dialog");
@@ -333,7 +333,6 @@ export {
   htmlSide,
   initializeCartHtmlView,
   updateProductList,
-  usersLists,
   users,
 };
 

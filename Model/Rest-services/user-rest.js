@@ -1,5 +1,5 @@
 import User from "../User.js";
-import { usersLists, users } from "../../main.js";
+import { users } from "../../main.js";
 
 const endpoint = "http://localhost:4444";
 
@@ -49,19 +49,11 @@ async function createUser(user) {
   return response.ok;
 }
 
-async function createUserForm(user) {
-  await createUser(user);
 
-  let fetchedUsers = await getAllUsers();
-  usersLists.setLists(fetchedUsers);
-  usersLists.render();
-}
-
-async function loginUserForm(users) {
+async function loginUserForm(loginAttempt) {
   try {
-    console.log(users);
     // Use the findUserByEmailAndPassword function to fetch user data by email and password
-    const user = await findUserByEmailAndPassword(users.email, users.password);
+    const user = await findUserByEmailAndPassword(loginAttempt.email, loginAttempt.password);
     console.log(user);
 
     // Assuming you have an element with id "loggedInUserInfo"
@@ -69,10 +61,11 @@ async function loginUserForm(users) {
 
     if (loggedInUserInfo) {
       // Handle updating the UI with the logged-in user information if needed
-      loggedInUserInfo.innerHTML = `Logged in as ${user.userId}`;
+      loggedInUserInfo.innerHTML = `Logged in as ${user.email}`;
     }
 
     console.log("User logged in with userId:", user.userId, "and email:", user.email);
+    return user;
   } catch (error) {
     // Handle any errors that may occur during the fetch or processing
     console.error("Login failed:", error);
@@ -81,7 +74,8 @@ async function loginUserForm(users) {
 }
 
 function findUserByEmailAndPassword(email, password) {
-  return allUsers.find((user) => user.email === email && user.password === password);
+  console.log(allUsers);
+  return users.find((user) => user.email.toLowerCase() === email.toLowerCase() && user.password === password);
 }
 
-export { getAllUsers, createUser, createUserForm, loginUserForm, allUsers, endpoint };
+export { getAllUsers, createUser, loginUserForm, allUsers, endpoint };
