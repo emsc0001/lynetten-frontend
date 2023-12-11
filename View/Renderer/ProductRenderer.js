@@ -3,6 +3,7 @@ import * as controller from "../../main.js";
 import * as guestOrderController from "../../Model/Rest-services/guestOrder-rest.js";
 import { createOrder } from "../../Model/Rest-services/order-rest.js";
 import { getCategoryWithProducts } from "../../Model/Rest-services/category-rest.js";
+import ProductDialog from "../Dialogs/ProductDialog.js";
 
 export default class ProductRenderer extends ItemRenderer {
   render() {
@@ -10,10 +11,10 @@ export default class ProductRenderer extends ItemRenderer {
     const html = /*html*/ `
       <article class="product">
         <div class="product-item">
-          <img src="${product.imageURLs}" alt="${product.productName}">
-          <h2>${product.productName}</h2>
-          <h4>${product.productNumber}</h4>
-          <h3>${product.listPrice}kr</h3>
+          <img id="product-image"src="${product.imageURLs}" alt="${product.productName}">
+          <h2 id="product-name">${product.productName}</h2>
+          <h4 id="product-number">${product.productNumber}</h4>
+          <h3 id="product-list-price">${product.listPrice}kr</h3>
           <button class="button" data-id="${product.productId}">Add to Cart</button>
         </div>
       </article>
@@ -68,5 +69,20 @@ export default class ProductRenderer extends ItemRenderer {
         console.error("Error handling item addition to cart:", error);
       }
     });
+  }
+
+  static handleProductClick(element) {
+    const productNumber = element.querySelector("#product-number").textContent;
+    const product = controller.products.find((product) => product.productNumber === productNumber);
+    console.log(product);
+    // Create and show the product dialog
+    const dialog = new ProductDialog("product-dialog");
+    const dialogHTML = dialog.renderHTML(product);
+    console.log(dialogHTML);
+
+    // Insert the dialog HTML into the DOM
+    dialog.dialog.innerHTML = dialogHTML; // Set HTML directly to the dialog container
+    // Show the dialog
+    dialog.show();
   }
 }
