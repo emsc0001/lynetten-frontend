@@ -117,7 +117,6 @@ function initializeOtherHtmlViews() {
     });
   });
 
-  console.log(users);
   // -------------initialize User Views------------- //
   // if (users) {
   //   usersLists = new ListRenderer(users, "#user-container", UserRenderer);
@@ -178,7 +177,7 @@ function initializeProductViews() {
       const categoryId = categoryLink.dataset.categoryId;
 
       // Brug den nye funktion til at hente kategori og produkter
-      const { category, products } = await getCategoryWithProducts(categoryId);
+      const { category, products } = await updateProductsByCategory(categoryId);
 
       // Gør noget med kategori og produkter, f.eks. vis dem i konsollen
       console.log("Category:", category);
@@ -289,36 +288,28 @@ function addToCart(productId, listPrice, productName, imageURLs, orderId, guestO
 }
 
 // Købeguide Beskrivelser
-document.addEventListener("DOMContentLoaded", function () {
-  var collapsibles = document.getElementsByClassName("collapsible");
-  for (var i = 0; i < collapsibles.length; i++) {
-    collapsibles[i].addEventListener("click", function () {
-      this.classList.toggle("active");
-      var content = this.nextElementSibling;
-      if (content.style.display === "block") {
-        content.style.display = "none";
-      } else {
-        content.style.display = "block";
-      }
-    });
-  }
-});
+// document.addEventListener("DOMContentLoaded", function () {
+//   var collapsibles = document.getElementsByClassName("collapsible");
+//   for (var i = 0; i < collapsibles.length; i++) {
+//     collapsibles[i].addEventListener("click", function () {
+//       this.classList.toggle("active");
+//       var content = this.nextElementSibling;
+//       if (content.style.display === "block") {
+//         content.style.display = "none";
+//       } else {
+//         content.style.display = "block";
+//       }
+//     });
+//   }
+// });
 
-// Købeguide Beskrivelser
-document.addEventListener("DOMContentLoaded", function () {
-  var collapsibles = document.getElementsByClassName("collapsible");
-  for (var i = 0; i < collapsibles.length; i++) {
-    collapsibles[i].addEventListener("click", function () {
-      this.classList.toggle("active");
-      var content = this.nextElementSibling;
-      if (content.style.display === "block") {
-        content.style.display = "none";
-      } else {
-        content.style.display = "block";
-      }
-    });
-  }
-});
+// // MAP
+// let myMap = L.map("interactive-map").setView([55.691046, 12.599752], 13); // Replace with your coordinates
+
+// L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+//   maxZoom: 19,
+//   attribution: "© OpenStreetMap contributors",
+// }).addTo(myMap);
 
 export {
   addToCart,
