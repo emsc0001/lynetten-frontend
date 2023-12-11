@@ -63,9 +63,12 @@ async function baddServiceApp() {
 
   if (htmlSide === "/products.html") {
     initializeProductViews();
+    initializeCartView();
+
     // Event listener for at håndtere kategoriændringer
     const urlParams = new URLSearchParams(window.location.search);
     const categoryId = urlParams.get("categoryId");
+
     if (categoryId) {
       // Hvis categoryId findes i URL'en, opdater produkter baseret på kategori
       await ProductRenderer.updateProductsByCategory(categoryId);
@@ -167,6 +170,8 @@ function initializeProductViews() {
   // initialize Category Views //
   categoriesLists = new ListRenderer(categories, ".category-list", CategoryRenderer);
   categoriesLists.render();
+
+  // initialize Products views based on Dialog  //
 
   // initialize Products views based on Categories  //
 
