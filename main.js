@@ -183,6 +183,7 @@ function initializeProductViews() {
     });
   });
 
+  // ------------ Click event for product dialog --------------//
   const productGrid = document.querySelector("#products-container");
   productGrid.addEventListener("click", (event) => {
     const productElement = event.target.closest(".product");
