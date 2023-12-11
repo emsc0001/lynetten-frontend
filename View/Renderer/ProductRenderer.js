@@ -2,6 +2,7 @@ import ItemRenderer from "./Itemrenderer.js";
 import * as controller from "../../main.js";
 import * as guestOrderController from "../../Model/Rest-services/guestOrder-rest.js";
 import { createOrder } from "../../Model/Rest-services/order-rest.js";
+import { getCategoryWithProducts } from "../../Model/Rest-services/category-rest.js";
 
 export default class ProductRenderer extends ItemRenderer {
   render() {
