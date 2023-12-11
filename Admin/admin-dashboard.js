@@ -85,14 +85,30 @@ function fetchCategories() {
 
 // Fetch and display orders
 async function fetchAndDisplayOrders() {
-  const orders = await fetchData('/GuestOrders');
-  const ordersContainer = document.getElementById('order-list');
-  ordersContainer.innerHTML = orders.map(order => `
-  <div class="order-item">
-  Order #${order.id} - Date: ${order.date} - Total: ${order.total}
-  </div>`
-  ).join('');
+  try {
+      const response = await fetch('http://localhost:4444/guestOrders');
+      if (!response.ok) {
+          throw new Error('Network response was not ok');
+      }
+      const orders = await response.json();
+      renderOrders(orders);
+  } catch (error) {
+      console.error('Fetch error:', error);
+  }
 }
+
+
+
+function renderOrders(orders) {
+  const ordersContainer = document.getElementById('order-list');
+  const ordersHTML = orders.map(order => `
+      <div class="order-item">
+          Order #${order.guestOrderId} - Date: ${order.orderDate} - Total: ${order.totalAmount}
+      </div>
+  `).join('');
+  ordersContainer.innerHTML = ordersHTML;
+}
+
 
 document.getElementById('showUsers').addEventListener('click', fetchAndDisplayUsers);
 document.getElementById('showOrders').addEventListener('click', fetchAndDisplayOrders);
