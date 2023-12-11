@@ -9,4 +9,4 @@ Dette projekt giver dig mulighed for at logge ind ved hjælp af admin-login.js-f
 
 
 
-Mangler create & edit over produkter og edit over kategorier
+Mangler edit til at virke

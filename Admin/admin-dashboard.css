@@ -1,5 +1,5 @@
 h1 {
-    font-size: 2.1em; /* Adjust this value as needed */
+    font-size: 2.1em; /* Juster denne værdi efter behov */
 }
 
 h2 {
@@ -27,7 +27,7 @@ body {
     gap: 20px;
 }
 
-.product-item, .category-item {
+.product-item, .category-item, .user-item, .order-item {
     background-color: #ffffff;
     border: 1px solid #ddd;
     padding: 15px;
@@ -121,4 +121,62 @@ form button[type="submit"]:hover {
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+/* Tabelformatering for Brugere og Ordrer */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.table th, .table td {
+    text-align: left;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+.table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+.table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Responsiv tabel */
+@media screen and (max-width: 600px) {
+    .table {
+        display: block;
+        width: 100%;
+    }
+
+    .table thead {
+        display: none;
+    }
+
+    .table tr {
+        margin-bottom: 10px;
+        display: block;
+        border-bottom: 2px solid #ddd;
+    }
+
+    .table td {
+        display: block;
+        text-align: right;
+        font-size: 13px;
+        border-bottom: 1px dotted #ddd;
+    }
+
+    .table td:last-child {
+        border-bottom: 0;
+    }
+
+    .table td:before {
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
 }
