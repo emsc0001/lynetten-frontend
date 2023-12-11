@@ -33,36 +33,39 @@ document.getElementById('showUsers').addEventListener('click', () => showSection
 document.getElementById('showOrders').addEventListener('click', () => showSection('orderSection'));
 
 
-  function fetchAndDisplayProducts() {
-    fetchData('/products')
-      .then(products => {
-        const productsContainer = document.getElementById('product-list');
-        productsContainer.innerHTML = products.map(product => `
-          <div class="product-item">
-            <h3>${product.productName}</h3>
-            <p>Price: ${product.listPrice}</p>
-            <button class="edit-button" data-product-id="${product.productId}">Edit</button>
-            <button class="delete-button" data-product-id="${product.productId}">Delete</button>
-          </div>`
-        ).join('');
-        attachEventListenersToProducts();
-      });
-  }
+function fetchProducts() {
+  fetchData('/products')
+    .then(products => {
+      const productsContainer = document.getElementById('product-list');
+      productsContainer.innerHTML = products.map(product => `
+        <div class="product-item">
+          <h3>${product.productName}</h3>
+          <p>Price: ${product.listPrice}</p>
+          <p>Product Number: ${product.productNumber}</p>
+          <p>Stock Quantity: ${product.stockQuantity}</p>
+          <p>Offer Price: ${product.offerPrice}</p>
+          <button class="edit-button" data-product-id="${product.productId}">Edit</button>
+          <button class="delete-button" data-product-id="${product.productId}">Delete</button>
+        </div>`
+      ).join('');
+      attachEventListenersToProducts();
+    });
+}
 
-  function fetchAndDisplayCategories() {
-    fetchData('/categories')
-      .then(categories => {
-        const categoriesContainer = document.getElementById('category-list');
-        categoriesContainer.innerHTML = categories.map(category => `
-          <div class="category-item">
-            <h3>${category.categoryName}</h3>
-            <button class="edit-category-button" data-category-id="${category.categoryId}">Edit</button>
-            <button class="delete-category-button" data-category-id="${category.categoryId}">Delete</button>
-          </div>`
-        ).join('');
-        attachEventListenersToCategories();
-      });
-  }
+function fetchCategories() {
+  fetchData('/categories')
+    .then(categories => {
+      const categoriesContainer = document.getElementById('category-list');
+      categoriesContainer.innerHTML = categories.map(category => `
+        <div class="category-item">
+          <h3>${category.categoryName}</h3>
+          <button class="edit-category-button" data-category-id="${category.categoryId}">Edit</button>
+          <button class="delete-category-button" data-category-id="${category.categoryId}">Delete</button>
+        </div>`
+      ).join('');
+      attachEventListenersToCategories();
+    });
+}
 
   async function fetchAndDisplayUsers() {
     const users = await fetchData('/users');
@@ -91,7 +94,7 @@ document.getElementById('showOrders').addEventListener('click', fetchAndDisplayO
 document.addEventListener('DOMContentLoaded', () => {
   // Set up initial view
   showSection('productSection'); // Default to showing products
-  fetchAndDisplayProducts();
+  fetchProducts();
   // Add other initializations here if needed
 });
 
@@ -127,15 +130,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-function showEditProductModal(productId) {
-  fetchData(`/products/${productId}`)
-    .then(product => {
-      document.getElementById('editProductId').value = product.productId;
-      document.getElementById('editProductName').value = product.productName;
-      document.getElementById('editProductPrice').value = product.listPrice;
-      document.getElementById('editProductModal').style.display = 'block';
-    });
-}
+  function showEditProductModal(productId) {
+    fetchData(`/products/${productId}`)
+      .then(product => {
+        document.getElementById('editProductId').value = product.productId;
+        document.getElementById('editProductName').value = product.productName;
+        document.getElementById('editProductPrice').value = product.listPrice;
+        document.getElementById('editProductNumber').value = product.productNumber;
+        document.getElementById('editProductStock').value = product.stockQuantity;
+        document.getElementById('editProductOfferPrice').value = product.offerPrice || ''; // Handle null/undefined
+        document.getElementById('editProductModal').style.display = 'block';
+      });
+  }
 
 function showEditCategoryModal(categoryId) {
   fetchData(`/categories/${categoryId}`)
@@ -150,7 +156,7 @@ function deleteProduct(productId) {
   fetchData(`/products/${productId}`, { method: 'DELETE' })
     .then(() => {
       alert('Product deleted successfully');
-      fetchAndDisplayProducts();
+      fetchProducts();
     });
 }
 
@@ -158,7 +164,7 @@ function deleteCategory(categoryId) {
   fetchData(`/categories/${categoryId}`, { method: 'DELETE' })
     .then(() => {
       alert('Category deleted successfully');
-      fetchAndDisplayCategories();
+      fetchCategories();
     });
 }
 
@@ -191,32 +197,40 @@ function setupTabToggle() {
 document.addEventListener('DOMContentLoaded', () => {
   setupModalCloseEvents();
   setupTabToggle();
-  fetchAndDisplayProducts();
-  fetchAndDisplayCategories();
+  fetchProducts();
+  fetchCategories();
 });
 
 // Event listeners for form submissions
-document.getElementById('editProductForm').addEventListener('submit', event => {
+document.getElementById('editProductForm').addEventListener('submit', function (event) {
   event.preventDefault();
+
   const productId = document.getElementById('editProductId').value;
   const updatedProduct = {
     productName: document.getElementById('editProductName').value,
-    listPrice: parseFloat(document.getElementById('editProductPrice').value)
+    listPrice: parseFloat(document.getElementById('editProductPrice').value),
+    productNumber: document.getElementById('editProductNumber').value,
+    stockQuantity: parseInt(document.getElementById('editProductStock').value, 10),
+    offerPrice: parseFloat(document.getElementById('editProductOfferPrice').value) || null, // Handle null/undefined
+    // Include other fields you want to update
   };
 
   fetchData(`/products/${productId}`, {
     method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(updatedProduct)
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(updatedProduct),
   })
-  .then(() => {
-    alert('Product updated successfully');
-    document.getElementById('editProductModal').style.display = 'none';
-    fetchAndDisplayProducts();
-  });
+    .then(() => {
+      alert('Product updated successfully');
+      document.getElementById('editProductModal').style.display = 'none';
+      fetchProducts(); // Refresh the product list
+    })
+    .catch(error => {
+      console.error('Error updating product:', error);
+      alert('Error updating product. Check console for details.');
+    });
 });
+
 
 document.getElementById('editCategoryForm').addEventListener('submit', event => {
   event.preventDefault();
@@ -235,7 +249,7 @@ document.getElementById('editCategoryForm').addEventListener('submit', event => 
   .then(() => {
     alert('Category updated successfully');
     document.getElementById('editCategoryModal').style.display = 'none';
-    fetchAndDisplayCategories();
+    fetchCategories();
   });
 });
 
@@ -288,7 +302,7 @@ document.getElementById('editProductForm').addEventListener('submit', function(e
     .then(() => {
         alert('Product updated successfully.');
         document.getElementById('editProductModal').style.display = 'none';
-        fetchAndDisplayProducts(); // Refresh the product list
+        fetchProducts(); // Refresh the product list
     });
 });
 
@@ -312,7 +326,7 @@ document.getElementById('editCategoryForm').addEventListener('submit', function(
     .then(() => {
         alert('Category updated successfully.');
         document.getElementById('editCategoryModal').style.display = 'none';
-        fetchAndDisplayCategories(); // Refresh the category list
+        fetchCategories(); // Refresh the category list
     });
 });
 
@@ -321,74 +335,87 @@ document.getElementById('editCategoryForm').addEventListener('submit', function(
 
 
 // Function to handle form submission for creating a new product
-function setupNewProductForm() {
-    const newProductForm = document.getElementById('newProductForm');
-    newProductForm.addEventListener('submit', function(event) {
-        event.preventDefault();
+function createProduct() {
+  const newProductForm = document.getElementById('newProductForm');
+  newProductForm.addEventListener('submit', function(event) {
+      event.preventDefault();
 
-        const productName = document.getElementById('productName').value;
-        const productPrice = document.getElementById('productPrice').value;
+      // Retrieve values from form fields
+      const productName = document.getElementById('productName').value;
+      const productNumber = document.getElementById('productNumber').value; // Assuming you have this input
+      const productPrice = document.getElementById('productPrice').value;
+      const imageURLs = document.getElementById('imageURLs').value; // Assuming you have this input
+      const offerPrice = document.getElementById('offerPrice').value; // Assuming you have this input
+      const stockQuantity = document.getElementById('stockQuantity').value; // Assuming you have this input
+      const description = document.getElementById('description').value; // Assuming you have this input
+      // Add similar lines for categories and colors if they are part of your form
 
-        fetchData('/products', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                productName: productName,
-                listPrice: parseFloat(productPrice)
-            })
-        })
-        .then(() => {
-            alert('Product created successfully');
-            fetchAndDisplayProducts(); // Refresh the product list
-            newProductForm.reset(); // Clear the form fields
-        })
-        .catch(error => {
-            console.error('Error creating product:', error);
-            alert('Error creating product. Check console for details.');
-        });
-    });
+      fetchData('/products', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+              productNumber: productNumber,
+              productName: productName,
+              imageURLs: imageURLs,
+              listPrice: parseFloat(productPrice),
+              offerPrice: offerPrice ? parseFloat(offerPrice) : null, // Handle null or undefined
+              stockQuantity: parseInt(stockQuantity, 10),
+              description: description,
+              // Add categories and colors here if applicable
+          })
+      })
+      .then(() => {
+          alert('Product created successfully');
+          fetchProducts(); // Refresh the product list
+          newProductForm.reset(); // Clear the form fields
+      })
+      .catch(error => {
+          console.error('Error creating product:', error);
+          alert('Error creating product. Check console for details.');
+      });
+  });
 }
+
+
 
 
 // Function to handle form submission for creating a new category
-function setupNewCategoryForm() {
-    const newCategoryForm = document.getElementById('newCategoryForm');
-    newCategoryForm.addEventListener('submit', function(event) {
-        event.preventDefault();
+function createCategory() {
+  const newCategoryForm = document.getElementById('newCategoryForm');
+  newCategoryForm.addEventListener('submit', function(event) {
+      event.preventDefault();
 
-        const categoryName = document.getElementById('categoryName').value;
+      const categoryName = document.getElementById('categoryName').value;
 
-        fetchData('/categories', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ categoryName: categoryName })
-        })
-        .then(() => {
-            alert('Category created successfully');
-            fetchAndDisplayCategories(); // Refresh the category list
-            newCategoryForm.reset(); // Clear the form fields
-        })
-        .catch(error => {
-            console.error('Error creating category:', error);
-            alert('Error creating category. Check console for details.');
-        });
-    });
+      fetchData('/categories', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ categoryName: categoryName })
+      })
+      .then(() => {
+          alert('Category created successfully');
+          fetchCategories(); // Refresh the category list
+          newCategoryForm.reset(); // Clear the form fields
+      })
+      .catch(error => {
+          console.error('Error creating category:', error);
+          alert('Error creating category. Check console for details.');
+      });
+  });
 }
-
-
 
 // Initial setup when the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', () => {
-    setupModalCloseEvents();
-    setupTabToggle();
-    setupNewProductForm();
-    setupNewCategoryForm();
-    fetchAndDisplayProducts();
-    fetchAndDisplayCategories();
+  setupModalCloseEvents();
+  setupTabToggle();
+  createProduct();
+  createCategory();
+  fetchProducts();
+  fetchCategories();
 });
 
 

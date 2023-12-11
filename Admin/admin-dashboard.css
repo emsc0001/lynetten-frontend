@@ -1,5 +1,5 @@
 h1 {
-    font-size: 2.1em; /* Adjust this value as needed */
+    font-size: 2.1em; /* Juster denne værdi efter behov */
 }
 
 h2 {
@@ -34,7 +34,6 @@ body {
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-
 
 button {
     background-color: #0061fe;
@@ -124,9 +123,7 @@ form button[type="submit"]:hover {
     cursor: pointer;
 }
 
-
-
-/* Table Styles for Users and Orders */
+/* Tabelformatering for Brugere og Ordrer */
 .table {
     width: 100%;
     border-collapse: collapse;
@@ -148,7 +145,7 @@ form button[type="submit"]:hover {
     background-color: #f9f9f9;
 }
 
-/* Responsive Table */
+/* Responsiv tabel */
 @media screen and (max-width: 600px) {
     .table {
         display: block;
