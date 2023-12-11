@@ -40,5 +40,4 @@ async function getCategoryWithProducts(categoryId) {
 
   return { category, products };
 }
-
 export { getAllCategories, getSomeCategories, getCategoryWithProducts, endpoint };
