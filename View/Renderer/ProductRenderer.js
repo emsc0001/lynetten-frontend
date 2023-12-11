@@ -78,7 +78,6 @@ export default class ProductRenderer extends ItemRenderer {
         // Create and show the product dialog
         const dialog = new ProductDialog("product-dialog");
         const dialogHTML = dialog.renderHTML(product);
-        console.log(dialogHTML);
 
         // Insert the dialog HTML into the DOM
         dialog.dialog.innerHTML = dialogHTML; // Set HTML directly to the dialog container
