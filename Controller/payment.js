@@ -1,5 +1,5 @@
 import { createOrderItem } from "../Model/Rest-services/orderItem-rest.js";
-import { cart, userId } from "../main.js";
+import { cart, loggedInUser } from "../main.js";
 import { updateGuestOrder } from "../Model/Rest-services/guestOrder-rest.js";
 import { updateOrder } from "../Model/Rest-services/order-rest.js";
 
@@ -29,7 +29,7 @@ async function extractItemsCart() {
         }
         const orderId = cart[0].orderId;
 
-        await createOrderItem(orderId, orderItems, userId);
+        await createOrderItem(orderId, orderItems, loggedInUser.userId);
     }
 
     cart.items = [];

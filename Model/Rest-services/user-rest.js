@@ -57,11 +57,13 @@ async function loginUserForm(loginAttempt) {
     console.log(user);
 
     // Assuming you have an element with id "loggedInUserInfo"
-    const loggedInUserInfo = document.getElementById("loggedInUserInfo");
+    const loggedInUserInfo = document.getElementById("userLogin-container");
 
     if (loggedInUserInfo) {
+      //remove current innerHTML
+      loggedInUserInfo.innerHTML = "";
       // Handle updating the UI with the logged-in user information if needed
-      loggedInUserInfo.innerHTML = `Logged in as ${user.email}`;
+      loggedInUserInfo.innerHTML = `<p>Logged in as ${user.email}</p><button id="logout">Logout</button>`;
     }
 
     console.log("User logged in with userId:", user.userId, "and email:", user.email);

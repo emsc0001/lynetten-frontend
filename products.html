@@ -56,69 +56,12 @@
 
         <!-- Other icons go here -->
 
-        <div class="user-container">
-          <span class="nav-icon" id="loggedInUserInfo">👤</span>
-
-          <!-- Add this inside your body tag, preferably at the end -->
-          <div id="userModal" class="modal">
-            <div class="modal-content">
-              <span id="closeUser" class="close">×</span>
-              <img src="https://i.ibb.co/r2bH4d1/Sk-rmbillede-2023-11-28-kl-15-35-30.png" alt="Logo" height="50" />
-              <h2>Bruger Login</h2>
-              <label for="email">Email:</label>
-              <input type="email" id="emailUser" name="email" required />
-
-              <label for="password">Password:</label>
-              <input type="password" id="passwordUser" name="password" required />
-
-              <button id="modalButton" onclick="login()">Login</button>
-
-              <div class="additional-options">
-                <p><a id="forgotUserLink" href="#">Forgot Password?</a></p>
-                <p><a id="createUserLink" href="#">Create New Account</a></p>
+          <div class="userLogin-container">
+              <div id="userLogin-container">
+                <span class="nav-icon" id="logIn">👤</span>
               </div>
-            </div>
           </div>
-        </div>
 
-        <!-- Create user modal -->
-        <div id="createUserModal" class="modal">
-          <div class="modal-content">
-            <span id="closeCreateUser" class="close">×</span>
-            <img src="https://i.ibb.co/r2bH4d1/Sk-rmbillede-2023-11-28-kl-15-35-30.png" alt="Logo" height="50" />
-            <h2>Create New Account</h2>
-            <label for="email">Email:</label>
-            <input type="email" id="createEmail" name="email" required />
-
-            <label for="password">Password:</label>
-            <input type="password" id="createPassword" name="password" required />
-
-            <label for="password">Confirm Password:</label>
-            <input type="password" id="createConfirmPassword" name="password" required />
-
-            <!-- Subscribe to Newsletter -->
-            <div class="subscribe-newsletter">
-              <label for="subscribeCheckbox">
-                <input type="checkbox" id="subscribeCheckbox" />
-                Subscribe to Newsletter
-              </label>
-            </div>
-
-            <button onclick="createAccount()">Create Account</button>
-          </div>
-        </div>
-
-        <div id="forgotPasswordModal" class="modal">
-          <div class="modal-content">
-            <span id="closeForgotPassword" class="close">×</span>
-            <img src="https://i.ibb.co/r2bH4d1/Sk-rmbillede-2023-11-28-kl-15-35-30.png" alt="Logo" height="50" />
-            <h2>Forgot Password</h2>
-            <label for="email">Email:</label>
-            <input type="email" id="forgotEmail" name="email" required />
-
-            <button id="modalButton" onclick="sendPasswordReset()">Send Password Reset</button>
-          </div>
-        </div>
 
         <div class="nav-item" data-tab="kurv" id="cart">
           <a href="kurv.html" class="nav-link">🛒</a>

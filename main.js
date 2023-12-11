@@ -6,6 +6,7 @@ import { getAllUsers } from "./Model/Rest-services/user-rest.js";
 import UserCreateDialog from "./View/Dialogs/CreateUserDialog.js";
 import UserLoginDialog from "./View/Dialogs/UserLoginDialog.js";
 import ForgotPasswordDialog from "./View/Dialogs/ForgotPasswordDialog.js";
+import loggedInHtmlChange from "./View/HtmlChangers/loggedInHtmlChange.js";
 
 import { handleSearch } from "./View/Helpers/Search.js";
 
@@ -39,7 +40,7 @@ let users = [];
 let UsersLoginDialog = null;
 let CreateUserDialog = null;
 let PasswordForgotDialog = null;
-let userId = null;
+let loggedInUser = null;
 
 //Order variables
 let cart = [];
@@ -47,6 +48,7 @@ let cartList = null;
 const htmlSide = window.location.pathname;
 
 window.addEventListener("load", () => {
+  // localStorage.clear();
   baddServiceApp();
   checkLoginStatus();
   loadCartFromLocalStorage();
@@ -92,6 +94,11 @@ async function baddServiceApp() {
     initializeOtherHtmlViews();
     initializeCartView();
   }
+
+  if (loggedInUser.userId) {
+    loggedInHtmlChange();
+    document.querySelector("#logout").addEventListener("click", logout);
+  }
 }
 
 //Initiliaze views for koebeguide.html, handelsBetingelser and index.html
@@ -122,7 +129,7 @@ function initializeOtherHtmlViews() {
   UsersLoginDialog = new UserLoginDialog("user-login-dialog");
   UsersLoginDialog.render();
 
-  const userLogin = document.querySelector(".userLogin-container");
+  const userLogin = document.querySelector("#logIn");
 
   userLogin.addEventListener("click", (event) => {
     event.preventDefault();
@@ -184,6 +191,16 @@ function initializeProductViews() {
   });
 }
 
+function logout() {
+    // Clear user-related data
+    localStorage.removeItem("loggedInUser"); // Remove user-related stored data
+    localStorage.removeItem("cart"); // Remove any cart data associated with the user
+
+    // Reset the application state
+  window.location.href = "/index.html"; // Redirect to the home page
+  loggedInHtmlChange(); 
+}
+
 
 // -----Search EventListener------//
 
@@ -225,9 +242,8 @@ function checkLoginStatus() {
   const loggedInUserInfo = localStorage.getItem("loggedInUser");
   console.log(loggedInUserInfo);
     if (loggedInUserInfo) {
-      const loggedInUser = JSON.parse(loggedInUserInfo);
+       loggedInUser = JSON.parse(loggedInUserInfo);
       // Store the logged-in user ID in a global variable
-      userId = loggedInUser.userId;  
 
       // Checks if the html has an element with id "loggedInUserInfo" and then puts the email in the element
           const loggedInEmailHtmlId = document.getElementById("loggedInUserInfo");
@@ -351,7 +367,7 @@ export {
   initializeCartHtmlView,
   updateProductList,
   users,
-  userId
+  loggedInUser
 };
 
 // // Add this to your existing JavaScript file or create a new one

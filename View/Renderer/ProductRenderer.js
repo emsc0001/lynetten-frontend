@@ -37,14 +37,14 @@ export default class ProductRenderer extends ItemRenderer {
     element.querySelector(".button").addEventListener("click", async (event) => {
       event.preventDefault();
       try {
-        if (controller.userId) {
+        if (controller.loggedInUser.userId) {
           // Check if the cart exists and has at least one item
           const orderId = controller.cart[0]?.orderId;
           console.log("Order ID:", orderId);
           if (!orderId) {
             // Create a new order if no order ID exists
             const orderDate = new Date().toISOString().slice(0, 10);
-            const newOrderId = await createOrder(orderDate, controller.userId);
+            const newOrderId = await createOrder(orderDate, controller.loggedInUser.userId);
             controller.addToCart(product.productId, product.listPrice, product.productName, product.imageURLs, newOrderId, null);
           } else {
             // Add item to existing order
