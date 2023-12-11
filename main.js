@@ -1,5 +1,5 @@
 "use strict";
-import { endpoint, getAllProducts, getSpecificProduct } from "./Model/Rest-services/products-rest.js";
+import { endpoint, getAllProducts } from "./Model/Rest-services/products-rest.js";
 import { getAllCategories, getCategoryWithProducts } from "./Model/Rest-services/category-rest.js";
 import { getAllUsers } from "./Model/Rest-services/user-rest.js";
 
@@ -229,26 +229,26 @@ function initializeProductViews() {
 
   // initialize Products views based on Categories  //
 
-  const productLinks = document.querySelectorAll("#products-container");
-  productLinks.forEach((productLink) => {
-    productLink.addEventListener("click", async (event) => {
-      event.preventDefault();
+  //   const productLinks = document.querySelectorAll("#products-container");
+  //   productLinks.forEach((productLink) => {
+  //     productLink.addEventListener("click", async (event) => {
+  //       event.preventDefault();
 
-      // Assuming dataset.productId is set on the button or another appropriate element
-      const productId = productLink.querySelector("button").dataset.id;
+  //       // Assuming dataset.productId is set on the button or another appropriate element
+  //       const productId = productLink.querySelector("button").dataset.id;
 
-      // Use the new function to fetch product information
-      const { product, products } = await getSpecificProduct(productId);
+  //       // Use the new function to fetch product information
+  //       const { product, products } = await getSpecificProduct(productId);
 
-      // Do something with the product, e.g., log it to the console
-      console.log("Product:", product);
-      console.log("Products for product ID", productId, products);
+  //       // Do something with the product, e.g., log it to the console
+  //       console.log("Product:", product);
+  //       console.log("Products for product ID", productId, products);
 
-      dialogProduct = new ProductsDialog("product-dialog", ProductDialogRenderer);
-      dialogProduct.render();
-      dialogProduct.show(product);
-    });
-  });
+  //       dialogProduct = new ProductsDialog("product-dialog", ProductDialogRenderer);
+  //       dialogProduct.render();
+  //       dialogProduct.show(product);
+  //     });
+  //   });
 
   const categoryLinks = document.querySelectorAll(".category-list a");
   categoryLinks.forEach((categoryLink) => {
