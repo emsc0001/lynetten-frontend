@@ -30,10 +30,4 @@ async function refetchAllProducts() {
   lastFetch = Date.now();
 }
 
-async function getProductById(productId) {
-  const response = await fetch(`${endpoint}/products/${productId}`);
-  const originalJson = await response.json();
-  return new Product(originalJson);
-}
-
-export { getAllProducts, getSomeProducts, getProductById, endpoint };
+export { getAllProducts, getSomeProducts, endpoint };

@@ -31,18 +31,10 @@ async function refetchAllProducts() {
   lastFetch = Date.now();
 }
 
-// async function getSpecificProduct(productId) {
-//   const response = await fetch(`${endpoint}/products/${productId}`);
-//   const data = await response.json();
+async function getSpecificproduct(productId) {
+  const response = await fetch(`${endpoint}/products/${productId}`);
+  const originalJson = await response.json();
+  return new Product(originalJson);
+}
 
-//   const product = new Product(data.product);
-//   const products = data.products.map((jsonObj) => new Product(jsonObj));
-
-//   return { product, products };
-// }
-
-// function findProductById(productId) {
-//   return allProducts.find((product) => product.productId === productId);
-// }
-
-export { getAllProducts, getSomeProducts, endpoint };
+export { getAllProducts, getSomeProducts, getSpecificproduct, endpoint };

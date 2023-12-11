@@ -1,5 +1,5 @@
 "use strict";
-import { endpoint, getAllProducts, getProductById } from "./Model/Rest-services/products-rest.js";
+import { endpoint, getAllProducts, getSpecificproduct } from "./Model/Rest-services/products-rest.js";
 import { getAllCategories, getCategoryWithProducts } from "./Model/Rest-services/category-rest.js";
 import { getAllUsers } from "./Model/Rest-services/user-rest.js";
 
@@ -113,7 +113,7 @@ function initializeOtherHtmlViews() {
       const categoryId = categoryLink.dataset.categoryId;
 
       // Brug den nye funktion til at hente kategori og produkter
-      const { category, products } = await getProductById(categoryId);
+      const { category, products } = await getCategoryWithProducts(categoryId);
 
       // Gør noget med kategori og produkter, f.eks. vis dem i konsollen
       console.log("Category:", category);
@@ -182,7 +182,7 @@ function initializeProductViews() {
     const productId = event.target.dataset.productId;
 
     // Brug den nye funktion til at hente produktet baseret på produkt-id
-    const product = await getProductByproductId(productId);
+    const product = await getSpecificproduct(productId);
 
     // Render produktet i dialogen
     dialogProduct.render(product);
