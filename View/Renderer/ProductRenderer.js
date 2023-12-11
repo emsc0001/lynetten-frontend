@@ -44,7 +44,7 @@ export default class ProductRenderer extends ItemRenderer {
           if (!orderId) {
             // Create a new order if no order ID exists
             const orderDate = new Date().toISOString().slice(0, 10);
-            const newOrderId = await createOrder(orderDate);
+            const newOrderId = await createOrder(orderDate, controller.userId);
             controller.addToCart(product.productId, product.listPrice, product.productName, product.imageURLs, newOrderId, null);
           } else {
             // Add item to existing order
