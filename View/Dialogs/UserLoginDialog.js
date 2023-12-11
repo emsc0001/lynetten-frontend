@@ -38,14 +38,13 @@ export default class UserLoginDialog extends Dialog {
 
     // Call the controller method to log in the user
     const loggedInUser = await Controller.loginUserForm({ email, password });
-    console.log(loggedInUser);
 
     if (loggedInUser) {
-      // Log information about the logged-in user
-
-      // Close the dialog if the user login is successful
-      this.close();
-      // window.location.reload();
+        // Store user information in local storage
+        localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
+        // Close the dialog if the user login is successful
+        this.close();
+        // window.location.reload();
     }
   }
 }

@@ -40,6 +40,7 @@ let usersLists = null;
 let UsersLoginDialog = null;
 let CreateUserDialog = null;
 let PasswordForgotDialog = null;
+let userId = null;
 
 //Order variables
 let cart = [];
@@ -47,8 +48,9 @@ let cartList = null;
 const htmlSide = window.location.pathname;
 
 window.addEventListener("load", () => {
-  loadCartFromLocalStorage();
   baddServiceApp();
+  checkLoginStatus();
+  loadCartFromLocalStorage();
 });
 
 async function baddServiceApp() {
@@ -117,13 +119,6 @@ function initializeOtherHtmlViews() {
     });
   });
 
-  console.log(users);
-  // -------------initialize User Views------------- //
-  // if (users) {
-  //   usersLists = new ListRenderer(users, "#user-container", UserRenderer);
-  //   usersLists.render();
-  // }
-
   // LOGIN USER DIALOG //
   UsersLoginDialog = new UserLoginDialog("user-login-dialog");
   UsersLoginDialog.render();
@@ -190,6 +185,7 @@ function initializeProductViews() {
   });
 }
 
+
 // -----Search EventListener------//
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -222,6 +218,31 @@ function updateProductList(searchResults) {
     productsLists = new Paginater(products, "#products-container", ProductRenderer, 10);
     productsLists.render();
   }
+}
+
+// ------Check login status------//
+
+function checkLoginStatus() {
+  const loggedInUserInfo = localStorage.getItem("loggedInUser");
+  console.log(loggedInUserInfo);
+    if (loggedInUserInfo) {
+      const loggedInUser = JSON.parse(loggedInUserInfo);
+      // Store the logged-in user ID in a global variable
+      userId = loggedInUser.userId;  
+
+      // Checks if the html has an element with id "loggedInUserInfo" and then puts the email in the element
+          const loggedInEmailHtmlId = document.getElementById("loggedInUserInfo");
+          if (loggedInEmailHtmlId) {
+              // Handle updating the UI with the logged-in user information if needed
+              loggedInEmailHtmlId.innerHTML = `Logged in as ${loggedInUser.email}`;
+      }
+      
+        // User is logged in, perform actions based on the logged-in user
+        console.log("Logged in user:", loggedInUser);
+    } else {
+        // User is not logged in, perform actions for guests
+        console.log("User is not logged in");
+    }
 }
 
 // -------every function cart related-------//
