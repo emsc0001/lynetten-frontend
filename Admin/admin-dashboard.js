@@ -15,6 +15,24 @@ async function fetchData(url, options = {}) {
     }
   }
 
+  function hideAllSections() {
+    document.getElementById('productSection').style.display = 'none';
+    document.getElementById('categoriesSection').style.display = 'none';
+    document.getElementById('userSection').style.display = 'none';
+    document.getElementById('orderSection').style.display = 'none';
+}
+
+function showSection(sectionId) {
+    hideAllSections();
+    document.getElementById(sectionId).style.display = 'block';
+}
+
+document.getElementById('showProducts').addEventListener('click', () => showSection('productSection'));
+document.getElementById('showCategories').addEventListener('click', () => showSection('categoriesSection'));
+document.getElementById('showUsers').addEventListener('click', () => showSection('userSection'));
+document.getElementById('showOrders').addEventListener('click', () => showSection('orderSection'));
+
+
   function fetchAndDisplayProducts() {
     fetchData('/products')
       .then(products => {
@@ -45,6 +63,37 @@ async function fetchData(url, options = {}) {
         attachEventListenersToCategories();
       });
   }
+
+  async function fetchAndDisplayUsers() {
+    const users = await fetchData('/users');
+    const usersContainer = document.getElementById('user-list');
+    usersContainer.innerHTML = users.map(user => `
+        <div class="user-item">
+            ${user.name} - ${user.email}
+        </div>`
+    ).join('');
+}
+
+
+async function fetchAndDisplayOrders() {
+  const orders = await fetchData('/GuestOrders');
+  const ordersContainer = document.getElementById('order-list');
+  ordersContainer.innerHTML = orders.map(order => `
+  <div class="order-item">
+  Order #${order.id} - Date: ${order.date} - Total: ${order.total}
+  </div>`
+  ).join('');
+}
+
+document.getElementById('showUsers').addEventListener('click', fetchAndDisplayUsers);
+document.getElementById('showOrders').addEventListener('click', fetchAndDisplayOrders);
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Set up initial view
+  showSection('productSection'); // Default to showing products
+  fetchAndDisplayProducts();
+  // Add other initializations here if needed
+});
 
   function attachEventListenersToProducts() {
     document.querySelectorAll('.edit-button').forEach(button => {
@@ -331,6 +380,7 @@ function setupNewCategoryForm() {
 }
 
 
+
 // Initial setup when the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', () => {
     setupModalCloseEvents();
@@ -342,10 +392,34 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-document.getElementById('showUsers').addEventListener('click', function() {
-  // Hide other sections and show the user section
+document.getElementById('showUsers').addEventListener('click', async () => {
+  const users = await getAllUsers();
+  renderUsersToDOM(users);
 });
 
-document.getElementById('showOrders').addEventListener('click', function() {
-  // Hide other sections and show the order section
+document.getElementById('showOrders').addEventListener('click', async () => {
+  const orders = await getAllOrders(); // You need to define this function
+  renderOrdersToDOM(orders); // You need to define this function
 });
+
+function renderUsersToDOM(users) {
+  const usersContainer = document.getElementById('usersContainer');
+  usersContainer.innerHTML = users.map(user => `
+      <div class="user-item">
+          ${user.name} - ${user.email}
+      </div>
+  `).join('');
+}
+
+function renderOrdersToDOM(orders) {
+  const ordersContainer = document.getElementById('ordersContainer');
+  // Assume each order has an id, date, and total
+  ordersContainer.innerHTML = orders.map(order => `
+      <div class="order-item">
+          Order #${order.id} - Date: ${order.date} - Total: ${order.total}
+      </div>
+  `).join('');
+}
+
+
+
