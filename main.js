@@ -64,24 +64,18 @@ async function baddServiceApp() {
   console.log("Number Of Users: " + users.length);
 
   if (htmlSide === "/products.html") {
-    initializeProductViews();
+    initializeCartView();
     // Event listener for at håndtere kategoriændringer
     const urlParams = new URLSearchParams(window.location.search);
     const categoryId = urlParams.get("categoryId");
     if (categoryId) {
       // Hvis categoryId findes i URL'en, opdater produkter baseret på kategori
       await ProductRenderer.updateProductsByCategory(categoryId);
+
     } else {
       // Ellers, vis alle produkter
-      productsLists = new Paginater(products, "#products-container", ProductRenderer, 10);
-      productsLists.render();
-    }
-  }
-
-  // Initialize the views based on html page
-  if (htmlSide === "/products.html") {
     initializeProductViews();
-    initializeCartView();
+    }
   } else if (htmlSide === "/kurv.html") {
     initializeCartHtmlView();
   } else if (htmlSide === "/payment.html") {
