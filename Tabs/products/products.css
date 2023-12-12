@@ -5,6 +5,8 @@ html {
   padding: 0;
 }
 
+
+
 /* Global styles */
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -151,7 +153,11 @@ body {
 
 .nav-menu {
   display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
 }
+
 
 .nav-item {
   position: relative; /* For absolute positioning of underline */
@@ -303,6 +309,35 @@ html {
   .content-header p {
     font-size: 18px;
   }
+}
+
+.nav-icon {
+  cursor: pointer;
+  margin-right: 8px; /* Add some space between the icon and the input */
+}
+
+/* Navigation */
+.nav-menu {
+  display: flex;
+  justify-content: center; /* Center align nav items */
+  list-style: none; /* Remove default list styling */
+  padding-left: 0; /* Remove default padding */
+}
+
+.nav-item {
+  padding: 10px 15px; /* Uniform padding for clickable area */
+  margin: 0 5px; /* Space between menu items */
+}
+
+.nav-item a {
+  text-decoration: none; /* Remove underline from links */
+  color: #333; /* Menu item color */
+  font-weight: bold;
+}
+
+.nav-item a:hover,
+.nav-item a:focus {
+  color: #ff8c00; /* Hover and focus state color */
 }
 
 /* ... existing styles ... */
@@ -931,3 +966,37 @@ footer {
   padding: 1rem 0;
   font-weight: bold;
 }
+
+/* Navigation Bar Styles */
+.nav-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+  list-style: none;
+}
+
+.nav-item {
+  position: relative; /* For positioning the underline */
+  margin: 0 10px;
+}
+
+.nav-link {
+  display: block;
+  padding: 10px 15px;
+  color: #333;
+  text-decoration: none;
+}
+
+.nav-link:hover .underline,
+.nav-item.active .underline {
+  width: 100%;
+  height: 3px;
+  background-color: #ff8c00;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+/* Additional styles for search bar, icons, etc. */
+/* ... */

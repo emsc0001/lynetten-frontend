@@ -9,40 +9,38 @@
   <body>
     <div class="navbar">
       <div class="logo-container">
-        <!-- Wrap both logo and text in an anchor tag -->
-        <a href="index.html" style="display: inline-flex; align-items: center; text-decoration: none; color: black;">
+        <a href="index.html" style="display: inline-flex; align-items: center; text-decoration: none; color: black">
           <img src="https://i.ibb.co/r2bH4d1/Sk-rmbillede-2023-11-28-kl-15-35-30.png" alt="Logo" height="50" />
           <div class="header-text">
-            <h1 style="margin: 0; padding: 0;">Lynettens Bådudstyr</h1>
-            <p style="margin: 0; padding: 0;">Mest bådudstyr for pengene</p>
+            <h1 style="margin: 0; padding: 0">Lynettens Bådudstyr</h1>
+            <p style="margin: 0; padding: 0">Mest bådudstyr for pengene</p>
           </div>
         </a>
       </div>
-      
       <div class="nav-menu">
-                 <div class="nav-item dropdown">
-            <a href="products.html" class="nav-link dropbtn">Produkter</a>
-            <div  class="dropdown-content mega-menu" id="dropdownContent" >
-              <div class="category-list">
-
-                <!-- ... other categories as needed ... -->
-                </div>
+        <div class="nav-item dropdown">
+          <a href="products.html" class="nav-link dropbtn">Produkter</a>
+          <div class="dropdown-content mega-menu" id="dropdownContent">
+            <div class="category-list">
+              <!-- ... other categories as needed ... -->
             </div>
-        </div>
-          <div class="nav-item" data-tab="kobeguide">
-            <span class="nav-link"
-              ><a href="koebeguide.html"><strong>Købeguide - Bådudstyr</strong></a></span
-            >
-            <div class="underline"></div>
-          </div>
-          <div class="nav-item" data-tab="handelsBetingelser">
-            <span class="nav-link"
-              ><a href="handelsBetingelser.html"><strong>Handelsbetingelser</strong></a></span>
-            <div class="underline"></div>
           </div>
         </div>
+        <div class="nav-item" data-tab="kobeguide">
+          <span class="nav-link">
+            <a href="koebeguide.html"><strong>Købeguide - Bådudstyr</strong></a>
+          </span>
+          <div class="underline"></div>
+        </div>
+        <div class="nav-item" data-tab="handelsBetingelser">
+          <span class="nav-link">
+            <a href="handelsBetingelser.html"><strong>Handelsbetingelser</strong></a>
+          </span>
+          <div class="underline"></div>
+        </div>
+      </div>
       <div class="nav-icons">
-        <!-- Search container with icon and bar -->
+        <!-- Icons like search, login, and cart -->
         <div class="search-container">
           <span class="nav-icon search-icon" onclick="toggleSearchBar()">🔍</span>
           <div class="search-bar" id="searchBar">
@@ -50,30 +48,16 @@
             <button type="submit" class="search-button">Search</button>
           </div>
         </div>
-
-        <!-- Other icons go here -->
-
-          <div class="userLogin-container">
-              <div id="userLogin-container">
-                <span class="nav-icon" id="logIn">👤</span>
-
-            </div>
-          </div>        <!-- Replace with account icon -->
+        <div class="userLogin-container">
+          <span class="nav-icon" id="logIn">👤</span>
+        </div>
         <div class="nav-item" data-tab="kurv" id="cart">
           <a href="kurv.html" class="nav-link">🛒</a>
           <div class="underline"></div>
-          <div class="cart-content">
-            <div class="cart-items">
-
-            </div>
-            <div class="cart-total-container">
-          <!-- Total price section will be appended here -->
-           </div>
-          </div>
         </div>
-        <!-- Replace with cart icon -->
       </div>
     </div>
+    
 
       <main class="main-content">
         <header class="main-header">
