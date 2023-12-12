@@ -64,7 +64,6 @@ async function baddServiceApp() {
   console.log("Number Of Users: " + users.length);
 
   if (htmlSide === "/products.html") {
-    initializeProductViews();
     initializeCartView();
     // Event listener for at håndtere kategoriændringer
     const urlParams = new URLSearchParams(window.location.search);
@@ -72,8 +71,8 @@ async function baddServiceApp() {
     if (categoryId) {
       // Hvis categoryId findes i URL'en, opdater produkter baseret på kategori
       await ProductRenderer.updateProductsByCategory(categoryId);
+      ProductRenderer.render();
     } else {
-      // Ellers, vis alle produkter
       initializeProductViews();
     }
   } else if (htmlSide === "/kurv.html") {
@@ -143,13 +142,15 @@ function initializeOtherHtmlViews() {
 }
 
 //-----Initiliaze views for products.html-----//
-async function initializeProductViews() {
+function initializeProductViews() {
   productsLists = new Paginater(products, "#products-container", ProductRenderer, 10);
   productsLists.render();
 
   // initialize Category Views //
   categoriesLists = new ListRenderer(categories, ".category-list", CategoryRenderer);
   categoriesLists.render();
+
+  // initialize Products views based on Categories  //
 
   const categoryLinks = document.querySelectorAll(".category-list a");
   categoryLinks.forEach((categoryLink) => {
@@ -241,7 +242,7 @@ function updateProductList(searchResults) {
     productsLists.render();
   } else {
     // If there are no search results, render all products
-    productsLists = new Paginater(products, "#products-container", ProductRenderer, 5);
+    productsLists = new Paginater(products, "#products-container", ProductRenderer, 10);
     productsLists.render();
   }
 }
