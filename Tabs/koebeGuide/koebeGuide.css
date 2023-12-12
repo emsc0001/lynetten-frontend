@@ -90,12 +90,7 @@ body, html {
   border-left: none;
 }
 
-/* Main content styles */
-.main-content {
-  padding: 20px;
-  flex: 2;
-  background-color: #fff;
-}
+
 
 /* Add a subtle box shadow to the header for depth */
 .main-header {
@@ -185,14 +180,6 @@ body, html {
   color: #666; /* Or any color you wish */
 }
 
-body,
-html {
-  margin: 0;
-  padding: 0;
-  font-family: "Arial", sans-serif;
-  background-color: #f4f4f4;
-}
-
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -207,15 +194,7 @@ html {
   align-items: center;
 }
 
-/* Reset and base styles */
-body,
-html {
-  margin: 0;
-  padding: 0;
-  font-family: "Arial", sans-serif;
-  background-color: #f4f4f4;
-  line-height: 1.6;
-}
+
 
 /* Header and Navigation */
 .header {
@@ -388,15 +367,7 @@ html {
   margin-bottom: 5px; /* Space between list items */
 }
 
-/* Tilføj mere styling efter behov */
-/* Main Content Styles */
-.main-content {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+
 
 .main-header {
   text-align: center;
@@ -658,38 +629,6 @@ div.cart-total a.go-to-cart-link:hover {
 
 
 
-.footer {
-  background-color: #333;
-  color: #fff;
-  padding: 20px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.footer section {
-  margin-right: 20px;
-  flex: 1;
-}
-
-.footer h3 {
-  font-size: 18px;
-  margin-bottom: 10px;
-}
-
-.footer p {
-  margin: 5px 0;
-}
-
-.footer ul {
-  list-style: none;
-  padding: 0;
-}
-
-.footer li {
-  padding: 5px 0;
-}
-
-
 
 
 
@@ -731,10 +670,7 @@ div.cart-total a.go-to-cart-link:hover {
   padding: 20px;
 }
 
-.main-content {
-  flex-grow: 2; /* Main content takes more space */
-  /* Your existing styles for main-content */
-}
+
 
 .catalog-info {
   flex-grow: 1; /* Sidebar takes less space */
@@ -758,14 +694,7 @@ div.cart-total a.go-to-cart-link:hover {
 }
 
 
-/* Typography */
-body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 16px; /* Base font size */
-  line-height: 1.6; /* Line height for readability */
-  color: #333; /* Primary text color */
-  background-color: #f4f4f4; /* Background color */
-}
+
 
 h2, h3 {
   color: #ff8c00; /* Headings color to match the top bar */
@@ -805,3 +734,65 @@ h2, h3 {
   margin: 20px auto; /* Increased top and bottom margin */
 }
 
+
+footer {
+  color: rgb(0, 0, 0);
+  text-align: center;
+  padding: 1rem 0;
+  font-weight: bold;
+}
+
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer section {
+  margin-right: 20px;
+  flex: 1;
+}
+
+.footer h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.footer p {
+  margin: 5px 0;
+}
+
+.footer ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer li {
+  padding: 5px 0;
+}
+
+.social-media a {
+  display: inline-block;
+  margin-right: 10px;
+  color: #fff; /* Change as needed */
+  font-size: 24px; /* Adjust icon size as needed */
+}
+
+.social-media a:hover {
+  color: #ddd; /* Slightly lighter color on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .social-media {
+    order: 3; /* Make sure social media links are at the bottom on mobile */
+    margin-top: 20px; /* Add some space above the social media links */
+  }
+}

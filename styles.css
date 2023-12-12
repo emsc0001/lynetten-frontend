@@ -945,25 +945,7 @@ footer {
   }
 }
 
-.slider {
-  width: 100%;
-  overflow: hidden; /* Ensures only one slide is visible at a time */
-}
 
-.slides {
-  display: flex;
-  transition: transform 0.5s ease;
-}
-
-.slide {
-  min-width: 100%; /* Each slide takes the full width of the slider */
-  text-align: center; /* Centers the caption */
-}
-
-.slide img {
-  width: 5%; /* Ensures the image fills the slide */
-  height: auto; /* Maintains aspect ratio */
-}
 
 .caption {
   background-color: #ff8c00; /* Semi-transparent background */

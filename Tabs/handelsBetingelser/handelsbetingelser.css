@@ -437,14 +437,7 @@ html {
   margin-right: 10px;
 }
 
-/* Main Content Styles */
-.main-content {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+
 
 .main-header {
   text-align: center;
@@ -705,7 +698,12 @@ div.cart-total a.go-to-cart-link:hover {
 }
 
 
-/* Tilføj mere styling efter behov */
+footer {
+  color: rgb(0, 0, 0);
+  text-align: center;
+  padding: 1rem 0;
+  font-weight: bold;
+}
 
 .footer {
   background-color: #333;
@@ -736,6 +734,30 @@ div.cart-total a.go-to-cart-link:hover {
 
 .footer li {
   padding: 5px 0;
+}
+
+.social-media a {
+  display: inline-block;
+  margin-right: 10px;
+  color: #fff; /* Change as needed */
+  font-size: 24px; /* Adjust icon size as needed */
+}
+
+.social-media a:hover {
+  color: #ddd; /* Slightly lighter color on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .social-media {
+    order: 3; /* Make sure social media links are at the bottom on mobile */
+    margin-top: 20px; /* Add some space above the social media links */
+  }
 }
 
 
