@@ -3,6 +3,7 @@ import * as controller from "../../main.js";
 import * as guestOrderController from "../../Model/Rest-services/guestOrder-rest.js";
 import { createOrder } from "../../Model/Rest-services/order-rest.js";
 import { getCategoryWithProducts } from "../../Model/Rest-services/category-rest.js";
+import { getAllProducts } from "../../Model/Rest-services/products-rest.js";
 import ProductDialog from "../Dialogs/ProductDialog.js";
 import Paginater from "../Renderer/Paginater.js";
 
@@ -22,6 +23,16 @@ export default class ProductRenderer extends ItemRenderer {
     `;
     return html;
   }
+
+  // static async updateSortedProducts(sortBy) {
+  //   // Hent sorteret liste af produkter
+  //   const products = await getAllProducts(sortBy);
+  //   // Opdater visningen med de nye produkter
+  //   const productsContainer = document.querySelector("#products-container");
+  //   productsContainer.innerHTML = ""; // Ryd indholdet
+
+  //   controller.setSortedProductList(products);
+  // }
 
   static async updateProductsByCategory(categoryId) {
     // Hent kategori og produkter baseret på categoryId

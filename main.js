@@ -68,8 +68,6 @@ async function baddServiceApp() {
     const urlParams = new URLSearchParams(window.location.search);
     const categoryId = urlParams.get("categoryId");
     if (categoryId) {
-      console.log("categoryId:");
-      // Hvis categoryId findes i URL'en, opdater produkter baseret på kategori
       await ProductRenderer.updateProductsByCategory(categoryId);
     } else {
       initializeProductViews();
@@ -242,38 +240,27 @@ function logout() {
   window.location.href = "/index.html"; // Redirect to the home page
   loggedInHtmlChange();
 }
+// -----Sort EventListener----- //
 
-// -----Search EventListener------//
+document.addEventListener("DOMContentLoaded", () => {
+  const sortSelect = document.getElementById("sort");
+  if (sortSelect) {
+    sortSelect.addEventListener("change", () => {
+      const selectedOption = sortSelect.options[sortSelect.selectedIndex];
+      const sortBy = selectedOption.dataset.sortBy;
+      const sortDirection = selectedOption.dataset.sortDirection;
 
-function sortProducts() {
-  document.querySelectorAll("[data-action='sort']").forEach((button) => {
-    button.addEventListener("click", () => {
-      // before sorting - remove .selected from previous selected header
-      document.querySelector("[data-action=sort].selected")?.classList.remove("selected");
-      console.log("clicked sort button");
-
-      // Determine the type of list based on button attributes
-      const listType = button.dataset.sortList;
-      let listToSort;
-
-      if (listType === "products") {
-        listToSort = products;
-      }
-      if (listToSort) {
-        listToSort.sort(button.dataset.sortBy, button.dataset.sortDirection);
-
-        // indicate selected sort header
-        button.classList.add("selected");
-        // indicate sort-direction on button
-        button.dataset.sortDirection = listToSort.sortDir;
-
-        // Update the rendered list
-        productsLists = new Paginater(listToSort, "#products-container", ProductRenderer);
+      // Call the sort function in ListRenderer with the selected options
+      if (productsLists) {
+        const sortedProducts = productsLists.sort(sortBy, sortDirection);
+        console.log("Sorted products");
+        productsLists = new ListRenderer(sortedProducts, "#products-container", ProductRenderer, 10);
         productsLists.render();
       }
     });
-  });
-}
+  }
+});
+// -----Search EventListener----- //
 
 document.addEventListener("DOMContentLoaded", () => {
   const searchInputs = document.querySelectorAll("[data-search-type]");
@@ -432,7 +419,6 @@ export {
   users,
   loggedInUser,
   productsLists,
-  sortProducts,
   setProductList,
   setCategoryList,
 };

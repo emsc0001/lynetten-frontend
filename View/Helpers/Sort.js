@@ -1,37 +1,18 @@
-import ListRenderer from "./ListRenderer.js";
-import { productsLists } from "../../main.js";
-import ProductRenderer from "./ProductRenderer.js";
+// function handleSortProducts() {
+//   if (sortSelect) {
+//     sortSelect.addEventListener("change", () => {
+//       const selectedOption = sortSelect.options[sortSelect.selectedIndex];
+//       const sortBy = selectedOption.dataset.sortBy;
+//       const sortDirection = selectedOption.dataset.sortDirection;
 
-function sortProducts() {
-  document.querySelectorAll("[data-action='sort']").forEach((button) => {
-    button.addEventListener("click", () => {
-      // before sorting - remove .selected from previous selected header
-      document.querySelector("[data-action=sort].selected")?.classList.remove("selected");
+//       // Call the sort function in ListRenderer with the selected options
+//       if (productsLists) {
+//         const sortedProducts = productsLists.sort(sortBy, sortDirection);
+//         productsLists = new ListRenderer(sortedProducts, "#products-container", ProductRenderer);
+//         productsLists.render();
+//       }
+//     });
+//   }
+// }
 
-      // Determine the type of list based on button attributes
-      const listType = button.dataset.sortList;
-      let listToSort;
-
-      if (listType === "products") {
-        listToSort = productsLists;
-      } else {
-        // Handle other list types if needed
-      }
-
-      if (listToSort) {
-        listToSort.sort(button.dataset.sortBy, button.dataset.sortDirection);
-
-        // indicate selected sort header
-        button.classList.add("selected");
-        // indicate sort-direction on button
-        button.dataset.sortDirection = listToSort.sortDir;
-
-        // Update the rendered list
-        const renderer = new ListRenderer(listToSort, "#products-container", ProductRenderer);
-        renderer.render();
-      }
-    });
-  });
-}
-
-export { sortProducts };
+// export { handleSortProducts };
