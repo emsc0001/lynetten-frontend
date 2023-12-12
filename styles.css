@@ -600,6 +600,24 @@ button[data-action="cancel"]:hover {
   left: 0;
 }
 
+.product-item a {
+  /* Gør teksten mere læsbar over billedet */
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-size: 1.5rem;
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  opacity: 90%;
+}
+
+.product-item a:hover {
+  cursor: pointer;
+  text-decoration: underline; /* Tilføj understregning ved hover for ekstra feedback */
+}
+
 .news-updates {
   font-family: "Arial", sans-serif; /* Example font */
   margin-left: 20px; /* Adjust as necessary for alignment */
