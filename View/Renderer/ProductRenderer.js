@@ -24,16 +24,6 @@ export default class ProductRenderer extends ItemRenderer {
     return html;
   }
 
-  // static async updateSortedProducts(sortBy) {
-  //   // Hent sorteret liste af produkter
-  //   const products = await getAllProducts(sortBy);
-  //   // Opdater visningen med de nye produkter
-  //   const productsContainer = document.querySelector("#products-container");
-  //   productsContainer.innerHTML = ""; // Ryd indholdet
-
-  //   controller.setSortedProductList(products);
-  // }
-
   static async updateProductsByCategory(categoryId) {
     // Hent kategori og produkter baseret på categoryId
     const { category, products } = await getCategoryWithProducts(categoryId);

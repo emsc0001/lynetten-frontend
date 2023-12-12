@@ -254,8 +254,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (productsLists) {
         const sortedProducts = productsLists.sort(sortBy, sortDirection);
         console.log("Sorted products");
-        productsLists = new ListRenderer(sortedProducts, "#products-container", ProductRenderer, 10);
-        productsLists.render();
+        sortedProducts.render();
       }
     });
   }
