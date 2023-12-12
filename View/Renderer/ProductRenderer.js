@@ -76,13 +76,18 @@ export default class ProductRenderer extends ItemRenderer {
     const product = controller.products.find((product) => product.productNumber === productNumber);
     console.log(product);
     // Create and show the product dialog
-    const dialog = new ProductDialog("product-dialog");
+    const dialog = new ProductDialog("product-details");
     const dialogHTML = dialog.renderHTML(product);
-    console.log(dialogHTML);
+    // console.log(dialogHTML);
 
     // Insert the dialog HTML into the DOM
     dialog.dialog.innerHTML = dialogHTML; // Set HTML directly to the dialog container
     // Show the dialog
     dialog.show();
+
+    // Add event listener to the close button
+    dialog.dialog.querySelector(".closeModal").addEventListener("click", () => {
+      dialog.close();
+    });
   }
 }
