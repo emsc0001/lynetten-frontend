@@ -1,7 +1,8 @@
 import Dialog from "./Dialog.js";
 import User from "../../Model/User.js";
 import * as Controller from "../../Model/Rest-services/user-rest.js";
-import { users } from "../../main.js";
+import { cart } from "../../main.js";
+import { createOrder } from "../../Model/Rest-services/order-rest.js";
 
 export default class UserLoginDialog extends Dialog {
   renderHTML() {
@@ -38,14 +39,33 @@ export default class UserLoginDialog extends Dialog {
 
     // Call the controller method to log in the user
     const loggedInUser = await Controller.loginUserForm({ email, password });
-    console.log(loggedInUser);
 
     if (loggedInUser) {
-      // Log information about the logged-in user
+        // Store user information in local storage
+      localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
 
-      // Close the dialog if the user login is successful
-      this.close();
-      // window.location.reload();
+      // Add the cart items to the user's cart
+      const userCart = JSON.parse(localStorage.getItem("cart")) || [];
+    if (userCart.length > 0) {
+      const orderId = await createOrder(new Date().toISOString().slice(0, 10), loggedInUser.userId);
+      console.log(orderId);
+        const updatedCart = userCart.reduce((result, item) => {
+            if (item.guestOrderId) {
+                // Add a condition to exclude items with guestOrderId
+                // Update the guestOrderId and orderId as needed
+                result.push({ ...item, orderId: orderId, guestOrderId: null });
+            } else {
+                result.push(item);
+            }
+            return result;
+        }, []);
+      
+        localStorage.setItem("cart", JSON.stringify(updatedCart));
+    }
+
+        // Close the dialog if the user login is successful
+        this.close();
+        // window.location.reload();
     }
   }
 }

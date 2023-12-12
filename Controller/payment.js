@@ -1,9 +1,8 @@
 import { createOrderItem } from "../Model/Rest-services/orderItem-rest.js";
-import { cart } from "../main.js";
+import { cart, loggedInUser } from "../main.js";
 import { updateGuestOrder } from "../Model/Rest-services/guestOrder-rest.js";
 import { updateOrder } from "../Model/Rest-services/order-rest.js";
 
-let user = false;
 async function payNowClicked(event) {
     event.preventDefault();
     console.log("Pay now clicked");
@@ -15,7 +14,7 @@ async function payNowClicked(event) {
 async function extractItemsCart() {
     let orderItems = [];
 
-    if (!user) {
+    if (!cart[0].orderId) {
         //loop through cart and create orderItems
         for (const item of cart) {
             orderItems.push({ productId: item.productId, quantity: item.quantity });
@@ -25,13 +24,12 @@ async function extractItemsCart() {
         await createOrderItem(orderId, orderItems);
     } else {
         //loop through cart and create orderItems
-        for (const item of cart.items) {
+        for (const item of cart) {
             orderItems.push({ productId: item.productId, quantity: item.quantity });
         }
-        const orderId = cart[1].orderId;
-        const userId = user.userId;
+        const orderId = cart[0].orderId;
 
-        await createOrderItem(orderId, orderItems, userId);
+        await createOrderItem(orderId, orderItems, loggedInUser.userId);
     }
 
     cart.items = [];
@@ -50,14 +48,14 @@ async function extractShipmentDetails() {
     const country = document.getElementById("country").value;
     const city = document.getElementById("city").value;
     const zipCode = document.getElementById("zipCode").value;
-    if (!user) {
+    if (!cart[0].orderId) {
         const orderId = cart[0].guestOrderId;
         console.log(orderId);
         console.log(fullName, email, address, phoneNumber, city, zipCode);
         await updateGuestOrder(orderId, fullName, email, address, phoneNumber, country, city, zipCode);
     } else {
         const orderId = cart[0].orderId;
-        updateGuestOrder(orderId, address, phoneNumber, country, city, zipCode);
+        updateOrder(orderId, fullName, email, address, phoneNumber, country, city, zipCode);
 
     }
 }

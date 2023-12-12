@@ -102,12 +102,21 @@ async function fetchAndDisplayOrders() {
 function renderOrders(orders) {
   const ordersContainer = document.getElementById('order-list');
   const ordersHTML = orders.map(order => `
-      <div class="order-item">
-          Order #${order.guestOrderId} - Date: ${order.orderDate} - Total: ${order.totalAmount}
-      </div>
+    <div class="order-item">
+        <h3>Order #${order.guestOrderId}</h3>
+        <p>Date: ${order.orderDate}</p>
+        <p>Total: ${order.totalAmount}</p>
+        <p>Fulde Navn: ${order.fullName}</p>
+        <p>Email: ${order.email}</p>
+        <p>Telefon Nummer: ${order.phoneNumber}</p>
+        <p>Adresse: ${order.address}</p>
+        <p>Land: ${order.country}</p>
+        <p>Postnummer: ${order.zipCode}</p>
+    </div>
   `).join('');
   ordersContainer.innerHTML = ordersHTML;
 }
+
 
 
 document.getElementById('showUsers').addEventListener('click', fetchAndDisplayUsers);

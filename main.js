@@ -6,6 +6,7 @@ import { getAllUsers } from "./Model/Rest-services/user-rest.js";
 import UserCreateDialog from "./View/Dialogs/CreateUserDialog.js";
 import UserLoginDialog from "./View/Dialogs/UserLoginDialog.js";
 import ForgotPasswordDialog from "./View/Dialogs/ForgotPasswordDialog.js";
+import loggedInHtmlChange from "./View/HtmlChangers/loggedInHtmlChange.js";
 
 import { handleSearch } from "./View/Helpers/Search.js";
 
@@ -36,10 +37,10 @@ let categoriesLists = null;
 
 //User variables
 let users = [];
-let usersLists = null;
 let UsersLoginDialog = null;
 let CreateUserDialog = null;
 let PasswordForgotDialog = null;
+let loggedInUser = null;
 
 //Order variables
 let cart = [];
@@ -47,8 +48,9 @@ let cartList = null;
 const htmlSide = window.location.pathname;
 
 window.addEventListener("load", () => {
-  loadCartFromLocalStorage();
   baddServiceApp();
+  checkLoginStatus();
+  loadCartFromLocalStorage();
 });
 
 async function baddServiceApp() {
@@ -62,24 +64,18 @@ async function baddServiceApp() {
   console.log("Number Of Users: " + users.length);
 
   if (htmlSide === "/products.html") {
-    initializeProductViews();
+    initializeCartView();
     // Event listener for at håndtere kategoriændringer
     const urlParams = new URLSearchParams(window.location.search);
     const categoryId = urlParams.get("categoryId");
     if (categoryId) {
       // Hvis categoryId findes i URL'en, opdater produkter baseret på kategori
       await ProductRenderer.updateProductsByCategory(categoryId);
+
     } else {
       // Ellers, vis alle produkter
-      productsLists = new Paginater(products, "#products-container", ProductRenderer, 10);
-      productsLists.render();
-    }
-  }
-
-  // Initialize the views based on html page
-  if (htmlSide === "/products.html") {
     initializeProductViews();
-    initializeCartView();
+    }
   } else if (htmlSide === "/kurv.html") {
     initializeCartHtmlView();
   } else if (htmlSide === "/payment.html") {
@@ -90,6 +86,11 @@ async function baddServiceApp() {
   } else {
     initializeOtherHtmlViews();
     initializeCartView();
+  }
+
+  if (loggedInUser.userId) {
+    loggedInHtmlChange();
+    document.querySelector("#logout").addEventListener("click", logout);
   }
 }
 
@@ -117,12 +118,11 @@ function initializeOtherHtmlViews() {
     });
   });
 
-
   // LOGIN USER DIALOG //
   UsersLoginDialog = new UserLoginDialog("user-login-dialog");
   UsersLoginDialog.render();
 
-  const userLogin = document.querySelector(".userLogin-container");
+  const userLogin = document.querySelector("#logIn");
 
   userLogin.addEventListener("click", (event) => {
     event.preventDefault();
@@ -140,48 +140,36 @@ function initializeOtherHtmlViews() {
     event.preventDefault(); // Prevent the default link behavior (e.g., navigating to a new page)
     CreateUserDialog.show();
   });
-
-  // FORGOT PASSWORD DIALOG //
-  PasswordForgotDialog = new ForgotPasswordDialog("forgot-password-dialog");
-  PasswordForgotDialog.render();
-
-  const forgotPasswordLink = document.getElementById("forgotUserLogin");
-
-  // Event listener to show the dialog when the link is clicked
-  forgotPasswordLink.addEventListener("click", (event) => {
-    event.preventDefault(); // Prevent the default link behavior (e.g., navigating to a new page)
-    PasswordForgotDialog.show();
-  });
 }
 
 //-----Initiliaze views for products.html-----//
 function initializeProductViews() {
-  productsLists = new Paginater(products, "#products-container", ProductRenderer, 10);
-  productsLists.render();
+    productsLists = new Paginater(products, "#products-container", ProductRenderer, 10);
+    productsLists.render();
 
-  // initialize Category Views //
-  categoriesLists = new ListRenderer(categories, ".category-list", CategoryRenderer);
-  categoriesLists.render();
+    // initialize Category Views //
+    categoriesLists = new ListRenderer(categories, ".category-list", CategoryRenderer);
+    categoriesLists.render();
 
-  // initialize Products views based on Categories  //
+    // initialize Products views based on Categories  //
 
-  const categoryLinks = document.querySelectorAll(".category-list a");
-  categoryLinks.forEach((categoryLink) => {
-    categoryLink.addEventListener("click", async (event) => {
-      event.preventDefault();
-      const categoryId = categoryLink.dataset.categoryId;
+    const categoryLinks = document.querySelectorAll(".category-list a");
+    categoryLinks.forEach((categoryLink) => {
+        categoryLink.addEventListener("click", async (event) => {
+            event.preventDefault();
+            const categoryId = categoryLink.dataset.categoryId;
 
-      // Brug den nye funktion til at hente kategori og produkter
-      const { category, products } = await getCategoryWithProducts(categoryId);
+            // Brug den nye funktion til at hente kategori og produkter
+            const { category, products } = await getCategoryWithProducts(categoryId);
 
-      // Gør noget med kategori og produkter, f.eks. vis dem i konsollen
-      console.log("Category:", category);
-      console.log("Products for category ID", categoryId, products);
+            // Gør noget med kategori og produkter, f.eks. vis dem i konsollen
+            console.log("Category:", category);
+            console.log("Products for category ID", categoryId, products);
 
-      productsLists = new ListRenderer(products, "#products-container", ProductRenderer);
-      productsLists.render();
+            productsLists = new ListRenderer(products, "#products-container", ProductRenderer);
+            productsLists.render();
+        });
     });
-  });
 
   // ------------ Click event for product dialog --------------//
   const productGrid = document.querySelector("#products-container");
@@ -191,7 +179,41 @@ function initializeProductViews() {
           ProductRenderer.handleProductClick(productElement);
       }
   });
+
+    // LOGIN USER DIALOG //
+    UsersLoginDialog = new UserLoginDialog("user-login-dialog");
+    UsersLoginDialog.render();
+
+    const userLogin = document.querySelector("#logIn");
+
+    userLogin.addEventListener("click", (event) => {
+        event.preventDefault();
+        UsersLoginDialog.show();
+    });
+
+    // CREATE USER DIALOG //
+    CreateUserDialog = new UserCreateDialog("user-create-dialog");
+    CreateUserDialog.render();
+
+    const createUserLink = document.getElementById("createUserLogin");
+
+    // Event listener to show the dialog when the link is clicked
+    createUserLink.addEventListener("click", (event) => {
+        event.preventDefault(); // Prevent the default link behavior (e.g., navigating to a new page)
+        CreateUserDialog.show();
+    });
 }
+
+function logout() {
+    // Clear user-related data
+    localStorage.removeItem("loggedInUser"); // Remove user-related stored data
+    localStorage.removeItem("cart"); // Remove any cart data associated with the user
+
+    // Reset the application state
+  window.location.href = "/index.html"; // Redirect to the home page
+  loggedInHtmlChange(); 
+}
+
 
 // -----Search EventListener------//
 
@@ -225,6 +247,30 @@ function updateProductList(searchResults) {
     productsLists = new Paginater(products, "#products-container", ProductRenderer, 10);
     productsLists.render();
   }
+}
+
+// ------Check login status------//
+
+function checkLoginStatus() {
+  const loggedInUserInfo = localStorage.getItem("loggedInUser");
+  console.log(loggedInUserInfo);
+    if (loggedInUserInfo) {
+       loggedInUser = JSON.parse(loggedInUserInfo);
+      // Store the logged-in user ID in a global variable
+
+      // Checks if the html has an element with id "loggedInUserInfo" and then puts the email in the element
+          const loggedInEmailHtmlId = document.getElementById("loggedInUserInfo");
+          if (loggedInEmailHtmlId) {
+              // Handle updating the UI with the logged-in user information if needed
+              loggedInEmailHtmlId.innerHTML = `Logged in as ${loggedInUser.email}`;
+      }
+      
+        // User is logged in, perform actions based on the logged-in user
+        console.log("Logged in user:", loggedInUser);
+    } else {
+        // User is not logged in, perform actions for guests
+        console.log("User is not logged in");
+    }
 }
 
 // -------every function cart related-------//
@@ -329,10 +375,22 @@ export {
   htmlSide,
   initializeCartHtmlView,
   updateProductList,
-  usersLists,
   users,
+  loggedInUser
 };
 
+  //   // FORGOT PASSWORD DIALOG //
+  // PasswordForgotDialog = new ForgotPasswordDialog("forgot-password-dialog");
+  // PasswordForgotDialog.render();
+
+  // const forgotPasswordLink = document.getElementById("forgotUserLogin");
+
+  // // Event listener to show the dialog when the link is clicked
+  // forgotPasswordLink.addEventListener("click", (event) => {
+  //   event.preventDefault(); // Prevent the default link behavior (e.g., navigating to a new page)
+  //   PasswordForgotDialog.show();
+  // });
+  
 // // Add this to your existing JavaScript file or create a new one
 // document.addEventListener("DOMContentLoaded", function () {
 //   const discountToggle = document.getElementById("discountToggle");
