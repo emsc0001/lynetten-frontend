@@ -38,15 +38,14 @@ export default class ProductRenderer extends ItemRenderer {
     element.querySelector(".button").addEventListener("click", async (event) => {
       event.preventDefault();
       try {
-        const isLoggedin = false; //controller.isLoggedIn();
-        if (isLoggedin) {
+        if (controller.loggedInUser.userId) {
           // Check if the cart exists and has at least one item
           const orderId = controller.cart[0]?.orderId;
           console.log("Order ID:", orderId);
           if (!orderId) {
             // Create a new order if no order ID exists
             const orderDate = new Date().toISOString().slice(0, 10);
-            const newOrderId = await createOrder(orderDate);
+            const newOrderId = await createOrder(orderDate, controller.loggedInUser.userId);
             controller.addToCart(product.productId, product.listPrice, product.productName, product.imageURLs, newOrderId, null);
           } else {
             // Add item to existing order
@@ -70,24 +69,17 @@ export default class ProductRenderer extends ItemRenderer {
       }
     });
   }
-
   static handleProductClick(element) {
     const productNumber = element.querySelector("#product-number").textContent;
     const product = controller.products.find((product) => product.productNumber === productNumber);
     console.log(product);
     // Create and show the product dialog
-    const dialog = new ProductDialog("product-details");
+    const dialog = new ProductDialog("product-dialog");
     const dialogHTML = dialog.renderHTML(product);
-    // console.log(dialogHTML);
 
     // Insert the dialog HTML into the DOM
     dialog.dialog.innerHTML = dialogHTML; // Set HTML directly to the dialog container
     // Show the dialog
     dialog.show();
-
-    // Add event listener to the close button
-    dialog.dialog.querySelector(".closeModal").addEventListener("click", () => {
-      dialog.close();
-    });
   }
 }

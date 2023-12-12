@@ -27,3 +27,5 @@ export default class ProductDialog extends Dialog {
     return html;
   }
 }
+
+}
