@@ -205,11 +205,32 @@ function initializeProductViews() {
 function setProductList(products) {
   productsLists = new ListRenderer(products, "#products-container", ProductRenderer, 10);
   productsLists.render();
+  const productGrid = document.querySelector("#products-container");
+  productGrid.addEventListener("click", (event) => {
+    const productElement = event.target.closest(".product");
+    if (productElement) {
+      ProductRenderer.handleProductClick(productElement);
+    }
+  });
 }
 
 function setCategoryList(categories) {
   categoriesLists = new ListRenderer(categories, ".category-list", CategoryRenderer);
   categoriesLists.render();
+
+  const categoryLinks = document.querySelectorAll(".category-list a");
+  categoryLinks.forEach((categoryLink) => {
+    categoryLink.addEventListener("click", async (event) => {
+      event.preventDefault();
+      const categoryId = categoryLink.dataset.categoryId;
+
+      // Brug den nye funktion til at hente kategori og produkter
+      const { category, products } = await getCategoryWithProducts(categoryId);
+
+      console.log("Category:", category);
+      console.log("Products for category ID", categoryId, products);
+    }); // <- Add the missing closing parenthesis here
+  });
 }
 
 function logout() {
