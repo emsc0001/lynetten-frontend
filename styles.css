@@ -1,8 +1,10 @@
 /* Reset some default styles for body and html */
-body,
-html {
+body, html {
   margin: 0;
   padding: 0;
+  font-family: "Arial", sans-serif;
+  background-color: #f4f4f4;
+  line-height: 1.6;
 }
 
 /* Global styles */
