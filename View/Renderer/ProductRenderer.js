@@ -38,7 +38,7 @@ export default class ProductRenderer extends ItemRenderer {
         element.querySelector(".button").addEventListener("click", async (event) => {
             event.preventDefault();
             try {
-                if (controller.loggedInUser.userId) {
+                if (controller.loggedInUser) {
                     // Check if the cart exists and has at least one item
                     const orderId = controller.cart[0]?.orderId;
                     console.log("Order ID:", orderId);
@@ -51,7 +51,7 @@ export default class ProductRenderer extends ItemRenderer {
                         // Add item to existing order
                         controller.addToCart(product.productId, product.listPrice, product.productName, product.imageURLs, orderId, null);
                     }
-                } else {
+                } else{
                     const guestOrderId = controller.cart[0]?.guestOrderId;
                     console.log("Guest order ID:", guestOrderId);
                     if (!guestOrderId) {
@@ -69,6 +69,7 @@ export default class ProductRenderer extends ItemRenderer {
             }
         });
     }
+
     static handleProductClick(element) {
         const productNumber = element.querySelector("#product-number").textContent;
         const product = controller.products.find((product) => product.productNumber === productNumber);

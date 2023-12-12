@@ -39,7 +39,6 @@ let categoriesLists = null;
 let users = [];
 let UsersLoginDialog = null;
 let CreateUserDialog = null;
-let PasswordForgotDialog = null;
 let loggedInUser = null;
 
 //Order variables
