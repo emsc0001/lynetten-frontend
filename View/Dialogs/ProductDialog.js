@@ -3,7 +3,7 @@ import * as controller from "../../main.js";
 
 export default class ProductDialog extends Dialog {
   renderHTML(product) {
-    const isLowInStock = product.stockQuantity > 0 && product.stockQuantity <= 5;
+    const isLowInStock = product.stockQuantity > 0 && product.stockQuantity <= 2;
     const stockFeedback = isLowInStock
       ? `<p style="color: red; font-weight: bold;">Lavt på lager🚨</p>`
       : product.stockQuantity === 0

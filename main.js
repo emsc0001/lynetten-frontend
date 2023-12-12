@@ -229,7 +229,7 @@ function setCategoryList(categories) {
 
       console.log("Category:", category);
       console.log("Products for category ID", categoryId, products);
-    }); // <- Add the missing closing parenthesis here
+    });
   });
 }
 
