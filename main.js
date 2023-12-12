@@ -39,7 +39,6 @@ let categoriesLists = null;
 let users = [];
 let UsersLoginDialog = null;
 let CreateUserDialog = null;
-let PasswordForgotDialog = null;
 let loggedInUser = null;
 
 //Order variables
@@ -69,9 +68,9 @@ async function baddServiceApp() {
     const urlParams = new URLSearchParams(window.location.search);
     const categoryId = urlParams.get("categoryId");
     if (categoryId) {
+      console.log("categoryId:");
       // Hvis categoryId findes i URL'en, opdater produkter baseret på kategori
       await ProductRenderer.updateProductsByCategory(categoryId);
-      ProductRenderer.render();
     } else {
       initializeProductViews();
     }
@@ -87,7 +86,7 @@ async function baddServiceApp() {
     initializeCartView();
   }
 
-  if (loggedInUser.userId) {
+  if (loggedInUser) {
     loggedInHtmlChange();
     document.querySelector("#logout").addEventListener("click", logout);
   }
@@ -203,6 +202,16 @@ function initializeProductViews() {
   });
 }
 
+function setProductList(products) {
+  productsLists = new ListRenderer(products, "#products-container", ProductRenderer, 10);
+  productsLists.render();
+}
+
+function setCategoryList(categories) {
+  categoriesLists = new ListRenderer(categories, ".category-list", CategoryRenderer);
+  categoriesLists.render();
+}
+
 function logout() {
   // Clear user-related data
   localStorage.removeItem("loggedInUser"); // Remove user-related stored data
@@ -214,6 +223,36 @@ function logout() {
 }
 
 // -----Search EventListener------//
+
+function sortProducts() {
+  document.querySelectorAll("[data-action='sort']").forEach((button) => {
+    button.addEventListener("click", () => {
+      // before sorting - remove .selected from previous selected header
+      document.querySelector("[data-action=sort].selected")?.classList.remove("selected");
+      console.log("clicked sort button");
+
+      // Determine the type of list based on button attributes
+      const listType = button.dataset.sortList;
+      let listToSort;
+
+      if (listType === "products") {
+        listToSort = products;
+      }
+      if (listToSort) {
+        listToSort.sort(button.dataset.sortBy, button.dataset.sortDirection);
+
+        // indicate selected sort header
+        button.classList.add("selected");
+        // indicate sort-direction on button
+        button.dataset.sortDirection = listToSort.sortDir;
+
+        // Update the rendered list
+        productsLists = new Paginater(listToSort, "#products-container", ProductRenderer);
+        productsLists.render();
+      }
+    });
+  });
+}
 
 document.addEventListener("DOMContentLoaded", () => {
   const searchInputs = document.querySelectorAll("[data-search-type]");
@@ -371,6 +410,10 @@ export {
   updateProductList,
   users,
   loggedInUser,
+  productsLists,
+  sortProducts,
+  setProductList,
+  setCategoryList,
 };
 
 //   // FORGOT PASSWORD DIALOG //

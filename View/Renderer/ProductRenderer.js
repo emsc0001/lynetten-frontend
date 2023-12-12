@@ -4,6 +4,7 @@ import * as guestOrderController from "../../Model/Rest-services/guestOrder-rest
 import { createOrder } from "../../Model/Rest-services/order-rest.js";
 import { getCategoryWithProducts } from "../../Model/Rest-services/category-rest.js";
 import ProductDialog from "../Dialogs/ProductDialog.js";
+import Paginater from "../Renderer/Paginater.js";
 
 export default class ProductRenderer extends ItemRenderer {
   render() {
@@ -31,6 +32,9 @@ export default class ProductRenderer extends ItemRenderer {
     // Opdater visningen med de nye produkter
     const productsContainer = document.querySelector("#products-container");
     productsContainer.innerHTML = ""; // Ryd indholdet
+
+    controller.setProductList(products);
+    controller.setCategoryList([category]);
   }
 
   postRender(element) {
@@ -38,7 +42,7 @@ export default class ProductRenderer extends ItemRenderer {
     element.querySelector(".button").addEventListener("click", async (event) => {
       event.preventDefault();
       try {
-        if (controller.loggedInUser.userId) {
+        if (controller.loggedInUser) {
           // Check if the cart exists and has at least one item
           const orderId = controller.cart[0]?.orderId;
           console.log("Order ID:", orderId);

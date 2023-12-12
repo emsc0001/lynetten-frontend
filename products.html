@@ -90,6 +90,18 @@
       <main class="main-content">
         <div class="breadcrumb">Du er her: <a href="index.html">Forside</a> &gt; Produkter</div>
 
+        <div class="sort-container">
+          <div class="sort">
+            <label for="sort">Sorter efter:</label>
+            <select name="sort" id="sort" data-sort-list="products">
+              <option data-sort-by="listPrice" data-sort-direction="asc" value="price-asc">Pris (lav til høj)</option>
+              <option data-sort-by="listPrice" data-sort-direction="desc" value="price-desc">Pris (høj til lav)</option>
+              <option data-sort-by="productName" data-sort-direction="asc" value="name-asc">Navn (A-Z)</option>
+              <option data-sort-by="productName" data-sort-direction="desc" value="name-desc">Navn (Z-A)</option>
+            </select>
+          </div>
+        </div>
+
         <div id="products-container">
           <!-- Add your product grid items here -->
         </div>

@@ -693,6 +693,61 @@ input:focus {
   width: 100%;
 }
 
+/* ---------Sort--------- */
+.sort-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.sort {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #333;
+}
+
+.sort label {
+  margin-right: 10px;
+}
+
+.sort select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.sort select:hover,
+.sort select:focus {
+  border-color: #555;
+}
+
+/* Style the arrow in the select box */
+.sort select::after {
+  content: "▼";
+  font-size: 10px;
+  margin-left: 5px;
+}
+
+/* Optional: Style the select box when opened */
+.sort select:focus {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-color: #555;
+}
+
+/* Optional: Style the options */
+.sort select option {
+  background-color: #fff;
+  color: #333;
+}
+
+/* ---------Sort--------- */
+
 /* Style the search button (if needed) */
 
 /* ---------Cart--------- */
