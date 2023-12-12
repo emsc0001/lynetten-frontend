@@ -6,7 +6,3 @@ Dette projekt giver dig mulighed for at logge ind ved hjælp af admin-login.js-f
 
 - Brugernavn: admin
 - Adgangskode: adminpw
-
-
-
-Mangler edit til at virke
