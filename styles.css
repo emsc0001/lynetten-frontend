@@ -610,7 +610,6 @@ button[data-action="cancel"]:hover {
   position: absolute;
   bottom: 20px;
   left: 0;
-  opacity: 90%;
 }
 
 .product-item a:hover {

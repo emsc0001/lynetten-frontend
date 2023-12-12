@@ -1,4 +1,6 @@
 import Dialog from "./Dialog.js";
+import * as controller from "../../main.js";
+
 export default class ProductDialog extends Dialog {
   renderHTML(product) {
     const isLowInStock = product.stockQuantity > 0 && product.stockQuantity <= 5;
@@ -17,7 +19,6 @@ export default class ProductDialog extends Dialog {
           <p>Beskrivelse: ${product.description}</p>
         </div>
         <p>Pris: ${product.listPrice} Kr</p>
-        <p>Kategori: ${product.categoryName}</p>
         <p>Varer på lager ${product.stockQuantity}</p>
         <button type="button" class="closeModal" data-action="close">Luk</button>
       </div>

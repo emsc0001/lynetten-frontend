@@ -177,7 +177,7 @@ function initializeProductViews() {
       console.log("Category:", category);
       console.log("Products for category ID", categoryId, products);
 
-      productsLists = new ListRenderer(products, "#products-container", ProductRenderer);
+      productsLists = new ListRenderer(products, "#products-container", ProductRenderer, 5);
       productsLists.render();
     });
   });
@@ -307,12 +307,12 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // MAP
-let myMap = L.map("interactive-map").setView([55.691046, 12.599752], 13); // Replace with your coordinates
+// let myMap = L.map("interactive-map").setView([55.691046, 12.599752], 13); // Replace with your coordinates
 
-L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-  maxZoom: 19,
-  attribution: "© OpenStreetMap contributors",
-}).addTo(myMap);
+// L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+//   maxZoom: 19,
+//   attribution: "© OpenStreetMap contributors",
+// }).addTo(myMap);
 
 export {
   addToCart,
