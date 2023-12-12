@@ -180,7 +180,7 @@ function initializeProductViews() {
       }
   });
 
-    // LOGIN USER DIALOG //
+    //------- LOGIN USER DIALOG -----------------//
     UsersLoginDialog = new UserLoginDialog("user-login-dialog");
     UsersLoginDialog.render();
 
