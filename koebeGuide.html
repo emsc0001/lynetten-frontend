@@ -9,71 +9,47 @@
   <body>
     <div class="navbar">
       <div class="logo-container">
-        <!-- Wrap both logo and text in an anchor tag -->
-        <a href="index.html" style="display: inline-flex; align-items: center; text-decoration: none; color: black;">
+        <a href="index.html" style="display: inline-flex; align-items: center; text-decoration: none; color: black">
           <img src="https://i.ibb.co/r2bH4d1/Sk-rmbillede-2023-11-28-kl-15-35-30.png" alt="Logo" height="50" />
           <div class="header-text">
-            <h1 style="margin: 0; padding: 0;">Lynettens Bådudstyr</h1>
-            <p style="margin: 0; padding: 0;">Mest bådudstyr for pengene</p>
+            <h1 style="margin: 0; padding: 0">Lynettens Bådudstyr</h1>
+            <p style="margin: 0; padding: 0">Mest bådudstyr for pengene</p>
           </div>
         </a>
       </div>
-      
       <div class="nav-menu">
-                 <div class="nav-item dropdown">
-            <a href="products.html" class="nav-link dropbtn">Produkter</a>
-            <div  class="dropdown-content mega-menu" id="dropdownContent" >
-              <div class="category-list">
-
-                <!-- ... other categories as needed ... -->
-                </div>
+        <div class="nav-item dropdown">
+          <a href="products.html" class="nav-link dropbtn">Produkter</a>
+          <div class="dropdown-content mega-menu" id="dropdownContent">
+            <div class="category-list">
+              <!-- ... other categories as needed ... -->
             </div>
-        </div>
-          <div class="nav-item" data-tab="kobeguide">
-            <span class="nav-link"
-              ><a href="koebeguide.html"><strong>Købeguide - Bådudstyr</strong></a></span
-            >
-            <div class="underline"></div>
-          </div>
-          <div class="nav-item" data-tab="handelsBetingelser">
-            <span class="nav-link"
-              ><a href="handelsBetingelser.html"><strong>Handelsbetingelser</strong></a></span>
-            <div class="underline"></div>
           </div>
         </div>
+        <div class="nav-item" data-tab="kobeguide">
+          <span class="nav-link">
+            <a href="koebeguide.html"><strong>Købeguide - Bådudstyr</strong></a>
+          </span>
+          <div class="underline"></div>
+        </div>
+        <div class="nav-item" data-tab="handelsBetingelser">
+          <span class="nav-link">
+            <a href="handelsBetingelser.html"><strong>Handelsbetingelser</strong></a>
+          </span>
+          <div class="underline"></div>
+        </div>
+      </div>
       <div class="nav-icons">
-        <!-- Search container with icon and bar -->
-        <div class="search-container">
-          <span class="nav-icon search-icon" onclick="toggleSearchBar()">🔍</span>
-          <div class="search-bar" id="searchBar">
-            <input type="text" id="searchInput" placeholder="Search..." />
-            <button type="submit" class="search-button">Search</button>
-          </div>
+        <div class="userLogin-container">
+          <span class="nav-icon" id="logIn">👤</span>
         </div>
-
-        <!-- Other icons go here -->
-
-          <div class="userLogin-container">
-              <div id="userLogin-container">
-                <span class="nav-icon" id="logIn">👤</span>
-
-            </div>
-          </div>        <!-- Replace with account icon -->
         <div class="nav-item" data-tab="kurv" id="cart">
           <a href="kurv.html" class="nav-link">🛒</a>
           <div class="underline"></div>
-          <div class="cart-content">
-            <div class="cart-items">
-
-            </div>
-            <div class="cart-total-container">
-          <!-- Total price section will be appended here -->
-           </div>
-          </div>
         </div>
-        <!-- Replace with cart icon -->
       </div>
     </div>
+    
 
       <main class="main-content">
         <header class="main-header">
@@ -167,45 +143,43 @@
     <p>For support til Wallas produkter, udnyt ressourcer som brugervejledninger, officielle supportkanaler og certificerede servicecentre for pålidelig og faglig hjælp.</p>
 </div>
 </div>
-    </aside>
+</main>
 
-     <aside class="catalog-info">
-        <!-- Catalog Information Content -->
-        <h3>Se online katalog for endnu flere varer</h3>
-        <p>Alle varer der findes i kataloget kan søges og bestilles via vores hjemmeside.</p>
-        <h4>Find vare nummer:</h4>
-        <ul>
-            <li>Indtast vare nummer i søgefeltet øverst til højre.</li>
-            <li>Læg varen i kurven og gå til betaling.</li>
-            <li>Mange varer er allerede lagervarer.</li>
-            <li>Alle disse varer kan også sendes direkte fra Palby.</li>
-            <li>Leveringstid er typisk 2 dage.</li>
-        </ul>
-    </aside>
-</div>
+
+
     
-    </aside>
-    <section>
+    <footer class="footer">
+      <section class="footer-info">
+        <h3>Kontakt Information</h3>
+        <p>Refshalevej 200, 1432 København K</p>
+        <p>Tlf. 32 57 61 06</p>
+        <p>lynettens@baadservice.dk</p>
+        <div class="map-container">
+          <div id="interactive-map" style="height: 250px"></div>
+        </div>
+      </section>
 
-        <footer class="footer">
-          <section class="footer-info">
-              <h3>Kontakt Information</h3>
-              <p>Refshalevej 200, 1432 København K</p>
-              <p>Tlf. 32 57 61 06</p>
-              <p>lynettens@baadservice.dk</p>
-              
-          </section>
-      
-          <section class="opening-hours">
-              <h3>Åbningstider</h3>
-              <ul>
-                  <li>Man-fre: 10:00 - 17:00</li>
-                  <li>Lørdage: 10:00 - 15:00</li>
-                  <li>Søndage: Lukket</li>
-              </ul>
-              <p>&copy; 2023 by AEM</p>
-          </section>
-      </footer>
+      <section class="opening-hours">
+        <h3>Åbningstider</h3>
+        <ul>
+          <li>Mandag - fredag: 10:00 - 17:00</li>
+          <li>Lørdage: 10:00 - 15:00</li>
+          <li>Søndage: Lukket</li>
+        </ul>
+        <p>&copy; 2023 by AEM</p>
+      </section>
+      <section class="social-media">
+        <h3>Follow Us</h3>
+        <a href="https://www.facebook.com/baadservice.dk/" target="_blank" aria-label="Facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://www.instagram.com/lynettens_baadservice/" target="_blank" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </section>
+    </footer>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
           <script src="main.js" type="module"></script>
   </body>
 </html>

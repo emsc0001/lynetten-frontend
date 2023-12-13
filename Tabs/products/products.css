@@ -1,14 +1,43 @@
-/* Reset some default styles for body and html */
+/* Typography */
 body,
 html {
   margin: 0;
   padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 16px; /* Base font size */
+  line-height: 1.6; /* Line height for readability */
+  color: #333; /* Primary text color */
+  background-color: #f4f4f4; /* Background color */
 }
 
-/* Global styles */
-body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f4f4f4;
+/* Consistent hover and active styles */
+.nav-link:hover,
+.nav-item.active .nav-link {
+  color: #ff8c00; /* Example hover color */
+  background: transparent; /* Ensure background is consistent */
+  border: none; /* Ensure border is consistent */
+}
+
+/* Underline effect */
+.nav-link::after,
+.nav-item.active .nav-link::after {
+  content: "";
+  display: block;
+  margin: auto; /* Center the pseudo-element */
+  height: 3px; /* Height of the underline */
+  width: 0; /* Start with no width */
+  background: transparent; /* No background initially */
+  transition: width 0.5s ease, background-color 0.5s ease; /* Transition for the effect */
+}
+
+.nav-link:hover::after {
+  width: 100%; /* Full width on hover */
+  background-color: #ff8c00; /* Background color for the underline */
+}
+
+.nav-item.active .nav-link::after {
+  width: 100%; /* Full width for active item */
+  background-color: #ff8c00; /* Background color for the underline */
 }
 
 .container {
@@ -149,26 +178,6 @@ body {
   height: 50px; /* Adjust as needed */
 }
 
-.nav-menu {
-  display: flex;
-}
-
-.nav-item {
-  position: relative; /* For absolute positioning of underline */
-  margin: 0 10px;
-  cursor: pointer;
-}
-
-.nav-item.active .underline,
-.nav-item:hover .underline {
-  width: 100%;
-  height: 3px;
-  background-color: #ff8c00; /* Adjust the color to match the screenshot */
-  position: absolute;
-  bottom: -10px; /* Adjust as needed */
-  left: 0;
-}
-
 .nav-link,
 .nav-icon {
   display: inline-block;
@@ -187,6 +196,65 @@ body {
   font-size: 20px; /* Adjust as needed */
 }
 
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo-container {
+  /* The logo takes the space it needs */
+  flex-grow: 1;
+  flex-basis: 0;
+  display: flex;
+  align-items: center;
+}
+
+.nav-menu {
+  /* The navigation menu is centered within the remaining space */
+  flex-grow: 2;
+  flex-basis: 0;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  list-style: none;
+}
+
+.nav-icons {
+  /* The icons take the space they need */
+  flex-grow: 1;
+  flex-basis: 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Ensure each nav item has equal space and is aligned properly */
+.nav-menu .nav-item {
+  margin: 0 15px; /* Adjust the margin as needed */
+}
+
+/* Additional CSS to ensure underlines and hover effects work as expected */
+.nav-item .nav-link {
+  position: relative;
+  display: block;
+  text-align: center;
+}
+
+.nav-item .underline {
+  position: absolute;
+  bottom: -5px; /* Adjust this value based on your design */
+  left: 50%;
+  transform: translateX(-50%);
+  display: none; /* Initially hidden */
+}
+
+.nav-item:hover .underline {
+  display: block;
+}
+
 /* Use media queries for responsiveness as needed */
 .logo-container {
   display: flex;
@@ -195,30 +263,6 @@ body {
 
 .logo-container img {
   margin-right: 10px; /* Gives some space between the logo and the text */
-}
-
-.header-text h1,
-.header-text p {
-  margin: 0;
-  padding-left: 10px; /* Adds some space between the logo and the text */
-}
-
-.header-text h1 {
-  font-size: 1.5em; /* Large text for the main title */
-  color: #333; /* Or any color you wish */
-}
-
-.header-text p {
-  font-size: 1em; /* Smaller text for the subtitle */
-  color: #666; /* Or any color you wish */
-}
-
-body,
-html {
-  margin: 0;
-  padding: 0;
-  font-family: "Arial", sans-serif;
-  background-color: #f4f4f4;
 }
 
 .navbar {
@@ -230,19 +274,29 @@ html {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.nav-menu {
+  display: flex;
+  justify-content: center; /* Center items horizontally */
+  align-items: center;
+  flex: 1 0 auto; /* Change the flex property */
+  padding: 0;
+  list-style-type: none;
+}
+
+.nav-item {
+  margin: 0 15px; /* Adjust the margin as needed for spacing */
+  position: relative; /* For underline effect */
+}
+
+/* If you want to limit the width of nav-menu and center it */
+.nav-menu {
+  max-width: 600px; /* Adjust this to control the width */
+  margin: 0 auto; /* This will center the nav-menu within its container */
+}
+
 .logo-container {
   display: flex;
   align-items: center;
-}
-
-/* Reset and base styles */
-body,
-html {
-  margin: 0;
-  padding: 0;
-  font-family: "Arial", sans-serif;
-  background-color: #f4f4f4;
-  line-height: 1.6;
 }
 
 /* Header and Navigation */
@@ -305,6 +359,16 @@ html {
   }
 }
 
+.nav-icon {
+  cursor: pointer;
+  margin-right: 8px; /* Add some space between the icon and the input */
+}
+
+.nav-item a:hover,
+.nav-item a:focus {
+  color: #ff8c00; /* Hover and focus state color */
+}
+
 /* ... existing styles ... */
 /* Add your existing CSS rules here */
 
@@ -317,7 +381,7 @@ html {
 
 h2 {
   text-align: center;
-  color: #ff8c00;
+  color: #000000;
   font-size: 30px;
   font-weight: bold;
   margin-bottom: 20px;
@@ -369,37 +433,6 @@ input:focus {
   color: #2980b9;
 }
 
-.subscribe-newsletter {
-  margin-top: 20px;
-  text-align: center;
-}
-
-.subscribe-newsletter label {
-  display: block;
-  margin-bottom: 8px;
-}
-
-.subscribe-newsletter input {
-  width: 100%;
-  margin-bottom: 20px;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-.subscribe-newsletter input:focus-visible {
-  outline: 2px solid #2980b9;
-}
-
-.subscribe-newsletter input:checked + span {
-  color: #2980b9;
-}
-
-.subscribe-newsletter span {
-  color: #555;
-}
-
 /* Add more styles as needed */
 
 /* Hide the dropdown menu by default */
@@ -448,25 +481,22 @@ input:focus {
   column-gap: 15px; /* Space between columns */
 }
 
-.main-content {
-  /* Sørger for at indholdet centreres og har plads rundt om sig */
-  max-width: 1500px;
-  margin: auto;
-  padding: 20px;
-}
-
 .product-item {
-  height: 300px;
   display: flex;
-  justify-content: flex-start; /* Align image to the left */
-  align-items: flex-start; /* Align image to the top */
+  flex-direction: column;
+  align-items: center; /* Center content horizontally */
   background-size: cover;
   background-position: center;
   position: relative;
   overflow: hidden;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease-in-out;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Slightly elevated shadow */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  width: calc(65% - 10px); /* 2 products per row with some spacing */
+  margin: 10px;
+  padding: 20px;
+  background-color: #fff; /* Background color for the product container */
+  text-align: center; /* Center text content */
 }
 
 .product-item:hover {
@@ -474,35 +504,23 @@ input:focus {
 }
 
 .product-item h2 {
-  color: white;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  font-size: 1.5rem;
+  color: #333;
+  font-size: 1.2rem;
   text-align: center;
-  width: 80%;
-  position: absolute;
-  bottom: 12px;
-  left: 50%;
-  transform: translateX(-50%);
   margin: 0;
 }
 
 .product-item h3 {
-  color: rgb(0, 0, 0);
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  font-size: 1.3rem;
+  color: #777;
+  font-size: 1rem;
   text-align: center;
-  width: 80%;
-  position: absolute;
-  top: 5%;
-  left: 87%;
-  transform: translateX(-50%);
-  margin: 0;
+  margin: 5px 0;
 }
 
 .product-item img {
   filter: brightness(100%);
+  max-width: 100%;
   height: auto;
-  width: 42%; /* Adjusted width */
   transition: filter 0.3s ease-in-out;
   background-color: #e68a00;
 }
@@ -512,50 +530,19 @@ input:focus {
 }
 
 .product-item button {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  padding: 10px 15px;
-  background-color: #3498db;
+  padding: 8px 15px;
+  background-color: #ff8c00;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 1rem;
   transition: background-color 0.3s ease-in-out;
+  margin-top: 10px;
 }
 
 .product-item button:hover {
-  background-color: #2980b9;
-}
-
-/* PRODUCT INFORMATION MODAL VIEW */
-
-.product-details {
-  display: none;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #fff;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  max-width: 600px;
-  width: 100%;
-  box-sizing: border-box;
-  z-index: 1000;
-  opacity: 0; /* Start med 0 opacitet */
-  animation: fadeIn 0.9s ease-in-out forwards; /* Tilføj en fade-in-animation */
-  border-radius: 10px; /* Juster denne værdi for mere eller mindre afrundede hjørner */
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  background-color: #ff6347; /* Slightly darker on hover */
 }
 
 .product-details {
@@ -563,14 +550,6 @@ input:focus {
   flex-direction: column;
   align-items: center;
   text-align: center;
-}
-
-#description-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  margin-top: 20px;
 }
 
 .product-details img {
@@ -579,25 +558,9 @@ input:focus {
   margin-bottom: 15px;
 }
 
-.product-details h4 {
-  margin: 0;
-  font-size: 1.5em;
-  color: #333;
-}
-
 .product-details p {
   margin: 0;
   color: #666;
-}
-
-.closeModal {
-  background-color: #3498db;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  font-size: 1em;
-  margin-top: 15px;
 }
 
 .closeModal:hover {
@@ -606,58 +569,17 @@ input:focus {
 
 /* PRODUCT INFORMATION MODAL VIEW */
 
-.info-icon-container {
-  position: absolute;
-  top: 25%;
-  right: 10%;
-  background-color: #3498db;
-  color: white;
-  border-radius: 50%;
-  padding: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
-}
-
 /* Optional: Add some hover effects */
 .info-icon-container:hover {
   background-color: #2980b9;
 }
 
-/* Tilføj dette til din eksisterende CSS-fil */
+/* Container for products */
 .products-container {
-  opacity: 1;
-  transition: opacity 0.5s ease-in-out;
-}
-
-.products-container.fade-out {
-  opacity: 0;
-}
-
-.news-updates {
-  font-family: "Arial", sans-serif; /* Example font */
-  margin-left: 20px; /* Adjust as necessary for alignment */
-  margin-right: 20px;
-}
-
-.news-updates h2 {
-  font-size: 1.5em; /* Larger font size for headings */
-  margin-bottom: 10px; /* Space below heading */
-}
-
-.news-updates p,
-.news-updates ol {
-  font-size: 1em; /* Standard font size for body text */
-  line-height: 1.6; /* Adjust line spacing */
-  text-align: left; /* Align text to the left */
-  margin-bottom: 10px; /* Space below paragraphs and lists */
-}
-
-.news-updates ol {
-  padding-left: 20px; /* Indentation for list items */
-}
-
-.news-updates li {
-  margin-bottom: 5px; /* Space between list items */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Center the items */
+  gap: 20px; /* Space between items */
 }
 
 /* Add this in your existing CSS file */
@@ -913,4 +835,49 @@ footer {
   text-align: center;
   padding: 1rem 0;
   font-weight: bold;
+}
+
+/* Navigation Bar Styles */
+.nav-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+  list-style: none;
+}
+
+.feedback-box {
+  display: none; /* Initially hidden */
+  position: fixed; /* Fixed position */
+  top: 20px; /* Distance from top */
+  right: 20px; /* Distance from right */
+  background-color: #333; /* Dark background */
+  color: #fff; /* White text */
+  padding: 15px 30px; /* Padding around text */
+  border-radius: 25px; /* Rounded corners */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+  z-index: 1000; /* Ensures it's on top of other elements */
+  font-size: 1em; /* Font size */
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; /* Font family */
+  text-align: center; /* Center the text */
+  border: 1px solid #fff; /* White border */
+  opacity: 0.95; /* Slightly transparent */
+  transition: all 0.3s ease-in-out; /* Transition for smooth appearance */
+}
+
+/* Animation to fade in and move up slightly */
+@keyframes fadeInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 0.95;
+  }
+}
+
+/* Adding the animation to the feedback box */
+.feedback-box.show {
+  animation: fadeInUp 0.5s forwards;
 }

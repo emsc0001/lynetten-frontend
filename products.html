@@ -7,9 +7,8 @@
     <link rel="stylesheet" href="./Tabs/products/products.css" />
   </head>
   <body>
-    <div class="navbar">
+   <div class="navbar">
       <div class="logo-container">
-        <!-- Wrap both logo and text in an anchor tag -->
         <a href="index.html" style="display: inline-flex; align-items: center; text-decoration: none; color: black">
           <img src="https://i.ibb.co/r2bH4d1/Sk-rmbillede-2023-11-28-kl-15-35-30.png" alt="Logo" height="50" />
           <div class="header-text">
@@ -18,29 +17,32 @@
           </div>
         </a>
       </div>
-      <div class="nav-menu">
         <div class="nav-menu">
-          <div class="nav-item" data-tab="forside"></div>
-          <div class="nav-item" data-tab="kobeguide">
-            <span class="nav-link"
-              ><a href="index.html"><strong>Forside</strong></a></span
-            >
-            <div class="underline"></div>
-          </div>
-          <div class="nav-item" data-tab="kobeguide">
-            <span class="nav-link">
-              <a href="koebeguide.html"><strong>Købeguide - Bådudstyr</strong></a></span
-            >
-            <div class="underline"></div>
-          </div>
-          <div class="nav-item" data-tab="handelsBetingelser">
-            <span class="nav-link"
-              ><a href="handelsBetingelser.html"><strong>Handelsbetingelser</strong></a></span
-            >
-            <div class="underline"></div>
-          </div>
+            <!-- Forside Item -->
+            <div class="nav-item" data-tab="forside">
+                <span class="nav-link">
+                    <a href="index.html"><strong>Forside</strong></a>
+                </span>
+                <div class="underline"></div>
+            </div>
+            
+            <!-- Købeguide Item -->
+            <div class="nav-item" data-tab="kobeguide">
+                <span class="nav-link">
+                    <a href="koebeguide.html"><strong>Købeguide - Bådudstyr</strong></a>
+                </span>
+                <div class="underline"></div>
+            </div>
+    
+            <!-- Handelsbetingelser Item -->
+            <div class="nav-item" data-tab="handelsBetingelser">
+                <span class="nav-link">
+                    <a href="handelsBetingelser.html"><strong>Handelsbetingelser</strong></a>
+                </span>
+                <div class="underline"></div>
+            </div>
         </div>
-      </div>
+    
 
       <div class="nav-icons">
         <!-- Search container with icon and bar -->
@@ -64,14 +66,18 @@
 
         <div class="nav-item" data-tab="kurv" id="cart">
           <a href="kurv.html" class="nav-link">🛒</a>
+          <div class="feedback-box" id="feedbackBox">Product added to cart!</div>
           <div class="underline"></div>
           <div class="cart-content">
             <div class="cart-items"></div>
             <div class="cart-total-container">
-              <!-- Total price section will be appended here -->
             </div>
           </div>
         </div>
+        <div class="feedback-box" id="feedbackBox">
+    <img id="feedbackProductImage" src="" alt="" style="max-width: 50px; height: auto; margin-right: 10px;">
+    <span id="feedbackProductText"></span>
+</div>
 
         <!-- Replace with cart icon -->
       </div>

@@ -48,7 +48,6 @@ export default class UserLoginDialog extends Dialog {
       const userCart = JSON.parse(localStorage.getItem("cart")) || [];
     if (userCart.length > 0) {
       const orderId = await createOrder(new Date().toISOString().slice(0, 10), loggedInUser.userId);
-      console.log(orderId);
         const updatedCart = userCart.reduce((result, item) => {
             if (item.guestOrderId) {
                 // Add a condition to exclude items with guestOrderId
@@ -65,7 +64,7 @@ export default class UserLoginDialog extends Dialog {
 
         // Close the dialog if the user login is successful
         this.close();
-        // window.location.reload();
+        window.location.reload();
     }
   }
 }

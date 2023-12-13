@@ -1,14 +1,70 @@
-/* Reset some default styles for body and html */
-body,
-html {
+/* Base reset for padding and margin for all elements */
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box; /* Consistent box-sizing */
 }
 
-/* Global styles */
+/* Typography */
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f4f4f4;
+  font-size: 16px; /* Base font size */
+  line-height: 1.6; /* Line height for readability */
+  color: #333; /* Primary text color */
+  background-color: #f4f4f4; /* Background color */
+}
+
+/* Header and Navigation */
+.header {
+  background-color: #f8f8f8;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px 20px; /* Consistent padding */
+  text-align: center;
+}
+
+.nav-item {
+  margin: 0 10px; /* Adjusted margin to match other navbars */
+}
+
+/* Consistent hover and active styles */
+.nav-link:hover,
+.nav-item.active .nav-link {
+  color: #ff8c00; /* Example hover color */
+  background: transparent; /* Ensure background is consistent */
+  border: none; /* Ensure border is consistent */
+}
+
+/* Underline effect */
+.nav-link::after,
+.nav-item.active .nav-link::after {
+  content: "";
+  display: block;
+  margin: auto; /* Center the pseudo-element */
+  height: 3px; /* Height of the underline */
+  width: 0; /* Start with no width */
+  background: transparent; /* No background initially */
+  transition: width 0.5s ease, background-color 0.5s ease; /* Transition for the effect */
+}
+
+.nav-link:hover::after {
+  width: 100%; /* Full width on hover */
+  background-color: #ff8c00; /* Background color for the underline */
+}
+
+.nav-item.active .nav-link::after {
+  width: 100%; /* Full width for active item */
+  background-color: #ff8c00; /* Background color for the underline */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .nav-menu {
+    flex-direction: column;
+  }
+
+  .nav-item {
+    margin: 5px 0; /* Adjusted margin for vertical layout */
+  }
 }
 
 .container {
@@ -116,24 +172,18 @@ body {
   height: 50px; /* Adjust as needed */
 }
 
+/* Navigation */
 .nav-menu {
   display: flex;
+  justify-content: center; /* Center align nav items */
+  list-style: none; /* Remove default list styling */
+  padding-left: 0; /* Remove default padding */
 }
 
 .nav-item {
   position: relative; /* For absolute positioning of underline */
   margin: 0 10px;
   cursor: pointer;
-}
-
-.nav-item.active .underline,
-.nav-item:hover .underline {
-  width: 100%;
-  height: 3px;
-  background-color: #ff8c00; /* Adjust the color to match the screenshot */
-  position: absolute;
-  bottom: -10px; /* Adjust as needed */
-  left: 0;
 }
 
 .nav-link,
@@ -164,30 +214,6 @@ body {
   margin-right: 10px; /* Gives some space between the logo and the text */
 }
 
-.header-text h1,
-.header-text p {
-  margin: 0;
-  padding-left: 10px; /* Adds some space between the logo and the text */
-}
-
-.header-text h1 {
-  font-size: 1.5em; /* Large text for the main title */
-  color: #333; /* Or any color you wish */
-}
-
-.header-text p {
-  font-size: 1em; /* Smaller text for the subtitle */
-  color: #666; /* Or any color you wish */
-}
-
-body,
-html {
-  margin: 0;
-  padding: 0;
-  font-family: "Arial", sans-serif;
-  background-color: #f4f4f4;
-}
-
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -200,16 +226,6 @@ html {
 .logo-container {
   display: flex;
   align-items: center;
-}
-
-/* Reset and base styles */
-body,
-html {
-  margin: 0;
-  padding: 0;
-  font-family: "Arial", sans-serif;
-  background-color: #f4f4f4;
-  line-height: 1.6;
 }
 
 /* Header and Navigation */
@@ -305,6 +321,49 @@ html {
 .loginHeader {
   text-align: center;
   color: #3498db;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.nav-menu {
+  flex: 2; /* Allows the nav menu to take twice as much space as the logo and icons */
+  display: flex;
+  justify-content: center; /* Centers the menu items */
+}
+
+.nav-item {
+  margin: 0 10px; /* Adds space between the navigation items */
+}
+
+.nav-icons {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end; /* Aligns the icons to the right */
+}
+
+/* Add your existing styles for .nav-link, .underline, and other elements */
+
+h1 {
+  display: block;
+  font-size: 2em;
+  margin-block-start: 0.67em;
+  margin-block-end: 0.67em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
 }
 
 .login-form-container button[data-action="close"] {
@@ -600,40 +659,9 @@ button[data-action="cancel"]:hover {
   left: 0;
 }
 
-.product-item a {
-  /* Gør teksten mere læsbar over billedet */
-  color: white;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  font-size: 1.5rem;
-  text-align: center;
-  width: 100%;
-  position: absolute;
-  bottom: 20px;
-  left: 0;
-}
-
-.product-item a:hover {
-  cursor: pointer;
-  text-decoration: underline; /* Tilføj understregning ved hover for ekstra feedback */
-}
-
-.news-updates {
-  font-family: "Arial", sans-serif; /* Example font */
-  margin-left: 20px; /* Adjust as necessary for alignment */
-  margin-right: 20px;
-}
-
 .news-updates h2 {
   font-size: 1.5em; /* Larger font size for headings */
   margin-bottom: 10px; /* Space below heading */
-}
-
-.news-updates p,
-.news-updates ol {
-  font-size: 1em; /* Standard font size for body text */
-  line-height: 1.6; /* Adjust line spacing */
-  text-align: left; /* Align text to the left */
-  margin-bottom: 10px; /* Space below paragraphs and lists */
 }
 
 .news-updates ol {
@@ -908,26 +936,6 @@ footer {
   }
 }
 
-.slider {
-  width: 100%;
-  overflow: hidden; /* Ensures only one slide is visible at a time */
-}
-
-.slides {
-  display: flex;
-  transition: transform 0.5s ease;
-}
-
-.slide {
-  min-width: 100%; /* Each slide takes the full width of the slider */
-  text-align: center; /* Centers the caption */
-}
-
-.slide img {
-  width: 5%; /* Ensures the image fills the slide */
-  height: auto; /* Maintains aspect ratio */
-}
-
 .caption {
   background-color: #ff8c00; /* Semi-transparent background */
   color: #000000;
@@ -1009,30 +1017,6 @@ footer {
   margin-top: 20px;
 }
 
-/* Typography */
-body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 16px; /* Base font size */
-  line-height: 1.6; /* Line height for readability */
-  color: #333; /* Primary text color */
-  background-color: #f4f4f4; /* Background color */
-}
-
-h2,
-h3 {
-  color: #ff8c00; /* Headings color to match the top bar */
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
-}
-
-/* Navigation */
-.nav-menu {
-  display: flex;
-  justify-content: center; /* Center align nav items */
-  list-style: none; /* Remove default list styling */
-  padding-left: 0; /* Remove default padding */
-}
-
 .nav-item {
   padding: 10px 15px; /* Uniform padding for clickable area */
   margin: 0 5px; /* Space between menu items */
@@ -1057,3 +1041,11 @@ h3 {
   border-radius: 8px;
   margin: 20px auto; /* Increased top and bottom margin */
 }
+
+.nav-item {
+  position: relative; /* For positioning the underline */
+  margin: 0 10px;
+}
+
+/* Additional styles for search bar, icons, etc. */
+/* ... */
