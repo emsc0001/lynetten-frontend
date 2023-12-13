@@ -178,21 +178,6 @@ body, html {
   margin-right: 10px; /* Gives some space between the logo and the text */
 }
 
-.header-text h1,
-.header-text p {
-  margin: 0;
-  padding-left: 10px; /* Adds some space between the logo and the text */
-}
-
-.header-text h1 {
-  font-size: 1.5em; /* Large text for the main title */
-  color: #333; /* Or any color you wish */
-}
-
-.header-text p {
-  font-size: 1em; /* Smaller text for the subtitle */
-  color: #666; /* Or any color you wish */
-}
 
 body,
 html {
@@ -216,15 +201,7 @@ html {
   align-items: center;
 }
 
-/* Reset and base styles */
-body,
-html {
-  margin: 0;
-  padding: 0;
-  font-family: "Arial", sans-serif;
-  background-color: #f4f4f4;
-  line-height: 1.6;
-}
+
 
 
 
@@ -353,32 +330,7 @@ html {
   left: 0;
 }
 
-.news-updates {
-  font-family: "Arial", sans-serif; /* Example font */
-  margin-left: 20px; /* Adjust as necessary for alignment */
-  margin-right: 20px;
-}
 
-.news-updates h2 {
-  font-size: 1.5em; /* Larger font size for headings */
-  margin-bottom: 10px; /* Space below heading */
-}
-
-.news-updates p,
-.news-updates ol {
-  font-size: 1em; /* Standard font size for body text */
-  line-height: 1.6; /* Adjust line spacing */
-  text-align: left; /* Align text to the left */
-  margin-bottom: 10px; /* Space below paragraphs and lists */
-}
-
-.news-updates ol {
-  padding-left: 20px; /* Indentation for list items */
-}
-
-.news-updates li {
-  margin-bottom: 5px; /* Space between list items */
-}
 
 /* Stil for handelsbetingelser */
 .handelsbetingelser-content {
@@ -393,35 +345,17 @@ html {
   margin-bottom: 10px;
 }
 
-.handelsbetingelser-content h1 {
-  font-size: 2.5em;
-  border-bottom: 2px solid #ff8c00;
-  padding-bottom: 5px;
-}
 
-.handelsbetingelser-content h2 {
+h1 {
+  display: block;
   font-size: 2em;
-  border-bottom: 2px solid #ccc;
-  padding-bottom: 5px;
+  margin-block-start: 0.67em;
+  margin-block-end: 0.67em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
 }
 
-.handelsbetingelser-content h3 {
-  font-size: 1.5em;
-  margin-top: 20px;
-}
-
-.handelsbetingelser-content p {
-  font-size: 1.1em;
-  color: #555;
-  line-height: 1.6;
-  margin-bottom: 15px;
-}
-
-.handelsbetingelser-content ol {
-  list-style-type: decimal;
-  padding-left: 30px;
-  margin-bottom: 20px;
-}
 
 .handelsbetingelser-content ol li {
   font-size: 1.1em;
@@ -429,24 +363,9 @@ html {
   margin-bottom: 10px;
 }
 
-/* Ekstra stil for punkter i listen */
-.handelsbetingelser-content ol li::before {
-  content: "\2022"; /* Unicode karakter for cirkel-bullet */
-  color: #ff8c00;
-  font-size: 1.5em;
-  margin-right: 10px;
-}
 
 
 
-.main-header {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.guide-title {
-  color: #333;
-}
 
 .breadcrumb {
   font-size: 14px;
@@ -761,7 +680,6 @@ footer {
 }
 
 
-
 /* Typography */
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -770,6 +688,7 @@ body {
   color: #333; /* Primary text color */
   background-color: #f4f4f4; /* Background color */
 }
+
 
 h2, h3 {
   color: #ff8c00; /* Headings color to match the top bar */

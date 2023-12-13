@@ -1,10 +1,13 @@
-/* Reset some default styles for body and html */
+
+/* Typography */
 body, html {
   margin: 0;
   padding: 0;
-  font-family: "Arial", sans-serif;
-  background-color: #f4f4f4;
-  line-height: 1.6;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 16px; /* Base font size */
+  line-height: 1.6; /* Line height for readability */
+  color: #333; /* Primary text color */
+  background-color: #f4f4f4; /* Background color */
 }
 
 
@@ -164,21 +167,7 @@ body, html {
   margin-right: 10px; /* Gives some space between the logo and the text */
 }
 
-.header-text h1,
-.header-text p {
-  margin: 0;
-  padding-left: 10px; /* Adds some space between the logo and the text */
-}
 
-.header-text h1 {
-  font-size: 1.5em; /* Large text for the main title */
-  color: #333; /* Or any color you wish */
-}
-
-.header-text p {
-  font-size: 1em; /* Smaller text for the subtitle */
-  color: #666; /* Or any color you wish */
-}
 
 .navbar {
   display: flex;
@@ -242,18 +231,8 @@ body, html {
   background-color: #f9f9f9;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .nav-menu,
-  .nav-icons {
-    display: none; /* Hide navigation links on smaller screens */
-  }
 
-  .content-header h1,
-  .content-header p {
-    font-size: 18px;
-  }
-}
+
 
 /* ... existing styles ... */
 
@@ -328,44 +307,8 @@ body, html {
   position: relative;
 }
 
-.product-item h2 {
-  /* Gør teksten mere læsbar over billedet */
-  color: white;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  font-size: 1.5rem;
-  text-align: center;
-  width: 100%;
-  position: absolute;
-  bottom: 20px;
-  left: 0;
-}
 
-.news-updates {
-  font-family: "Arial", sans-serif; /* Example font */
-  margin-left: 20px; /* Adjust as necessary for alignment */
-  margin-right: 20px;
-}
 
-.news-updates h2 {
-  font-size: 1.5em; /* Larger font size for headings */
-  margin-bottom: 10px; /* Space below heading */
-}
-
-.news-updates p,
-.news-updates ol {
-  font-size: 1em; /* Standard font size for body text */
-  line-height: 1.6; /* Adjust line spacing */
-  text-align: left; /* Align text to the left */
-  margin-bottom: 10px; /* Space below paragraphs and lists */
-}
-
-.news-updates ol {
-  padding-left: 20px; /* Indentation for list items */
-}
-
-.news-updates li {
-  margin-bottom: 5px; /* Space between list items */
-}
 
 
 
@@ -697,7 +640,7 @@ div.cart-total a.go-to-cart-link:hover {
 
 
 h2, h3 {
-  color: #ff8c00; /* Headings color to match the top bar */
+  color: #000000; /* Headings color to match the top bar */
   margin-top: 0.5em;
   margin-bottom: 0.5em;
 }

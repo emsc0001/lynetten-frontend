@@ -225,21 +225,7 @@ body {
   margin-right: 10px; /* Gives some space between the logo and the text */
 }
 
-.header-text h1,
-.header-text p {
-  margin: 0;
-  padding-left: 10px; /* Adds some space between the logo and the text */
-}
 
-.header-text h1 {
-  font-size: 1.5em; /* Large text for the main title */
-  color: #333; /* Or any color you wish */
-}
-
-.header-text p {
-  font-size: 1em; /* Smaller text for the subtitle */
-  color: #666; /* Or any color you wish */
-}
 
 body,
 html {
@@ -592,36 +578,7 @@ input:focus {
   color: #2980b9;
 }
 
-.subscribe-newsletter {
-  margin-top: 20px;
-  text-align: center;
-}
 
-.subscribe-newsletter label {
-  display: block;
-  margin-bottom: 8px;
-}
-
-.subscribe-newsletter input {
-  width: 100%;
-  margin-bottom: 20px;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-.subscribe-newsletter input:focus-visible {
-  outline: 2px solid #2980b9;
-}
-
-.subscribe-newsletter input:checked + span {
-  color: #2980b9;
-}
-
-.subscribe-newsletter span {
-  color: #555;
-}
 
 /* Add more styles as needed */
 
@@ -762,32 +719,8 @@ input:focus {
   opacity: 0;
 }
 
-.news-updates {
-  font-family: "Arial", sans-serif; /* Example font */
-  margin-left: 20px; /* Adjust as necessary for alignment */
-  margin-right: 20px;
-}
 
-.news-updates h2 {
-  font-size: 1.5em; /* Larger font size for headings */
-  margin-bottom: 10px; /* Space below heading */
-}
 
-.news-updates p,
-.news-updates ol {
-  font-size: 1em; /* Standard font size for body text */
-  line-height: 1.6; /* Adjust line spacing */
-  text-align: left; /* Align text to the left */
-  margin-bottom: 10px; /* Space below paragraphs and lists */
-}
-
-.news-updates ol {
-  padding-left: 20px; /* Indentation for list items */
-}
-
-.news-updates li {
-  margin-bottom: 5px; /* Space between list items */
-}
 
 /* Add this in your existing CSS file */
 .search-container {
