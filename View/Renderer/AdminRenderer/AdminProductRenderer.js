@@ -13,6 +13,7 @@ export default class AdminProductRenderer extends ItemRenderer {
           <p>Product Number: ${product.productNumber}</p>
           <p>Stock Quantity: ${product.stockQuantity}</p>
           <p>Offer Price: ${product.offerPrice}</p>
+          <p>Category ${product.categories}</p>
           <button class="edit-button" data-product-id="${product.productId}">Edit</button>
           <button class="delete-button" data-product-id="${product.productId}">Delete</button>
         </div>`;

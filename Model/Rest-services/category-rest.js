@@ -74,4 +74,4 @@ async function deleteCategory(categoryId) {
     return response.ok;
 }
 
-export { getAllCategories, getSomeCategories, getCategoryWithProducts, endpoint, updateCategory, createCategory, deleteCategory };
+export { getAllCategories, getCategoryWithProducts, endpoint, updateCategory, createCategory, deleteCategory };
