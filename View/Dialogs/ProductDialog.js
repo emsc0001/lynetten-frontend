@@ -19,7 +19,7 @@ export default class ProductDialog extends Dialog {
           <p>Beskrivelse: ${product.description}</p>
         </div>
         <p>Pris: ${product.listPrice} Kr</p>
-        <p>Varer på lager ${product.stockQuantity}</p>
+        <p>Varer på lager: ${product.stockQuantity}</p>
         <button type="button" class="closeModal" data-action="close">Luk</button>
       </div>
     `;

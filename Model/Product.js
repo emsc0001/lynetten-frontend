@@ -1,7 +1,7 @@
 export default class Product {
   constructor(obj) {
     this.productId = obj.productId;
-    this.productNumber = Number(obj.productNumber);
+    this.productNumber = obj.productNumber;
     this.productName = obj.productName;
     this.imageURLs = obj.imageURLs;
     this.listPrice = Number(obj.listPrice);

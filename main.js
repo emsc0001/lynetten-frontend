@@ -271,22 +271,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Call the sort function in ListRenderer with the selected options
       if (productsLists) {
-        let sortedProducts;
-
-        if (sortBy === "listPrice") {
-          // If sorting by listPrice, convert the values to numbers for proper sorting
-          sortedProducts = productsLists.sort(sortBy, sortDirection, true);
-        } else {
-          sortedProducts = productsLists.sort(sortBy, sortDirection);
-        }
-
+        const sortedProducts = productsLists.sort(sortBy, sortDirection);
+        console.log("Sorted products");
         productsLists = new ListRenderer(sortedProducts, "#products-container", ProductRenderer);
-        productsLists.render();
+        productsLists.render(sortedProducts);
       }
     });
   }
 });
 
+// document.addEventListener("DOMContentLoaded", () => {
+//   const sortSelect = document.getElementById("sort");
+//   if (sortSelect) {
+//     sortSelect.addEventListener("change", () => {
+//       const selectedOption = sortSelect.options[sortSelect.selectedIndex];
+//       const sortBy = selectedOption.dataset.sortBy;
+//       const sortDirection = selectedOption.dataset.sortDirection;
+
+//       // Call the sort function in ListRenderer with the selected options
+//       if (productsLists) {
+//         let sortedProducts;
+
+//         if (sortBy === "listPrice") {
+//           // If sorting by listPrice, convert the values to numbers for proper sorting
+//           sortedProducts = productsLists.sort(sortBy, sortDirection, true);
+//         } else {
+//           sortedProducts = productsLists.sort(sortBy, sortDirection);
+//         }
+
+//         productsLists = new ListRenderer(sortedProducts, "#products-container", ProductRenderer);
+//         productsLists.render();
+//       }
+//     });
+//   }
+// });
 // -----Search EventListener----- //
 
 document.addEventListener("DOMContentLoaded", () => {
