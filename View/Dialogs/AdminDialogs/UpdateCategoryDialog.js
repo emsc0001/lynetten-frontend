@@ -45,6 +45,13 @@ export default class UpdateCategoryDialog extends Dialog {
               }
         });
 
+        //cloeses the dialog
+        const closeButton = this.dialog.querySelector(".close");
+        closeButton.addEventListener("click", async (event) => {
+            event.preventDefault();
+            this.dialog.close();
+        });
+
 }
 
 }
