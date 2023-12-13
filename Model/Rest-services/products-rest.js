@@ -71,10 +71,6 @@ async function deleteProduct(productId) {
     return response.ok;
 }
 
-async function getSpecificproduct(productId) {
-  const response = await fetch(`${endpoint}/products/${productId}`);
-  const originalJson = await response.json();
-  return new Product(originalJson);
-}
 
-export { getAllProducts, getSomeProducts, getSpecificproduct, endpoint, updateProduct, createProduct, deleteProduct };
+
+export { getAllProducts, getSomeProducts, endpoint, updateProduct, createProduct, deleteProduct };

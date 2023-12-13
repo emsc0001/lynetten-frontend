@@ -1,8 +1,10 @@
-// import { updatedListArtist } from "../../frontend.js";
-import { updateProductList } from "../../main.js";
 import { endpoint } from "../../Model/Rest-services/products-rest.js";
-
+import { products } from "../../main.js";
+import ListRenderer from "../Renderer/ListRenderer.js";
 import ProductRenderer from "../Renderer/ProductRenderer.js";
+import Paginater from "../Renderer/Paginater.js";
+
+let productsLists = null;
 
 document.addEventListener("DOMContentLoaded", function () {
     const searchIcon = document.querySelector(".search-icon");
@@ -36,10 +38,46 @@ async function handleSearch(event) {
         } else {
             console.error("Search request failed");
         }
-    } else {
-        // If the search query is empty, reset the product list to show all products
+    }else if (searchQuery === "") {
+        showAllProducts(products);
+    }
+    else {
+        // If the Search query is empty, show products not found
         updateProductList(event);
     }
 }
+
+function updateProductList(searchResults) {
+    // Get the container for products
+    const productsContainer = document.querySelector("#products-container");
+
+    // Remove existing pagination
+    const existingPagination = document.querySelector("#paginator");
+    if (existingPagination) {
+        existingPagination.remove();
+    }
+
+    // Clear the existing content
+    productsContainer.innerHTML = "";
+
+    // Check if there are search results
+    if (searchResults && searchResults.length > 0) {
+        // Render the updated list of products
+        productsLists = new ListRenderer(searchResults, "#products-container", ProductRenderer);
+        productsLists.render();
+    } else {
+        // If there are no search results, show a message "No products found"
+        productsContainer.innerHTML = `<p>Ingen produkter fundet😜</p>`;
+    }
+}
+
+//If the search bar is empty, show all products
+function showAllProducts() {
+    const productsContainer = document.querySelector("#products-container");
+    productsContainer.innerHTML = "";
+    productsLists = new Paginater(products, "#products-container", ProductRenderer, 10);
+     productsLists.render();
+}
+
 
 export { handleSearch };

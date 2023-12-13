@@ -1,8 +1,7 @@
 import Dialog from "./Dialog.js";
-import User from "../../Model/User.js";
 import * as Controller from "../../Model/Rest-services/user-rest.js";
-import { cart } from "../../main.js";
 import { createOrder } from "../../Model/Rest-services/order-rest.js";
+import loginUserForm from "../../Controller/loginUserForm.js";
 
 export default class UserLoginDialog extends Dialog {
   renderHTML() {
@@ -19,7 +18,6 @@ export default class UserLoginDialog extends Dialog {
           <button type="submit" data-action="login">Login</button>
           <button type="button" data-action="cancel">Fortryd</button>
           <div class="additional-options">
-            <p><a id="forgotUserLogin" href="#">Forgot Password?</a></p>
             <p><a id="createUserLogin" href="#">Create New Account</a></p>
           </div>
         </form>
@@ -38,7 +36,7 @@ export default class UserLoginDialog extends Dialog {
     form.reset();
 
     // Call the controller method to log in the user
-    const loggedInUser = await Controller.loginUserForm({ email, password });
+    const loggedInUser = await loginUserForm({ email, password });
 
     if (loggedInUser) {
         // Store user information in local storage

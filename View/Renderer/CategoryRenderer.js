@@ -1,5 +1,4 @@
 import ItemRenderer from "./Itemrenderer.js";
-import * as controller from "../../main.js";
 
 export default class CategoryRenderer extends ItemRenderer {
   render() {
@@ -14,10 +13,4 @@ export default class CategoryRenderer extends ItemRenderer {
     return html;
   }
 
-  postRender(element) {
-    // element.querySelector(".nav-item a").addEventListener("click", (event) => {
-    //   event.preventDefault();
-    //   controller.getProductsByCategory(element.categoryId);
-    // });
-  }
 }

@@ -1,5 +1,4 @@
 import Dialog from "./Dialog.js";
-import * as controller from "../../main.js";
 
 export default class ProductDialog extends Dialog {
   renderHTML(product) {
@@ -21,7 +20,7 @@ export default class ProductDialog extends Dialog {
         <p>Pris: ${product.listPrice} Kr</p>
         <p>Varer på lager: ${product.stockQuantity}</p>
         <button type="button" class="closeModal" data-action="close">Luk</button>
-      </div>
+        </div>
     `;
 
     return html;

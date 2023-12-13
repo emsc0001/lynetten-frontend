@@ -1,5 +1,7 @@
 import ItemRenderer from "./Itemrenderer.js";
-import { cart, initializeCartView, saveCartToLocalStorage, htmlSide, initializeCartHtmlView } from "../../main.js";
+import { cart, saveCartToLocalStorage, htmlSide } from "../../main.js";
+import { initializeCartHtmlView, initializeCartView } from "../HtmlChangers/initializeCartViews.js";
+
 export default class ProductCartRenderer extends ItemRenderer {
   render() {
     const cartItem = this.item;

@@ -3,9 +3,8 @@ import * as controller from "../../main.js";
 import * as guestOrderController from "../../Model/Rest-services/guestOrder-rest.js";
 import { createOrder } from "../../Model/Rest-services/order-rest.js";
 import { getCategoryWithProducts } from "../../Model/Rest-services/category-rest.js";
-import { getAllProducts } from "../../Model/Rest-services/products-rest.js";
 import ProductDialog from "../Dialogs/ProductDialog.js";
-import Paginater from "../Renderer/Paginater.js";
+import addToCart from "../../Controller/addToCart.js";
 
 export default class ProductRenderer extends ItemRenderer {
   render() {
@@ -18,7 +17,7 @@ export default class ProductRenderer extends ItemRenderer {
           <h4 id="product-number">${product.productNumber}</h4>
           <h3 id="product-list-price">${product.listPrice}kr</h3>
           <button class="button" data-id="${product.productId}">Add to Cart</button>
-        </div>
+          </div>
       </article>
     `;
     return html;
@@ -42,6 +41,7 @@ export default class ProductRenderer extends ItemRenderer {
     const product = this.item;
     element.querySelector(".button").addEventListener("click", async (event) => {
       event.preventDefault();
+      event.stopPropagation();
       try {
         if (controller.loggedInUser) {
           // Check if the cart exists and has at least one item
@@ -51,10 +51,10 @@ export default class ProductRenderer extends ItemRenderer {
             // Create a new order if no order ID exists
             const orderDate = new Date().toISOString().slice(0, 10);
             const newOrderId = await createOrder(orderDate, controller.loggedInUser.userId);
-            controller.addToCart(product.productId, product.listPrice, product.productName, product.imageURLs, newOrderId, null);
+           addToCart(product.productId, product.listPrice, product.productName, product.imageURLs, newOrderId, null);
           } else {
             // Add item to existing order
-            controller.addToCart(product.productId, product.listPrice, product.productName, product.imageURLs, orderId, null);
+            addToCart(product.productId, product.listPrice, product.productName, product.imageURLs, orderId, null);
           }
         } else {
           const guestOrderId = controller.cart[0]?.guestOrderId;
@@ -63,10 +63,10 @@ export default class ProductRenderer extends ItemRenderer {
             // Create a new guest order if no order ID exists
             const orderDate = new Date().toISOString().slice(0, 10);
             const newGuestOrderId = await guestOrderController.createGuestOrder(orderDate);
-            controller.addToCart(product.productId, product.listPrice, product.productName, product.imageURLs, null, newGuestOrderId);
+            addToCart(product.productId, product.listPrice, product.productName, product.imageURLs, null, newGuestOrderId);
           } else {
             // Add item to existing guest order
-            controller.addToCart(product.productId, product.listPrice, product.productName, product.imageURLs, null, guestOrderId);
+            addToCart(product.productId, product.listPrice, product.productName, product.imageURLs, null, guestOrderId);
           }
         }
       } catch (error) {
@@ -86,5 +86,11 @@ export default class ProductRenderer extends ItemRenderer {
     dialog.dialog.innerHTML = dialogHTML; // Set HTML directly to the dialog container
     // Show the dialog
     dialog.show();
+
+    //dialog close
+    dialog.dialog.querySelector(".closeModal").addEventListener("click", (event) => {
+      event.preventDefault();
+      dialog.close();
+    });
   }
 }

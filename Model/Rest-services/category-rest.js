@@ -16,13 +16,6 @@ async function getAllCategories() {
   return allCategories;
 }
 
-async function getSomeCategories(limit, offset) {
-  const response = await fetch(`${endpoint}/categories?pageNum=${offset}&pageSize=${limit}`);
-  const originalJson = await response.json();
-
-  return originalJson.map((jsonObj) => new Category(jsonObj));
-}
-
 async function refetchAllCategories() {
   const response = await fetch(`${endpoint}/categories`);
   const originalJson = await response.json();

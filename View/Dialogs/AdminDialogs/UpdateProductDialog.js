@@ -1,5 +1,4 @@
 import Dialog from "../Dialog.js";
-import * as controller from "../../../Admin/admin.js"
 import {updateProduct} from "../../../Model/Rest-services/products-rest.js";
 
 export default class UpdateProductDialog extends Dialog {

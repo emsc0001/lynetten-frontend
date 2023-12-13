@@ -2,7 +2,7 @@ import { loggedInUser } from "../../main.js";
 
 
 export default function loggedInHtmlChange() {
-    const loggedInUserInfo = document.getElementById("userLogin-container");
+    const loggedInUserInfo = document.querySelector(".userLogin-container");
 
     if (loggedInUser) {
         //remove current innerHTML
