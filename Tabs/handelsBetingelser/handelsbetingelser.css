@@ -721,3 +721,27 @@ footer {
   border-radius: 8px;
   margin: 20px auto; /* Increased top and bottom margin */
 }
+
+.social-media a {
+  display: inline-block;
+  margin-right: 10px;
+  color: #fff; /* Change as needed */
+  font-size: 24px; /* Adjust icon size as needed */
+}
+
+.social-media a:hover {
+  color: #ddd; /* Slightly lighter color on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .social-media {
+    order: 3; /* Make sure social media links are at the bottom on mobile */
+    margin-top: 20px; /* Add some space above the social media links */
+  }
+}
