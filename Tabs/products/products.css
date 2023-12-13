@@ -1,6 +1,6 @@
-
 /* Typography */
-body, html {
+body,
+html {
   margin: 0;
   padding: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -21,7 +21,7 @@ body, html {
 /* Underline effect */
 .nav-link::after,
 .nav-item.active .nav-link::after {
-  content: '';
+  content: "";
   display: block;
   margin: auto; /* Center the pseudo-element */
   height: 3px; /* Height of the underline */
@@ -178,13 +178,6 @@ body, html {
   height: 50px; /* Adjust as needed */
 }
 
-
-
-
-
-
-
-
 .nav-link,
 .nav-icon {
   display: inline-block;
@@ -262,7 +255,6 @@ body, html {
   display: block;
 }
 
-
 /* Use media queries for responsiveness as needed */
 .logo-container {
   display: flex;
@@ -272,8 +264,6 @@ body, html {
 .logo-container img {
   margin-right: 10px; /* Gives some space between the logo and the text */
 }
-
-
 
 .navbar {
   display: flex;
@@ -304,13 +294,10 @@ body, html {
   margin: 0 auto; /* This will center the nav-menu within its container */
 }
 
-
 .logo-container {
   display: flex;
   align-items: center;
 }
-
-
 
 /* Header and Navigation */
 .header {
@@ -377,10 +364,6 @@ body, html {
   margin-right: 8px; /* Add some space between the icon and the input */
 }
 
-
-
-
-
 .nav-item a:hover,
 .nav-item a:focus {
   color: #ff8c00; /* Hover and focus state color */
@@ -396,61 +379,12 @@ body, html {
   cursor: pointer;
 }
 
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.6);
-  animation: fadeIn 0.3s ease-in-out; /* Add the animation property */
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
 h2 {
   text-align: center;
   color: #000000;
   font-size: 30px;
   font-weight: bold;
   margin-bottom: 20px;
-}
-
-.modal-content {
-  background-color: #fefefe;
-  margin: 5% auto;
-  padding: 20px;
-  border: 1px solid #ddd;
-  width: 30%;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: 0.3s;
-}
-
-/* Style for the close button */
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 24px;
-  font-weight: bold;
-  transition: 0.3s;
-}
-
-.close:hover,
-.close:focus {
-  color: #333;
-  text-decoration: none;
-  cursor: pointer;
 }
 
 /* Style for the login form inside the modal */
@@ -477,123 +411,6 @@ input:focus {
   outline: none;
 }
 
-#modalButton {
-  background-color: #2980b9;
-  color: #fff;
-  padding: 12px 0;
-  border: none;
-  width: 100%;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 17px;
-}
-
-#modalButton:hover {
-  background-color: #ffb301;
-}
-
-/* Style for the create user modal */
-#createUserModal {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.6);
-}
-
-/* Style for the create user modal content */
-#createUserModal .modal-content {
-  background-color: #fefefe;
-  margin: 5% auto;
-  padding: 20px;
-  border: 1px solid #ddd;
-  width: 30%;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: 0.3s;
-}
-
-/* Style for the close button in the create user modal */
-#createUserModal .close {
-  color: #aaa;
-  float: right;
-  font-size: 24px;
-  font-weight: bold;
-  transition: 0.3s;
-}
-
-#createUserModal .close:hover,
-#createUserModal .close:focus {
-  color: #333;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-/* Style for the login form inside the create user modal */
-#createUserModal form {
-  padding: 0 16px;
-}
-
-#createUserModal label {
-  display: block;
-  margin-bottom: 8px;
-}
-
-#createUserModal input {
-  width: 100%;
-  margin-bottom: 20px;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-#createUserModal input:focus {
-  border-color: #333;
-  outline: none;
-}
-
-#createUserModal button {
-  background-color: #3498db;
-  color: #fff;
-  padding: 12px 0;
-  border: none;
-  width: 100%;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 17px;
-}
-
-#createUserModal button:hover {
-  background-color: #2980b9;
-}
-
-/* Style for the additional options in the create user modal */
-#createUserModal .additional-options {
-  margin-top: 20px;
-  text-align: center;
-}
-
-#createUserModal .additional-options p {
-  margin-bottom: 8px;
-  color: #666;
-}
-
-#createUserModal .additional-options a {
-  color: #3498db;
-  text-decoration: none;
-  transition: 0.3s;
-}
-
-#createUserModal .additional-options a:hover {
-  text-decoration: underline;
-  color: #2980b9;
-}
-
 /* Style for the additional options (forgot password and create account) */
 .additional-options {
   margin-top: 20px;
@@ -615,8 +432,6 @@ input:focus {
   text-decoration: underline;
   color: #2980b9;
 }
-
-
 
 /* Add more styles as needed */
 
@@ -665,8 +480,6 @@ input:focus {
   column-count: 3; /* Adjust the number of columns as needed */
   column-gap: 15px; /* Space between columns */
 }
-
-
 
 .product-item {
   display: flex;
@@ -732,15 +545,34 @@ input:focus {
   background-color: #ff6347; /* Slightly darker on hover */
 }
 
-
-.product-item {
-  /* Style each product item as needed */
-  border: 1px solid #ccc;
-  padding: 20px;
+.product-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
 }
 
+.product-details img {
+  max-width: 40%;
+  height: auto;
+  margin-bottom: 15px;
+}
 
+.product-details p {
+  margin: 0;
+  color: #666;
+}
+
+.closeModal:hover {
+  background-color: #ff8c00; /* Adjust the color to match the screenshot */
+}
+
+/* PRODUCT INFORMATION MODAL VIEW */
+
+/* Optional: Add some hover effects */
+.info-icon-container:hover {
+  background-color: #2980b9;
+}
 
 /* Container for products */
 .products-container {
@@ -749,13 +581,6 @@ input:focus {
   justify-content: center; /* Center the items */
   gap: 20px; /* Space between items */
 }
-
-.products-container.fade-out {
-  opacity: 0;
-}
-
-
-
 
 /* Add this in your existing CSS file */
 .search-container {
@@ -789,6 +614,61 @@ input:focus {
   font-size: 17px;
   width: 100%;
 }
+
+/* ---------Sort--------- */
+.sort-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.sort {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #333;
+}
+
+.sort label {
+  margin-right: 10px;
+}
+
+.sort select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.sort select:hover,
+.sort select:focus {
+  border-color: #555;
+}
+
+/* Style the arrow in the select box */
+.sort select::after {
+  content: "▼";
+  font-size: 10px;
+  margin-left: 5px;
+}
+
+/* Optional: Style the select box when opened */
+.sort select:focus {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-color: #555;
+}
+
+/* Optional: Style the options */
+.sort select option {
+  background-color: #fff;
+  color: #333;
+}
+
+/* ---------Sort--------- */
 
 /* Style the search button (if needed) */
 
@@ -966,10 +846,6 @@ footer {
   list-style: none;
 }
 
-
-
-
-
 .feedback-box {
   display: none; /* Initially hidden */
   position: fixed; /* Fixed position */
@@ -982,7 +858,7 @@ footer {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); /* Shadow for depth */
   z-index: 1000; /* Ensures it's on top of other elements */
   font-size: 1em; /* Font size */
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Font family */
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; /* Font family */
   text-align: center; /* Center the text */
   border: 1px solid #fff; /* White border */
   opacity: 0.95; /* Slightly transparent */
@@ -992,12 +868,12 @@ footer {
 /* Animation to fade in and move up slightly */
 @keyframes fadeInUp {
   from {
-      transform: translateY(20px);
-      opacity: 0;
+    transform: translateY(20px);
+    opacity: 0;
   }
   to {
-      transform: translateY(0);
-      opacity: 0.95;
+    transform: translateY(0);
+    opacity: 0.95;
   }
 }
 

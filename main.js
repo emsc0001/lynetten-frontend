@@ -27,8 +27,6 @@ import clearCartAndDeleteUnpaidOrders from "./Controller/clearCartAndDeleteUnpai
 import { newsletter } from "./View/Nyhedsbrev.js";
 // import { myMap } from "./View/map.js";
 
-
-
 endpoint;
 
 let products = [];
@@ -70,12 +68,9 @@ async function baddServiceApp() {
     const urlParams = new URLSearchParams(window.location.search);
     const categoryId = urlParams.get("categoryId");
     if (categoryId) {
-      // Hvis categoryId findes i URL'en, opdater produkter baseret på kategori
       await ProductRenderer.updateProductsByCategory(categoryId);
-
     } else {
-      // Ellers, vis alle produkter
-    initializeProductViews();
+      initializeProductViews();
     }
   } else if (htmlSide === "/kurv.html") {
     initializeCartHtmlView();
@@ -89,7 +84,7 @@ async function baddServiceApp() {
     initializeCartView();
   }
 
-  if (loggedInUser.userId) {
+  if (loggedInUser) {
     loggedInHtmlChange();
     document.querySelector("#logout").addEventListener("click", logout);
   }
@@ -145,78 +140,172 @@ function initializeOtherHtmlViews() {
 
 //-----Initiliaze views for products.html-----//
 function initializeProductViews() {
-    productsLists = new Paginater(products, "#products-container", ProductRenderer, 10);
-    productsLists.render();
+  productsLists = new Paginater(products, "#products-container", ProductRenderer, 10);
+  productsLists.render();
 
-    // initialize Category Views //
-    categoriesLists = new ListRenderer(categories, ".category-list", CategoryRenderer);
-    categoriesLists.render();
+  // document.addEventListener("DOMContentLoaded", () => {
+  //   const sortSelect = document.getElementById("sort");
+  //   if (sortSelect) {
+  //     sortSelect.addEventListener("change", () => {
+  //       const selectedOption = sortSelect.options[sortSelect.selectedIndex];
+  //       const sortBy = selectedOption.dataset.sortBy;
+  //       const sortDirection = selectedOption.dataset.sortDirection;
 
-    // initialize Products views based on Categories  //
+  //       // Call the sort function in ListRenderer with the selected options
+  //       if (productsLists) {
+  //         const sortedProducts = productsLists.sort(sortBy, sortDirection);
+  //         console.log("Sorted products");
+  //         productsLists = new Paginater(sortedProducts, "#products-container", ProductRenderer, 10);
+  //         productsLists.render(sortedProducts);
+  //       }
+  //     });
+  //   }
+  // });
 
-    const categoryLinks = document.querySelectorAll(".category-list a");
-    categoryLinks.forEach((categoryLink) => {
-        categoryLink.addEventListener("click", async (event) => {
-            event.preventDefault();
-            const categoryId = categoryLink.dataset.categoryId;
+  // initialize Category Views //
+  categoriesLists = new ListRenderer(categories, ".category-list", CategoryRenderer);
+  categoriesLists.render();
 
-            // Brug den nye funktion til at hente kategori og produkter
-            const { category, products } = await getCategoryWithProducts(categoryId);
+  // initialize Products views based on Categories  //
 
-            // Gør noget med kategori og produkter, f.eks. vis dem i konsollen
-            console.log("Category:", category);
-            console.log("Products for category ID", categoryId, products);
+  const categoryLinks = document.querySelectorAll(".category-list a");
+  categoryLinks.forEach((categoryLink) => {
+    categoryLink.addEventListener("click", async (event) => {
+      event.preventDefault();
+      const categoryId = categoryLink.dataset.categoryId;
 
-            productsLists = new ListRenderer(products, "#products-container", ProductRenderer);
-            productsLists.render();
-        });
+      // Brug den nye funktion til at hente kategori og produkter
+      const { category, products } = await getCategoryWithProducts(categoryId);
+
+      // Gør noget med kategori og produkter, f.eks. vis dem i konsollen
+      console.log("Category:", category);
+      console.log("Products for category ID", categoryId, products);
+
+      productsLists = new ListRenderer(products, "#products-container", ProductRenderer);
+      productsLists.render();
     });
+  });
 
   // ------------ Click event for product dialog --------------//
   const productGrid = document.querySelector("#products-container");
   productGrid.addEventListener("click", (event) => {
     const productElement = event.target.closest(".product");
-      if (productElement) {
-          ProductRenderer.handleProductClick(productElement);
-      }
+    if (productElement) {
+      ProductRenderer.handleProductClick(productElement);
+    }
   });
 
-    //------- LOGIN USER DIALOG -----------------//
-    UsersLoginDialog = new UserLoginDialog("user-login-dialog");
-    UsersLoginDialog.render();
+  //------- LOGIN USER DIALOG -----------------//
+  UsersLoginDialog = new UserLoginDialog("user-login-dialog");
+  UsersLoginDialog.render();
 
-    const userLogin = document.querySelector("#logIn");
+  const userLogin = document.querySelector("#logIn");
 
-    userLogin.addEventListener("click", (event) => {
-        event.preventDefault();
-        UsersLoginDialog.show();
+  userLogin.addEventListener("click", (event) => {
+    event.preventDefault();
+    UsersLoginDialog.show();
+  });
+
+  // CREATE USER DIALOG //
+  CreateUserDialog = new UserCreateDialog("user-create-dialog");
+  CreateUserDialog.render();
+
+  const createUserLink = document.getElementById("createUserLogin");
+
+  // Event listener to show the dialog when the link is clicked
+  createUserLink.addEventListener("click", (event) => {
+    event.preventDefault(); // Prevent the default link behavior (e.g., navigating to a new page)
+    CreateUserDialog.show();
+  });
+}
+
+function setProductList(products) {
+  productsLists = new ListRenderer(products, "#products-container", ProductRenderer, 10);
+  productsLists.render();
+  const productGrid = document.querySelector("#products-container");
+  productGrid.addEventListener("click", (event) => {
+    const productElement = event.target.closest(".product");
+    if (productElement) {
+      ProductRenderer.handleProductClick(productElement);
+    }
+  });
+}
+
+function setCategoryList(categories) {
+  categoriesLists = new ListRenderer(categories, ".category-list", CategoryRenderer);
+  categoriesLists.render();
+
+  const categoryLinks = document.querySelectorAll(".category-list a");
+  categoryLinks.forEach((categoryLink) => {
+    categoryLink.addEventListener("click", async (event) => {
+      event.preventDefault();
+      const categoryId = categoryLink.dataset.categoryId;
+
+      // Brug den nye funktion til at hente kategori og produkter
+      const { category, products } = await getAllCategoriesx(categoryId);
+
+      console.log("Category:", category);
+      console.log("Products for category ID", categoryId, products);
     });
-
-    // CREATE USER DIALOG //
-    CreateUserDialog = new UserCreateDialog("user-create-dialog");
-    CreateUserDialog.render();
-
-    const createUserLink = document.getElementById("createUserLogin");
-
-    // Event listener to show the dialog when the link is clicked
-    createUserLink.addEventListener("click", (event) => {
-        event.preventDefault(); // Prevent the default link behavior (e.g., navigating to a new page)
-        CreateUserDialog.show();
-    });
+  });
 }
 
 function logout() {
-    // Clear user-related data
-    localStorage.removeItem("loggedInUser"); // Remove user-related stored data
-    localStorage.removeItem("cart"); // Remove any cart data associated with the user
+  // Clear user-related data
+  localStorage.removeItem("loggedInUser"); // Remove user-related stored data
+  localStorage.removeItem("cart"); // Remove any cart data associated with the user
 
-    // Reset the application state
+  // Reset the application state
   window.location.href = "/index.html"; // Redirect to the home page
-  loggedInHtmlChange(); 
+  loggedInHtmlChange();
 }
+// -----Sort EventListener----- //
 
+document.addEventListener("DOMContentLoaded", () => {
+  const sortSelect = document.getElementById("sort");
+  if (sortSelect) {
+    sortSelect.addEventListener("change", () => {
+      const selectedOption = sortSelect.options[sortSelect.selectedIndex];
+      const sortBy = selectedOption.dataset.sortBy;
+      const sortDirection = selectedOption.dataset.sortDirection;
 
-// -----Search EventListener------//
+      // Call the sort function in ListRenderer with the selected options
+      if (productsLists) {
+        const sortedProducts = productsLists.sort(sortBy, sortDirection);
+        console.log("Sorted products");
+        productsLists = new ListRenderer(sortedProducts, "#products-container", ProductRenderer);
+        productsLists.render(sortedProducts);
+      }
+    });
+  }
+});
+
+// document.addEventListener("DOMContentLoaded", () => {
+//   const sortSelect = document.getElementById("sort");
+//   if (sortSelect) {
+//     sortSelect.addEventListener("change", () => {
+//       const selectedOption = sortSelect.options[sortSelect.selectedIndex];
+//       const sortBy = selectedOption.dataset.sortBy;
+//       const sortDirection = selectedOption.dataset.sortDirection;
+
+//       // Call the sort function in ListRenderer with the selected options
+//       if (productsLists) {
+//         let sortedProducts;
+
+//         if (sortBy === "listPrice") {
+//           // If sorting by listPrice, convert the values to numbers for proper sorting
+//           sortedProducts = productsLists.sort(sortBy, sortDirection, true);
+//         } else {
+//           sortedProducts = productsLists.sort(sortBy, sortDirection);
+//         }
+
+//         productsLists = new ListRenderer(sortedProducts, "#products-container", ProductRenderer);
+//         productsLists.render();
+//       }
+//     });
+//   }
+// });
+// -----Search EventListener----- //
 
 document.addEventListener("DOMContentLoaded", () => {
   const searchInputs = document.querySelectorAll("[data-search-type]");
@@ -255,23 +344,23 @@ function updateProductList(searchResults) {
 function checkLoginStatus() {
   const loggedInUserInfo = localStorage.getItem("loggedInUser");
   console.log(loggedInUserInfo);
-    if (loggedInUserInfo) {
-       loggedInUser = JSON.parse(loggedInUserInfo);
-      // Store the logged-in user ID in a global variable
+  if (loggedInUserInfo) {
+    loggedInUser = JSON.parse(loggedInUserInfo);
+    // Store the logged-in user ID in a global variable
 
-      // Checks if the html has an element with id "loggedInUserInfo" and then puts the email in the element
-          const loggedInEmailHtmlId = document.getElementById("loggedInUserInfo");
-          if (loggedInEmailHtmlId) {
-              // Handle updating the UI with the logged-in user information if needed
-              loggedInEmailHtmlId.innerHTML = `Logged in as ${loggedInUser.email}`;
-      }
-      
-        // User is logged in, perform actions based on the logged-in user
-        console.log("Logged in user:", loggedInUser);
-    } else {
-        // User is not logged in, perform actions for guests
-        console.log("User is not logged in");
+    // Checks if the html has an element with id "loggedInUserInfo" and then puts the email in the element
+    const loggedInEmailHtmlId = document.getElementById("loggedInUserInfo");
+    if (loggedInEmailHtmlId) {
+      // Handle updating the UI with the logged-in user information if needed
+      loggedInEmailHtmlId.innerHTML = `Logged in as ${loggedInUser.email}`;
     }
+
+    // User is logged in, perform actions based on the logged-in user
+    console.log("Logged in user:", loggedInUser);
+  } else {
+    // User is not logged in, perform actions for guests
+    console.log("User is not logged in");
+  }
 }
 
 // -------every function cart related-------//
@@ -319,12 +408,12 @@ function addToCart(productId, listPrice, productName, imageURLs, orderId, guestO
   const existingProduct = cart.find((item) => item.productId === productId);
 
   if (existingProduct) {
-      // If the product exists, increase its quantity
-      existingProduct.quantity++;
+    // If the product exists, increase its quantity
+    existingProduct.quantity++;
   } else if (orderId) {
-      cart.push({ productId, listPrice, productName, imageURLs, orderId, quantity: 1 });
+    cart.push({ productId, listPrice, productName, imageURLs, orderId, quantity: 1 });
   } else {
-      cart.push({ productId, listPrice, productName, imageURLs, guestOrderId, quantity: 1 });
+    cart.push({ productId, listPrice, productName, imageURLs, guestOrderId, quantity: 1 });
   }
 
   console.log("Item added to cart:", cart); // Logging for demonstration
@@ -332,9 +421,9 @@ function addToCart(productId, listPrice, productName, imageURLs, orderId, guestO
   saveCartToLocalStorage(); // Save cart to localStorage
   console.log(htmlSide);
   if (htmlSide === "/kurv.html") {
-      initializeCartHtmlView(); // Render the cart
+    initializeCartHtmlView(); // Render the cart
   } else {
-      initializeCartView(); // Render the cart
+    initializeCartView(); // Render the cart
   }
 
   // Call cartFeedback function here to show feedback
@@ -343,14 +432,13 @@ function addToCart(productId, listPrice, productName, imageURLs, orderId, guestO
 
 function cartFeedback(productName) {
   // Show feedback box
-  var feedbackBox = document.getElementById('feedbackBox');
+  var feedbackBox = document.getElementById("feedbackBox");
   feedbackBox.innerText = productName + " added to cart!"; // Update text to show which product was added
-  feedbackBox.style.display = 'block';
-  setTimeout(function() {
-      feedbackBox.style.display = 'none';
+  feedbackBox.style.display = "block";
+  setTimeout(function () {
+    feedbackBox.style.display = "none";
   }, 3000); // Hide the box after 3 seconds
 }
-
 
 // Købeguide Beskrivelser
 document.addEventListener("DOMContentLoaded", function () {
@@ -376,10 +464,6 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
   attribution: "© OpenStreetMap contributors",
 }).addTo(myMap);
 
-
-
-
-
 export {
   addToCart,
   products,
@@ -391,21 +475,24 @@ export {
   initializeCartHtmlView,
   updateProductList,
   users,
-  loggedInUser
+  loggedInUser,
+  productsLists,
+  setProductList,
+  setCategoryList,
 };
 
-  //   // FORGOT PASSWORD DIALOG //
-  // PasswordForgotDialog = new ForgotPasswordDialog("forgot-password-dialog");
-  // PasswordForgotDialog.render();
+//   // FORGOT PASSWORD DIALOG //
+// PasswordForgotDialog = new ForgotPasswordDialog("forgot-password-dialog");
+// PasswordForgotDialog.render();
 
-  // const forgotPasswordLink = document.getElementById("forgotUserLogin");
+// const forgotPasswordLink = document.getElementById("forgotUserLogin");
 
-  // // Event listener to show the dialog when the link is clicked
-  // forgotPasswordLink.addEventListener("click", (event) => {
-  //   event.preventDefault(); // Prevent the default link behavior (e.g., navigating to a new page)
-  //   PasswordForgotDialog.show();
-  // });
-  
+// // Event listener to show the dialog when the link is clicked
+// forgotPasswordLink.addEventListener("click", (event) => {
+//   event.preventDefault(); // Prevent the default link behavior (e.g., navigating to a new page)
+//   PasswordForgotDialog.show();
+// });
+
 // // Add this to your existing JavaScript file or create a new one
 // document.addEventListener("DOMContentLoaded", function () {
 //   const discountToggle = document.getElementById("discountToggle");
