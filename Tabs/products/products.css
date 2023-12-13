@@ -673,11 +673,12 @@ input:focus {
 }
 
 
-/* Tilføj dette til din eksisterende CSS-fil */
+/* Container for products */
 .products-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: center; /* Center the items */
+  gap: 20px; /* Space between items */
 }
 
 .products-container.fade-out {
