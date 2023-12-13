@@ -143,6 +143,25 @@ function initializeProductViews() {
   productsLists = new Paginater(products, "#products-container", ProductRenderer, 10);
   productsLists.render();
 
+  // document.addEventListener("DOMContentLoaded", () => {
+  //   const sortSelect = document.getElementById("sort");
+  //   if (sortSelect) {
+  //     sortSelect.addEventListener("change", () => {
+  //       const selectedOption = sortSelect.options[sortSelect.selectedIndex];
+  //       const sortBy = selectedOption.dataset.sortBy;
+  //       const sortDirection = selectedOption.dataset.sortDirection;
+
+  //       // Call the sort function in ListRenderer with the selected options
+  //       if (productsLists) {
+  //         const sortedProducts = productsLists.sort(sortBy, sortDirection);
+  //         console.log("Sorted products");
+  //         productsLists = new Paginater(sortedProducts, "#products-container", ProductRenderer, 10);
+  //         productsLists.render(sortedProducts);
+  //       }
+  //     });
+  //   }
+  // });
+
   // initialize Category Views //
   categoriesLists = new ListRenderer(categories, ".category-list", CategoryRenderer);
   categoriesLists.render();
@@ -223,7 +242,7 @@ function setCategoryList(categories) {
       const categoryId = categoryLink.dataset.categoryId;
 
       // Brug den nye funktion til at hente kategori og produkter
-      const { category, products } = await getCategoryWithProducts(categoryId);
+      const { category, products } = await getAllCategoriesx(categoryId);
 
       console.log("Category:", category);
       console.log("Products for category ID", categoryId, products);
@@ -252,13 +271,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Call the sort function in ListRenderer with the selected options
       if (productsLists) {
-        const sortedProducts = productsLists.sort(sortBy, sortDirection);
-        console.log("Sorted products");
-        sortedProducts.render();
+        let sortedProducts;
+
+        if (sortBy === "listPrice") {
+          // If sorting by listPrice, convert the values to numbers for proper sorting
+          sortedProducts = productsLists.sort(sortBy, sortDirection, true);
+        } else {
+          sortedProducts = productsLists.sort(sortBy, sortDirection);
+        }
+
+        productsLists = new ListRenderer(sortedProducts, "#products-container", ProductRenderer);
+        productsLists.render();
       }
     });
   }
 });
+
 // -----Search EventListener----- //
 
 document.addEventListener("DOMContentLoaded", () => {

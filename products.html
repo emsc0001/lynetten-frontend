@@ -88,12 +88,13 @@
       </aside>
 
       <main class="main-content">
-        <div class="breadcrumb">Du er her: <a href="index.html">Forside</a> &gt; Produkter</div>
+        <div class="breadcrumb">Du er her: <a href="index.html">Forside</a> <a a href="products.html"> &gt; Produkter</a></div>
 
         <div class="sort-container">
           <div class="sort">
             <label for="sort">Sorter efter:</label>
             <select name="sort" id="sort" data-sort-list="products">
+              <option data-sort-by="default" data-sort-direction="asc" value="default">Standard</option>
               <option data-sort-by="listPrice" data-sort-direction="asc" value="price-asc">Pris (lav til høj)</option>
               <option data-sort-by="listPrice" data-sort-direction="desc" value="price-desc">Pris (høj til lav)</option>
               <option data-sort-by="productName" data-sort-direction="asc" value="name-desc">Navn (A-Z)</option>

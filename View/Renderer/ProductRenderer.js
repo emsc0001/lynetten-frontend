@@ -16,7 +16,7 @@ export default class ProductRenderer extends ItemRenderer {
           <img id="product-image"src="${product.imageURLs}" alt="${product.productName}">
           <h2 id="product-name">${product.productName}</h2>
           <h4 id="product-number">${product.productNumber}</h4>
-          <h3 id="product-list-price">${product.listPrice}kr</h3>
+<h3 id="product-list-price" data-type="number">${product.listPrice}kr</h3>
           <button class="button" data-id="${product.productId}">Add to Cart</button>
         </div>
       </article>

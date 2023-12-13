@@ -33,10 +33,11 @@ export default class Paginater extends ListRenderer {
         this.sortDir = "asc";
       }
     }
-    // store sortBy in property for next time
+    // store sortBy in the property for next time
     this.sortBy = sortBy;
 
     this.setPage(this.page);
+    this.renderPageButtons(); // Re-render the page buttons after sorting
   }
 
   async setPage(page) {

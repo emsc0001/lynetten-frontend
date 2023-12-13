@@ -1,12 +1,12 @@
 export default class Product {
   constructor(obj) {
     this.productId = obj.productId;
-    this.productNumber = obj.productNumber;
+    this.productNumber = Number(obj.productNumber);
     this.productName = obj.productName;
     this.imageURLs = obj.imageURLs;
-    this.listPrice = obj.listPrice;
-    this.offerPrice = obj.offerPrice;
-    this.stockQuantity = obj.stockQuantity;
+    this.listPrice = Number(obj.listPrice);
+    this.offerPrice = Number(obj.offerPrice);
+    this.stockQuantity = Number(obj.stockQuantity);
     this.description = obj.description;
     // this.categories = obj.categories;
     // this.colors = obj.color;
