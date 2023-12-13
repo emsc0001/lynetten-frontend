@@ -624,11 +624,6 @@ div.cart-total a.go-to-cart-link:hover {
 
 
 
-h2, h3 {
-  color: #000000; /* Headings color to match the top bar */
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
-}
 
 /* Navigation */
 .nav-menu {
