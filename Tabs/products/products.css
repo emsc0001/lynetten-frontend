@@ -1020,5 +1020,40 @@ footer {
   left: 0;
 }
 
-/* Additional styles for search bar, icons, etc. */
-/* ... */
+
+
+.feedback-box {
+  display: none; /* Initially hidden */
+  position: fixed; /* Fixed position */
+  top: 60px; /* Distance from top */
+  right: 20px; /* Distance from right */
+  background-color: #333; /* Dark background */
+  color: #fff; /* White text */
+  padding: 15px 30px; /* Padding around text */
+  border-radius: 25px; /* Rounded corners */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+  z-index: 1000; /* Ensures it's on top of other elements */
+  font-size: 1em; /* Font size */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Font family */
+  text-align: center; /* Center the text */
+  border: 1px solid #fff; /* White border */
+  opacity: 0.95; /* Slightly transparent */
+  transition: all 0.3s ease-in-out; /* Transition for smooth appearance */
+}
+
+/* Animation to fade in and move up slightly */
+@keyframes fadeInUp {
+  from {
+      transform: translateY(20px);
+      opacity: 0;
+  }
+  to {
+      transform: translateY(0);
+      opacity: 0.95;
+  }
+}
+
+/* Adding the animation to the feedback box */
+.feedback-box.show {
+  animation: fadeInUp 0.5s forwards;
+}

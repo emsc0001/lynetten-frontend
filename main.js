@@ -27,6 +27,8 @@ import clearCartAndDeleteUnpaidOrders from "./Controller/clearCartAndDeleteUnpai
 import { newsletter } from "./View/Nyhedsbrev.js";
 // import { myMap } from "./View/map.js";
 
+
+
 endpoint;
 
 let products = [];
@@ -317,12 +319,12 @@ function addToCart(productId, listPrice, productName, imageURLs, orderId, guestO
   const existingProduct = cart.find((item) => item.productId === productId);
 
   if (existingProduct) {
-    // If the product exists, increase its quantity
-    existingProduct.quantity++;
+      // If the product exists, increase its quantity
+      existingProduct.quantity++;
   } else if (orderId) {
-    cart.push({ productId, listPrice, productName, imageURLs, orderId, quantity: 1 });
+      cart.push({ productId, listPrice, productName, imageURLs, orderId, quantity: 1 });
   } else {
-    cart.push({ productId, listPrice, productName, imageURLs, guestOrderId, quantity: 1 });
+      cart.push({ productId, listPrice, productName, imageURLs, guestOrderId, quantity: 1 });
   }
 
   console.log("Item added to cart:", cart); // Logging for demonstration
@@ -330,11 +332,25 @@ function addToCart(productId, listPrice, productName, imageURLs, orderId, guestO
   saveCartToLocalStorage(); // Save cart to localStorage
   console.log(htmlSide);
   if (htmlSide === "/kurv.html") {
-    initializeCartHtmlView(); // Render the cart
+      initializeCartHtmlView(); // Render the cart
   } else {
-    initializeCartView(); // Render the cart
+      initializeCartView(); // Render the cart
   }
+
+  // Call cartFeedback function here to show feedback
+  cartFeedback(productName); // Pass the product name or any other relevant information
 }
+
+function cartFeedback(productName) {
+  // Show feedback box
+  var feedbackBox = document.getElementById('feedbackBox');
+  feedbackBox.innerText = productName + " added to cart!"; // Update text to show which product was added
+  feedbackBox.style.display = 'block';
+  setTimeout(function() {
+      feedbackBox.style.display = 'none';
+  }, 3000); // Hide the box after 3 seconds
+}
+
 
 // Købeguide Beskrivelser
 document.addEventListener("DOMContentLoaded", function () {
