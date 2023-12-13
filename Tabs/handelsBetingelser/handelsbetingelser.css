@@ -175,6 +175,57 @@ body, html {
   align-items: center;
 }
 
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.nav-menu {
+  flex: 2; /* Allows the nav menu to take twice as much space as the logo and icons */
+  display: flex;
+  justify-content: center; /* Centers the menu items */
+}
+
+.nav-item {
+  margin: 0 10px; /* Adds space between the navigation items */
+}
+
+.nav-icons {
+  display: flex;
+  align-items: center; /* Aligns items vertically in the center */
+  justify-content: flex-end; /* Aligns items to the end (right side) */
+  gap: 10px; /* Space between each icon */
+  flex: 1; /* Takes up necessary space */
+}
+
+.nav-icon, .search-container, .userLogin-container {
+  display: flex;
+  align-items: center; /* Ensures vertical alignment for each icon */
+  justify-content: center; /* Centers content within each icon or container */
+}
+
+/* Additional style for search icon if needed */
+.search-icon {
+  cursor: pointer;
+}
+
+/* Adjust margins and padding as necessary for fine-tuning */
+.nav-icon {
+  margin-right: 8px; /* Space on the right of each icon */
+}
+
+
+/* Add your existing styles for .nav-link, .underline, and other elements */
 
 
 
@@ -311,13 +362,6 @@ body, html {
   margin-top: 40px;
 }
 
-.handelsbetingelser-content h1,
-.handelsbetingelser-content h2,
-.handelsbetingelser-content h3 {
-  color: #333;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
 
 
 
@@ -676,4 +720,28 @@ footer {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   margin: 20px auto; /* Increased top and bottom margin */
+}
+
+.social-media a {
+  display: inline-block;
+  margin-right: 10px;
+  color: #fff; /* Change as needed */
+  font-size: 24px; /* Adjust icon size as needed */
+}
+
+.social-media a:hover {
+  color: #ddd; /* Slightly lighter color on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .social-media {
+    order: 3; /* Make sure social media links are at the bottom on mobile */
+    margin-top: 20px; /* Add some space above the social media links */
+  }
 }
