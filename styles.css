@@ -22,24 +22,13 @@ body {
   text-align: center;
 }
 
-.nav-menu {
-  display: flex;
-  justify-content: center;
-  list-style: none;
-}
+
 
 .nav-item {
   margin: 0 10px; /* Adjusted margin to match other navbars */
 }
 
-.nav-link {
-  display: block;
-  padding: 8px 12px; /* Adjusted padding to match other navbars */
-  color: #333;
-  text-decoration: none;
-  background: transparent;
-  border: none;
-}
+
 
 /* Consistent hover and active styles */
 .nav-link:hover,
@@ -187,8 +176,12 @@ body {
   height: 50px; /* Adjust as needed */
 }
 
+/* Navigation */
 .nav-menu {
   display: flex;
+  justify-content: center; /* Center align nav items */
+  list-style: none; /* Remove default list styling */
+  padding-left: 0; /* Remove default padding */
 }
 
 .nav-item {
@@ -996,13 +989,7 @@ footer {
 
 
 
-/* Navigation */
-.nav-menu {
-  display: flex;
-  justify-content: center; /* Center align nav items */
-  list-style: none; /* Remove default list styling */
-  padding-left: 0; /* Remove default padding */
-}
+
 
 .nav-item {
   padding: 10px 15px; /* Uniform padding for clickable area */
@@ -1030,36 +1017,14 @@ footer {
 }
 
 
-/* Navigation Bar Styles */
-.nav-menu {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0;
-  list-style: none;
-}
+
 
 .nav-item {
   position: relative; /* For positioning the underline */
   margin: 0 10px;
 }
 
-.nav-link {
-  display: block;
-  padding: 10px 15px;
-  color: #333;
-  text-decoration: none;
-}
 
-.nav-link:hover .underline,
-.nav-item.active .underline {
-  width: 100%;
-  height: 3px;
-  background-color: #ff8c00;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-}
 
 /* Additional styles for search bar, icons, etc. */
 /* ... */

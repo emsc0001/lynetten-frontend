@@ -1,16 +1,13 @@
-/* Reset some default styles for body and html */
-body,
-html {
+
+/* Typography */
+body, html {
   margin: 0;
   padding: 0;
-}
-
-
-
-/* Global styles */
-body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f4f4f4;
+  font-size: 16px; /* Base font size */
+  line-height: 1.6; /* Line height for readability */
+  color: #333; /* Primary text color */
+  background-color: #f4f4f4; /* Background color */
 }
 
 /* Consistent hover and active styles */
@@ -181,12 +178,7 @@ body {
   height: 50px; /* Adjust as needed */
 }
 
-.nav-menu {
-  display: flex;
-  justify-content: center;
-  list-style: none;
-  padding: 0;
-}
+
 
 
 .nav-item {
@@ -227,14 +219,6 @@ body {
 
 
 
-body,
-html {
-  margin: 0;
-  padding: 0;
-  font-family: "Arial", sans-serif;
-  background-color: #f4f4f4;
-}
-
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -249,15 +233,7 @@ html {
   align-items: center;
 }
 
-/* Reset and base styles */
-body,
-html {
-  margin: 0;
-  padding: 0;
-  font-family: "Arial", sans-serif;
-  background-color: #f4f4f4;
-  line-height: 1.6;
-}
+
 
 /* Header and Navigation */
 .header {
@@ -324,13 +300,7 @@ html {
   margin-right: 8px; /* Add some space between the icon and the input */
 }
 
-/* Navigation */
-.nav-menu {
-  display: flex;
-  justify-content: center; /* Center align nav items */
-  list-style: none; /* Remove default list styling */
-  padding-left: 0; /* Remove default padding */
-}
+
 
 .nav-item {
   padding: 10px 15px; /* Uniform padding for clickable area */
@@ -922,26 +892,20 @@ footer {
   font-weight: bold;
 }
 
-/* Navigation Bar Styles */
+/* Navigation */
 .nav-menu {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0;
-  list-style: none;
+  justify-content: center; /* Center align nav items */
+  list-style: none; /* Remove default list styling */
+  padding-left: 0; /* Remove default padding */
 }
+
 
 .nav-item {
   position: relative; /* For positioning the underline */
   margin: 0 10px;
 }
 
-.nav-link {
-  display: block;
-  padding: 10px 15px;
-  color: #333;
-  text-decoration: none;
-}
 
 .nav-link:hover .underline,
 .nav-item.active .underline {
