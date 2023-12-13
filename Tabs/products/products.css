@@ -352,7 +352,7 @@ body, html {
 
 h2 {
   text-align: center;
-  color: #ff8c00;
+  color: #000000;
   font-size: 30px;
   font-weight: bold;
   margin-bottom: 20px;
@@ -598,25 +598,24 @@ input:focus {
   column-gap: 15px; /* Space between columns */
 }
 
-.main-content {
-  /* Sørger for at indholdet centreres og har plads rundt om sig */
-  max-width: 1500px;
-  margin: auto;
-  padding: 20px;
-}
+
 
 .product-item {
-  height: 300px;
   display: flex;
-  justify-content: flex-start; /* Align image to the left */
-  align-items: flex-start; /* Align image to the top */
+  flex-direction: column;
+  align-items: center; /* Center content horizontally */
   background-size: cover;
   background-position: center;
   position: relative;
   overflow: hidden;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease-in-out;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Slightly elevated shadow */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  width: calc(65% - 10px); /* 2 products per row with some spacing */
+  margin: 10px;
+  padding: 20px;
+  background-color: #fff; /* Background color for the product container */
+  text-align: center; /* Center text content */
 }
 
 .product-item:hover {
@@ -624,35 +623,23 @@ input:focus {
 }
 
 .product-item h2 {
-  color: white;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  font-size: 1.5rem;
+  color: #333;
+  font-size: 1.2rem;
   text-align: center;
-  width: 80%;
-  position: absolute;
-  bottom: 12px;
-  left: 50%;
-  transform: translateX(-50%);
   margin: 0;
 }
 
 .product-item h3 {
-  color: rgb(0, 0, 0);
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  font-size: 1.3rem;
+  color: #777;
+  font-size: 1rem;
   text-align: center;
-  width: 80%;
-  position: absolute;
-  top: 5%;
-  left: 87%;
-  transform: translateX(-50%);
-  margin: 0;
+  margin: 5px 0;
 }
 
 .product-item img {
   filter: brightness(100%);
+  max-width: 100%;
   height: auto;
-  width: 42%; /* Adjusted width */
   transition: filter 0.3s ease-in-out;
   background-color: #e68a00;
 }
@@ -662,27 +649,35 @@ input:focus {
 }
 
 .product-item button {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  padding: 10px 15px;
-  background-color: #3498db;
+  padding: 8px 15px;
+  background-color: #ff8c00;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 1rem;
   transition: background-color 0.3s ease-in-out;
+  margin-top: 10px;
 }
 
 .product-item button:hover {
-  background-color: #2980b9;
+  background-color: #ff6347; /* Slightly darker on hover */
 }
+
+
+.product-item {
+  /* Style each product item as needed */
+  border: 1px solid #ccc;
+  padding: 20px;
+  text-align: center;
+}
+
 
 /* Tilføj dette til din eksisterende CSS-fil */
 .products-container {
-  opacity: 1;
-  transition: opacity 0.5s ease-in-out;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .products-container.fade-out {
@@ -892,14 +887,14 @@ footer {
   font-weight: bold;
 }
 
-/* Navigation */
+/* Navigation Bar Styles */
 .nav-menu {
   display: flex;
-  justify-content: center; /* Center align nav items */
-  list-style: none; /* Remove default list styling */
-  padding-left: 0; /* Remove default padding */
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+  list-style: none;
 }
-
 
 .nav-item {
   position: relative; /* For positioning the underline */
