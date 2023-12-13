@@ -31,10 +31,50 @@ async function refetchAllProducts() {
   lastFetch = Date.now();
 }
 
+async function updateProduct(product) {
+    const json = JSON.stringify(product);
+    const response = await fetch(`${endpoint}/products/${product.productId}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: json,
+    });
+
+    await refetchAllProducts();
+
+    return response.ok;
+}
+
+async function createProduct(product) {
+    const json = JSON.stringify(product);
+    const response = await fetch(`${endpoint}/products`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: json,
+    });
+
+    await refetchAllProducts();
+
+    return response.ok;
+}
+
+async function deleteProduct(productId) {
+    const response = await fetch(`${endpoint}/products/${productId}`, {
+        method: "DELETE",
+    });
+
+    await refetchAllProducts();
+
+    return response.ok;
+}
+
 async function getSpecificproduct(productId) {
   const response = await fetch(`${endpoint}/products/${productId}`);
   const originalJson = await response.json();
   return new Product(originalJson);
 }
 
-export { getAllProducts, getSomeProducts, getSpecificproduct, endpoint };
+export { getAllProducts, getSomeProducts, getSpecificproduct, endpoint, updateProduct, createProduct, deleteProduct };

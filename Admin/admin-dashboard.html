@@ -5,6 +5,8 @@
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="admin-dashboard.css">
 </head>
+<body>
+    
 <div>
 
     <header class="admin-header">
@@ -20,7 +22,7 @@
     <main>
         <section id="productSection">
             <h1>Produkt Management</h1>
-            <form id="newProductForm">
+            <form id="createProductForm">
                 <input type="text" id="productName" placeholder="Product Name" required>
                 <input type="text" id="productNumber" placeholder="Product Number" required>
                 <input type="number" id="productPrice" placeholder="List Price" required>
@@ -28,15 +30,20 @@
                 <input type="number" id="stockQuantity" placeholder="Stock Quantity" required>
                 <input type="text" id="imageURLs" placeholder="Image URLs" required>
                 <textarea id="description" placeholder="Description"></textarea>
+                <label for="category">Category</label>
+                <select id="productCategories" required></select>
+                <input type="text" id="productColors" placeholder="color">
                 <button type="submit">Opret Produkt</button>
             </form>
             <h2> Alle Produkter </h2>
-            <div id="product-list"></div>
+            <div id="product-list">
+                
+            </div>
         </section>
 
         <div id="categoriesSection" style="display:none;">
             <h1>Kategori Management</h1>
-            <form id="newCategoryForm">
+            <form id="createCategoryForm">
                 <input type="text" id="categoryName" placeholder="Category Name" required>
                 <button type="submit">Opret Kategori</button>
             </form>
@@ -57,6 +64,11 @@
                     <input type="text" id="editProductNumber" name="productNumber" placeholder="Product Number" required>
                     <input type="number" id="editProductStock" name="stockQuantity" placeholder="Stock Quantity" required>
                     <input type="number" id="editProductOfferPrice" name="offerPrice" placeholder="Offer Price">
+                    <input type="text" id="editProductImageURLs" name="imageURLs" placeholder="Image URLs" required>
+                    <textarea id="editProductDescription" name="description" placeholder="Description"></textarea>
+                    <label for="category">Category</label>
+                    <select id="editProductCategories" name="category" required></select>
+                    <input type="text" id="editProductColors" name="productColors" placeholder="color">
                     <button type="submit">Save Changes</button>
                 </form>
             </div>
@@ -93,6 +105,6 @@
 
 
 </main>
-    <script type="module" src="admin-dashboard.js"></script>
+    <script type="module" src="admin.js"></script>
 </body>
 </html>

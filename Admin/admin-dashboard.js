@@ -1,7 +1,13 @@
 // admin-dashboard.js
 "use strict";
 
-const endpoint = 'http://localhost:4444';
+// import { endpoint, getAllProducts } from "../Model/Rest-services/products-rest.js";
+// import { getAllCategories, getCategoryWithProducts } from "../Model/Rest-services/category-rest.js";
+// import { getAllUsers } from "../Model/Rest-services/user-rest.js";
+
+
+const endpoint = "http://localhost:4444";
+let funnyCategories = ["hippp", "hoppp", "huppp"];
 
 async function fetchData(url, options = {}) {
     try {
@@ -305,8 +311,14 @@ function editProduct(productId) {
     .then(product => {
       // Assume you have form fields with these IDs in your HTML
       document.getElementById('editProductId').value = product.productId;
+      document.getElementById('editProductNumber').value = product.productNumber;
       document.getElementById('editProductName').value = product.productName;
       document.getElementById('editProductPrice').value = product.listPrice;
+      document.getElementById('editProductOfferPrice').value = product.offerPrice || ''; // Handle null/undefined
+      document.getElementById('editProductStock').value = product.stockQuantity;
+      document.getElementById('editProductDescription').value = product.description;
+      document.getElementById('editProductCategories').value = product.categories;
+      document.getElementById('editProductColors').value = product.colors;
       
       // Show the modal (or form) where the admin can edit the product details
       document.getElementById('editProductModal').style.display = 'block';
@@ -326,14 +338,22 @@ function editCategory(categoryId) {
     });
 }
 
+// productNumber, productName, imageURLs, listPrice, offerPrice, stockQuantity, description, categories, colors;
 // Listen for the submit event on the product edit form
 document.getElementById('editProductForm').addEventListener('submit', function(event) {
     event.preventDefault();
 
     const productId = document.getElementById('editProductId').value;
-    const updatedProduct = {
-        productName: document.getElementById('editProductName').value,
-        listPrice: parseFloat(document.getElementById('editProductPrice').value)
+  const updatedProduct = {
+      productNumber: document.getElementById('editProductNumber').value,
+    productName: document.getElementById('editProductName').value,
+        imageURLs: document.getElementById('editProductImageURLs').value,
+    listPrice: parseFloat(document.getElementById('editProductPrice').value),
+    offerPrice: parseFloat(document.getElementById('editProductOfferPrice').value) || null, // Handle null/undefined
+    stockQuantity: parseInt(document.getElementById('editProductStock').value, 10),
+    description: document.getElementById('editProductDescription').value,
+    categories: document.getElementById('editProductCategories').value,
+    colors: document.getElementById('editProductColors').value
     };
 
     // Send the PUT request to the server to update the product
@@ -351,6 +371,25 @@ document.getElementById('editProductForm').addEventListener('submit', function(e
     });
 });
 
+
+// -----Fills the dropdown in Dialog----- //
+
+function populateDropdown(selector, data) {
+    const dropdown = document.querySelector(selector);
+
+    if (!dropdown) return; // Ensure the dropdown exists
+
+    // Clear existing options
+    dropdown.innerHTML = "";
+
+    // Iterate through the data and create option elements
+    data.forEach((item) => {
+        const option = document.createElement("option");
+        option.value = item;
+        option.textContent = item; // Adjust this according to your data structure
+        dropdown.appendChild(option);
+    });
+}
 // Listen for the submit event on the category edit form
 document.getElementById('editCategoryForm').addEventListener('submit', function(event) {
     event.preventDefault();
@@ -461,6 +500,7 @@ document.addEventListener('DOMContentLoaded', () => {
   createCategory();
   fetchProducts();
   fetchCategories();
+  populateDropdown("#editProductCategories", funnyCategories);
 });
 
 
