@@ -1025,7 +1025,7 @@ footer {
 .feedback-box {
   display: none; /* Initially hidden */
   position: fixed; /* Fixed position */
-  top: 60px; /* Distance from top */
+  top: 20px; /* Distance from top */
   right: 20px; /* Distance from right */
   background-color: #333; /* Dark background */
   color: #fff; /* White text */
