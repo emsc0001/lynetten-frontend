@@ -30,4 +30,34 @@ async function refetchAllProducts() {
     lastFetch = Date.now();
 }
 
-export { getAllProducts, getSomeProducts, endpoint };
+async function updateProduct(product) {
+    const json = JSON.stringify(product);
+    const response = await fetch(`${endpoint}/products/${product.productId}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: json,
+    });
+
+    await refetchAllProducts();
+
+    return response.ok;
+}
+
+async function createProduct(product) {
+    const json = JSON.stringify(product);
+    const response = await fetch(`${endpoint}/products`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: json,
+    });
+
+    await refetchAllProducts();
+
+    return response.ok;
+}
+
+export { getAllProducts, getSomeProducts, endpoint, updateProduct, createProduct };

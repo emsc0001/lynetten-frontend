@@ -4,7 +4,7 @@ import { users } from "../../main.js";
 const endpoint = "http://localhost:4444";
 
 let allUsers = [];
-let lastFetch = 0;
+let lastFetch = null;
 
 async function getAllUsers() {
   const now = Date.now();
