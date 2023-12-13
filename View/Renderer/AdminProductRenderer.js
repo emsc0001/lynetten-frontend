@@ -1,5 +1,6 @@
 import ItemRenderer from "./Itemrenderer.js";
 import UpdateProductDialog from "../Dialogs/AdminDialogs/UpdateProductDialog.js";
+import DeleteProductDialog from "../Dialogs/AdminDialogs/DeleteProductDialog.js";
 import { populateDropdown, categories } from "../../Admin/admin.js";
 
 export default class AdminProductRenderer extends ItemRenderer {
@@ -20,11 +21,11 @@ export default class AdminProductRenderer extends ItemRenderer {
     }
 
     postRender(element) {
-        const productId = this.item.productId;
+        const product = this.item;
 
         element.querySelector(".edit-button").addEventListener("click", async (event) => {
             event.preventDefault();
-            const dialog = new UpdateProductDialog(this.item, "editProductModal");
+            const dialog = new UpdateProductDialog(product, "editProductModal");
             dialog.render();
             dialog.show();
             populateDropdown("#updateProductCategories", categories);
@@ -32,7 +33,9 @@ export default class AdminProductRenderer extends ItemRenderer {
         });
         element.querySelector(".delete-button").addEventListener("click", async (event) => {
             event.preventDefault();
-            showDeleteProductModal(productId);
+            const dialog = new DeleteProductDialog(product, "deleteProductModal");
+            dialog.render();
+            dialog.show();
             console.log("Delete button clicked");
         });
     }

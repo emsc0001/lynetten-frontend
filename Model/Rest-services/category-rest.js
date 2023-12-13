@@ -40,4 +40,45 @@ async function getCategoryWithProducts(categoryId) {
 
     return { category, products };
 }
-export { getAllCategories, getSomeCategories, getCategoryWithProducts, endpoint };
+
+async function createCategory(category) {
+    const json = JSON.stringify(category);
+    const response = await fetch(`${endpoint}/categories`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: json,
+    });
+
+    await refetchAllCategories();
+
+    return response.ok;
+}
+
+async function updateCategory(category) {
+    const json = JSON.stringify(category);
+    const response = await fetch(`${endpoint}/categories/${category.categoryId}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: json,
+    });
+
+    await refetchAllCategories();
+
+    return response.ok;
+}
+
+async function deleteCategory(categoryId) {
+    const response = await fetch(`${endpoint}/categories/${categoryId}`, {
+        method: "DELETE",
+    });
+
+    await refetchAllCategories();
+
+    return response.ok;
+}
+
+export { getAllCategories, getSomeCategories, getCategoryWithProducts, endpoint, updateCategory, createCategory, deleteCategory };

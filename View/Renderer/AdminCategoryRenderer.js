@@ -1,4 +1,6 @@
 import ItemRenderer from "./Itemrenderer.js";
+import UpdateCategoryDialog from "../Dialogs/AdminDialogs/UpdateCategoryDialog.js";
+import DeleteCategoryDialog from "../Dialogs/AdminDialogs/DeleteCategoryDialog.js";
 
 export default class AdminCategoryRenderer extends ItemRenderer {
     
@@ -13,18 +15,23 @@ export default class AdminCategoryRenderer extends ItemRenderer {
             return html;
         }
     
-        // postRender(element) {
-        //     const productId = this.item.productId;
-    
-        //     element.querySelector(".edit-button").addEventListener("click", async (event) => {
-        //         event.preventDefault();
-        //         showEditCategoryModal(productId);
-        //         console.log("Edit button clicked");
-        //     });
-        //     element.querySelector(".delete-button").addEventListener("click", async (event) => {
-        //         event.preventDefault();
-        //         showDeleteCategoryModal(productId);
-        //         console.log("Delete button clicked");
-        //     });
-        // }
+        postRender(element) {
+            const category = this.item;
+
+            element.querySelector(".edit-category-button").addEventListener("click", async (event) => {
+                event.preventDefault();
+                const dialog = new UpdateCategoryDialog(category, "editCategoryModal");
+                dialog.render();
+                dialog.show();
+                console.log("Edit button clicked");
+            });
+
+            element.querySelector(".delete-category-button").addEventListener("click", async (event) => {
+                event.preventDefault();
+                const dialog = new DeleteCategoryDialog(category, "deleteCategoryModal");
+                dialog.render();
+                dialog.show();
+                console.log("Delete button clicked");
+            });
+        }
 }

@@ -1,7 +1,7 @@
 "use strict";
 
 import { endpoint, getAllProducts, createProduct } from "../Model/Rest-services/products-rest.js";
-import { getAllCategories } from "../Model/Rest-services/category-rest.js";
+import { getAllCategories, createCategory } from "../Model/Rest-services/category-rest.js";
 import ListRenderer from "../View/Renderer/ListRenderer.js";
 import AdminProductRenderer from "../View/Renderer/AdminProductRenderer.js";
 import AdminCategoryRenderer from "../View/Renderer/AdminCategoryRenderer.js";
@@ -40,8 +40,9 @@ async function adminApp() {
     document.getElementById("showOrders").addEventListener("click", () => showSection("orderSection"));
     // setupTabToggle();
 
-    // Event listeners for create
+    // Event listeners for create product and category
     document.getElementById("createProductForm").addEventListener("submit", extractProductFromForm);
+    document.getElementById("createCategoryForm").addEventListener("submit", extractCategoryFromForm);
 
 
     initializeAdminView();
@@ -82,9 +83,22 @@ async function extractProductFromForm() {
         productsLists.render();
     }
     return result;
-    
 }
 
+//extracts from form and calls createCategory in category-rest.js
+async function extractCategoryFromForm() {
+    const form = document.getElementById("createCategoryForm");
+    const category = {
+        categoryName: form.categoryName.value,
+    };
+
+    const result = await createCategory(category);
+    if (result) {
+        categories.push(category);
+        categoriesLists.render();
+    }
+    return result;
+}
 
 function hideAllSections() {
       document.getElementById("productSection").style.display = "none";

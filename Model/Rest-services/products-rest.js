@@ -60,4 +60,14 @@ async function createProduct(product) {
     return response.ok;
 }
 
-export { getAllProducts, getSomeProducts, endpoint, updateProduct, createProduct };
+async function deleteProduct(productId) {
+    const response = await fetch(`${endpoint}/products/${productId}`, {
+        method: "DELETE",
+    });
+
+    await refetchAllProducts();
+
+    return response.ok;
+}
+
+export { getAllProducts, getSomeProducts, endpoint, updateProduct, createProduct, deleteProduct };

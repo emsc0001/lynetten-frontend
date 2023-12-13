@@ -14,7 +14,7 @@ export default class UpdateProductDialog extends Dialog {
 
             <div class="modal-content">
                 <span class="close" data-action="close">&times;</span>
-                <h2>Edit Product</h2>
+                <h2>Edit Produkt</h2>
                 <form id="editProductForm">
                     <input type="hidden" id="editProductId">
                     <input type="text" id="editProductName" name="productName" placeholder="Product Name" value="${product.productName}" required>
@@ -28,7 +28,7 @@ export default class UpdateProductDialog extends Dialog {
                     <select id="updateProductCategories" name="categories"  required>
 
                     </select>
-                    <input type="text" id="editProductColors" name="colors" value="${product.color}" placeholder="color">
+                    <input type="text" id="editProductColors" name="colors" value="${product.colors}" placeholder="color">
                     <button type="submit">Save Changes</button>
                 </form>
             </div>
