@@ -201,10 +201,29 @@ body, html {
 }
 
 .nav-icons {
-  flex: 1;
   display: flex;
-  justify-content: flex-end; /* Aligns the icons to the right */
+  align-items: center; /* Aligns items vertically in the center */
+  justify-content: flex-end; /* Aligns items to the end (right side) */
+  gap: 10px; /* Space between each icon */
+  flex: 1; /* Takes up necessary space */
 }
+
+.nav-icon, .search-container, .userLogin-container {
+  display: flex;
+  align-items: center; /* Ensures vertical alignment for each icon */
+  justify-content: center; /* Centers content within each icon or container */
+}
+
+/* Additional style for search icon if needed */
+.search-icon {
+  cursor: pointer;
+}
+
+/* Adjust margins and padding as necessary for fine-tuning */
+.nav-icon {
+  margin-right: 8px; /* Space on the right of each icon */
+}
+
 
 /* Add your existing styles for .nav-link, .underline, and other elements */
 
