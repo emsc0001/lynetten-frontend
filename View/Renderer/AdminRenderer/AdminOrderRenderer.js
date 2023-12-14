@@ -2,7 +2,8 @@ import ItemRenderer from "../Itemrenderer.js";
 
 export default class AdminOrderRenderer extends ItemRenderer {
     render() {
-      const order = this.item;
+        const order = this.item;
+        console.log(order.orderId);
       if (order.paid && order.userId) {
           const html = /*html*/ `
 
@@ -12,6 +13,8 @@ export default class AdminOrderRenderer extends ItemRenderer {
                   <th>${order.orderId}</th>
                   <th>${order.orderDate}</th>
                   <th>${order.totalAmount}</th>
+                  <th>${order.fullName}</th>
+                  <th>${order.email}</th>
                   <th>${order.address}</th>
                   <th>${order.phoneNumber}</th>
                   <th>${order.country}</th>
