@@ -35,24 +35,6 @@ export default class ProductRenderer extends ItemRenderer {
 
     controller.setProductList(products);
     controller.setCategoryList([category]);
-
-    document.addEventListener("DOMContentLoaded", () => {
-      const sortSelect = document.getElementById("sort");
-      if (sortSelect) {
-        sortSelect.addEventListener("change", () => {
-          const selectedOption = sortSelect.options[sortSelect.selectedIndex];
-          const sortBy = selectedOption.dataset.sortBy;
-          const sortDirection = selectedOption.dataset.sortDirection;
-
-          // Call the sort function in ListRenderer with the selected options
-          if (productsLists) {
-            const sortedProducts = productsLists.sort(sortBy, sortDirection);
-            console.log("Sorted products");
-            productsLists.render(sortedProducts);
-          }
-        });
-      }
-    });
   }
 
   postRender(element) {

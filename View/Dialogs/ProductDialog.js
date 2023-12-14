@@ -10,6 +10,7 @@ export default class ProductDialog extends Dialog {
       : `<p>På lager</p>`;
 
     const html = /*html*/ `
+    <div class="product-dialog">
       <div class="product-details">
         <img src="${product.imageURLs}" alt="${product.productName}">
         <h4>${product.productName}</h4>
@@ -21,6 +22,7 @@ export default class ProductDialog extends Dialog {
         <p>Varer på lager: ${product.stockQuantity}</p>
         <button type="button" class="closeModal" data-action="close">Luk</button>
         </div>
+       </div>
     `;
 
     return html;

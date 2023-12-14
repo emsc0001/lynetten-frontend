@@ -545,26 +545,61 @@ input:focus {
   background-color: #ff6347; /* Slightly darker on hover */
 }
 
+/* PRODUCT INFORMATION MODAL VIEW */
+
+.product-dialog {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  max-width: 400px;
+  margin: auto;
+  padding: 0;
+}
+
 .product-details {
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
+  padding: 20px;
 }
 
+/* ... (rest of your styles) */
+
 .product-details img {
-  max-width: 40%;
-  height: auto;
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border-bottom: 1px solid #ddd;
   margin-bottom: 15px;
 }
 
-.product-details p {
+.product-details h4 {
   margin: 0;
-  color: #666;
+  font-size: 1.5em;
 }
 
-.closeModal:hover {
-  background-color: #ff8c00; /* Adjust the color to match the screenshot */
+.product-details p {
+  margin: 10px 0;
+}
+
+.product-details #description-container {
+  max-height: 100px;
+  overflow: hidden;
+}
+
+.product-details button {
+  padding: 10px 15px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.product-details button:hover {
+  background-color: #ff8c00;
 }
 
 /* PRODUCT INFORMATION MODAL VIEW */
@@ -881,5 +916,3 @@ footer {
 .feedback-box.show {
   animation: fadeInUp 0.5s forwards;
 }
-
-
