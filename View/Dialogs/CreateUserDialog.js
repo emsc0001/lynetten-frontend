@@ -8,6 +8,7 @@ export default class UserCreateDialog extends Dialog {
     const html = /*html*/ `
       <form>
       <h1> Opret Bruger </h1>
+      <div class="createUserForm">
     <img src="https://i.ibb.co/r2bH4d1/Sk-rmbillede-2023-11-28-kl-15-35-30.png" alt="Logo" height="50" />
       <button type="button" data-action="close">X</button>
         <label for="email">Email</label>
@@ -16,8 +17,9 @@ export default class UserCreateDialog extends Dialog {
         <input type="password" name="password" id="createUserpassword" required>
         <label for="newsletterSubscription">Newsletter Abonnement</label>
         <input type="checkbox" name="newsletterSubscription" id="createUsernewsletterSubscription">
-        <button  data-action="create">Opret</button>
-        <button data-action="cancel">Fortryd</button>
+        <button class="createUser"  data-action="create">Opret</button>
+        <button class="closeUser" data-action="cancel">Fortryd</button>
+        </div>
       </form>
     `;
     return html;

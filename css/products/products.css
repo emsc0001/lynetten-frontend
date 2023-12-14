@@ -64,6 +64,7 @@ html {
 /*------------STYLE FOR SEARCH------------ */
 
 /* Container styling */
+/* Container styling */
 .search-container {
   position: relative;
   display: flex;
@@ -79,47 +80,40 @@ html {
   color: #333; /* Adjust color as needed */
 }
 
-/* Style for the search bar */
-.search-bar {
-  display: none;
-  position: absolute;
-  top: 100%;
-  right: 0;
-  width: 100%;
-  padding: 10px;
-  box-sizing: border-box;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: #fff;
-  z-index: 1;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-/* Style for the search input */
-#input-search-products {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  transition: border-color 0.3s ease;
-}
-
 /* Style for the search button */
 #searchButton {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
   background-color: #3498db;
   color: #fff;
-  padding: 8px;
-  border: none;
-  border-radius: 4px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
 /* Hover effect for the search button */
 #searchButton:hover {
-  background-color: #2980b9;
+  background-color: #ffa500;
+}
+
+/* Animated effect for the search button */
+#searchButton::before {
+  content: "";
+  position: absolute;
+  background-color: #ffa500;
+  height: 100%;
+  width: 0;
+  top: 0;
+  left: 0;
+  transition: width 0.3s ease;
+}
+
+#searchButton:hover::before {
+  width: 100%;
 }
 
 /* Hover effect for the search input */
@@ -130,12 +124,6 @@ html {
 /* Active state for the search bar */
 .search-bar.active {
   display: block;
-}
-
-.search-container {
-  position: relative;
-  display: flex;
-  align-items: center;
 }
 
 .search-icon {
@@ -155,16 +143,7 @@ html {
   border: 1px solid #ccc;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   padding: 10px;
-  min-width: 300px; /* Adjust the width as needed */
-}
-
-/* Style the search input */
-#searchInput {
-  padding: 8px;
-  border: 1px solid #ddd;
-  margin-top: 8px;
-  font-size: 17px;
-  width: 100%;
+  min-width: 370px; /* Adjust the width as needed */
 }
 
 /*------------STYLE FOR SEARCH------------ */
@@ -542,7 +521,7 @@ form {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
-button[data-action="close"] {
+.createUserForm button[data-action="close"] {
   position: absolute;
   top: 0.5px;
   right: 0px;
@@ -575,7 +554,7 @@ input {
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }
 
-button {
+.createUserForm button {
   display: block;
   width: 100%;
   padding: 6px 10px;
@@ -591,7 +570,7 @@ button {
   transition: background-color ease-in-out 0.15s, border-color ease-in-out 0.15s;
 }
 
-button[data-action="cancel"] {
+.createUserForm button[data-action="cancel"] {
   background-color: #e74c3c;
 }
 
@@ -838,7 +817,7 @@ input:focus {
   overflow: hidden;
 }
 
-.product-details .closeModal button {
+.product-details button {
   padding: 10px 15px;
   background-color: #3498db;
   color: #fff;
@@ -866,21 +845,34 @@ input:focus {
 /* Your existing styles for product elements */
 
 .offer-indicator {
-  background-color: #ffd700; /* Set background color to gold */
-  padding: 5px; /* Add some padding */
-  border-radius: 5px; /* Add rounded corners */
-  animation: pulse 1s infinite; /* Add a pulsating animation */
+  background-color: #ffd700;
+  padding: 5px;
+  border-radius: 5px;
+  animation: pulse 1s infinite, colorChange 5s infinite; /* Add color change animation */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Add a subtle shadow effect */
+  transition: transform 0.3s; /* Add a smooth transition effect */
+}
+offer-indicator:hover {
+  transform: scale(1.2); /* Scale up when hovered */
 }
 
 @keyframes pulse {
-  0% {
+  0%,
+  100% {
     transform: scale(1);
   }
   50% {
     transform: scale(1.1);
   }
+}
+
+@keyframes colorChange {
+  0%,
   100% {
-    transform: scale(1);
+    background-color: #ffd700;
+  }
+  50% {
+    background-color: #ff9900; /* Change color during the pulse */
   }
 }
 
@@ -938,8 +930,6 @@ input:focus {
 }
 
 /* ---------Sort--------- */
-
-/* Style the search button (if needed) */
 
 /* ---------Cart--------- */
 

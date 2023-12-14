@@ -247,23 +247,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// ------Show offerPrice Products------ //
-document.getElementById("filter").addEventListener("change", (event) => {
-  const selectedOption = event.target;
-  const filterValue = selectedOption.dataset.filter;
-
-  // Call the filter function on the productsLists object
-  productsLists.filter(filterValue, "#products-container", ProductRenderer);
-
-  if (filterValue !== "all") {
-    // Call the filter function on the productsLists object
-    productsLists = new ListRenderer(filterValue, "#products-container", ProductRenderer);
-    productsLists.render();
-  } else filterValue === "offerPrice";
-  {
-  }
-});
-
 function logout() {
   // Clear user-related data
   localStorage.removeItem("loggedInUser"); // Remove user-related stored data
