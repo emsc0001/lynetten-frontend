@@ -15,10 +15,6 @@ export default class UserLoginDialog extends Dialog {
           <input type="email" name="email" id="loginUserEmail" required>
           <label for="password">Adgangskode</label>
           <input type="password" name="password" id="loginUserpassword" required>
-  
-          <!-- Error message container, initially hidden -->
-          <div id="loginErrorMessage" style="color: red; display: none;"></div>
-  
           <button type="submit" data-action="login">Login</button>
           <button type="button" data-action="cancel">Fortryd</button>
           <div class="additional-options">
@@ -29,7 +25,6 @@ export default class UserLoginDialog extends Dialog {
     `;
     return html;
   }
-  
 
   async login() {
     const form = this.dialog.querySelector("#loginForm");
