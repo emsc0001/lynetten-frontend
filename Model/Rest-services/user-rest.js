@@ -76,9 +76,4 @@ async function loginUser(email, password) {
 }
 
 
-function findUserByEmailAndPassword(email, password) {
-  console.log(allUsers);
-  return allUsers.find((user) => user.email.toLowerCase() === email.toLowerCase() && user.password === password);
-}
-
 export { getAllUsers, createUser, allUsers, endpoint, loginUser };
