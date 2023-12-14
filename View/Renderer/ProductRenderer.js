@@ -9,15 +9,19 @@ import addToCart from "../../Controller/addToCart.js";
 export default class ProductRenderer extends ItemRenderer {
   render() {
     const product = this.item;
+    const isOnOffer = product.offerPrice > 0;
+    const offerIndicator = isOnOffer ? '<span class="offer-indicator">On Offer!</span>' : "";
+
     const html = /*html*/ `
       <article class="product">
         <div class="product-item">
-          <img id="product-image"src="${product.imageURLs}" alt="${product.productName}">
+          <img id="product-image" src="${product.imageURLs}" alt="${product.productName}">
           <h2 id="product-name">${product.productName}</h2>
           <h4 id="product-number">${product.productNumber}</h4>
           <h3 id="product-list-price">${product.listPrice}kr</h3>
+          ${offerIndicator}
           <button class="button" data-id="${product.productId}">Add to Cart</button>
-          </div>
+        </div>
       </article>
     `;
     return html;

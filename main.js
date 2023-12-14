@@ -257,12 +257,10 @@ document.getElementById("filter").addEventListener("change", (event) => {
 
   if (filterValue !== "all") {
     // Call the filter function on the productsLists object
-    productsLists.filter(filterValue, "#products-container", ProductRenderer);
+    productsLists = new ListRenderer(filterValue, "#products-container", ProductRenderer);
     productsLists.render();
   } else filterValue === "offerPrice";
   {
-    productsLists = new Paginater(products, "#products-container", ProductRenderer, 10);
-    productsLists.render();
   }
 });
 
