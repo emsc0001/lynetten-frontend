@@ -1,6 +1,6 @@
-
 /* Typography */
-body, html {
+body,
+html {
   margin: 0;
   padding: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -9,8 +9,6 @@ body, html {
   color: #333; /* Primary text color */
   background-color: #f4f4f4; /* Background color */
 }
-
-
 
 /* Consistent hover and active styles */
 .nav-link:hover,
@@ -23,7 +21,7 @@ body, html {
 /* Underline effect */
 .nav-link::after,
 .nav-item.active .nav-link::after {
-  content: '';
+  content: "";
   display: block;
   margin: auto; /* Center the pseudo-element */
   height: 3px; /* Height of the underline */
@@ -47,9 +45,6 @@ body, html {
   margin: auto;
   display: flex;
 }
-
-
-
 
 /* Search bar styles */
 .search-container {
@@ -128,8 +123,6 @@ body, html {
 
 /* Add your existing styles for .nav-link, .underline, and other elements */
 
-
-
 /* Add a subtle box shadow to the header for depth */
 .main-header {
   background-color: #ff8c00;
@@ -153,19 +146,15 @@ body, html {
   background-color: #e6f2ff; /* Very light blue on hover */
 }
 
-
 .logo-container img {
   height: 50px; /* Adjust as needed */
 }
-
-
 
 .nav-item {
   position: relative; /* For absolute positioning of underline */
   margin: 0 10px;
   cursor: pointer;
 }
-
 
 .nav-link,
 .nav-icon {
@@ -175,8 +164,6 @@ body, html {
   color: #000;
   font-weight: bold;
 }
-
-
 
 .nav-icon {
   margin: 0 15px;
@@ -193,7 +180,206 @@ body, html {
   margin-right: 10px; /* Gives some space between the logo and the text */
 }
 
+/* STYLING AF LOGIN USER */
+.nav-icon {
+  cursor: pointer;
+  margin-right: 8px; /* Add some space between the icon and the input */
+}
 
+.login-form-container form {
+  position: relative;
+  width: 300px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 3px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  opacity: 0; /* Start with opacity set to 0 */
+  animation: fadeIn 0.5s forwards; /* Apply the fadeIn animation */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px); /* Optional: Add a slight upward translation */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.loginHeader {
+  text-align: center;
+  color: #3498db;
+}
+
+.login-form-container button[data-action="close"] {
+  position: absolute;
+  top: 0.5px;
+  right: 0px;
+  background: transparent;
+  border: 0;
+  font-size: 20px;
+  line-height: 10px;
+  cursor: pointer;
+  color: #999;
+}
+
+.login-form-container label {
+  display: block;
+  margin-bottom: 10px;
+  color: #666;
+}
+
+.login-form-container input {
+  display: block;
+  width: 100%;
+  padding: 6px 10px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+
+.login-form-container button {
+  display: block;
+  width: 100%;
+  padding: 6px 10px;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.6;
+  color: #fff;
+  background-color: #3498db;
+  background-image: none;
+  border: 1px solid #3498db;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color ease-in-out 0.15s, border-color ease-in-out 0.15s;
+}
+
+.login-form-container button[data-action="cancel"] {
+  background-color: #e74c3c;
+}
+
+/* Optional: Style checkbox */
+.login-form-container input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+/* Optional: Add some hover effects */
+.login-form-container button:hover,
+.login-form-container button[data-action="cancel"]:hover {
+  background-color: #2980b9;
+}
+
+/* Optional: Responsive adjustments */
+@media only screen and (max-width: 600px) {
+  .login-form-container form {
+    max-width: 100%;
+  }
+}
+
+#createUserLogin {
+  font-size: 14px; /* Increase font size for better readability */
+  text-align: center;
+  margin-top: 10px;
+  color: #3498db; /* Blue color, you can adjust it to your preference */
+  text-decoration: none; /* Remove the default underline */
+  transition: color 0.3s; /* Add a smooth color transition on hover */
+}
+
+#createUserLogin:hover {
+  color: #e74c3c; /* Change color on hover, adjust as needed */
+}
+
+/* STYLING AF CREATE USER BUTTON */
+form {
+  position: relative;
+
+  width: 300px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 3px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+button[data-action="close"] {
+  position: absolute;
+  top: 0.5px;
+  right: 0px;
+  background: transparent;
+  border: 0;
+  font-size: 20px;
+  line-height: 10px;
+  cursor: pointer;
+  color: #999;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  color: #666;
+}
+
+input {
+  display: block;
+  width: 100%;
+  padding: 6px 10px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+
+button {
+  display: block;
+  width: 100%;
+  padding: 6px 10px;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.6;
+  color: #fff;
+  background-color: #3498db;
+  background-image: none;
+  border: 1px solid #3498db;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color ease-in-out 0.15s, border-color ease-in-out 0.15s;
+}
+
+button[data-action="cancel"] {
+  background-color: #e74c3c;
+}
+
+/* Optional: Style checkbox */
+input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+/* Optional: Add some hover effects */
+button:hover,
+button[data-action="cancel"]:hover {
+  background-color: #2980b9;
+}
+
+/* Optional: Responsive adjustments */
+@media only screen and (max-width: 600px) {
+  form {
+    max-width: 100%;
+  }
+}
 
 .navbar {
   display: flex;
@@ -208,8 +394,6 @@ body, html {
   display: flex;
   align-items: center;
 }
-
-
 
 /* Header and Navigation */
 .header {
@@ -247,7 +431,9 @@ body, html {
   flex: 1; /* Takes up necessary space */
 }
 
-.nav-icon, .search-container, .userLogin-container {
+.nav-icon,
+.search-container,
+.userLogin-container {
   display: flex;
   align-items: center; /* Ensures vertical alignment for each icon */
   justify-content: center; /* Centers content within each icon or container */
@@ -262,7 +448,6 @@ body, html {
 .nav-icon {
   margin-right: 8px; /* Space on the right of each icon */
 }
-
 
 .nav-menu a:hover,
 .nav-icons a:hover {
@@ -281,9 +466,6 @@ body, html {
 .category-list li a:hover {
   background-color: #f9f9f9;
 }
-
-
-
 
 /* ... existing styles ... */
 
@@ -340,7 +522,6 @@ body, html {
   padding: 20px;
 }
 
-
 .product-grid {
   /* Definerer et grid layout med to kolonner og en gap mellem elementerne */
   display: grid;
@@ -358,7 +539,6 @@ body, html {
   background-position: center;
   position: relative;
 }
-
 
 .guide-title {
   color: #333;
@@ -496,13 +676,13 @@ body, html {
 .cart-item h2 {
   font-size: 16px;
   margin: 0;
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
 .cart-item h3 {
   font-size: 14px;
   margin: 5px 0;
-    margin-right: 10px;
+  margin-right: 10px;
   margin-left: 10px;
 }
 
@@ -567,14 +747,12 @@ body, html {
 div.cart-total a.go-to-cart-link {
   text-decoration: none;
   padding: 10px 20px;
-  background-color:  #ff6347; /* Tomato red */
+  background-color: #ff6347; /* Tomato red */
   border-radius: 5px;
-  color: white; 
+  color: white;
   font-weight: bold;
   transition: background-color 0.3s, color 0.3s;
-
 }
-
 
 div.cart-total a.go-to-cart-link:hover {
   background-color: #ff483e; /* Darker red on hover */
@@ -611,12 +789,6 @@ div.cart-total a.go-to-cart-link:hover {
 #cart:hover .cart-content {
   display: block;
 }
-
-
-
-
-
-
 
 /* Collapsible Styles */
 .collapsible {
@@ -656,8 +828,6 @@ div.cart-total a.go-to-cart-link:hover {
   padding: 20px;
 }
 
-
-
 .catalog-info {
   flex-grow: 1; /* Sidebar takes less space */
   background-color: #fff;
@@ -670,18 +840,14 @@ div.cart-total a.go-to-cart-link:hover {
 /* Responsive design for smaller screens */
 @media (max-width: 768px) {
   .container {
-      flex-direction: column;
+    flex-direction: column;
   }
 
   .catalog-info {
-      margin-left: 0;
-      margin-top: 20px;
+    margin-left: 0;
+    margin-top: 20px;
   }
 }
-
-
-
-
 
 /* Navigation */
 .nav-menu {
@@ -702,7 +868,8 @@ div.cart-total a.go-to-cart-link:hover {
   font-weight: bold;
 }
 
-.nav-item a:hover, .nav-item a:focus {
+.nav-item a:hover,
+.nav-item a:focus {
   color: #ff8c00; /* Hover and focus state color */
 }
 
@@ -714,7 +881,6 @@ div.cart-total a.go-to-cart-link:hover {
   border-radius: 8px;
   margin: 20px auto; /* Increased top and bottom margin */
 }
-
 
 footer {
   color: rgb(0, 0, 0);
@@ -754,8 +920,6 @@ footer {
   padding: 5px 0;
 }
 
-
-
 .social-media a:hover {
   color: #ddd; /* Slightly lighter color on hover */
 }
@@ -772,7 +936,6 @@ footer {
     margin-top: 20px; /* Add some space above the social media links */
   }
 }
-
 
 .social-media a {
   display: inline-block;

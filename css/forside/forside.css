@@ -457,7 +457,6 @@ h1 {
   }
 }
 
-#forgotUserLogin,
 #createUserLogin {
   font-size: 14px; /* Increase font size for better readability */
   text-align: center;
@@ -467,7 +466,6 @@ h1 {
   transition: color 0.3s; /* Add a smooth color transition on hover */
 }
 
-#forgotUserLogin:hover,
 #createUserLogin:hover {
   color: #e74c3c; /* Change color on hover, adjust as needed */
 }
