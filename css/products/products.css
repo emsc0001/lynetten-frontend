@@ -186,12 +186,14 @@ html {
   border-left: none;
 }
 
-/* Main content styles */
 .main-content {
   padding: 20px;
-  flex: 2;
+  flex: 2; /* Adjust this number as needed, smaller values will make the element smaller */
   background-color: #fff;
+  max-width: 800px; /* Set a maximum width for the content */
+  margin: auto; /* This will center the content if it's smaller than the parent container */
 }
+
 
 /* Add a subtle box shadow to the header for depth */
 .main-header {
@@ -732,15 +734,18 @@ input:focus {
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Slightly elevated shadow */
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-  width: calc(65% - 10px); /* 2 products per row with some spacing */
-  margin: 10px;
-  padding: 20px;
+  margin: 10px; /* Adjust margin for more outer space */
+  padding: 15px; /* Adjust padding for more inner space */
   background-color: #fff; /* Background color for the product container */
   text-align: center; /* Center text content */
+  width: 80%; /* Adjust width to be smaller */
+  height: auto; /* Adjust height accordingly */
 }
 
+
+
 .product-item:hover {
-  transform: scale(1.05);
+  transform: scale(1.02);
 }
 
 .product-item h2 {
@@ -1082,12 +1087,67 @@ div.cart-total a.go-to-cart-link:hover {
   text-decoration: underline;
 }
 
+
 footer {
-  background-color: #f0f8ff; /* Light blue background */
   color: rgb(0, 0, 0);
   text-align: center;
   padding: 1rem 0;
   font-weight: bold;
+}
+
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer section {
+  margin-right: 20px;
+  flex: 1;
+}
+
+.footer h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.footer p {
+  margin: 5px 0;
+}
+
+.footer ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer li {
+  padding: 5px 0;
+}
+
+.social-media a {
+  display: inline-block;
+  margin-right: 10px;
+  color: #fff; /* Change as needed */
+  font-size: 24px; /* Adjust icon size as needed */
+}
+
+.social-media a:hover {
+  color: #ddd; /* Slightly lighter color on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .social-media {
+    order: 3; /* Make sure social media links are at the bottom on mobile */
+    margin-top: 20px; /* Add some space above the social media links */
+  }
 }
 
 /* Navigation Bar Styles */
