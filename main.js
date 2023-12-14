@@ -70,10 +70,14 @@ async function baddServiceApp() {
   } else if (htmlSide === "/kurv.html") {
     initializeCartHtmlView();
   } else if (htmlSide === "/payment.html") {
-    document.addEventListener("DOMContentLoaded", () => {
-      enablePayNowButton();
-    });
-    document.querySelector("#pay-now-button").addEventListener("click", payNowClicked);
+      document.addEventListener("DOMContentLoaded", () => {
+          enablePayNowButton();
+      });
+      document.querySelector("#pay-now-button").addEventListener("click", payNowClicked); // Event listener for pay now button
+      document.querySelector("#shipping-details-form-button").addEventListener("click", (event) => {
+          event.preventDefault();
+          document.querySelector("#payment-form").scrollIntoView({ behavior: "smooth" });
+      }); // Scroll to the payment form
   } else {
     initializeOtherHtmlViews();
     initializeCartView();

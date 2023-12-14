@@ -1,8 +1,13 @@
 import ItemRenderer from "./Itemrenderer.js";
-import { cart, saveCartToLocalStorage, htmlSide } from "../../main.js";
+import { cart, saveCartToLocalStorage, htmlSide, loggedInUser, categories, products } from "../../main.js";
 import { initializeCartHtmlView, initializeCartView } from "../HtmlChangers/initializeCartViews.js";
+import { getCategoryWithProducts} from "../../Model/Rest-services/category-rest.js";
+import addToCart from "../../Controller/addToCart.js";
+import { createOrder } from "../../Model/Rest-services/order-rest.js";
+import { createGuestOrder } from "../../Model/Rest-services/guestOrder-rest.js";
 
 export default class ProductCartRenderer extends ItemRenderer {
+
   render() {
     const cartItem = this.item;
     const total = cartItem.listPrice * cartItem.quantity; // Calculate the total price for the cart item
@@ -20,9 +25,35 @@ export default class ProductCartRenderer extends ItemRenderer {
         <button class="remove-button" data-id="${cartItem.productId}">Fjern</button>
       </div>
     `;
-
+    
     return html;
   }
+  
+  async renderRecomendationCartHtml(cart) {
+    let allHtml = "";
+    for (const cartItem of cart) {
+      const categoryName = cartItem.categories;
+      //find categories id
+      const category = categories.find((item) => item.categoryName === categoryName);
+
+      const categoryProducts = await getCategoryWithProducts(category.categoryId);
+      for (let i = 0; i < categoryProducts.products.length && i < 4; i++) {
+        const html = `
+        <div class="recommended-cart-item">
+          <img src="${categoryProducts.products[i].imageURLs}" alt="${categoryProducts.products[i].productName}">
+          <h2>${categoryProducts.products[i].productName}</h2>
+          <h3>${categoryProducts.products[i].listPrice}kr</h3>
+          <button class="add-button" data-id="${categoryProducts.products[i].productId}">Tilføj</button>
+        </div>
+      `;
+        allHtml += html;
+      }
+      return allHtml;
+    }
+      this.addRecommendedItemsListeners();
+}
+
+
 
   renderTotalPriceCart() {
     const cartTotal = ProductCartRenderer.calculateTotal(cart); // Calculate the total price for the cart
@@ -44,14 +75,15 @@ export default class ProductCartRenderer extends ItemRenderer {
     return totalPriceHTML;
   }
 
+  
   static calculateTotal(cart) {
     let total = 0;
-    console.log(cart);
     cart.forEach((item) => {
       total += item.listPrice * item.quantity;
     });
     return total;
   }
+
 
   postRender(element) {
     const productId = this.item.productId; // Assuming productId is part of the cart item
@@ -112,6 +144,48 @@ export default class ProductCartRenderer extends ItemRenderer {
           initializeCartView();
         }
       }
+    });
+  }
+
+  addRecommendedItemsListeners() {
+    const addButtonElements = document.querySelectorAll('.recommended-cart-item .add-button');
+    addButtonElements.forEach(button => {
+      button.addEventListener('click', async (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        const productId = Number(button.dataset.id);
+        //find product
+        const product = products.find((item) => item.productId === productId);
+
+        try {
+          if (loggedInUser) {
+            // Check if the cart exists and has at least one item
+            const orderId = cart[0]?.orderId;
+            if (!orderId) {
+              // Create a new order if no order ID exists
+              const orderDate = new Date().toISOString().slice(0, 10);
+              const newOrderId = await createOrder(orderDate, loggedInUser.userId);
+              addToCart(productId, product.listPrice, product.productName, product.imageURLs, newOrderId, null);
+            } else {
+              // Add item to existing order
+              addToCart(productId, product.listPrice, product.productName, product.imageURLs, orderId, null);
+            }
+          } else {
+            const guestOrderId = cart[0]?.guestOrderId;
+            if (!guestOrderId) {
+              // Create a new guest order if no order ID exists
+              const orderDate = new Date().toISOString().slice(0, 10);
+              const newGuestOrderId = await createGuestOrder(orderDate);
+              addToCart(productId, product.listPrice, product.productName, product.imageURLs, null, newGuestOrderId);
+            } else {
+              // Add item to existing guest order
+              addToCart(productId, product.listPrice, product.productName, product.imageURLs, null, guestOrderId);
+            }
+          }
+        } catch (error) {
+          console.error("Error handling item addition to cart:", error);
+        }
+      });
     });
   }
 }

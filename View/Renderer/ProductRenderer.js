@@ -50,10 +50,10 @@ export default class ProductRenderer extends ItemRenderer {
             // Create a new order if no order ID exists
             const orderDate = new Date().toISOString().slice(0, 10);
             const newOrderId = await createOrder(orderDate, controller.loggedInUser.userId);
-            addToCart(product.productId, product.listPrice, product.productName, product.imageURLs, newOrderId, null);
+            addToCart(product.productId, product.listPrice, product.productName, product.imageURLs, product.categories, newOrderId, null);
           } else {
             // Add item to existing order
-            addToCart(product.productId, product.listPrice, product.productName, product.imageURLs, orderId, null);
+            addToCart(product.productId, product.listPrice, product.productName, product.imageURLs,  product.categories, orderId, null);
           }
         } else {
           const guestOrderId = controller.cart[0]?.guestOrderId;
@@ -62,10 +62,10 @@ export default class ProductRenderer extends ItemRenderer {
             // Create a new guest order if no order ID exists
             const orderDate = new Date().toISOString().slice(0, 10);
             const newGuestOrderId = await guestOrderController.createGuestOrder(orderDate);
-            addToCart(product.productId, product.listPrice, product.productName, product.imageURLs, null, newGuestOrderId);
+            addToCart(product.productId, product.listPrice, product.productName, product.imageURLs, product.categories,  null, newGuestOrderId);
           } else {
             // Add item to existing guest order
-            addToCart(product.productId, product.listPrice, product.productName, product.imageURLs, null, guestOrderId);
+            addToCart(product.productId, product.listPrice, product.productName, product.imageURLs, product.categories, null, guestOrderId);
           }
         }
       } catch (error) {
