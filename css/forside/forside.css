@@ -70,9 +70,8 @@ html {
   display: flex;
 }
 
-/* Header styles */
 .main-header {
-  margin-bottom: 20px;
+  margin-bottom: 40px; /* Increased bottom margin for more space */
   margin-top: 0;
 }
 
