@@ -252,8 +252,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const offerPrice = document.getElementById("offerPrice");
   if (offerPrice) {
     offerPrice.addEventListener("click", () => {
+      console.log("OfferPrice products");
       const offerPriceProducts = products.filter((product) => product.offerPrice);
       setProductList(offerPriceProducts);
+      productsLists.render(offerPriceProducts);
     });
   }
 });
