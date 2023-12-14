@@ -10,7 +10,7 @@ export default class ProductRenderer extends ItemRenderer {
   render() {
     const product = this.item;
     const isOnOffer = product.offerPrice > 0;
-    const offerIndicator = isOnOffer ? '<span class="offer-indicator">On Offer!</span>' : "";
+    const offerIndicator = isOnOffer ? '<span class="offer-indicator">På tilbud!</span>' : "";
 
     const html = /*html*/ `
       <article class="product">
@@ -20,7 +20,7 @@ export default class ProductRenderer extends ItemRenderer {
           <h4 id="product-number">${product.productNumber}</h4>
           <h3 id="product-list-price">${product.listPrice}kr</h3>
           ${offerIndicator}
-          <button class="button" data-id="${product.productId}">Add to Cart</button>
+          <button class="button" data-id="${product.productId}">Tilføj til kurv</button>
         </div>
       </article>
     `;

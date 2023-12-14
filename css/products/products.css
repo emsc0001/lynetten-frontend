@@ -194,7 +194,6 @@ html {
   margin: auto; /* This will center the content if it's smaller than the parent container */
 }
 
-
 /* Add a subtle box shadow to the header for depth */
 .main-header {
   background-color: #ff8c00;
@@ -728,9 +727,7 @@ input:focus {
   grid-template-columns: repeat(2, 1fr); /* Creates 2 columns */
   grid-gap: 20px; /* Adjusts the gap between grid items */
   padding: 20px; /* Add padding around the grid */
-
 }
-
 
 .product-item {
   display: flex;
@@ -740,8 +737,6 @@ input:focus {
   flex: 1 0 45%; /* Adjust the flex-basis to control the width of each item */
   margin: 10px; /* Adjust margin for spacing */
 }
-
-
 
 .product-item:hover {
   transform: scale(1.02);
@@ -864,7 +859,30 @@ input:focus {
   background-color: #2980b9;
 }
 
+/* PRODUCT Offer  VIEW */
 
+/* products.css */
+
+/* Your existing styles for product elements */
+
+.offer-indicator {
+  background-color: #ffd700; /* Set background color to gold */
+  padding: 5px; /* Add some padding */
+  border-radius: 5px; /* Add rounded corners */
+  animation: pulse 1s infinite; /* Add a pulsating animation */
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 
 /* ---------Sort--------- */
 .sort-container {
@@ -1079,7 +1097,6 @@ div.cart-total a.go-to-cart-link:hover {
 .breadcrumb-link:hover {
   text-decoration: underline;
 }
-
 
 footer {
   color: rgb(0, 0, 0);
