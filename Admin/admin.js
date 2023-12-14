@@ -54,7 +54,7 @@ async function initializeAdminView() {
     productsLists = new ListRenderer(products, "#product-list", AdminProductRenderer);
     categoriesLists = new ListRenderer(categories, "#category-list", AdminCategoryRenderer);
     usersLists = new ListRenderer(users, "#user-list", AdminUserRenderer);
-    ordersLists = new ListRenderer(orders, "#order-list", AdminOrderRenderer);
+    ordersLists = new ListRenderer(orders, "#order-table-body", AdminOrderRenderer);
 
     productsLists.render();
     categoriesLists.render();
