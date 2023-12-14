@@ -27,7 +27,7 @@ async function refetchAllCategories() {
 async function getCategoryWithProducts(categoryId) {
   const response = await fetch(`${endpoint}/categories/${categoryId}`);
   const data = await response.json();
-
+  console.log(data);
   const category = new Category(data.category);
   const products = data.products.map((jsonObj) => new Product(jsonObj));
   console.log(products);

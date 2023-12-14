@@ -11,6 +11,8 @@ export default class ProductRenderer extends ItemRenderer {
     const product = this.item;
     const isOnOffer = product.offerPrice > 0;
     const offerIndicator = isOnOffer ? '<span class="offer-indicator">På tilbud!</span>' : "";
+      const priceToShow = isOnOffer ? product.offerPrice : product.listPrice;
+    const priceLabel = isOnOffer ? "Tilbud pris:" : "Listepris:";
 
     const html = /*html*/ `
       <article class="product">
@@ -18,7 +20,7 @@ export default class ProductRenderer extends ItemRenderer {
           <img id="product-image" src="${product.imageURLs}" alt="${product.productName}">
           <h2 id="product-name">${product.productName}</h2>
           <h4 id="product-number">${product.productNumber}</h4>
-          <h3 id="product-list-price">${product.listPrice}kr</h3>
+          <h3 id="product-list-price">${priceLabel} ${priceToShow}kr</h3>
           ${offerIndicator}
           <button class="button" data-id="${product.productId}">Tilføj til kurv</button>
         </div>
@@ -56,7 +58,6 @@ export default class ProductRenderer extends ItemRenderer {
             const orderDate = new Date().toISOString().slice(0, 10);
             const newOrderId = await createOrder(orderDate, controller.loggedInUser.userId);
             addToCart(product.productId, product.listPrice, product.offerPrice, product.productName, product.imageURLs, product.categories, newOrderId, null);
-            console.log(product.offe);
           } else {
             // Add item to existing order
             addToCart(product.productId, product.listPrice, product.offerPrice, product.productName, product.imageURLs, product.categories, orderId, null);

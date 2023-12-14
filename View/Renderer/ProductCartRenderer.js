@@ -37,6 +37,7 @@ export default class ProductCartRenderer extends ItemRenderer {
             const categoryName = cartItem.categories;
             //find categories id
             const category = categories.find((item) => item.categoryName === categoryName);
+            console.log(cartItem);
             const categoryProducts = await getCategoryWithProducts(category.categoryId);
             for (let i = 0; i < categoryProducts.products.length && i < 4; i++) {
                 const html = `
