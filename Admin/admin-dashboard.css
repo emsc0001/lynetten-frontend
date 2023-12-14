@@ -134,10 +134,13 @@ form button[type="submit"]:hover {
     text-align: left;
     padding: 8px;
     border-bottom: 1px solid #ddd;
+    
 }
 
+
 .table th {
-    background-color: #f4f4f4;
+    background-color: #28b00634;
+
     font-weight: bold;
 }
 

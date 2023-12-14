@@ -56,7 +56,7 @@ async function extractShipmentDetails() {
     } else {
         const orderId = cart[0].orderId;
         updateOrder(orderId, fullName, email, address, phoneNumber, country, city, zipCode);
-
+         console.log(orderId, fullName, email, address, phoneNumber, city, zipCode);
     }
 }
 

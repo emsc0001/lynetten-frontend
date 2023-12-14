@@ -1,23 +1,24 @@
 "use strict";
-
+import { getAllOrders } from "../Model/Rest-services/order-rest.js";
+import { getAllGuestOrder } from "../Model/Rest-services/guestOrder-rest.js";
 import { endpoint, getAllProducts, createProduct } from "../Model/Rest-services/products-rest.js";
 import { getAllCategories, createCategory } from "../Model/Rest-services/category-rest.js";
+import { getAllUsers } from "../Model/Rest-services/user-rest.js";
 import ListRenderer from "../View/Renderer/ListRenderer.js";
 import AdminProductRenderer from "../View/Renderer/AdminRenderer/AdminProductRenderer.js";
 import AdminCategoryRenderer from "../View/Renderer/AdminRenderer/AdminCategoryRenderer.js";
-// import updateProductDialog from "../View/Dialogs/updateProductDialog.js";
-// import { getAllUsers } from "../Model/Rest-services/user-rest.js";
+import AdminUserRenderer from "../View/Renderer/AdminRenderer/AdminUserRenderer.js";
+import AdminOrderRenderer from "../View/Renderer/AdminRenderer/AdminOrderRenderer.js";
 
 let products = [];
 let categories = [];
-// let allUsers = [];
+let users = [];
+let orders = [];
 
 let productsLists = null;
 let categoriesLists = null;
-
-// let createProductDialog = null;
-// let updateProductDialog = null;
-// let deleteProductDialog = null;
+let usersLists = null;
+let ordersLists = null;
 
 window.addEventListener("load", () => {
     adminApp();
@@ -26,11 +27,14 @@ window.addEventListener("load", () => {
 async function adminApp() {
     products = await getAllProducts();
     categories = await getAllCategories();
-    // allUsers = await getAllUsers();
+    users = await getAllUsers();
+    //fetchs all orders and guest orders and concats them
+    const [allOrders, allGuestOrders] = await Promise.all([getAllOrders(), getAllGuestOrder()]);
+    orders = allOrders.concat(allGuestOrders);
 
     console.log("Number Of Products: " + products.length);
     console.log("Number Of Categories: " + categories.length);
-    // console.log("Number Of Users: " + users.length);
+    console.log("Number Of Users: " + users.length);
 
     // Event listeners for tabs
     document.getElementById("showProducts").addEventListener("click", () => showSection("productSection"));
@@ -49,11 +53,13 @@ async function adminApp() {
 async function initializeAdminView() {
     productsLists = new ListRenderer(products, "#product-list", AdminProductRenderer);
     categoriesLists = new ListRenderer(categories, "#category-list", AdminCategoryRenderer);
-    // usersLists = new UserLists(allUsers);
+    usersLists = new ListRenderer(users, "#user-list", AdminUserRenderer);
+    ordersLists = new ListRenderer(orders, "#order-list", AdminOrderRenderer);
 
     productsLists.render();
     categoriesLists.render();
-    // usersLists.render();
+    usersLists.render();
+    ordersLists.render();
 
     //populate create dropdown
     populateCategoryDropdown("#productCategories", categories);

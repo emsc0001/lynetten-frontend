@@ -42,7 +42,7 @@ export default class UserLoginDialog extends Dialog {
         // Store user information in local storage
       localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
 
-      // Add the cart items to the user's cart
+      // --Add the cart items to the user's cart--//
       const userCart = JSON.parse(localStorage.getItem("cart")) || [];
     if (userCart.length > 0) {
       const orderId = await createOrder(new Date().toISOString().slice(0, 10), loggedInUser.userId);

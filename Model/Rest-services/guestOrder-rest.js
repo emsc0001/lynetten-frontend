@@ -1,6 +1,13 @@
-// import GuestOrder from "./Model/GuestOrder.js";
+import GuestOrder from "../GuestOrder.js";
 
 const endpoint = "http://localhost:4444";
+
+async function getAllGuestOrder() {
+    const response = await fetch(`${endpoint}/guestOrders`);
+    const originalJson = await response.json();
+
+    return originalJson.map((jsonObj) => new GuestOrder(jsonObj));
+}
 
 
 async function createGuestOrder(orderDate) {
@@ -67,4 +74,4 @@ async function deleteUnpaidGuestOrder() {
     }
 }
     
-    export {createGuestOrder, updateGuestOrder, deleteUnpaidGuestOrder};
+    export {getAllGuestOrder ,createGuestOrder, updateGuestOrder, deleteUnpaidGuestOrder};

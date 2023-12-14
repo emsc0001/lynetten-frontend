@@ -1,5 +1,12 @@
-
+import Order from "../Order.js";
 const endpoint = "http://localhost:4444";
+
+async function getAllOrders() {
+    const response = await fetch(`${endpoint}/orders`);
+    const originalJson = await response.json();
+
+    return originalJson.map((jsonObj) => new Order(jsonObj));
+}
 
 async function createOrder(orderDate, userId) {
     try {
@@ -54,4 +61,5 @@ async function updateOrder(orderId, fullName, email, address, phoneNumber, count
     }
 }
 
-export { createOrder, updateOrder };
+
+export {getAllOrders, createOrder, updateOrder };

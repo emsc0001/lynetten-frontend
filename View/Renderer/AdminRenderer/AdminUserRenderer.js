@@ -1,10 +1,9 @@
 import ItemRenderer from "../Itemrenderer.js";
-import * as controller from "../../../main.js";
 
-export default class UserRenderer extends ItemRenderer {
-    render() {
-        const user = this.item;
-        const html = /*html*/ `
+export default class AdminUserRenderer extends ItemRenderer {
+  render() {
+    const user = this.item;
+    const html = /*html*/ `
       <table class="user-info">
         <thead>
           <tr>
@@ -17,10 +16,7 @@ export default class UserRenderer extends ItemRenderer {
       </table>
     `;
 
-        return html;
-    }
+    return html;
+  }
 
-    postRender(element) {
-        // Tilføj eventuelle efterbehandling her, hvis nødvendigt
-    }
 }

@@ -1,10 +1,9 @@
 import User from "../User.js";
-import { users } from "../../main.js";
 
 const endpoint = "http://localhost:4444";
 
 let allUsers = [];
-let lastFetch = null;
+let lastFetch = 0;
 
 async function getAllUsers() {
   const now = Date.now();
@@ -42,7 +41,7 @@ async function createUser(user) {
 
 function findUserByEmailAndPassword(email, password) {
   console.log(allUsers);
-  return users.find((user) => user.email.toLowerCase() === email.toLowerCase() && user.password === password);
+  return allUsers.find((user) => user.email.toLowerCase() === email.toLowerCase() && user.password === password);
 }
 
 export { getAllUsers, createUser, allUsers, endpoint, findUserByEmailAndPassword };
