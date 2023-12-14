@@ -1,6 +1,6 @@
 # Lynettens Bådudstyr App
 
-Dette repository indeholder Lynettens Bådudstyr, der giver dig mulighed for som kunde at se produkter, oprette en bruger, logge ind, og tilføje produkter til en indkøbskurv. Som administrator kan du oprette, redigere og slette produkter, samt se en liste over alle brugere og slette disse.
+Dette repository indeholder Lynettens Bådudstyr, der giver dig mulighed for som kunde at se produkter, oprette en bruger, logge ind, og tilføje produkter til en indkøbskurv. Som administrator kan du oprette, redigere og slette produkter, samt se en liste over alle brugere og slette disse. Derudover kan du også se en liste over alle ordrer, og se hvilke produkter der er i hver ordre. Tilsidst kan du også se en liste over alle kategorier, og oprette, redigere og slette disse.
 
 ### Links til reposetories:
 
