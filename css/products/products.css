@@ -61,7 +61,9 @@ html {
   margin-top: 0;
 }
 
-/* Search bar styles */
+/*------------STYLE FOR SEARCH------------ */
+
+/* Container styling */
 .search-container {
   position: relative;
   display: flex;
@@ -74,11 +76,12 @@ html {
   right: 10px;
   cursor: pointer;
   transition: all 0.3s ease;
+  color: #333; /* Adjust color as needed */
 }
 
 /* Style for the search bar */
 .search-bar {
-  display: none; /* Skjul søgefeltet som standard */
+  display: none;
   position: absolute;
   top: 100%;
   right: 0;
@@ -88,8 +91,9 @@ html {
   border: 1px solid #ccc;
   border-radius: 4px;
   background-color: #fff;
-  z-index: 1; /* Sørg for at søgefeltet vises over alt andet indhold */
+  z-index: 1;
   transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 /* Style for the search input */
@@ -99,11 +103,12 @@ html {
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
+  transition: border-color 0.3s ease;
 }
 
 /* Style for the search button */
 #searchButton {
-  background-color: #ff8c00;
+  background-color: #3498db;
   color: #fff;
   padding: 8px;
   border: none;
@@ -114,13 +119,55 @@ html {
 
 /* Hover effect for the search button */
 #searchButton:hover {
-  background-color: #f6f7f7;
+  background-color: #2980b9;
 }
 
+/* Hover effect for the search input */
+#input-search-products:hover {
+  border-color: #3498db;
+}
+
+/* Active state for the search bar */
 .search-bar.active {
-  display: block; /* Vis søgefeltet, når det har klassen 'active' */
+  display: block;
 }
 
+.search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #333; /* Adjust color as needed */
+}
+
+.search-bar {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  min-width: 300px; /* Adjust the width as needed */
+}
+
+/* Style the search input */
+#searchInput {
+  padding: 8px;
+  border: 1px solid #ddd;
+  margin-top: 8px;
+  font-size: 17px;
+  width: 100%;
+}
+
+/*------------STYLE FOR SEARCH------------ */
 /* Sidebar styles */
 .sidebar {
   background-color: #fff;
@@ -626,39 +673,6 @@ input:focus {
   flex-wrap: wrap;
   justify-content: center; /* Center the items */
   gap: 20px; /* Space between items */
-}
-
-/* Add this in your existing CSS file */
-.search-container {
-  position: relative;
-  display: inline-block;
-}
-
-.search-icon {
-  cursor: pointer;
-  margin-right: 8px; /* Add some space between the icon and the input */
-}
-
-.search-bar {
-  display: none;
-  position: absolute;
-  top: 100%;
-  right: 0;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  padding: 10px;
-  min-width: 200px; /* Adjust the width as needed */
-  z-index: 1;
-}
-
-/* Style the search input */
-#searchInput {
-  padding: 8px;
-  border: 1px solid #ddd;
-  margin-top: 8px;
-  font-size: 17px;
-  width: 100%;
 }
 
 /* ---------Sort--------- */
