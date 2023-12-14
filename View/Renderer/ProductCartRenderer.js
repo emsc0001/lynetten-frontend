@@ -155,7 +155,6 @@ export default class ProductCartRenderer extends ItemRenderer {
                 const productId = Number(button.dataset.id);
                 //find product
                 const product = products.find((item) => item.productId === productId);
-
                 try {
                     if (loggedInUser) {
                         // Check if the cart exists and has at least one item
@@ -164,10 +163,10 @@ export default class ProductCartRenderer extends ItemRenderer {
                             // Create a new order if no order ID exists
                             const orderDate = new Date().toISOString().slice(0, 10);
                             const newOrderId = await createOrder(orderDate, loggedInUser.userId);
-                            addToCart(productId, product.listPrice, product.productName, product.imageURLs, newOrderId, null);
+                            addToCart(productId, product.listPrice, product.offerPrice, product.productName, product.imageURLs, newOrderId, null);
                         } else {
                             // Add item to existing order
-                            addToCart(productId, product.listPrice, product.productName, product.imageURLs, orderId, null);
+                            addToCart(productId, product.listPrice, product.offerPrice, product.productName, product.imageURLs, orderId, null);
                         }
                     } else {
                         const guestOrderId = cart[0]?.guestOrderId;
@@ -175,10 +174,10 @@ export default class ProductCartRenderer extends ItemRenderer {
                             // Create a new guest order if no order ID exists
                             const orderDate = new Date().toISOString().slice(0, 10);
                             const newGuestOrderId = await createGuestOrder(orderDate);
-                            addToCart(productId, product.listPrice, product.productName, product.imageURLs, null, newGuestOrderId);
+                            addToCart(productId, product.listPrice, product.offerPrice, product.productName, product.imageURLs, null, newGuestOrderId);
                         } else {
                             // Add item to existing guest order
-                            addToCart(productId, product.listPrice, product.productName, product.imageURLs, null, guestOrderId);
+                            addToCart(productId, product.listPrice, product.offerPrice, product.productName, product.imageURLs, null, guestOrderId);
                         }
                     }
                 } catch (error) {
