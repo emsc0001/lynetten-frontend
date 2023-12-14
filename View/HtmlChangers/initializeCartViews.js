@@ -17,7 +17,7 @@ function initializeCartView() {
 }
 
 //Initiliaze views the cart for kurv.html
-function initializeCartHtmlView() {
+async function initializeCartHtmlView() {
     if (cart.length > 0) {
         cartList = new ListRenderer(cart, ".cart-items", ProductCartRenderer);
         cartList.render();
@@ -27,6 +27,15 @@ function initializeCartHtmlView() {
 
     const totalPriceSection = new ProductCartRenderer().renderTotalPriceCartHtml();
     document.querySelector(".cart-summary").innerHTML = totalPriceSection;
+
+    if (cart.length > 0) {
+        const recommendationSection = await new ProductCartRenderer().renderRecomendationCartHtml(cart);
+        document.querySelector("#recommended-items").innerHTML = recommendationSection;
+    
+            const renderer = new ProductCartRenderer(); // Create an instance
+            renderer.addRecommendedItemsListeners();
+        
+    }
 }
 
 export { initializeCartView, initializeCartHtmlView };

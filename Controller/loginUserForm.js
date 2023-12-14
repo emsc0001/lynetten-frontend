@@ -1,9 +1,9 @@
-import {findUserByEmailAndPassword} from "../Model/Rest-services/user-rest.js";
+import {loginUser} from "../Model/Rest-services/user-rest.js";
 
 export default async function loginUserForm(loginAttempt) {
     try {
         // Use the findUserByEmailAndPassword function to fetch user data by email and password
-        const user = await findUserByEmailAndPassword(loginAttempt.email, loginAttempt.password);
+        const user = await loginUser(loginAttempt.email, loginAttempt.password);
         console.log(user);
 
         // Assuming you have an element with id "loggedInUserInfo"

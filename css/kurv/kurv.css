@@ -126,6 +126,50 @@ h1 {
   text-decoration: underline;
 }
 
+/* CSS for recommendation items */
+#recommended-items {
+  display: flex;
+  flex-wrap: wrap; /* Allow items to wrap to the next line */
+  justify-content: space-between; /* Spread items evenly across the container */
+}
+
+.recommended-cart-item {
+  width: calc(25% - 10px);
+  margin-bottom: 20px;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.recommended-cart-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.recommended-cart-item h2 {
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.recommended-cart-item h3 {
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.recommended-cart-item button {
+  background-color: #4caf50;
+  color: #fff;
+  border-radius: 5px;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+}
+.recommended-cart-item button:hover {
+  background-color: #45a049;
+}
+
 /* Discount dropdown */
 /* Add this to your existing CSS file or create a new one */
 .discount-container {
