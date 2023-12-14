@@ -26,17 +26,18 @@ export default class UserCreateDialog extends Dialog {
   async create() {
     // Build user object from form
     const form = this.dialog.querySelector("form");
-    this.user = new User({
+    this.user = {
       email: form.email.value,
       password: form.password.value,
       newsletterSubscription: form.newsletterSubscription.checked ? 1 : 0,
-    });
+    };
 
     // Clear form
     form.reset();
 
     // Call the controller method to create the user
     const createdUser = await Controller.createUser(this.user);
+    console.log(createdUser);
 
     if (createdUser) {
       // Log the created user
