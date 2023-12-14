@@ -839,7 +839,7 @@ input:focus {
   overflow: hidden;
 }
 
-.product-details button {
+.product-details .closeModal button {
   padding: 10px 15px;
   background-color: #3498db;
   color: #fff;
