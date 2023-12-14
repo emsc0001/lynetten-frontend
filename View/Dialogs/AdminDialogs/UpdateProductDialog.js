@@ -54,7 +54,7 @@ export default class UpdateProductDialog extends Dialog {
                 categories: form.categories.value,
                 colors: form.colors.value,
             };
-
+            console.log(product.categories);
             // Clear form
             form.reset();
 

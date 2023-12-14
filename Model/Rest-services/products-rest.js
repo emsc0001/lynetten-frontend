@@ -47,7 +47,8 @@ async function updateProduct(product) {
 }
 
 async function createProduct(product) {
-    const json = JSON.stringify(product);
+  const json = JSON.stringify(product);
+  console.log(json);
     const response = await fetch(`${endpoint}/products`, {
         method: "POST",
         headers: {

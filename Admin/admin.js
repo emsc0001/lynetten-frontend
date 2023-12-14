@@ -56,7 +56,7 @@ async function initializeAdminView() {
     // usersLists.render();
 
     //populate create dropdown
-    populateDropdown("#productCategories", categories);
+    populateCategoryDropdown("#productCategories", categories);
 }
 
 //extracts from form and calls createProduct in products-rest.js
@@ -109,7 +109,7 @@ function showSection(sectionId) {
     document.getElementById(sectionId).style.display = "block";
 }
 
-function populateDropdown(selector, data) {
+function populateCategoryDropdown(selector, data) {
     const dropdown = document.querySelector(selector);
 
     if (!dropdown) return; // Ensure the dropdown exists
@@ -120,13 +120,13 @@ function populateDropdown(selector, data) {
     data.forEach((item) => {
         const option = document.createElement("option");
         option.value = item.categoryId;
-        option.textContent = item.categoryName; // Adjust this according to your data structure
+        option.textContent = item.categoryName;
 
         dropdown.appendChild(option);
     });
 }
 
-export { populateDropdown, categories };
+export { populateCategoryDropdown, categories };
 // function setupTabToggle() {
 //     document.getElementById("showProducts").addEventListener("click", () => {
 //         document.getElementById("productSection").style.display = "block";
