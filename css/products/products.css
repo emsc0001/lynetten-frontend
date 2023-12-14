@@ -555,6 +555,17 @@ input:focus {
   max-width: 400px;
   margin: auto;
   padding: 0;
+  opacity: 0; /* Initially set opacity to 0 for fade-in effect */
+  animation: fadeIn 1.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .product-details {

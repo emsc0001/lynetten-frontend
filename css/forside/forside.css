@@ -1,0 +1,1088 @@
+/* Base reset for padding and margin for all elements */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Consistent box-sizing */
+}
+
+/* Typography */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 16px; /* Base font size */
+  line-height: 1.6; /* Line height for readability */
+  color: #333; /* Primary text color */
+  background-color: #f4f4f4; /* Background color */
+}
+
+/* Header and Navigation */
+.header {
+  background-color: #f8f8f8;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px 20px; /* Consistent padding */
+  text-align: center;
+}
+
+.nav-item {
+  margin: 0 10px; /* Adjusted margin to match other navbars */
+}
+
+/* Consistent hover and active styles */
+.nav-link:hover,
+.nav-item.active .nav-link {
+  color: #ff8c00; /* Example hover color */
+  background: transparent; /* Ensure background is consistent */
+  border: none; /* Ensure border is consistent */
+}
+
+/* Underline effect */
+.nav-link::after,
+.nav-item.active .nav-link::after {
+  content: "";
+  display: block;
+  margin: auto; /* Center the pseudo-element */
+  height: 3px; /* Height of the underline */
+  width: 0; /* Start with no width */
+  background: transparent; /* No background initially */
+  transition: width 0.5s ease, background-color 0.5s ease; /* Transition for the effect */
+}
+
+.nav-link:hover::after {
+  width: 100%; /* Full width on hover */
+  background-color: #ff8c00; /* Background color for the underline */
+}
+
+.nav-item.active .nav-link::after {
+  width: 100%; /* Full width for active item */
+  background-color: #ff8c00; /* Background color for the underline */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .nav-menu {
+    flex-direction: column;
+  }
+
+  .nav-item {
+    margin: 5px 0; /* Adjusted margin for vertical layout */
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+}
+
+/* Header styles */
+.main-header {
+  margin-bottom: 20px;
+  margin-top: 0;
+}
+
+/* SIDEBAR___________________________________________________________ */
+
+.sidebar {
+  background-color: #f7f7f7;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+  text-align: center;
+}
+
+.sidebar-content {
+  text-align: left;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.sidebar h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.sidebar h3 {
+  font-size: 20px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.sidebar-intro {
+  font-weight: bold;
+}
+
+.sidebar-outro {
+  font-style: italic;
+}
+
+.sidebar-divider {
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 15px 0;
+}
+
+/* _______________________Main content styles_______________________________ */
+.main-content {
+  padding: 30px; /* Increased padding */
+  background-color: #ffffff; /* Light background color */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  border-radius: 8px; /* Rounded corners */
+  font-size: 16px; /* Comfortable reading size */
+  line-height: 1.6; /* Optimal line height for readability */
+  color: #333333; /* Dark enough for good contrast */
+  transition: all 0.3s ease-in-out; /* Smooth transition for hover effects */
+  max-width: 1200px; /* Maximum width for content area */
+  margin: auto; /* Center the content */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .main-content {
+    padding: 20px; /* Less padding on smaller screens */
+  }
+}
+
+/* Add a subtle box shadow to the header for depth */
+.main-header {
+  background-color: #ff8c00;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease;
+}
+
+/* Add a hover effect to the header */
+.main-header:hover {
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3); /* Slightly larger box shadow on hover */
+}
+
+.sidebar {
+  background-color: #f0f8ff; /* Light blue background */
+}
+
+.category-list li a:hover {
+  background-color: #e6f2ff; /* Very light blue on hover */
+}
+
+.logo-container img {
+  height: 50px; /* Adjust as needed */
+}
+
+/* Navigation */
+.nav-menu {
+  display: flex;
+  justify-content: center; /* Center align nav items */
+  list-style: none; /* Remove default list styling */
+  padding-left: 0; /* Remove default padding */
+}
+
+.nav-item {
+  position: relative; /* For absolute positioning of underline */
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+.nav-link,
+.nav-icon {
+  display: inline-block;
+  padding: 5px 10px;
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+}
+
+.nav-icons {
+  display: flex;
+}
+
+.nav-icon {
+  margin: 0 15px;
+  font-size: 20px; /* Adjust as needed */
+}
+
+/* Use media queries for responsiveness as needed */
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-container img {
+  margin-right: 10px; /* Gives some space between the logo and the text */
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  padding: 10px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+/* Header and Navigation */
+.header {
+  background-color: #f8f8f8; /* Lighter background for header */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 0 20px; /* Adjust padding as needed */
+}
+
+.sidebar ul {
+  list-style-type: none; /* No bullets for a clean look */
+  padding: 0;
+}
+
+.sidebar ul li a {
+  text-decoration: none;
+  color: #333;
+  padding: 8px 0; /* Vertical padding for list items */
+  display: block; /* Full-width clickable area */
+}
+
+/* Navbar Menu */
+.nav-menu a,
+.nav-icons a {
+  text-decoration: none;
+  color: rgb(0, 0, 0); /* White text color */
+  margin-left: 20px;
+  font-weight: bold;
+}
+
+.nav-menu a:hover,
+.nav-icons a:hover {
+  color: #ff8c00; /* Orange color for hover state */
+}
+
+/* Category List Styles */
+.category-list li a {
+  text-decoration: none;
+  color: #333;
+  display: block;
+  padding: 10px;
+  border-bottom: 1px solid #dddddd;
+}
+
+.category-list li a:hover {
+  background-color: #f9f9f9;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .nav-menu,
+  .nav-icons {
+    display: none; /* Hide navigation links on smaller screens */
+  }
+
+  .content-header h1,
+  .content-header p {
+    font-size: 18px;
+  }
+}
+
+/* _______________________Modal content styles_______________________________ */
+
+.nav-icon {
+  cursor: pointer;
+  margin-right: 8px; /* Add some space between the icon and the input */
+}
+
+/* STYLING AF LOGIN USER */
+.login-form-container form {
+  position: relative;
+  width: 300px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 3px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  opacity: 0; /* Start with opacity set to 0 */
+  animation: fadeIn 0.5s forwards; /* Apply the fadeIn animation */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px); /* Optional: Add a slight upward translation */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.loginHeader {
+  text-align: center;
+  color: #3498db;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.nav-menu {
+  flex: 2; /* Allows the nav menu to take twice as much space as the logo and icons */
+  display: flex;
+  justify-content: center; /* Centers the menu items */
+}
+
+.nav-item {
+  margin: 0 10px; /* Adds space between the navigation items */
+}
+
+.nav-icons {
+  display: flex;
+  align-items: center; /* Aligns items vertically in the center */
+  justify-content: flex-end; /* Aligns items to the end (right side) */
+  gap: 10px; /* Space between each icon */
+  flex: 1; /* Takes up necessary space */
+}
+
+.nav-icon,
+.search-container,
+.userLogin-container {
+  display: flex;
+  align-items: center; /* Ensures vertical alignment for each icon */
+  justify-content: center; /* Centers content within each icon or container */
+}
+
+/* Additional style for search icon if needed */
+.search-icon {
+  cursor: pointer;
+}
+
+/* Adjust margins and padding as necessary for fine-tuning */
+.nav-icon {
+  margin-right: 8px; /* Space on the right of each icon */
+}
+
+/* Add your existing styles for .nav-link, .underline, and other elements */
+
+h1 {
+  display: block;
+  font-size: 2em;
+  margin-block-start: 0.67em;
+  margin-block-end: 0.67em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+}
+
+.login-form-container button[data-action="close"] {
+  position: absolute;
+  top: 0.5px;
+  right: 0px;
+  background: transparent;
+  border: 0;
+  font-size: 20px;
+  line-height: 10px;
+  cursor: pointer;
+  color: #999;
+}
+
+.login-form-container label {
+  display: block;
+  margin-bottom: 10px;
+  color: #666;
+}
+
+.login-form-container input {
+  display: block;
+  width: 100%;
+  padding: 6px 10px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+
+.login-form-container button {
+  display: block;
+  width: 100%;
+  padding: 6px 10px;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.6;
+  color: #fff;
+  background-color: #3498db;
+  background-image: none;
+  border: 1px solid #3498db;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color ease-in-out 0.15s, border-color ease-in-out 0.15s;
+}
+
+.login-form-container button[data-action="cancel"] {
+  background-color: #e74c3c;
+}
+
+/* Optional: Style checkbox */
+.login-form-container input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+/* Optional: Add some hover effects */
+.login-form-container button:hover,
+.login-form-container button[data-action="cancel"]:hover {
+  background-color: #2980b9;
+}
+
+/* Optional: Responsive adjustments */
+@media only screen and (max-width: 600px) {
+  .login-form-container form {
+    max-width: 100%;
+  }
+}
+
+#forgotUserLogin,
+#createUserLogin {
+  font-size: 14px; /* Increase font size for better readability */
+  text-align: center;
+  margin-top: 10px;
+  color: #3498db; /* Blue color, you can adjust it to your preference */
+  text-decoration: none; /* Remove the default underline */
+  transition: color 0.3s; /* Add a smooth color transition on hover */
+}
+
+#forgotUserLogin:hover,
+#createUserLogin:hover {
+  color: #e74c3c; /* Change color on hover, adjust as needed */
+}
+
+/* STYLING AF CREATE USER BUTTON */
+form {
+  position: relative;
+
+  width: 300px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 3px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+button[data-action="close"] {
+  position: absolute;
+  top: 0.5px;
+  right: 0px;
+  background: transparent;
+  border: 0;
+  font-size: 20px;
+  line-height: 10px;
+  cursor: pointer;
+  color: #999;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  color: #666;
+}
+
+input {
+  display: block;
+  width: 100%;
+  padding: 6px 10px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+
+button {
+  display: block;
+  width: 100%;
+  padding: 6px 10px;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.6;
+  color: #fff;
+  background-color: #3498db;
+  background-image: none;
+  border: 1px solid #3498db;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color ease-in-out 0.15s, border-color ease-in-out 0.15s;
+}
+
+button[data-action="cancel"] {
+  background-color: #e74c3c;
+}
+
+/* Optional: Style checkbox */
+input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+/* Optional: Add some hover effects */
+button:hover,
+button[data-action="cancel"]:hover {
+  background-color: #2980b9;
+}
+
+/* Optional: Responsive adjustments */
+@media only screen and (max-width: 600px) {
+  form {
+    max-width: 100%;
+  }
+}
+
+/* _______________________Modal content styles_______________________________ */
+
+.header {
+  background-color: #f8f8f8;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 0 20px;
+}
+
+.subscribe-newsletter {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.subscribe-newsletter label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.subscribe-newsletter input {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.subscribe-newsletter input:focus-visible {
+  outline: 2px solid #2980b9;
+}
+
+.subscribe-newsletter input:checked + span {
+  color: #2980b9;
+}
+
+.subscribe-newsletter span {
+  color: #555;
+}
+
+/* Dropdown Menu Styles */
+
+/* Hide the dropdown menu by default */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  z-index: 1;
+  width: auto; /* Adjusted to auto for flexible width */
+  /* Removed max-height for auto-adjustment */
+  padding: 5px 0; /* Vertical padding for the entire dropdown */
+  border-radius: 4px; /* Rounded corners */
+  white-space: nowrap; /* Ensure the text does not wrap */
+}
+
+.dropdown-content a {
+  color: #333;
+  padding: 8px 12px; /* Reduced and uniform padding */
+  text-decoration: none;
+  display: block;
+  transition: background-color 0.3s;
+  font-size: 14px; /* Smaller font size */
+  font-weight: normal; /* Ensures text is not bold */
+}
+
+/* Style the individual links within the dropdown */
+.dropdown-content a {
+  color: #333;
+  padding: 8px 12px; /* Reduced and uniform padding */
+  text-decoration: none;
+  display: block;
+  transition: background-color 0.3s;
+  font-size: 14px; /* Smaller font size */
+}
+
+/* Change background color on hover */
+.dropdown-content a:hover {
+  background-color: #f2f2f2; /* Light grey background on hover */
+}
+
+/* Display the dropdown when hovering over the parent element */
+.dropdown:hover .dropdown-content {
+  display: block;
+  column-count: 3; /* Adjust the number of columns as needed */
+  column-gap: 15px; /* Space between columns */
+}
+
+.main-content {
+  /* Sørger for at indholdet centreres og har plads rundt om sig */
+  max-width: 1500px;
+  margin: auto;
+  padding: 20px;
+}
+
+.product-grid {
+  /* Definerer et grid layout med to kolonner og en gap mellem elementerne */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+}
+
+.product-item {
+  /* Højden kan justeres efter behov */
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.product-item a {
+  /* Gør teksten mere læsbar over billedet */
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-size: 1.5rem;
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  opacity: 90%;
+}
+.product-item a:hover {
+  cursor: pointer;
+  text-decoration: underline; /* Tilføj understregning ved hover for ekstra feedback */
+}
+
+.product-item h2 {
+  /* Gør teksten mere læsbar over billedet */
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-size: 1.5rem;
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+}
+
+.news-updates h2 {
+  font-size: 1.5em; /* Larger font size for headings */
+  margin-bottom: 10px; /* Space below heading */
+}
+
+.news-updates ol {
+  padding-left: 20px; /* Indentation for list items */
+}
+
+.news-updates li {
+  margin-bottom: 5px; /* Space between list items */
+}
+
+/* Add this in your existing CSS file */
+.search-container {
+  position: relative;
+  display: flex;
+  align-items: center; /* Center the icon vertically */
+}
+
+.search-icon {
+  cursor: pointer;
+  margin-right: 8px; /* Add some space between the icon and the input */
+}
+
+.search-bar {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  width: 200px; /* Adjust the width as needed */
+  z-index: 1; /* Ensure the search bar is above other elements */
+}
+
+/* Style the search input */
+#searchInput {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Style the search button (if needed) */
+#searchButton {
+  margin-top: 8px;
+  padding: 8px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.search-bar input {
+  width: 200px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.search-bar button {
+  padding: 8px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.search-bar button:hover {
+  background-color: #0056b3;
+}
+/* ---------Cart--------- */
+
+/* Style for the cart items */
+.cart-item {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  margin-right: 15px;
+  border-bottom: 1px solid #ccc;
+}
+
+.cart-item img {
+  width: 80px;
+  height: 80px;
+  margin-right: 20px;
+}
+
+.cart-item .item-details {
+  flex: 1;
+}
+
+.cart-item h2 {
+  font-size: 16px;
+  margin: 0;
+  margin-right: 10px;
+}
+
+.cart-item h3 {
+  font-size: 14px;
+  margin: 5px 0;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.cart-item p {
+  font-size: 12px;
+  margin: 0;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.cart-item .quantity {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.cart-item .quantity label {
+  margin-right: 10px;
+}
+
+.cart-item .quantity input {
+  width: 40px;
+  padding: 5px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+}
+
+.cart-item .remove-button {
+  margin-left: auto;
+  background-color: #ff6347; /* Tomato red */
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.cart-item .remove-button:hover {
+  background-color: #ff483e; /* Darker red on hover */
+}
+
+/* Styling for the "Go to Cart" link */
+.cart-total-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.cart-total p {
+  margin: 0;
+}
+
+div.cart-total a.go-to-cart-link {
+  text-decoration: none;
+  padding: 10px 20px;
+  background-color: #ff6347; /* Tomato red */
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+div.cart-total a.go-to-cart-link:hover {
+  background-color: #ff483e; /* Darker red on hover */
+  color: white;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Styling for the total price section */
+.cart-total-container p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+#cart {
+  position: relative;
+}
+
+.cart-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  min-width: 200px;
+  max-height: 300px; /* Set a max height for scroll */
+  overflow-y: auto; /* Enable vertical scroll */
+  z-index: 1;
+}
+
+#cart:hover .cart-content {
+  display: block;
+}
+
+footer {
+  color: rgb(0, 0, 0);
+  text-align: center;
+  padding: 1rem 0;
+  font-weight: bold;
+}
+
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer section {
+  margin-right: 20px;
+  flex: 1;
+}
+
+.footer h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.footer p {
+  margin: 5px 0;
+}
+
+.footer ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer li {
+  padding: 5px 0;
+}
+
+.social-media a {
+  display: inline-block;
+  margin-right: 10px;
+  color: #fff; /* Change as needed */
+  font-size: 24px; /* Adjust icon size as needed */
+}
+
+.social-media a:hover {
+  color: #ddd; /* Slightly lighter color on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .social-media {
+    order: 3; /* Make sure social media links are at the bottom on mobile */
+    margin-top: 20px; /* Add some space above the social media links */
+  }
+}
+
+.caption {
+  background-color: #ff8c00; /* Semi-transparent background */
+  color: #000000;
+  padding: 8px;
+}
+
+.product-item-link {
+  display: block;
+  height: 100%;
+  width: 100%;
+  text-decoration: none;
+  color: inherit; /* Keeps the text color consistent */
+  background-size: cover;
+  background-position: center;
+}
+
+.product-item-link h2 {
+  /* Style for the text inside the link */
+  margin: 0;
+  padding: 10px; /* Adjust as necessary */
+  background-color: rgba(255, 255, 255, 0.7); /* Optional for better text visibility */
+}
+
+.popup {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #f1f1f1;
+  border: 2px solid #0077b6;
+  border-bottom-left-radius: 50px 20px;
+  border-top-left-radius: 50px 20px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(175, 102, 102, 0.2);
+  width: 150px;
+  display: none;
+  z-index: 100;
+}
+
+#newsletter-form {
+  display: flex;
+  flex-direction: column;
+}
+
+#newsletter-form label,
+#newsletter-form input,
+#newsletter-form button {
+  margin-bottom: 10px;
+}
+
+.popup.show {
+  display: block;
+}
+
+.close-button {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  border: none;
+  background-color: transparent;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Optional: Style on hover */
+.close-button:hover {
+  color: red;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Styles for subscription message */
+#subscription-message {
+  text-align: center;
+  color: green;
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+.nav-item {
+  padding: 10px 15px; /* Uniform padding for clickable area */
+  margin: 0 5px; /* Space between menu items */
+}
+
+.nav-item a {
+  text-decoration: none; /* Remove underline from links */
+  color: #333; /* Menu item color */
+  font-weight: bold;
+}
+
+.nav-item a:hover,
+.nav-item a:focus {
+  color: #ff8c00; /* Hover and focus state color */
+}
+
+/* Main Content */
+.main-content {
+  padding: 30px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin: 20px auto; /* Increased top and bottom margin */
+}
+
+.nav-item {
+  position: relative; /* For positioning the underline */
+  margin: 0 10px;
+}
+
+/* Additional styles for search bar, icons, etc. */
+/* ... */
