@@ -1,19 +1,14 @@
-/* Base reset for padding and margin for all elements */
-* {
+/* Typography */
+body,
+html {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; /* Consistent box-sizing */
-}
-
-/* Typography */
-body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 16px; /* Base font size */
   line-height: 1.6; /* Line height for readability */
   color: #333; /* Primary text color */
   background-color: #f4f4f4; /* Background color */
 }
-
 /* Header and Navigation */
 .header {
   background-color: #f8f8f8;
@@ -66,6 +61,8 @@ body {
     margin: 5px 0; /* Adjusted margin for vertical layout */
   }
 }
+
+
 
 .container {
   max-width: 1200px;
@@ -294,30 +291,7 @@ body {
   margin-right: 8px; /* Add some space between the icon and the input */
 }
 
-.login-form-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed; /* Fixed to cover the entire viewport */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* Optional: adds a semi-transparent overlay */
-  z-index: 1000; /* High z-index to ensure it's on top */
-}
 
-
-.login-form-container form {
-  position: relative; /* Position relative to the flex container */
-  width: 300px; /* Fixed width */
-  padding: 20px; /* Padding as desired */
-  background: #fff; /* Background color */
-  border-radius: 3px; /* Rounded corners */
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); /* Box-shadow for styling */
-  /* Remove margin: 0 auto; if you are centering with flexbox */
-  /* Rest of your styles... */
-}
 
 
 
@@ -489,13 +463,27 @@ h1 {
   color: #e74c3c; /* Change color on hover, adjust as needed */
 }
 
+/* STYLING AF CREATE USER BUTTON */
 form {
+  position: relative;
   width: 300px;
+  margin: 0 auto;
   padding: 20px;
-  background: #ffffff;
+  background: #fff;
   border-radius: 3px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-  /* The margin: 0 auto; is not necessary with this flexbox method */
+}
+
+.login-form-container form {
+  position: relative;
+  width: 300px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 3px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  opacity: 0; /* Start with opacity set to 0 */
+  animation: fadeIn 0.5s forwards; /* Apply the fadeIn animation */
 }
 
 
