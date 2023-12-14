@@ -78,7 +78,6 @@ async function extractProductFromForm() {
         imageURLs: form.imageURLs.value,
         description: form.description.value,
         categories: form.productCategories.value,
-        colors: form.productColors.value,
     };
 
     const result = await createProduct(product);
@@ -123,7 +122,14 @@ function populateCategoryDropdown(selector, data) {
 
     // Clear existing options
     dropdown.innerHTML = "";
-    // Iterate through the data and create option elements
+
+    // Create an empty option and add it to the dropdown
+    const emptyOption = document.createElement("option");
+    emptyOption.value = ""; // Set value as per requirement
+    emptyOption.textContent = "Select Category"; // Set text as per requirement
+    dropdown.appendChild(emptyOption);
+
+    // Iterate through the data and create option elements for each category
     data.forEach((item) => {
         const option = document.createElement("option");
         option.value = item.categoryId;
@@ -134,14 +140,3 @@ function populateCategoryDropdown(selector, data) {
 }
 
 export { populateCategoryDropdown, categories };
-// function setupTabToggle() {
-//     document.getElementById("showProducts").addEventListener("click", () => {
-//         document.getElementById("productSection").style.display = "block";
-//         document.getElementById("categoriesSection").style.display = "none";
-//     });
-
-//     document.getElementById("showCategories").addEventListener("click", () => {
-//         document.getElementById("productSection").style.display = "none";
-//         document.getElementById("categoriesSection").style.display = "block";
-//     });
-// }

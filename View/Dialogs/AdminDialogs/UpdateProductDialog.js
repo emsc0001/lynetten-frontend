@@ -25,9 +25,7 @@ export default class UpdateProductDialog extends Dialog {
                     <textarea id="editProductDescription" name="description" placeholder="Description"> ${product.description}</textarea>
                     <label for="category">Category</label>
                     <select id="updateProductCategories" name="categories"  required>
-
                     </select>
-                    <input type="text" id="editProductColors" name="colors" value="${product.colors}" placeholder="color">
                     <button type="submit">Save Changes</button>
                 </form>
             </div>
@@ -52,7 +50,6 @@ export default class UpdateProductDialog extends Dialog {
                 imageURLs: form.imageURLs.value,
                 description: form.description.value,
                 categories: form.categories.value,
-                colors: form.colors.value,
             };
             console.log(product.categories);
             // Clear form
