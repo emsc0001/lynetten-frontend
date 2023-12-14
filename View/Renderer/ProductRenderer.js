@@ -51,9 +51,10 @@ export default class ProductRenderer extends ItemRenderer {
             const orderDate = new Date().toISOString().slice(0, 10);
             const newOrderId = await createOrder(orderDate, controller.loggedInUser.userId);
             addToCart(product.productId, product.listPrice, product.productName, product.imageURLs, product.categories, newOrderId, null);
+            console.log(product.categories);
           } else {
             // Add item to existing order
-            addToCart(product.productId, product.listPrice, product.productName, product.imageURLs,  product.categories, orderId, null);
+            addToCart(product.productId, product.listPrice, product.productName, product.imageURLs, product.categories, orderId, null);
           }
         } else {
           const guestOrderId = controller.cart[0]?.guestOrderId;

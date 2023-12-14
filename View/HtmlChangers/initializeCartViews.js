@@ -28,12 +28,14 @@ async function initializeCartHtmlView() {
     const totalPriceSection = new ProductCartRenderer().renderTotalPriceCartHtml();
     document.querySelector(".cart-summary").innerHTML = totalPriceSection;
 
-    const recommendationSection = await new ProductCartRenderer().renderRecomendationCartHtml(cart);
-
-    document.querySelector("#recommended-items").innerHTML = recommendationSection;
-
-        const renderer = new ProductCartRenderer(); // Create an instance
-        renderer.addRecommendedItemsListeners();
+    if (cart.length > 0) {
+        const recommendationSection = await new ProductCartRenderer().renderRecomendationCartHtml(cart);
+        document.querySelector("#recommended-items").innerHTML = recommendationSection;
+    
+            const renderer = new ProductCartRenderer(); // Create an instance
+            renderer.addRecommendedItemsListeners();
+        
+    }
 }
 
 export { initializeCartView, initializeCartHtmlView };

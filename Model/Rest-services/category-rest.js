@@ -30,6 +30,7 @@ async function getCategoryWithProducts(categoryId) {
 
   const category = new Category(data.category);
   const products = data.products.map((jsonObj) => new Product(jsonObj));
+  console.log(products);
 
   return { category, products };
 }
