@@ -723,23 +723,22 @@ input:focus {
   column-gap: 15px; /* Space between columns */
 }
 
+#products-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Creates 2 columns */
+  grid-gap: 20px; /* Adjusts the gap between grid items */
+  padding: 20px; /* Add padding around the grid */
+
+}
+
+
 .product-item {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center content horizontally */
-  background-size: cover;
-  background-position: center;
-  position: relative;
-  overflow: hidden;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Slightly elevated shadow */
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-  margin: 10px; /* Adjust margin for more outer space */
-  padding: 15px; /* Adjust padding for more inner space */
-  background-color: #fff; /* Background color for the product container */
-  text-align: center; /* Center text content */
-  width: 80%; /* Adjust width to be smaller */
-  height: auto; /* Adjust height accordingly */
+  justify-content: space-between; /* Aligns content inside the item */
+  height: 100%;
+  flex: 1 0 45%; /* Adjust the flex-basis to control the width of each item */
+  margin: 10px; /* Adjust margin for spacing */
 }
 
 
@@ -865,13 +864,7 @@ input:focus {
   background-color: #2980b9;
 }
 
-/* Container for products */
-.products-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center; /* Center the items */
-  gap: 20px; /* Space between items */
-}
+
 
 /* ---------Sort--------- */
 .sort-container {
