@@ -356,7 +356,9 @@ body {
   flex: 1; /* Takes up necessary space */
 }
 
-.nav-icon, .search-container, .userLogin-container {
+.nav-icon,
+.search-container,
+.userLogin-container {
   display: flex;
   align-items: center; /* Ensures vertical alignment for each icon */
   justify-content: center; /* Centers content within each icon or container */
@@ -371,7 +373,6 @@ body {
 .nav-icon {
   margin-right: 8px; /* Space on the right of each icon */
 }
-
 
 /* Add your existing styles for .nav-link, .underline, and other elements */
 
@@ -664,6 +665,23 @@ button[data-action="cancel"]:hover {
   background-size: cover;
   background-position: center;
   position: relative;
+}
+
+.product-item a {
+  /* Gør teksten mere læsbar over billedet */
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-size: 1.5rem;
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  opacity: 90%;
+}
+.product-item a:hover {
+  cursor: pointer;
+  text-decoration: underline; /* Tilføj understregning ved hover for ekstra feedback */
 }
 
 .product-item h2 {
