@@ -5,9 +5,9 @@ export default class AdminOrderRenderer extends ItemRenderer {
       const order = this.item;
       if (order.paid && order.userId) {
           const html = /*html*/ `
-            <table class ="table" class="user-order-info">
-              <thead>
-                <tr>
+
+          
+                <tr class="user-order-info" >
                 <th>Bruger Ordrer</th>
                   <th>${order.orderId}</th>
                   <th>${order.orderDate}</th>
@@ -19,16 +19,12 @@ export default class AdminOrderRenderer extends ItemRenderer {
                   <th>${order.zipCode}</th>
                   <th>Betalt</th>
                 </tr>
-              </thead>
-            </table>
           `;
     
           return html;
       }else if (order.paid&& !order.userId) {
         const html = /*html*/ `
-          <table class="table" class="guest-order-info">
-            <thead>
-              <tr>
+              <tr class="guest-order-info">
                 <th>Gæst Ordrer</th>
                 <th>${order.guestOrderId}</th>
                 <th>${order.orderDate}</th>
@@ -42,8 +38,6 @@ export default class AdminOrderRenderer extends ItemRenderer {
                 <th>${order.zipCode}</th>
                 <th>Betalt</th>
               </tr>
-            </thead>
-          </table>
         `;
     
         return html;
