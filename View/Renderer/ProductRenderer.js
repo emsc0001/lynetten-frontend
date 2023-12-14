@@ -35,6 +35,24 @@ export default class ProductRenderer extends ItemRenderer {
 
     controller.setProductList(products);
     controller.setCategoryList([category]);
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const sortSelect = document.getElementById("sort");
+      if (sortSelect) {
+        sortSelect.addEventListener("change", () => {
+          const selectedOption = sortSelect.options[sortSelect.selectedIndex];
+          const sortBy = selectedOption.dataset.sortBy;
+          const sortDirection = selectedOption.dataset.sortDirection;
+
+          // Call the sort function in ListRenderer with the selected options
+          if (productsLists) {
+            const sortedProducts = productsLists.sort(sortBy, sortDirection);
+            console.log("Sorted products");
+            productsLists.render(sortedProducts);
+          }
+        });
+      }
+    });
   }
 
   postRender(element) {
@@ -51,7 +69,7 @@ export default class ProductRenderer extends ItemRenderer {
             // Create a new order if no order ID exists
             const orderDate = new Date().toISOString().slice(0, 10);
             const newOrderId = await createOrder(orderDate, controller.loggedInUser.userId);
-           addToCart(product.productId, product.listPrice, product.productName, product.imageURLs, newOrderId, null);
+            addToCart(product.productId, product.listPrice, product.productName, product.imageURLs, newOrderId, null);
           } else {
             // Add item to existing order
             addToCart(product.productId, product.listPrice, product.productName, product.imageURLs, orderId, null);

@@ -1,87 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Betaling</title>
-    <link rel="stylesheet" href="./Tabs/payment/payment.css">
-</head>
-<body>
+    <link rel="stylesheet" href="./css/payment/payment.css" />
+  </head>
+  <body>
+    <form id="shipping-details-form">
+      <h2>Payment and Shipping Details</h2>
+      <div class="form-group">
+        <label for="fullName">Fulde Navn</label>
+        <input type="text" id="fullName" name="fullName" placeholder="Indtast dit fulde navn" required />
+      </div>
 
-     <form id="shipping-details-form">
-    <h2>Payment and Shipping Details</h2>
-<div class="form-group">
-      <label for="fullName">Fulde Navn</label>
-      <input type="text" id="fullName" name="fullName" placeholder="Indtast dit fulde navn" required>
-    </div>
+      <!-- Email -->
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="Indtast din Email adresse" required />
+      </div>
 
-    <!-- Email -->
-    <div class="form-group">
-      <label for="email">Email Address</label>
-      <input type="email" id="email" name="email" placeholder="Indtast din Email adresse" required>
-    </div>
+      <!-- Phone number -->
+      <div class="form-group">
+        <label for="phoneNumber">Telefon Nummer</label>
+        <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Indtast dit telefon nummer" required />
+      </div>
 
-    <!-- Phone number -->
-    <div class="form-group">
-      <label for="phoneNumber">Telefon Nummer</label>
-      <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Indtast dit telefon nummer" required>
-    </div>
+      <!-- Address -->
+      <div class="form-group">
+        <label for="address">Addresse</label>
+        <input type="text" id="address" name="address" placeholder="Indtast din adresse" required />
+      </div>
 
-    <!-- Address -->
-  <div class="form-group">
-    <label for="address">Addresse</label>
-    <input type="text" id="address" name="address" placeholder="Indtast din adresse" required>
-  </div>
-  
-  <!-- Country -->
-  <div class="form-group">
-    <label for="country">Land</label>
-    <input type="text" id="country" name="country" placeholder="Indtast dit land" required>
-  </div>
+      <!-- Country -->
+      <div class="form-group">
+        <label for="country">Land</label>
+        <input type="text" id="country" name="country" placeholder="Indtast dit land" required />
+      </div>
 
-  <!-- Postcode + City -->
-<div class="form-group">
-  <label for="zipCode">Postnummer</label>
-  <input type="text" id="zipCode" name="zipCode" placeholder="Indtast dit postnummer" required>
-</div>
+      <!-- Postcode + City -->
+      <div class="form-group">
+        <label for="zipCode">Postnummer</label>
+        <input type="text" id="zipCode" name="zipCode" placeholder="Indtast dit postnummer" required />
+      </div>
 
-<div class="form-group">
-   <label for="city">By</label>
-  <input type="text" id="city" name="city" placeholder="Indtast din by" required>
-</div>
-    <!-- Submit Button -->
-    <button type="submit" id="shipping-details-form-button" disabled>Proceed to Payment</button>
-  </form>
+      <div class="form-group">
+        <label for="city">By</label>
+        <input type="text" id="city" name="city" placeholder="Indtast din by" required />
+      </div>
+      <!-- Submit Button -->
+      <button type="submit" id="shipping-details-form-button" disabled>Proceed to Payment</button>
+    </form>
 
-     <form id="payment-form">
-    <h2>Payment Details</h2>
-    
-    <div class="form-group">
-      <label for="cardholder-name">Cardholder Name</label>
-      <input type="text" id="cardholder-name" name="cardholder-name" placeholder="Helle Madsen" required>
-    </div>
+    <form id="payment-form">
+      <h2>Payment Details</h2>
 
-    <div class="form-group">
-      <label for="card-number">Card Number</label>
-      <input type="text" id="card-number" name="card-number" placeholder="1234 5678 9012 3456" required>
-    </div>
-    
-    <div class="form-group">
-      <label for="expiry-date">Expiry Date</label>
-      <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/YY" required>
-    </div>
-    
-    <div class="form-group">
-      <label for="cvv">CVV</label>
-      <input type="text" id="cvv" name="cvv" placeholder="123" required>
-    </div>
-    
-  <button type="submit" id="pay-now-button" disabled>Pay Now</button>
-  </form>
+      <div class="form-group">
+        <label for="cardholder-name">Cardholder Name</label>
+        <input type="text" id="cardholder-name" name="cardholder-name" placeholder="Helle Madsen" required />
+      </div>
+
+      <div class="form-group">
+        <label for="card-number">Card Number</label>
+        <input type="text" id="card-number" name="card-number" placeholder="1234 5678 9012 3456" required />
+      </div>
+
+      <div class="form-group">
+        <label for="expiry-date">Expiry Date</label>
+        <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/YY" required />
+      </div>
+
+      <div class="form-group">
+        <label for="cvv">CVV</label>
+        <input type="text" id="cvv" name="cvv" placeholder="123" required />
+      </div>
+
+      <button type="submit" id="pay-now-button" disabled>Pay Now</button>
+    </form>
 
     <footer>
       <p>&copy; 2023 by AEM</p>
     </footer>
     <script src="main.js" type="module"></script>
-</body>
+  </body>
 </html>
