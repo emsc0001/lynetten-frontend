@@ -1,19 +1,14 @@
-/* Base reset for padding and margin for all elements */
-* {
+/* Typography */
+body,
+html {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; /* Consistent box-sizing */
-}
-
-/* Typography */
-body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 16px; /* Base font size */
   line-height: 1.6; /* Line height for readability */
   color: #333; /* Primary text color */
   background-color: #f4f4f4; /* Background color */
 }
-
 /* Header and Navigation */
 .header {
   background-color: #f8f8f8;
@@ -67,15 +62,16 @@ body {
   }
 }
 
+
+
 .container {
   max-width: 1200px;
   margin: auto;
   display: flex;
 }
 
-/* Header styles */
 .main-header {
-  margin-bottom: 20px;
+  margin-bottom: 40px; /* Increased bottom margin for more space */
   margin-top: 0;
 }
 
@@ -294,18 +290,12 @@ body {
   margin-right: 8px; /* Add some space between the icon and the input */
 }
 
-/* STYLING AF LOGIN USER */
-.login-form-container form {
-  position: relative;
-  width: 300px;
-  margin: 0 auto;
-  padding: 20px;
-  background: #fff;
-  border-radius: 3px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-  opacity: 0; /* Start with opacity set to 0 */
-  animation: fadeIn 0.5s forwards; /* Apply the fadeIn animation */
-}
+
+
+
+
+
+
 
 @keyframes fadeIn {
   from {
@@ -385,6 +375,8 @@ h1 {
   margin-inline-end: 0px;
   font-weight: bold;
 }
+
+
 
 .login-form-container button[data-action="close"] {
   position: absolute;
@@ -473,7 +465,6 @@ h1 {
 /* STYLING AF CREATE USER BUTTON */
 form {
   position: relative;
-
   width: 300px;
   margin: 0 auto;
   padding: 20px;
@@ -481,6 +472,20 @@ form {
   border-radius: 3px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
+
+.login-form-container form {
+  position: relative;
+  width: 300px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 3px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  opacity: 0; /* Start with opacity set to 0 */
+  animation: fadeIn 0.5s forwards; /* Apply the fadeIn animation */
+}
+
+
 
 button[data-action="close"] {
   position: absolute;
@@ -663,70 +668,7 @@ button[data-action="cancel"]:hover {
   left: 0;
 }
 
-/* Add this in your existing CSS file */
-.search-container {
-  position: relative;
-  display: flex;
-  align-items: center; /* Center the icon vertically */
-}
 
-.search-icon {
-  cursor: pointer;
-  margin-right: 8px; /* Add some space between the icon and the input */
-}
-
-.search-bar {
-  display: none;
-  position: absolute;
-  top: 100%;
-  right: 0;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  padding: 10px;
-  width: 200px; /* Adjust the width as needed */
-  z-index: 1; /* Ensure the search bar is above other elements */
-}
-
-/* Style the search input */
-#searchInput {
-  width: 100%;
-  padding: 8px;
-  box-sizing: border-box;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-/* Style the search button (if needed) */
-#searchButton {
-  margin-top: 8px;
-  padding: 8px;
-  background-color: #4caf50;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.search-bar input {
-  width: 200px;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.search-bar button {
-  padding: 8px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.search-bar button:hover {
-  background-color: #0056b3;
-}
 /* ---------Cart--------- */
 
 /* Style for the cart items */
@@ -985,13 +927,7 @@ footer {
   display: none;
 }
 
-/* Styles for subscription message */
-#subscription-message {
-  text-align: center;
-  color: green;
-  font-size: 18px;
-  margin-top: 20px;
-}
+
 
 .nav-item {
   padding: 10px 15px; /* Uniform padding for clickable area */
@@ -1023,5 +959,3 @@ footer {
   margin: 0 10px;
 }
 
-/* Additional styles for search bar, icons, etc. */
-/* ... */
