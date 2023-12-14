@@ -4,11 +4,14 @@ import { getAllGuestOrder } from "../Model/Rest-services/guestOrder-rest.js";
 import { endpoint, getAllProducts, createProduct } from "../Model/Rest-services/products-rest.js";
 import { getAllCategories, createCategory } from "../Model/Rest-services/category-rest.js";
 import { getAllUsers } from "../Model/Rest-services/user-rest.js";
+
 import ListRenderer from "../View/Renderer/ListRenderer.js";
 import AdminProductRenderer from "../View/Renderer/AdminRenderer/AdminProductRenderer.js";
 import AdminCategoryRenderer from "../View/Renderer/AdminRenderer/AdminCategoryRenderer.js";
 import AdminUserRenderer from "../View/Renderer/AdminRenderer/AdminUserRenderer.js";
 import AdminOrderRenderer from "../View/Renderer/AdminRenderer/AdminOrderRenderer.js";
+
+// import deleteUnpaidOrders from "../Controller/deleteUnpaidOrders.js";
 
 let products = [];
 let categories = [];
@@ -41,8 +44,6 @@ async function adminApp() {
     document.getElementById("showCategories").addEventListener("click", () => showSection("categoriesSection"));
     document.getElementById("showUsers").addEventListener("click", () => showSection("userSection"));
     document.getElementById("showOrders").addEventListener("click", () => showSection("orderSection"));
-    // setupTabToggle();
-
     // Event listeners for create product and category
     document.getElementById("createProductForm").addEventListener("submit", extractProductFromForm);
     document.getElementById("createCategoryForm").addEventListener("submit", extractCategoryFromForm);
@@ -53,7 +54,7 @@ async function adminApp() {
 async function initializeAdminView() {
     productsLists = new ListRenderer(products, "#product-list", AdminProductRenderer);
     categoriesLists = new ListRenderer(categories, "#category-list", AdminCategoryRenderer);
-    usersLists = new ListRenderer(users, "#user-list", AdminUserRenderer);
+    usersLists = new ListRenderer(users, "#user-table-body", AdminUserRenderer);
     ordersLists = new ListRenderer(orders, "#order-table-body", AdminOrderRenderer);
 
     productsLists.render();

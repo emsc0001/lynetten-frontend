@@ -3,11 +3,8 @@ import ItemRenderer from "../Itemrenderer.js";
 export default class AdminOrderRenderer extends ItemRenderer {
     render() {
         const order = this.item;
-        console.log(order.orderId);
       if (order.paid && order.userId) {
           const html = /*html*/ `
-
-          
                 <tr class="user-order-info" >
                 <th>Bruger Ordrer</th>
                   <th>${order.orderId}</th>
@@ -25,7 +22,7 @@ export default class AdminOrderRenderer extends ItemRenderer {
           `;
     
           return html;
-      }else if (order.paid&& !order.userId) {
+      }else if (order.paid && !order.userId) {
         const html = /*html*/ `
               <tr class="guest-order-info">
                 <th>Gæst Ordrer</th>
@@ -44,6 +41,8 @@ export default class AdminOrderRenderer extends ItemRenderer {
         `;
     
         return html;
+      } else {
+          return "";
       }
   }
 }

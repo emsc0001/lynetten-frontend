@@ -123,30 +123,58 @@ form button[type="submit"]:hover {
     cursor: pointer;
 }
 
-/* Tabelformatering for Brugere og Ordrer */
-.table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
+/* Basic styling for the order management section */
+#orderSection {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+/* Styling for the order list table */
+#order-list {
+  margin-top: 15px;
 }
 
-.table th, .table td {
-    text-align: left;
-    padding: 8px;
-    border-bottom: 1px solid #ddd;
-    
+ h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+ h2 {
+  font-size: 20px;
+  margin-bottom: 8px;
 }
 
 
-.table th {
-    background-color: #28b00634;
-
-    font-weight: bold;
+ table {
+  width: 100%;
+  border-collapse: collapse;
 }
 
-.table tr:nth-child(even) {
-    background-color: #f9f9f9;
+ th,
+ td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  font-size: 14px;
 }
+
+ th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+/* Alternating row colors */
+tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Hover effect on rows */
+ tbody tr:hover {
+  background-color: #e0e0e0;
+}
+
 
 /* Responsiv tabel */
 @media screen and (max-width: 600px) {

@@ -90,9 +90,10 @@ async function baddServiceApp() {
 }
 
 //Initiliaze views for koebeguide.html, handelsBetingelser and index.html
-function initializeOtherHtmlViews() {
-  // initialize Category Views //
-  categoriesLists = new ListRenderer(categories, ".category-list", CategoryRenderer);
+async function initializeOtherHtmlViews() {
+    // initialize Category Views //
+   const hey = document.querySelector(".category-list")
+    categoriesLists = new ListRenderer(categories, ".category-list", CategoryRenderer);
   categoriesLists.render();
 
   const categoryLinks = document.querySelectorAll(".category-list a");
@@ -323,5 +324,6 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
   maxZoom: 19,
   attribution: "© OpenStreetMap contributors",
 }).addTo(myMap);
+
 
 export { products, categories, cart, saveCartToLocalStorage, htmlSide, users, loggedInUser, productsLists, setProductList, setCategoryList };

@@ -91,7 +91,20 @@
 <section id="userSection" style="display:none;">
     <h1>Bruger Management</h1>
     <h2>Registrerede Brugere</h2>
-    <div id="user-list"></div>
+    <div id="user-list">
+        <table>
+            <thead>
+                <tr>
+                    <th>Bruger ID</th>
+                    <th>Mail</th>
+                    <th>Nyhedsbrev</th>
+                </tr>
+            </thead>
+            <tbody id="user-table-body">
+
+            </tbody>
+        </table>
+    </div>
 </section>
 
 <!-- Order Management Section -->
@@ -110,7 +123,7 @@
                     <th>Mail</th>
                     <th>Adresse</th>
                     <th>Telefon nummer</th>
-                    <th>Danmark</th>
+                    <th>Land</th>
                     <th>By</th>
                     <th>Postnummer</th>
                     <th>Betalings status</th>
@@ -120,6 +133,7 @@
 
             </tbody>
         </table>
+        <button id="delete-unpaid-orders">Delete Unpaid Orders</button>
     </div>
 </section>
 
