@@ -4,6 +4,8 @@ export default class Order {
         this.userId = obj.userId;
         this.orderDate = obj.orderDate;
         this.totalAmount = obj.totalAmount;
+        this.fullName = obj.fullName;
+        this.email = obj.email;
         this.address = obj.address;
         this.phoneNumber = obj.phoneNumber;
         this.country = obj.country;
