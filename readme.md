@@ -4,14 +4,14 @@ Dette repository indeholder Lynettens Bådudstyr, der giver dig mulighed for som
 
 ### Links til reposetories:
 
-- [Backend Repository](https://github.com/Abdiox/music-database)
-- [Deployet Backend](https://music-database.azurewebsites.net/)
-- [Frontend Repository](https://github.com/emsc0001/music-database-frontend)
-- [Deployet Frontend (GitHub Pages)](https://emsc0001.github.io/music-database-frontend/)
+- [Backend Repository](https://github.com/MadsFolkmann/lynetten-backend)
+  [Live Webapplikation på Azure](https://lynnetten-backend.azurewebsites.net/)
+- [Frontend Repository](https://github.com/emsc0001/lynetten-frontend)
+  [Live Webapplikation på Github Pages](https://emsc0001.github.io/lynetten-frontend/)
 
 ### Deployede Versioner
 
 Frontend er åben på GitHub Pages og kan tilgås her:
 
-[Live Webapplikation på Azure](https://music-database.azurewebsites.net/)
-[Live Webapplikation på Github Pages](https://emsc0001.github.io/music-database-frontend/)
+[Live Webapplikation på Azure](https://lynnetten-backend.azurewebsites.net/)
+[Live Webapplikation på Github Pages](https://emsc0001.github.io/lynetten-frontend/)
