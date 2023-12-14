@@ -92,6 +92,16 @@
       <main class="main-content">
         <div class="breadcrumb">Du er her: <a href="index.html">Forside</a> <a a href="products.html"> &gt; Produkter</a></div>
 
+        <div class="filter-container">
+          <div class="filter">
+            <label for="filter">Filtrer efter:</label>
+            <select name="filter" id="filter" data-filter-list="products">
+              <option data-filter-by="all" value="all">Alle</option>
+              <option data-filter-by="offerPrice" value="price">På tilbud</option>
+            </select>
+          </div>
+        </div>
+
         <div class="sort-container">
           <div class="sort">
             <label for="sort">Sorter efter:</label>

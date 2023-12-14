@@ -207,7 +207,6 @@ function setProductList(products) {
   });
 }
 
-
 function setCategoryList(categories) {
   categoriesLists = new ListRenderer(categories, ".category-list", CategoryRenderer);
   categoriesLists.render();
@@ -222,9 +221,9 @@ function setCategoryList(categories) {
       const { category, products } = await getCategoryWithProducts(categoryId);
 
       console.log("Category:", category);
-        console.log("Products for category ID", categoryId, products);
-        productsLists = new ListRenderer(products, "#products-container", ProductRenderer);
-        productsLists.render();
+      console.log("Products for category ID", categoryId, products);
+      productsLists = new ListRenderer(products, "#products-container", ProductRenderer);
+      productsLists.render();
     });
   });
 }
@@ -244,6 +243,17 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log("Sorted products");
         productsLists.render(sortedProducts);
       }
+    });
+  }
+});
+
+// ------Show offerPrice Products------ //
+document.addEventListener("DOMContentLoaded", () => {
+  const offerPrice = document.getElementById("offerPrice");
+  if (offerPrice) {
+    offerPrice.addEventListener("click", () => {
+      const offerPriceProducts = products.filter((product) => product.offerPrice);
+      setProductList(offerPriceProducts);
     });
   }
 });
