@@ -8,13 +8,11 @@ import UserLoginDialog from "./View/Dialogs/UserLoginDialog.js";
 import loggedInHtmlChange from "./View/HtmlChangers/loggedInHtmlChange.js";
 
 import { handleSearch } from "./View/Helpers/Search.js";
-// import { handleSort } from "./View/Helpers/Sort.js";
 
 import ProductRenderer from "./View/Renderer/ProductRenderer.js";
 import CategoryRenderer from "./View/Renderer/CategoryRenderer.js";
 import Paginater from "./View/Renderer/Paginater.js";
 import ListRenderer from "./View/Renderer/ListRenderer.js";
-import ProductCartRenderer from "./View/Renderer/ProductCartRenderer.js";
 import { initializeCartView, initializeCartHtmlView } from "./View/HtmlChangers/initializeCartViews.js";
 
 import { payNowClicked } from "./Controller/payment.js";
@@ -209,6 +207,7 @@ function setProductList(products) {
   });
 }
 
+
 function setCategoryList(categories) {
   categoriesLists = new ListRenderer(categories, ".category-list", CategoryRenderer);
   categoriesLists.render();
@@ -220,10 +219,12 @@ function setCategoryList(categories) {
       const categoryId = categoryLink.dataset.categoryId;
 
       // Brug den nye funktion til at hente kategori og produkter
-      const { category, products } = await getAllCategories(categoryId);
+      const { category, products } = await getCategoryWithProducts(categoryId);
 
       console.log("Category:", category);
-      console.log("Products for category ID", categoryId, products);
+        console.log("Products for category ID", categoryId, products);
+        productsLists = new ListRenderer(products, "#products-container", ProductRenderer);
+        productsLists.render();
     });
   });
 }
