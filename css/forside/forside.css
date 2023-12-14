@@ -561,37 +561,6 @@ button[data-action="cancel"]:hover {
   padding: 0 20px;
 }
 
-.subscribe-newsletter {
-  margin-top: 20px;
-  text-align: center;
-}
-
-.subscribe-newsletter label {
-  display: block;
-  margin-bottom: 8px;
-}
-
-.subscribe-newsletter input {
-  width: 100%;
-  margin-bottom: 20px;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-.subscribe-newsletter input:focus-visible {
-  outline: 2px solid #2980b9;
-}
-
-.subscribe-newsletter input:checked + span {
-  color: #2980b9;
-}
-
-.subscribe-newsletter span {
-  color: #555;
-}
-
 /* Dropdown Menu Styles */
 
 /* Hide the dropdown menu by default */
@@ -692,19 +661,6 @@ button[data-action="cancel"]:hover {
   position: absolute;
   bottom: 20px;
   left: 0;
-}
-
-.news-updates h2 {
-  font-size: 1.5em; /* Larger font size for headings */
-  margin-bottom: 10px; /* Space below heading */
-}
-
-.news-updates ol {
-  padding-left: 20px; /* Indentation for list items */
-}
-
-.news-updates li {
-  margin-bottom: 5px; /* Space between list items */
 }
 
 /* Add this in your existing CSS file */
@@ -1008,21 +964,6 @@ footer {
   width: 150px;
   display: none;
   z-index: 100;
-}
-
-#newsletter-form {
-  display: flex;
-  flex-direction: column;
-}
-
-#newsletter-form label,
-#newsletter-form input,
-#newsletter-form button {
-  margin-bottom: 10px;
-}
-
-.popup.show {
-  display: block;
 }
 
 .close-button {
