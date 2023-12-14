@@ -9,15 +9,19 @@ import addToCart from "../../Controller/addToCart.js";
 export default class ProductRenderer extends ItemRenderer {
   render() {
     const product = this.item;
+    const isOnOffer = product.offerPrice > 0;
+    const offerIndicator = isOnOffer ? '<span class="offer-indicator">På tilbud!</span>' : "";
+
     const html = /*html*/ `
       <article class="product">
         <div class="product-item">
-          <img id="product-image"src="${product.imageURLs}" alt="${product.productName}">
+          <img id="product-image" src="${product.imageURLs}" alt="${product.productName}">
           <h2 id="product-name">${product.productName}</h2>
           <h4 id="product-number">${product.productNumber}</h4>
           <h3 id="product-list-price">${product.listPrice}kr</h3>
-          <button class="button" data-id="${product.productId}">Add to Cart</button>
-          </div>
+          ${offerIndicator}
+          <button class="button" data-id="${product.productId}">Tilføj til kurv</button>
+        </div>
       </article>
     `;
     return html;
@@ -50,10 +54,11 @@ export default class ProductRenderer extends ItemRenderer {
             // Create a new order if no order ID exists
             const orderDate = new Date().toISOString().slice(0, 10);
             const newOrderId = await createOrder(orderDate, controller.loggedInUser.userId);
-            addToCart(product.productId, product.listPrice, product.productName, product.imageURLs, newOrderId, null);
+            addToCart(product.productId, product.listPrice, product.productName, product.imageURLs, product.categories, newOrderId, null);
+            console.log(product.categories);
           } else {
             // Add item to existing order
-            addToCart(product.productId, product.listPrice, product.productName, product.imageURLs, orderId, null);
+            addToCart(product.productId, product.listPrice, product.productName, product.imageURLs, product.categories, orderId, null);
           }
         } else {
           const guestOrderId = controller.cart[0]?.guestOrderId;
@@ -62,10 +67,10 @@ export default class ProductRenderer extends ItemRenderer {
             // Create a new guest order if no order ID exists
             const orderDate = new Date().toISOString().slice(0, 10);
             const newGuestOrderId = await guestOrderController.createGuestOrder(orderDate);
-            addToCart(product.productId, product.listPrice, product.productName, product.imageURLs, null, newGuestOrderId);
+            addToCart(product.productId, product.listPrice, product.productName, product.imageURLs, product.categories,  null, newGuestOrderId);
           } else {
             // Add item to existing guest order
-            addToCart(product.productId, product.listPrice, product.productName, product.imageURLs, null, guestOrderId);
+            addToCart(product.productId, product.listPrice, product.productName, product.imageURLs, product.categories, null, guestOrderId);
           }
         }
       } catch (error) {

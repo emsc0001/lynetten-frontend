@@ -1,7 +1,7 @@
 import ItemRenderer from "../Itemrenderer.js";
 import UpdateProductDialog from "../../Dialogs/AdminDialogs/UpdateProductDialog.js";
 import DeleteProductDialog from "../../Dialogs/AdminDialogs/DeleteProductDialog.js";
-import { populateCategoryDropdown, categories } from "../../../Admin/admin.js";
+import { populateCategoryDropdown, categories } from "../../../Admin/admin-dashboard.js";
 
 export default class AdminProductRenderer extends ItemRenderer {
     render() {

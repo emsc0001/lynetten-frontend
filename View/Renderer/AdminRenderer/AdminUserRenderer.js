@@ -3,17 +3,16 @@ import ItemRenderer from "../Itemrenderer.js";
 export default class AdminUserRenderer extends ItemRenderer {
   render() {
     const user = this.item;
+    let subscriptionStatus = user.newsletterSubscription ? "Ja" : "Nej";
+
     const html = /*html*/ `
-      <table class="user-info">
-        <thead>
-          <tr>
+
+          <tr class="user-info">
             <th>${user.userId}</th>
             <th>${user.email}</th>
-            <th>${user.password}</th>
-            <th>${user.newsletterSubscription}</th>
+            <th>${subscriptionStatus}</th>
           </tr>
-        </thead>
-      </table>
+
     `;
 
     return html;

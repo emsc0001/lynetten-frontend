@@ -70,10 +70,14 @@ async function baddServiceApp() {
   } else if (htmlSide === "/kurv.html") {
     initializeCartHtmlView();
   } else if (htmlSide === "/payment.html") {
-    document.addEventListener("DOMContentLoaded", () => {
-      enablePayNowButton();
-    });
-    document.querySelector("#pay-now-button").addEventListener("click", payNowClicked);
+      document.addEventListener("DOMContentLoaded", () => {
+          enablePayNowButton();
+      });
+      document.querySelector("#pay-now-button").addEventListener("click", payNowClicked); // Event listener for pay now button
+      document.querySelector("#shipping-details-form-button").addEventListener("click", (event) => {
+          event.preventDefault();
+          document.querySelector("#payment-form").scrollIntoView({ behavior: "smooth" });
+      }); // Scroll to the payment form
   } else {
     initializeOtherHtmlViews();
     initializeCartView();
@@ -86,9 +90,10 @@ async function baddServiceApp() {
 }
 
 //Initiliaze views for koebeguide.html, handelsBetingelser and index.html
-function initializeOtherHtmlViews() {
-  // initialize Category Views //
-  categoriesLists = new ListRenderer(categories, ".category-list", CategoryRenderer);
+async function initializeOtherHtmlViews() {
+    // initialize Category Views //
+   const hey = document.querySelector(".category-list")
+    categoriesLists = new ListRenderer(categories, ".category-list", CategoryRenderer);
   categoriesLists.render();
 
   const categoryLinks = document.querySelectorAll(".category-list a");
@@ -207,7 +212,6 @@ function setProductList(products) {
   });
 }
 
-
 function setCategoryList(categories) {
   categoriesLists = new ListRenderer(categories, ".category-list", CategoryRenderer);
   categoriesLists.render();
@@ -222,9 +226,9 @@ function setCategoryList(categories) {
       const { category, products } = await getCategoryWithProducts(categoryId);
 
       console.log("Category:", category);
-        console.log("Products for category ID", categoryId, products);
-        productsLists = new ListRenderer(products, "#products-container", ProductRenderer);
-        productsLists.render();
+      console.log("Products for category ID", categoryId, products);
+      productsLists = new ListRenderer(products, "#products-container", ProductRenderer);
+      productsLists.render();
     });
   });
 }
@@ -319,5 +323,6 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
   maxZoom: 19,
   attribution: "© OpenStreetMap contributors",
 }).addTo(myMap);
+
 
 export { products, categories, cart, saveCartToLocalStorage, htmlSide, users, loggedInUser, productsLists, setProductList, setCategoryList };
