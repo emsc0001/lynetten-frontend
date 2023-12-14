@@ -15,6 +15,10 @@ export default class UserLoginDialog extends Dialog {
           <input type="email" name="email" id="loginUserEmail" required>
           <label for="password">Adgangskode</label>
           <input type="password" name="password" id="loginUserpassword" required>
+  
+          <!-- Error message container, initially hidden -->
+          <div id="loginErrorMessage" style="color: red; display: none;"></div>
+  
           <button type="submit" data-action="login">Login</button>
           <button type="button" data-action="cancel">Fortryd</button>
           <div class="additional-options">
@@ -25,44 +29,55 @@ export default class UserLoginDialog extends Dialog {
     `;
     return html;
   }
+  
 
   async login() {
-    // Build user credentials from form
-    const form = this.dialog.querySelector("form");
+    const form = this.dialog.querySelector("#loginForm");
     const email = form.email.value;
     const password = form.password.value;
-
-    // Clear form
-    form.reset();
-
-    // Call the controller method to log in the user
-    const loggedInUser = await loginUserForm({ email, password });
-
-    if (loggedInUser) {
+    const errorMessageDiv = this.dialog.querySelector("#loginErrorMessage");
+  
+    try {
+      // Call the controller method to log in the user
+      const loggedInUser = await loginUserForm({ email, password });
+  
+      if (loggedInUser) {
         // Store user information in local storage
-      localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
-
-      // --Add the cart items to the user's cart--//
-      const userCart = JSON.parse(localStorage.getItem("cart")) || [];
-    if (userCart.length > 0) {
-      const orderId = await createOrder(new Date().toISOString().slice(0, 10), loggedInUser.userId);
-        const updatedCart = userCart.reduce((result, item) => {
+        localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
+  
+        // Add the cart items to the user's cart
+        const userCart = JSON.parse(localStorage.getItem("cart")) || [];
+        if (userCart.length > 0) {
+          const orderId = await createOrder(new Date().toISOString().slice(0, 10), loggedInUser.userId);
+          const updatedCart = userCart.reduce((result, item) => {
             if (item.guestOrderId) {
-                // Add a condition to exclude items with guestOrderId
-                // Update the guestOrderId and orderId as needed
-                result.push({ ...item, orderId: orderId, guestOrderId: null });
+              // Update the guestOrderId and orderId as needed
+              result.push({ ...item, orderId: orderId, guestOrderId: null });
             } else {
-                result.push(item);
+              result.push(item);
             }
             return result;
-        }, []);
-      
-        localStorage.setItem("cart", JSON.stringify(updatedCart));
-    }
-
+          }, []);
+        
+          localStorage.setItem("cart", JSON.stringify(updatedCart));
+        }
+  
         // Close the dialog if the user login is successful
         this.close();
         window.location.reload();
+      } else {
+        // Login failed, show error message
+        errorMessageDiv.textContent = "Wrong email or password";
+        errorMessageDiv.style.display = 'block';
+      }
+    } catch (error) {
+      // Handle other types of errors (e.g., network error)
+      errorMessageDiv.textContent = "An error occurred. Please try again.";
+      errorMessageDiv.style.display = 'block';
     }
+  
+    // Clear form and prevent default form submission
+    form.reset();
+    event.preventDefault();
   }
 }
