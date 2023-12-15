@@ -34,13 +34,7 @@ let loggedInUser = null;
 
 //Order variables
 let cart = [];
-function getBaseUrl() {
-    if (window.location.hostname === "emsc0001.github.io") {
-        return "/lynetten-frontend";
-    } else {
-        return "/";
-    }
-}
+
 
 const htmlSide = window.location.pathname;
 
@@ -60,13 +54,12 @@ async function baddServiceApp() {
   console.log("Number Of Categories: " + categories.length);
   console.log("Number Of Users: " + users.length);
   
-  const baseURL = getBaseUrl();
-  const pathWithoutBase = htmlSide.replace(baseURL, "/");
-  console.log(pathWithoutBase);
-  if (pathWithoutBase === "/products.html") {
+
+  if (htmlSide.includes("/products.html")) {
       initializeCartView();
       // search event listener
       document.querySelector("[data-search-type]").addEventListener("input", handleSearch);
+
 
       // Category directory //
       const urlParams = new URLSearchParams(window.location.search);
@@ -76,9 +69,9 @@ async function baddServiceApp() {
       } else {
           initializeProductViews();
       }
-  } else if (pathWithoutBase === "/kurv.html") {
+  } else if (htmlSide.includes("/kurv.html")) {
       initializeCartHtmlView();
-  } else if (pathWithoutBase === "/payment.html") {
+  } else if (htmlSide.includes("/payment.html")) {
       document.addEventListener("DOMContentLoaded", () => {
           enablePayNowButton();
       });

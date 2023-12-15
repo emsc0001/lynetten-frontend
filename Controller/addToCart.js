@@ -19,7 +19,7 @@ export default function addToCart(productId, listPrice, offerPrice, productName,
 
     saveCartToLocalStorage(); // Save cart to localStorage
     console.log(htmlSide);
-    if (htmlSide === "/kurv.html") {
+    if (htmlSide.includes("/kurv.html")) {
         initializeCartHtmlView(); // Render the cart
     } else {
         initializeCartView(); // Render the cart
