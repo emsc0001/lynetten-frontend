@@ -36,7 +36,7 @@ let loggedInUser = null;
 let cart = [];
 function getBaseUrl() {
     if (window.location.hostname === "emsc0001.github.io") {
-        return "/lynetten-frontend/";
+        return "/lynetten-frontend";
     } else {
         return "/";
     }
@@ -61,13 +61,12 @@ async function baddServiceApp() {
   console.log("Number Of Users: " + users.length);
   
   const baseURL = getBaseUrl();
-  const pathWithoutBase = htmlSide.replace(baseURL, "");
+  const pathWithoutBase = htmlSide.replace(baseURL, "/");
+  console.log(pathWithoutBase);
   if (pathWithoutBase === "/products.html") {
       initializeCartView();
       // search event listener
       document.querySelector("[data-search-type]").addEventListener("input", handleSearch);
-
-      // document.querySelector("[data-sort-list]").addEventListener("change", handleSort);
 
       // Category directory //
       const urlParams = new URLSearchParams(window.location.search);
@@ -101,7 +100,7 @@ async function baddServiceApp() {
 
 //Initiliaze views for koebeguide.html, handelsBetingelser and index.html
 async function initializeOtherHtmlViews() {
-  console.log("You are on the" + htmlSide + "page");
+  console.log("You are on the" + htmlSide + "OtherHtmlViews page");
     // initialize Category Views //
     categoriesLists = new ListRenderer(categories, ".category-list", CategoryRenderer);
   categoriesLists.render();
@@ -150,7 +149,7 @@ async function initializeOtherHtmlViews() {
 
 //------------Initiliaze views for products.html---------------//
 function initializeProductViews() {
-  console.log("You are on the" + htmlSide + "page");
+  console.log("You are on the" + htmlSide + "productInitalized");
   productsLists = new Paginater(products, "#products-container", ProductRenderer, 10);
   productsLists.render();
 
