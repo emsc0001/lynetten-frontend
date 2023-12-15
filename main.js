@@ -52,7 +52,7 @@ async function baddServiceApp() {
   console.log("Number Of Categories: " + categories.length);
   console.log("Number Of Users: " + users.length);
 
-  if (htmlSide === "/products.html") {
+  if (htmlSide === "products.html") {
     initializeCartView();
     // search event listener
     document.querySelector("[data-search-type]").addEventListener("input", handleSearch);
@@ -67,9 +67,9 @@ async function baddServiceApp() {
     } else {
       initializeProductViews();
     }
-  } else if (htmlSide === "/kurv.html") {
+  } else if (htmlSide === "kurv.html") {
     initializeCartHtmlView();
-  } else if (htmlSide === "/payment.html") {
+  } else if (htmlSide === "payment.html") {
     document.addEventListener("DOMContentLoaded", () => {
       enablePayNowButton();
     });
