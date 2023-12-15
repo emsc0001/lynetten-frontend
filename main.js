@@ -45,42 +45,59 @@ function getBaseUrl() {
 const htmlSide = window.location.pathname;
 
 window.addEventListener("load", () => {
-    baddServiceApp();
-    checkLoginStatus();
-    loadCartFromLocalStorage();
+  baddServiceApp();
+  checkLoginStatus();
+  loadCartFromLocalStorage();
 });
 
 async function baddServiceApp() {
-    console.log("baddService loaded!");
-    products = await getAllProducts();
-    categories = await getAllCategories();
-    users = await getAllUsers();
+  console.log("baddService loaded!");
+  products = await getAllProducts();
+  categories = await getAllCategories();
+  users = await getAllUsers();
 
-    console.log("Number Of Products: " + products.length);
-    console.log("Number Of Categories: " + categories.length);
-    console.log("Number Of Users: " + users.length);
+  console.log("Number Of Products: " + products.length);
+  console.log("Number Of Categories: " + categories.length);
+  console.log("Number Of Users: " + users.length);
+  
+  const baseURL = getBaseUrl();
+  const pathWithoutBase = htmlSide.replace(baseURL, "");
+  if (pathWithoutBase === "/products.html") {
+      initializeCartView();
+      // search event listener
+      document.querySelector("[data-search-type]").addEventListener("input", handleSearch);
 
-    const baseURL = getBaseUrl();
-    const pathWithoutBase = htmlSide.replace(baseURL, "");
+      // document.querySelector("[data-sort-list]").addEventListener("change", handleSort);
 
-    if (pathWithoutBase === "/products.html") {
-        initializeCartView();
-        // ... rest of your code related to products.html
-    } else if (pathWithoutBase === "/kurv.html") {
-        initializeCartHtmlView();
-    } else if (pathWithoutBase === "/payment.html") {
-        // ... rest of your code related to payment.html
-    } else {
-        initializeOtherHtmlViews();
-        initializeCartView();
-    }
+      // Category directory //
+      const urlParams = new URLSearchParams(window.location.search);
+      const categoryId = urlParams.get("categoryId");
+      if (categoryId) {
+          await ProductRenderer.updateProductsByCategory(categoryId);
+      } else {
+          initializeProductViews();
+      }
+  } else if (pathWithoutBase === "/kurv.html") {
+      initializeCartHtmlView();
+  } else if (pathWithoutBase === "/payment.html") {
+      document.addEventListener("DOMContentLoaded", () => {
+          enablePayNowButton();
+      });
+      document.querySelector("#pay-now-button").addEventListener("click", payNowClicked); // Event listener for pay now button
+      document.querySelector("#shipping-details-form-button").addEventListener("click", (event) => {
+          event.preventDefault();
+          document.querySelector("#payment-form").scrollIntoView({ behavior: "smooth" });
+      }); // Scroll to the payment form
+  } else {
+      initializeOtherHtmlViews();
+      initializeCartView();
+  }
 
-    if (loggedInUser) {
-        loggedInHtmlChange();
-        document.querySelector("#logout").addEventListener("click", logout);
-    }
+  if (loggedInUser) {
+    loggedInHtmlChange();
+    document.querySelector("#logout").addEventListener("click", logout);
+  }
 }
-
 
 //Initiliaze views for koebeguide.html, handelsBetingelser and index.html
 async function initializeOtherHtmlViews() {
