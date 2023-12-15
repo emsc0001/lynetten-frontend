@@ -91,7 +91,7 @@ async function baddServiceApp() {
 
 //Initiliaze views for koebeguide.html, handelsBetingelser and index.html
 async function initializeOtherHtmlViews() {
-  console.log("You are on the otherHtml page");
+  console.log("You are on the" + htmlSide + "page");
     // initialize Category Views //
     categoriesLists = new ListRenderer(categories, ".category-list", CategoryRenderer);
   categoriesLists.render();
@@ -140,7 +140,7 @@ async function initializeOtherHtmlViews() {
 
 //------------Initiliaze views for products.html---------------//
 function initializeProductViews() {
-  console.log("You are on the products page");
+  console.log("You are on the" + htmlSide + "page");
   productsLists = new Paginater(products, "#products-container", ProductRenderer, 10);
   productsLists.render();
 
