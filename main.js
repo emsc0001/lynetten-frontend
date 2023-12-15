@@ -70,14 +70,14 @@ async function baddServiceApp() {
   } else if (htmlSide === "/kurv.html") {
     initializeCartHtmlView();
   } else if (htmlSide === "/payment.html") {
-      document.addEventListener("DOMContentLoaded", () => {
-          enablePayNowButton();
-      });
-      document.querySelector("#pay-now-button").addEventListener("click", payNowClicked); // Event listener for pay now button
-      document.querySelector("#shipping-details-form-button").addEventListener("click", (event) => {
-          event.preventDefault();
-          document.querySelector("#payment-form").scrollIntoView({ behavior: "smooth" });
-      }); // Scroll to the payment form
+    document.addEventListener("DOMContentLoaded", () => {
+      enablePayNowButton();
+    });
+    document.querySelector("#pay-now-button").addEventListener("click", payNowClicked); // Event listener for pay now button
+    document.querySelector("#shipping-details-form-button").addEventListener("click", (event) => {
+      event.preventDefault();
+      document.querySelector("#payment-form").scrollIntoView({ behavior: "smooth" });
+    }); // Scroll to the payment form
   } else {
     initializeOtherHtmlViews();
     initializeCartView();
@@ -91,9 +91,9 @@ async function baddServiceApp() {
 
 //Initiliaze views for koebeguide.html, handelsBetingelser and index.html
 async function initializeOtherHtmlViews() {
-    // initialize Category Views //
-   const hey = document.querySelector(".category-list")
-    categoriesLists = new ListRenderer(categories, ".category-list", CategoryRenderer);
+  // initialize Category Views //
+  const hey = document.querySelector(".category-list");
+  categoriesLists = new ListRenderer(categories, ".category-list", CategoryRenderer);
   categoriesLists.render();
 
   const categoryLinks = document.querySelectorAll(".category-list a");
@@ -258,7 +258,7 @@ function logout() {
   localStorage.removeItem("cart"); // Remove any cart data associated with the user
 
   // Reset the application state
-  window.location.href = "/index.html"; // Redirect to the home page
+  window.location.href = "lynetten-frontend/index.html"; // Redirect to the home page
   loggedInHtmlChange();
 }
 
@@ -323,6 +323,5 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
   maxZoom: 19,
   attribution: "© OpenStreetMap contributors",
 }).addTo(myMap);
-
 
 export { products, categories, cart, saveCartToLocalStorage, htmlSide, users, loggedInUser, productsLists, setProductList, setCategoryList };
