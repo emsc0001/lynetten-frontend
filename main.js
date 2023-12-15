@@ -63,12 +63,12 @@ async function baddServiceApp() {
     const baseURL = getBaseUrl();
     const pathWithoutBase = htmlSide.replace(baseURL, "");
 
-    if (pathWithoutBase === "products.html") {
+    if (pathWithoutBase === "/products.html") {
         initializeCartView();
         // ... rest of your code related to products.html
-    } else if (pathWithoutBase === "kurv.html") {
+    } else if (pathWithoutBase === "/kurv.html") {
         initializeCartHtmlView();
-    } else if (pathWithoutBase === "payment.html") {
+    } else if (pathWithoutBase === "/payment.html") {
         // ... rest of your code related to payment.html
     } else {
         initializeOtherHtmlViews();
