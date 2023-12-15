@@ -94,7 +94,7 @@ export default class ProductCartRenderer extends ItemRenderer {
                 cartItem.quantity--;
                 this.render(); // Rerender the cart after updating the quantity
                 saveCartToLocalStorage(); // Save the updated cart to localStorage
-                if (htmlSide === "/kurv.html") {
+                if (htmlSide.includes("/kurv.html")) {
                     initializeCartHtmlView();
                 } else {
                     initializeCartView();
@@ -106,7 +106,7 @@ export default class ProductCartRenderer extends ItemRenderer {
                     cart.splice(cartIndex, 1); // Remove the item from the cart
                     this.render(); // Rerender the cart after removing the item
                     saveCartToLocalStorage(); // Save the updated cart to localStorage
-                    if (htmlSide === "/kurv.html") {
+                    if (htmlSide.includes("/kurv.html")) {
                         initializeCartHtmlView();
                     } else {
                         initializeCartView();
@@ -122,7 +122,7 @@ export default class ProductCartRenderer extends ItemRenderer {
                 cartItem.quantity++;
                 this.render(); // Rerender the cart after updating the quantity
                 saveCartToLocalStorage(); // Save the updated cart to localStorage
-                if (htmlSide === "/kurv.html") {
+                if (htmlSide.includes("/kurv.html")) {
                     initializeCartHtmlView();
                 } else {
                     initializeCartView();
@@ -137,7 +137,7 @@ export default class ProductCartRenderer extends ItemRenderer {
                 cart.splice(cartIndex, 1); // Remove the item from the cart
                 this.render(); // Rerender the cart after removing the item
                 saveCartToLocalStorage(); // Save the updated cart to localStorage
-                if (htmlSide === "/kurv.html") {
+                if (htmlSide.includes("/kurv.html")) {
                     initializeCartHtmlView();
                 } else {
                     initializeCartView();
