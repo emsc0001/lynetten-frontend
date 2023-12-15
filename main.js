@@ -258,7 +258,7 @@ function logout() {
   localStorage.removeItem("cart"); // Remove any cart data associated with the user
 
   // Reset the application state
-  window.location.href = "lynetten-frontend/index.html"; // Redirect to the home page
+  window.location.href = "index.html"; // Redirect to the home page
   loggedInHtmlChange();
 }
 
