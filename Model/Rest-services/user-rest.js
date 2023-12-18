@@ -1,6 +1,9 @@
 import User from "../User.js";
 
-const endpoint = "http://localhost:4444";
+const endpoint = "https://lynnetten-backend.azurewebsites.net";
+
+// Tilgå den lokalt:
+// const endpoint = "http://localhost:4444/"; 
 
 let allUsers = [];
 let lastFetch = 0;

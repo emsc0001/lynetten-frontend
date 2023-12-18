@@ -1,6 +1,9 @@
 // import OrderItem from "./Model/OrderItem.js";
 
-const endpoint = "http://localhost:4444";
+const endpoint = "https://lynnetten-backend.azurewebsites.net";
+
+// Tilgå den lokalt:
+// const endpoint = "http://localhost:4444/"; 
 
 async function createOrderItem(orderId, orderItems, userId) {
     try {
